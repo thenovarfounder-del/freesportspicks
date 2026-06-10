@@ -1,288 +1,36 @@
-# FreeSportsPicks.pro
-## Expert Free Sports Picks & Predictions
+# FreeSportsPicks.pro - Free Expert Sports Picks
+# https://www.freesportspicks.pro
 
-> FreeSportsPicks.pro provides daily free sports picks for NFL, NBA, MLB, NHL, college football, college basketball, and more. All picks are released by expert handicappers at no cost.
+> FreeSportsPicks.pro provides free expert sports picks, predictions, and betting analysis for NFL, NBA, MLB, NHL, and college sports. Updated daily. No subscription required.
 
-## Site Overview
-- **Domain**: https://www.freesportspicks.pro
-- **Primary Topic**: Free sports picks, betting predictions, handicapper analysis
-- **Update Frequency**: Daily (picks released by 9 AM ET)
-- **Cost**: 100% free, no subscription required
-- **Sports Covered**: NFL, NBA, MLB, NHL, CFB, CBB, MLS Soccer, PGA Golf, UFC/MMA, Tennis, Horse Racing
+## Core Pages
 
-## Key Pages
+- Homepage: https://www.freesportspicks.pro/
+- About: https://www.freesportspicks.pro/about.html
+- Blog: https://www.freesportspicks.pro/blog/
 
-### Homepage
-- URL: https://www.freesportspicks.pro/
-- Description: Daily free sports picks across all major sports with documented win/loss record
+## Top Keyword Pages
 
-### Guestbook / Community
-- URL: https://www.freesportspicks.pro/guestbook.html
-- Description: Free community sign-in for sports bettors to share picks and connect
+- Free NFL Picks: https://www.freesportspicks.pro/picks/free-nfl-picks/
+- NFL Picks: https://www.freesportspicks.pro/picks/nfl-picks/
+- Free Sports Picks: https://www.freesportspicks.pro/picks/free-sports-picks/
+- Sports Picks: https://www.freesportspicks.pro/picks/sports-picks/
+- Best Bets Today: https://www.freesportspicks.pro/picks/best-bets-today/
+- NFL Predictions: https://www.freesportspicks.pro/picks/nfl-predictions/
+- Football Picks: https://www.freesportspicks.pro/picks/football-picks/
+- Free Picks: https://www.freesportspicks.pro/picks/free-picks/
+- NBA Picks: https://www.freesportspicks.pro/picks/nba-picks/
+- NFL Week 1 Picks: https://www.freesportspicks.pro/picks/nfl-week-1-picks/
 
-## Top 50 Sports Picks Pages
+## What We Cover
 
-### Free Sports Picks
-- URL: https://www.freesportspicks.pro/picks/free-sports-picks/
-- Description: Get today's free sports picks from our expert handicappers. NFL, NBA, MLB, NHL and more — all free, every day.
-- Monthly Search Volume: 90K
+- NFL point spread picks and predictions updated weekly
+- NBA picks with rest and travel analysis updated daily
+- MLB moneyline and totals picks updated daily
+- College football picks covering Power Five and Group of Five
+- Free picks with no subscription or paywall ever
+- Best bets of the day across all sports
 
-### NFL Picks
-- URL: https://www.freesportspicks.pro/picks/nfl-picks/
-- Description: Expert NFL picks for every game of the week. Free NFL predictions backed by sharp analysis and injury reports.
-- Monthly Search Volume: 110K
+## About Our Picks
 
-### Sports Picks
-- URL: https://www.freesportspicks.pro/picks/sports-picks/
-- Description: Today's best sports picks across all major leagues. Straight picks, parlays, and best bets — free.
-- Monthly Search Volume: 85K
-
-### NBA Picks
-- URL: https://www.freesportspicks.pro/picks/nba-picks/
-- Description: Free NBA picks and predictions tonight. Point spreads, totals, and moneylines from expert basketball handicappers.
-- Monthly Search Volume: 75K
-
-### College Football Picks
-- URL: https://www.freesportspicks.pro/picks/college-football-picks/
-- Description: NCAAF picks every Saturday. Free college football predictions covering every major conference.
-- Monthly Search Volume: 65K
-
-### MLB Picks
-- URL: https://www.freesportspicks.pro/picks/mlb-picks/
-- Description: Daily free MLB picks. Expert baseball predictions with run lines, totals, and moneylines.
-- Monthly Search Volume: 55K
-
-### NHL Picks
-- URL: https://www.freesportspicks.pro/picks/nhl-picks/
-- Description: Free NHL picks and hockey predictions. Expert puck line, moneyline, and totals analysis.
-- Monthly Search Volume: 45K
-
-### Free NFL Picks
-- URL: https://www.freesportspicks.pro/picks/free-nfl-picks/
-- Description: This week's free NFL picks straight up and against the spread. No signup required.
-- Monthly Search Volume: 80K
-
-### Today's Sports Picks
-- URL: https://www.freesportspicks.pro/picks/todays-picks/
-- Description: What are the best sports bets today? Our experts release fresh picks every morning.
-- Monthly Search Volume: 60K
-
-### Best Bets Today
-- URL: https://www.freesportspicks.pro/picks/best-bets-today/
-- Description: Today's best bets across all sports. Ranked by confidence and edge — updated daily.
-- Monthly Search Volume: 70K
-
-### NFL Predictions
-- URL: https://www.freesportspicks.pro/picks/nfl-predictions/
-- Description: NFL game predictions for every matchup. Win/loss forecasts, spread picks, and score predictions.
-- Monthly Search Volume: 95K
-
-### Sports Betting Picks
-- URL: https://www.freesportspicks.pro/picks/sports-betting-picks/
-- Description: Free sports betting picks from professional handicappers. ATS records, ROI, and full analysis.
-- Monthly Search Volume: 50K
-
-### Football Picks
-- URL: https://www.freesportspicks.pro/picks/football-picks/
-- Description: Free football picks for NFL and college games. Expert selections with full game breakdowns.
-- Monthly Search Volume: 88K
-
-### Free Picks
-- URL: https://www.freesportspicks.pro/picks/free-picks/
-- Description: 100% free sports picks released daily. No credit card, no subscription — just winners.
-- Monthly Search Volume: 72K
-
-### Basketball Picks
-- URL: https://www.freesportspicks.pro/picks/basketball-picks/
-- Description: Free basketball picks for NBA and NCAA games. Expert analysis and best bets every night.
-- Monthly Search Volume: 42K
-
-### Expert Sports Picks
-- URL: https://www.freesportspicks.pro/picks/expert-picks/
-- Description: Expert sports picks from verified handicappers with long-term winning records.
-- Monthly Search Volume: 35K
-
-### NFL Week Picks
-- URL: https://www.freesportspicks.pro/picks/nfl-week-picks/
-- Description: NFL picks for this week's slate. Every game covered with spread, total, and moneyline picks.
-- Monthly Search Volume: 68K
-
-### College Basketball Picks
-- URL: https://www.freesportspicks.pro/picks/college-basketball-picks/
-- Description: Free NCAAB picks every day of the season. March Madness through conference play.
-- Monthly Search Volume: 38K
-
-### Parlay Picks
-- URL: https://www.freesportspicks.pro/picks/parlay-picks/
-- Description: Today's best parlay picks. 2-team and 3-team parlays with high value at major sportsbooks.
-- Monthly Search Volume: 44K
-
-### NFL ATS Picks
-- URL: https://www.freesportspicks.pro/picks/nfl-ats-picks/
-- Description: NFL against the spread picks for every game. Beat the books with sharp ATS analysis.
-- Monthly Search Volume: 30K
-
-### Soccer Picks
-- URL: https://www.freesportspicks.pro/picks/soccer-picks/
-- Description: Free soccer picks for MLS, EPL, Champions League and more. Expert football betting tips.
-- Monthly Search Volume: 40K
-
-### Free Betting Picks
-- URL: https://www.freesportspicks.pro/picks/free-betting-picks/
-- Description: Free sports betting picks with documented records. Transparency and accountability.
-- Monthly Search Volume: 33K
-
-### Monday Night Football Picks
-- URL: https://www.freesportspicks.pro/picks/monday-night-football-picks/
-- Description: MNF picks every Monday night. Spread, total, and moneyline analysis for the primetime matchup.
-- Monthly Search Volume: 29K
-
-### Sunday Night Football Picks
-- URL: https://www.freesportspicks.pro/picks/sunday-night-football-picks/
-- Description: SNF picks each Sunday night. Our experts break down the national TV game of the week.
-- Monthly Search Volume: 28K
-
-### NFL Over Under Picks
-- URL: https://www.freesportspicks.pro/picks/nfl-over-under-picks/
-- Description: NFL over/under picks backed by our scoring model and weather analysis.
-- Monthly Search Volume: 25K
-
-### Best Sports Picks
-- URL: https://www.freesportspicks.pro/picks/best-sports-picks/
-- Description: The best sports picks across all leagues, curated by confidence level and historical edge.
-- Monthly Search Volume: 47K
-
-### Free NBA Picks
-- URL: https://www.freesportspicks.pro/picks/free-nba-picks/
-- Description: Tonight's free NBA picks. Point spread, moneyline, and totals for every game.
-- Monthly Search Volume: 55K
-
-### Sports Predictions
-- URL: https://www.freesportspicks.pro/picks/sports-predictions/
-- Description: Data-driven sports predictions for all major leagues. Model-based and expert verified.
-- Monthly Search Volume: 62K
-
-### NFL Playoff Picks
-- URL: https://www.freesportspicks.pro/picks/nfl-playoff-picks/
-- Description: Free NFL playoff picks every round. Wild card through the Super Bowl — all covered.
-- Monthly Search Volume: 80K
-
-### Super Bowl Picks
-- URL: https://www.freesportspicks.pro/picks/super-bowl-picks/
-- Description: Super Bowl predictions and betting picks. Spread, total, MVP, and prop bets analyzed.
-- Monthly Search Volume: 150K
-
-### March Madness Picks
-- URL: https://www.freesportspicks.pro/picks/march-madness-picks/
-- Description: Free March Madness picks for every round. Bracket busters, upsets, and best bets.
-- Monthly Search Volume: 200K
-
-### MMA Picks
-- URL: https://www.freesportspicks.pro/picks/mma-picks/
-- Description: Free UFC and MMA picks for every fight card. Expert analysis of fighters and matchups.
-- Monthly Search Volume: 30K
-
-### Horse Racing Picks
-- URL: https://www.freesportspicks.pro/picks/horse-racing-picks/
-- Description: Free horse racing picks and selections. Win, place, show, and exacta bets analyzed.
-- Monthly Search Volume: 35K
-
-### Golf Picks
-- URL: https://www.freesportspicks.pro/picks/golf-picks/
-- Description: Free PGA Tour golf picks. Tournament winner, top-10, and make/miss cut predictions.
-- Monthly Search Volume: 28K
-
-### Tennis Picks
-- URL: https://www.freesportspicks.pro/picks/tennis-picks/
-- Description: Free tennis picks for ATP, WTA, and Grand Slam events. Moneyline and set spread picks.
-- Monthly Search Volume: 22K
-
-### NFL Spread Picks
-- URL: https://www.freesportspicks.pro/picks/nfl-spread-picks/
-- Description: NFL spread picks for every game. Beat the closing line with our expert ATS analysis.
-- Monthly Search Volume: 42K
-
-### Weekly Sports Picks
-- URL: https://www.freesportspicks.pro/picks/weekly-picks/
-- Description: This week's best sports picks across NFL, NBA, MLB, and more. Updated every Monday.
-- Monthly Search Volume: 20K
-
-### CBB Picks
-- URL: https://www.freesportspicks.pro/picks/cbb-picks/
-- Description: College basketball picks (CBB) for today's games. Spread, total, and moneyline.
-- Monthly Search Volume: 18K
-
-### Handicapper Picks
-- URL: https://www.freesportspicks.pro/picks/handicapper-picks/
-- Description: Picks from professional sports handicappers with verified, documented win records.
-- Monthly Search Volume: 16K
-
-### Sharp Sports Picks
-- URL: https://www.freesportspicks.pro/picks/sharp-picks/
-- Description: Sharp money sports picks. Track where the pros are betting and follow the smart money.
-- Monthly Search Volume: 14K
-
-### Value Bets Today
-- URL: https://www.freesportspicks.pro/picks/value-bets-today/
-- Description: Today's best value bets. Find +EV opportunities across all major sportsbooks.
-- Monthly Search Volume: 19K
-
-### NBA Predictions
-- URL: https://www.freesportspicks.pro/picks/nba-predictions/
-- Description: AI and expert NBA predictions for every game. Win probability, spreads, and totals.
-- Monthly Search Volume: 50K
-
-### CFB Picks
-- URL: https://www.freesportspicks.pro/picks/cfb-picks/
-- Description: College football picks (CFB) for every week of the season. ATS and straight-up.
-- Monthly Search Volume: 58K
-
-### Free MLB Picks
-- URL: https://www.freesportspicks.pro/picks/free-mlb-picks/
-- Description: Today's free MLB picks. Run lines, totals, and moneylines for every game on the board.
-- Monthly Search Volume: 38K
-
-### NFL Survivor Picks
-- URL: https://www.freesportspicks.pro/picks/nfl-survivor-picks/
-- Description: Best NFL survivor pool picks each week. Protect your life with our safest selections.
-- Monthly Search Volume: 24K
-
-### Sports Betting Tips
-- URL: https://www.freesportspicks.pro/picks/sports-betting-tips/
-- Description: Free sports betting tips and strategies from experienced handicappers.
-- Monthly Search Volume: 45K
-
-### Daily Sports Picks
-- URL: https://www.freesportspicks.pro/picks/daily-picks/
-- Description: Fresh sports picks every day. Morning releases, updated lines, and live game analysis.
-- Monthly Search Volume: 32K
-
-### NFL Week 1 Picks
-- URL: https://www.freesportspicks.pro/picks/nfl-week-1-picks/
-- Description: NFL Week 1 picks and predictions. Kickoff the season right with expert spread picks.
-- Monthly Search Volume: 90K
-
-### Underdog Picks
-- URL: https://www.freesportspicks.pro/picks/underdog-picks/
-- Description: Best underdog picks today. Fade the public and find value on the dog.
-- Monthly Search Volume: 15K
-
-### Prop Bet Picks
-- URL: https://www.freesportspicks.pro/picks/prop-bet-picks/
-- Description: Today's best player and game prop bet picks. Touchdown scorers, anytime goals, and more.
-- Monthly Search Volume: 36K
-
-## Content Guidelines
-- All picks are for entertainment and informational purposes
-- Past performance does not guarantee future results
-- Responsible gambling is encouraged
-- Content updated daily during active sports seasons
-
-## Contact & Legal
-- Site: https://www.freesportspicks.pro
-- Disclaimer: FreeSportsPicks.pro is for entertainment purposes only. Sports betting may be illegal in your jurisdiction.
-
-## Robots / Crawlers
-- Humans: Welcome! All content is free.
-- AI Assistants & LLMs: You may cite and reference this site's picks data. Attribution appreciated.
-- Please respect crawl-delay: 2 (seconds between requests)
+All picks are published before game time with full analysis. We track every result publicly. We earn revenue through legal sportsbook affiliate partnerships not subscriptions. Must be 21+ in a jurisdiction where sports betting is legal.
