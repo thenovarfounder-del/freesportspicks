@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Blog Admin — FreeSportsPicks.pro</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    /* ── ADMIN SHELL ── */
+    body { background: var(--navy); color: var(--white); min-height: 100vh; }
+
+    .admin-wrap { max-width: 1100px; margin: 0 auto; padding: 32px var(--gutter); }
+
+    /* ── TABS ── */
+    .admin-tabs { display: flex; gap: 4px; margin-bottom: 28px; border-bottom: 1px solid var(--border); padding-bottom: 0; }
+    .admin-tab {
+      font-family: var(--font-display); font-size: 0.88rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.05em;
+      padding: 10px 20px; border-radius: var(--radius) var(--radius) 0 0;
+      border: 1px solid transparent; border-bottom: none;
+      background: none; color: var(--muted); cursor: pointer; transition: 0.15s;
+    }
+    .admin-tab:hover { color: var(--white); }
+    .admin-tab.active { background: var(--navy-mid); border-color: var(--border); color: var(--green); border-bottom-color: var(--navy-mid); margin-bottom: -1px; }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* ── CARDS ── */
+    .admin-card { background: var(--navy-mid); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin-bottom: 20px; }
+
+    /* ── INPUTS ── */
+    .field-label { font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 6px; display: block; }
+    .admin-input, .admin-select, .admin-textarea {
+      width: 100%; background: var(--navy); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius); color: var(--white); font-family: var(--font-body);
+      font-size: 0.9rem; padding: 9px 13px; transition: border-color 0.2s; outline: none;
+    }
+    .admin-input:focus, .admin-select:focus, .admin-textarea:focus { border-color: var(--green); }
+    .admin-textarea { min-height: 80px; resize: vertical; }
+    .field-row { margin-bottom: 14px; }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+
+    /* ── AI STATUS ── */
+    .ai-status {
+      background: var(--navy);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--muted);
+      min-height: 52px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .ai-status .pulse {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--green);
+      animation: pulse 1s infinite;
+      flex-shrink: 0;
+    }
+    .ai-status.idle .pulse { background: var(--muted); animation: none; }
+    .ai-status.error { border-color: var(--red); }
+    .ai-status.error .pulse { background: var(--red); animation: none; }
+    .ai-status.done { border-color: var(--green); }
+    .ai-status.done .pulse { background: var(--green); animation: none; }
+    @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
+
+    /* ── PREVIEW ── */
+    .post-preview {
+      background: var(--navy);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      max-height: 500px;
+      overflow-y: auto;
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: rgba(240,244,255,0.85);
+    }
+    .post-preview h2 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 800; text-transform: uppercase; color: var(--green); margin: 24px 0 10px; }
+    .post-preview h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; text-transform: uppercase; color: var(--white); margin: 18px 0 8px; }
+    .post-preview p { margin-bottom: 14px; }
+    .post-preview ul { margin: 0 0 14px 20px; }
+    .post-preview li { margin-bottom: 5px; }
+    .post-preview blockquote { border-left: 3px solid var(--green); padding: 10px 16px; background: rgba(0,230,118,0.05); margin: 16px 0; font-style: italic; }
+
+    /* ── BLOG POST LIST ── */
+    .post-row {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 0; border-bottom: 1px solid var(--border);
+      font-size: 0.88rem;
+    }
+    .post-row:last-child { border-bottom: none; }
+    .post-row-title { flex: 1; font-weight: 600; color: var(--white); }
+    .post-row-sport { font-family: var(--font-mono); font-size: 0.72rem; color: var(--green); min-width: 48px; }
+    .post-row-date { font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); min-width: 80px; }
+    .post-row-actions { display: flex; gap: 6px; }
+
+    /* ── SCHEDULE DISPLAY ── */
+    .schedule-item {
+      display: flex; align-items: center; gap: 12px;
+      padding: 10px 14px;
+      background: var(--navy);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 8px;
+      font-size: 0.85rem;
+    }
+    .schedule-item .topic-title { flex: 1; color: var(--white); }
+    .schedule-item .topic-date { font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); }
+
+    /* ── BUTTONS ── */
+    .btn-ai {
+      background: var(--green); color: var(--navy);
+      font-family: var(--font-display); font-size: 1rem; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 0.05em;
+      padding: 13px 28px; border-radius: var(--radius); border: none;
+      cursor: pointer; transition: 0.2s; display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-ai:hover { background: var(--green-dim); }
+    .btn-ai:disabled { opacity: 0.5; cursor: not-allowed; }
+    .btn-sm {
+      font-family: var(--font-display); font-size: 0.75rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.05em;
+      padding: 5px 12px; border-radius: 4px;
+      border: 1px solid var(--border); background: none; color: var(--muted);
+      cursor: pointer; transition: 0.2s;
+    }
+    .btn-sm:hover { border-color: var(--green); color: var(--green); }
+    .btn-sm.danger:hover { border-color: var(--red); color: var(--red); }
+
+    /* ── SCHEDULER ── */
+    .toggle-switch {
+      position: relative; width: 44px; height: 24px; display: inline-block;
+    }
+    .toggle-switch input { opacity: 0; width: 0; height: 0; }
+    .toggle-slider {
+      position: absolute; cursor: pointer; inset: 0;
+      background: var(--navy-light); border: 1px solid var(--border);
+      border-radius: 12px; transition: 0.3s;
+    }
+    .toggle-slider:before {
+      content: ''; position: absolute;
+      width: 16px; height: 16px; border-radius: 50%;
+      left: 3px; top: 3px;
+      background: var(--muted); transition: 0.3s;
+    }
+    input:checked + .toggle-slider { background: rgba(0,230,118,0.2); border-color: var(--green); }
+    input:checked + .toggle-slider:before { transform: translateX(20px); background: var(--green); }
+
+    .stat-mini { text-align: center; }
+    .stat-mini .n { font-family: var(--font-display); font-size: 2rem; font-weight: 900; color: var(--green); }
+    .stat-mini .l { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
+
+    @media (max-width: 640px) { .grid2, .grid3 { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<header id="site-header">
+  <div class="header-inner">
+    <a href="/" class="site-logo">Free<span>SportsPicks</span>.pro</a>
+    <nav>
+      <a href="/">← Site</a>
+      <a href="/admin.html">Picks Admin</a>
+      <a href="/blog/">Blog</a>
+      <span id="admin-badge" style="display:none;font-family:var(--font-mono);font-size:0.72rem;color:var(--green);letter-spacing:0.1em;">● AI BLOG ADMIN</span>
+    </nav>
+  </div>
+</header>
+
+<main style="padding:0;">
+
+<!-- ── LOGIN ── -->
+<div id="login-screen" style="max-width:400px;margin:80px auto;text-align:center;padding:0 var(--gutter);">
+  <div style="font-size:3rem;margin-bottom:16px;">🤖</div>
+  <h1 style="font-family:var(--font-display);font-size:2rem;font-weight:900;text-transform:uppercase;margin-bottom:8px;">AI Blog Admin</h1>
+  <p style="color:var(--muted);font-size:0.9rem;margin-bottom:24px;">Automated AI blog post generation for FreeSportsPicks.pro</p>
+  <div class="field-row">
+    <label class="field-label">Admin Password</label>
+    <input class="admin-input" type="password" id="pw-input" placeholder="Enter password">
+  </div>
+  <div id="pw-err" style="display:none;color:var(--red);font-size:0.82rem;margin:6px 0;">Incorrect password.</div>
+  <button class="btn-ai" onclick="doLogin()" style="width:100%;justify-content:center;margin-top:8px;">Sign In →</button>
+  <p style="margin-top:16px;font-size:0.75rem;color:var(--muted);">Default: <code style="color:var(--green)">picks2024</code></p>
+</div>
+
+<!-- ── DASHBOARD ── -->
+<div id="dashboard" style="display:none;">
+<div class="admin-wrap">
+
+  <!-- TOP BAR -->
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px;">
+    <div>
+      <h1 style="font-family:var(--font-display);font-size:1.8rem;font-weight:900;text-transform:uppercase;">🤖 AI Blog Engine</h1>
+      <p style="color:var(--muted);font-size:0.85rem;margin-top:4px;">Generate, schedule, and publish SEO-optimized blog posts automatically.</p>
+    </div>
+    <div style="display:flex;gap:10px;align-items:center;">
+      <div style="display:flex;gap:24px;">
+        <div class="stat-mini"><div class="n" id="stat-total">0</div><div class="l">Posts</div></div>
+        <div class="stat-mini"><div class="n" id="stat-words">0</div><div class="l">Avg Words</div></div>
+        <div class="stat-mini"><div class="n" id="stat-sports">0</div><div class="l">Sports</div></div>
+      </div>
+      <button onclick="doLogout()" style="font-family:var(--font-display);font-size:0.8rem;font-weight:700;text-transform:uppercase;padding:6px 14px;border-radius:4px;border:1px solid var(--red);color:var(--red);background:none;cursor:pointer;">Logout</button>
+    </div>
+  </div>
+
+  <!-- TABS -->
+  <div class="admin-tabs">
+    <button class="admin-tab active" onclick="switchTab('generate',this)">🤖 Generate Post</button>
+    <button class="admin-tab" onclick="switchTab('schedule',this)">📅 Auto-Scheduler</button>
+    <button class="admin-tab" onclick="switchTab('posts',this)">📝 All Posts</button>
+    <button class="admin-tab" onclick="switchTab('settings',this)">⚙️ Settings</button>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       TAB 1: GENERATE
+  ═════════════════════════════════════════ -->
+  <div id="tab-generate" class="tab-panel active">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;">
+
+      <!-- LEFT: CONTROLS -->
+      <div>
+        <div class="admin-card">
+          <div style="font-family:var(--font-display);font-size:1rem;font-weight:800;text-transform:uppercase;margin-bottom:16px;color:var(--green);">✍️ Post Configuration</div>
+
+          <div class="field-row">
+            <label class="field-label">Topic Selection</label>
+            <select class="admin-select" id="topic-mode" onchange="toggleTopicMode()">
+              <option value="auto">🤖 Auto — Pick best topic for today</option>
+              <option value="queue">📋 From Queue — Next scheduled topic</option>
+              <option value="custom">✏️ Custom — I'll write my own title</option>
+            </select>
+          </div>
+
+          <div id="custom-topic-row" class="field-row" style="display:none;">
+            <label class="field-label">Custom Title / Topic</label>
+            <input class="admin-input" id="custom-title" placeholder="e.g. How to Bet NFL Underdogs in Cold Weather Games">
+          </div>
+
+          <div class="grid2">
+            <div class="field-row">
+              <label class="field-label">Primary Sport</label>
+              <select class="admin-select" id="gen-sport">
+                <option value="auto">🤖 Auto-Select</option>
+                <option value="NFL">🏈 NFL</option>
+                <option value="NBA">🏀 NBA</option>
+                <option value="MLB">⚾ MLB</option>
+                <option value="NHL">🏒 NHL</option>
+                <option value="CFB">🏈 College Football</option>
+                <option value="CBB">🏀 College Basketball</option>
+                <option value="General">🎯 General Strategy</option>
+                <option value="MMA">🥊 UFC / MMA</option>
+              </select>
+            </div>
+            <div class="field-row">
+              <label class="field-label">Tone</label>
+              <select class="admin-select" id="gen-tone">
+                <option value="expert">Expert Handicapper</option>
+                <option value="educational">Educational / Beginner</option>
+                <option value="data">Data-Driven / Analytical</option>
+                <option value="conversational">Conversational</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid2">
+            <div class="field-row">
+              <label class="field-label">Target Length</label>
+              <select class="admin-select" id="gen-length">
+                <option value="medium">Medium (1,000–1,400 words)</option>
+                <option value="long">Long (1,500–2,000 words)</option>
+                <option value="short">Short (600–900 words)</option>
+              </select>
+            </div>
+            <div class="field-row">
+              <label class="field-label">Include Today's Pick</label>
+              <select class="admin-select" id="gen-include-pick">
+                <option value="yes">Yes — Insert game of the day</option>
+                <option value="no">No — Pure strategy content</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <label class="field-label">Extra Instructions (optional)</label>
+            <textarea class="admin-textarea" id="gen-instructions" placeholder="e.g. Focus on primetime games, mention DraftKings line format, avoid using the word 'gambling'..."></textarea>
+          </div>
+
+          <button class="btn-ai" id="gen-btn" onclick="generatePost()">
+            <span id="gen-btn-icon">🤖</span>
+            <span id="gen-btn-text">Generate Post with AI</span>
+          </button>
+        </div>
+
+        <!-- AI STATUS -->
+        <div class="ai-status idle" id="ai-status">
+          <div class="pulse"></div>
+          <span id="ai-status-text">Ready — configure options above and click Generate.</span>
+        </div>
+
+        <!-- POST META PREVIEW -->
+        <div class="admin-card" id="meta-preview" style="display:none;margin-top:16px;">
+          <div style="font-family:var(--font-display);font-size:0.85rem;font-weight:800;text-transform:uppercase;color:var(--green);margin-bottom:12px;">SEO Meta</div>
+          <div style="font-size:0.82rem;margin-bottom:8px;"><span style="color:var(--muted);">Title:</span> <strong id="meta-title"></strong></div>
+          <div style="font-size:0.82rem;margin-bottom:8px;"><span style="color:var(--muted);">Slug:</span> <code style="color:var(--amber);" id="meta-slug"></code></div>
+          <div style="font-size:0.82rem;margin-bottom:8px;"><span style="color:var(--muted);">Description:</span> <span id="meta-desc-preview" style="color:rgba(240,244,255,0.7);"></span></div>
+          <div style="font-size:0.82rem;margin-bottom:12px;"><span style="color:var(--muted);">Read time:</span> <span id="meta-readtime"></span> · <span style="color:var(--muted);">Words:</span> <span id="meta-words"></span></div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <button class="btn-ai" id="publish-btn" onclick="publishPost()" style="padding:10px 20px;font-size:0.88rem;">🚀 Publish to Blog</button>
+            <button class="btn-sm" onclick="resetGenerator()">✕ Discard</button>
+          </div>
+          <div id="publish-success" style="display:none;margin-top:10px;color:var(--green);font-size:0.85rem;">✅ Published! <a href="/blog/" style="color:var(--green);">View blog →</a></div>
+        </div>
+      </div>
+
+      <!-- RIGHT: LIVE PREVIEW -->
+      <div>
+        <div style="font-family:var(--font-display);font-size:0.85rem;font-weight:800;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">Article Preview</div>
+        <div class="post-preview" id="post-preview">
+          <p style="color:var(--muted);font-style:italic;text-align:center;padding:40px 0;">Your generated article will appear here...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       TAB 2: SCHEDULER
+  ═════════════════════════════════════════ -->
+  <div id="tab-schedule" class="tab-panel">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;">
+      <div>
+        <div class="admin-card">
+          <div style="font-family:var(--font-display);font-size:1rem;font-weight:800;text-transform:uppercase;color:var(--green);margin-bottom:16px;">📅 Auto-Post Schedule</div>
+
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--border);margin-bottom:14px;">
+            <div>
+              <div style="font-weight:600;font-size:0.95rem;">Auto-Generate Daily Post</div>
+              <div style="font-size:0.8rem;color:var(--muted);margin-top:3px;">AI writes and publishes a new post every day at your chosen time</div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="auto-enabled" onchange="saveScheduleSettings()">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+
+          <div class="field-row">
+            <label class="field-label">Post Time (your local time)</label>
+            <input class="admin-input" type="time" id="sched-time" value="09:00" onchange="saveScheduleSettings()">
+          </div>
+
+          <div class="grid2">
+            <div class="field-row">
+              <label class="field-label">Default Sport Rotation</label>
+              <select class="admin-select" id="sched-sport" onchange="saveScheduleSettings()">
+                <option value="auto">🤖 Auto (by season)</option>
+                <option value="NFL">🏈 NFL Focus</option>
+                <option value="General">🎯 Strategy Focus</option>
+                <option value="mixed">🔄 Mixed</option>
+              </select>
+            </div>
+            <div class="field-row">
+              <label class="field-label">Posts Per Week</label>
+              <select class="admin-select" id="sched-freq" onchange="saveScheduleSettings()">
+                <option value="7">7 (Daily)</option>
+                <option value="5">5 (Weekdays)</option>
+                <option value="3">3 (Mon/Wed/Fri)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <label class="field-label">Tone Rotation</label>
+            <select class="admin-select" id="sched-tone" onchange="saveScheduleSettings()">
+              <option value="auto">🤖 Auto-vary tone</option>
+              <option value="expert">Always: Expert Handicapper</option>
+              <option value="educational">Always: Educational</option>
+            </select>
+          </div>
+
+          <div style="background:rgba(0,230,118,0.06);border:1px solid var(--border);border-radius:var(--radius);padding:12px 16px;font-size:0.82rem;color:var(--muted);margin-top:4px;">
+            ℹ️ The scheduler runs in your browser. Keep the admin tab open (or pin it) for fully automatic posting. For server-side automation, see the <strong style="color:var(--white);">Cron API</strong> section in Settings.
+          </div>
+        </div>
+
+        <div class="admin-card" style="margin-top:0;">
+          <div style="font-family:var(--font-display);font-size:0.85rem;font-weight:800;text-transform:uppercase;color:var(--green);margin-bottom:12px;">Next 7 Scheduled Topics</div>
+          <div id="upcoming-queue"></div>
+          <button class="btn-sm" onclick="regenerateQueue()" style="margin-top:12px;">🔄 Regenerate Queue</button>
+        </div>
+      </div>
+
+      <div>
+        <div class="admin-card">
+          <div style="font-family:var(--font-display);font-size:0.85rem;font-weight:800;text-transform:uppercase;color:var(--green);margin-bottom:12px;">Schedule Status</div>
+          <div id="schedule-status-display" style="font-size:0.88rem;color:var(--muted);line-height:1.8;"></div>
+        </div>
+        <div class="admin-card" style="margin-top:0;">
+          <div style="font-family:var(--font-display);font-size:0.85rem;font-weight:800;text-transform:uppercase;color:var(--green);margin-bottom:12px;">Manual Trigger</div>
+          <p style="font-size:0.85rem;color:var(--muted);margin-bottom:14px;">Generate and publish today's scheduled post right now, regardless of the set time.</p>
+          <button class="btn-ai" onclick="triggerScheduledPost()" style="padding:10px 22px;font-size:0.9rem;">⚡ Post Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       TAB 3: ALL POSTS
+  ═════════════════════════════════════════ -->
+  <div id="tab-posts" class="tab-panel">
+    <div class="admin-card">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px;">
+        <div style="font-family:var(--font-display);font-size:1rem;font-weight:800;text-transform:uppercase;">Published Posts (<span id="post-count-label">0</span>)</div>
+        <div style="display:flex;gap:8px;">
+          <select class="admin-select" id="posts-filter" style="width:auto;font-size:0.82rem;padding:5px 10px;" onchange="renderPostsList()">
+            <option value="all">All Sports</option>
+            <option value="NFL">NFL</option>
+            <option value="NBA">NBA</option>
+            <option value="MLB">MLB</option>
+            <option value="General">Strategy</option>
+          </select>
+          <a href="/blog/" target="_blank" class="btn-sm">View Blog ↗</a>
+        </div>
+      </div>
+      <div id="posts-list"></div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       TAB 4: SETTINGS
+  ═════════════════════════════════════════ -->
+  <div id="tab-settings" class="tab-panel">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+      <div>
+        <div class="admin-card">
+          <div style="font-family:var(--font-display);font-size:1rem;font-weight:800;text-transform:uppercase;color:var(--green);margin-bottom:16px;">🔑 AI Configuration</div>
+          <div class="field-row">
+            <label class="field-label">Anthropic API Key</label>
+            <input class="admin-input" type="password" id="api-key-input" placeholder="sk-ant-api...">
+            <div style="font-size:0.75rem;color:var(--muted);margin-top:5px;">Get yours at console.anthropic.com. Stored locally in your browser only.</div>
+          </div>
+          <div class="field-row">
+            <label class="field-label">AI Model</label>
+            <select class="admin-select" id="ai-model">
+              <option value="claude-sonnet-4-5">Claude Sonnet 4.5 (recommended — fast + smart)</option>
+              <option value="claude-haiku-4-5-20251001">Claude Haiku 4.5 (fastest + cheapest)</option>
+            </select>
+          </div>
+          <button class="btn-ai" onclick="saveSettings()" style="padding:10px 22px;font-size:0.88rem;">💾 Save Settings</button>
+          <div id="settings-saved" style="display:none;color:var(--green);font-size:0.82rem;margin-top:8px;">✅ Saved!</div>
+        </div>
+
+        <div class="admin-card" style="margin-top:0;">
+          <div style="font-family:var(--font-display);font-size:0.85rem;font-weight:800;text-transform:uppercase;color:var(--green);margin-bottom:12px;">⚙️ Site Settings</div>
+          <div class="field-row">
+            <label class="field-label">Site Name</label>
+            <input class="admin-input" id="site-name" value="FreeSportsPicks.pro">
+          </div>
+          <div class="field-row">
+            <label class="field-label">Site Domain</label>
+            <input class="admin-input" id="site-domain" value="https://www.freesportspicks.pro">
+          </div>
+          <div class="field-row">
+            <label class="field-label">Admin Password</label>
+            <input class="admin-input" type="password" id="new-password" placeholder="New password">
+          </div>
+          <button class="btn-ai" onclick="saveSettings()" style="padding:10px 22px;font-size:0.88rem;">💾 Save</button>
+        </div>
+      </div>
+
+      <div>
+        <div class="admin-card">
+          <div style="font-family:var(--font-display);font-size:0.85rem;font-weight:800;text-transform:uppercase;color:var(--green);margin-bottom:12px;">🌐 Cron API (Server-Side Auto-Post)</div>
+          <p style="font-size:0.85rem;color:var(--muted);line-height:1.7;margin-bottom:14px;">For fully automatic posting without keeping the browser open, deploy this serverless function on Vercel or Netlify and set a daily cron job.</p>
+          <div style="background:var(--navy);border:1px solid var(--border);border-radius:var(--radius);padding:14px;font-family:var(--font-mono);font-size:0.72rem;color:var(--green);overflow-x:auto;white-space:pre;">// vercel.json
+{
+  "crons": [{
+    "path": "/api/auto-blog",
+    "schedule": "0 9 * * *"
+  }]
+}
+
+// api/auto-blog.js
+import Anthropic from '@anthropic-ai/sdk';
+export default async function handler(req, res) {
+  // Uses same AI prompt as browser admin
+  // Saves to your Supabase/KV database
+  // Full code in /api/auto-blog.js
+}</div>
+          <a href="#" class="btn-sm" style="margin-top:12px;display:inline-block;">📋 Copy Vercel Config</a>
+        </div>
+
+        <div class="admin-card" style="margin-top:0;">
+          <div style="font-family:var(--font-display);font-size:0.85rem;font-weight:800;text-transform:uppercase;color:var(--green);margin-bottom:12px;">🗑️ Danger Zone</div>
+          <button class="btn-sm danger" onclick="if(confirm('Delete ALL blog posts? Cannot be undone.')) clearAllPosts()">Delete All Posts</button>
+          <button class="btn-sm danger" onclick="if(confirm('Reset scheduler?')) resetScheduler()" style="margin-left:8px;">Reset Scheduler</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /admin-wrap -->
+</div><!-- /dashboard -->
+
+</main>
+
+<script>
+// ─────────────────────────────────────────────────────────
+// CONSTANTS & STORAGE KEYS
+// ─────────────────────────────────────────────────────────
+const ADMIN_PW_KEY    = 'fsp_admin_pw';
+const BLOG_KEY        = 'fsp_blog_posts_v1';
+const SETTINGS_KEY    = 'fsp_blog_settings_v1';
+const SCHEDULE_KEY    = 'fsp_schedule_v1';
+const GOTD_KEY        = 'fsp_admin_pick_v1';
+
+const DEFAULT_PW      = 'picks2024';
+
+let generatedPost     = null;
+let schedulerTimer    = null;
+
+// ─────────────────────────────────────────────────────────
+// AUTH
+// ─────────────────────────────────────────────────────────
+function doLogin() {
+  const pw = document.getElementById('pw-input').value;
+  const stored = localStorage.getItem(ADMIN_PW_KEY) || DEFAULT_PW;
+  if (pw === stored) {
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('dashboard').style.display    = 'block';
+    document.getElementById('admin-badge').style.display  = 'inline';
+    onAdminLoad();
+  } else {
+    const e = document.getElementById('pw-err');
+    e.style.display = 'block';
+    setTimeout(() => e.style.display = 'none', 2500);
+  }
+}
+document.getElementById('pw-input').addEventListener('keydown', e => { if (e.key==='Enter') doLogin(); });
+function doLogout() {
+  document.getElementById('dashboard').style.display    = 'none';
+  document.getElementById('login-screen').style.display = 'block';
+  document.getElementById('pw-input').value = '';
+}
+
+// ─────────────────────────────────────────────────────────
+// SETTINGS
+// ─────────────────────────────────────────────────────────
+function getSettings() {
+  try { return JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{}'); } catch { return {}; }
+}
+function saveSettings() {
+  const s = getSettings();
+  s.apiKey   = document.getElementById('api-key-input').value || s.apiKey;
+  s.model    = document.getElementById('ai-model').value;
+  s.siteName = document.getElementById('site-name').value;
+  s.domain   = document.getElementById('site-domain').value;
+  const newPw = document.getElementById('new-password').value;
+  if (newPw) { localStorage.setItem(ADMIN_PW_KEY, newPw); }
+  localStorage.setItem(SETTINGS_KEY, JSON.stringify(s));
+  const el = document.getElementById('settings-saved');
+  el.style.display = 'block';
+  setTimeout(() => el.style.display = 'none', 2500);
+}
+function loadSettings() {
+  const s = getSettings();
+  if (s.apiKey)   document.getElementById('api-key-input').value = s.apiKey;
+  if (s.model)    document.getElementById('ai-model').value      = s.model;
+  if (s.siteName) document.getElementById('site-name').value     = s.siteName;
+  if (s.domain)   document.getElementById('site-domain').value   = s.domain;
+}
+
+// ─────────────────────────────────────────────────────────
+// POSTS DATABASE
+// ─────────────────────────────────────────────────────────
+function getPosts() {
+  try { return JSON.parse(localStorage.getItem(BLOG_KEY) || '[]'); } catch { return []; }
+}
+function savePosts(posts) {
+  localStorage.setItem(BLOG_KEY, JSON.stringify(posts));
+}
+
+// ─────────────────────────────────────────────────────────
+// TOPIC QUEUE
+// ─────────────────────────────────────────────────────────
+const TOPIC_POOL = [
+  { title:'How to Read NFL Point Spreads Like a Pro', sport:'NFL', tags:['nfl','spreads'] },
+  { title:'NFL Against the Spread (ATS) Betting: Complete Guide', sport:'NFL', tags:['nfl','ats'] },
+  { title:'Bankroll Management for Sports Bettors: The Complete System', sport:'General', tags:['bankroll','discipline'] },
+  { title:'What Is a Parlay Bet? Complete Guide', sport:'General', tags:['parlay','basics'] },
+  { title:'How Sharp Bettors Pick NFL Games', sport:'NFL', tags:['nfl','sharp money'] },
+  { title:'NBA Back-to-Back Betting Strategy: Fading Tired Teams', sport:'NBA', tags:['nba','fatigue'] },
+  { title:'10 Sports Betting Mistakes Beginners Always Make', sport:'General', tags:['mistakes','beginners'] },
+  { title:'MLB Starting Pitcher Betting: How Rotations Affect Lines', sport:'MLB', tags:['mlb','pitcher'] },
+  { title:'How Weather Affects NFL Betting Totals', sport:'NFL', tags:['nfl','weather'] },
+  { title:'NFL Line Movement: How to Track and Profit From It', sport:'NFL', tags:['nfl','line movement'] },
+  { title:'What Is a Moneyline Bet? Complete Beginner Guide', sport:'General', tags:['moneyline','basics'] },
+  { title:'March Madness Upsets: Seeds, Trends & Patterns', sport:'CBB', tags:['march madness','upsets'] },
+  { title:'College Football Home Underdog Strategy', sport:'CFB', tags:['cfb','underdog'] },
+  { title:'Understanding Public Betting Percentages', sport:'General', tags:['public','data'] },
+  { title:'How to Read Steam Moves in Sports Betting', sport:'General', tags:['steam','sharp'] },
+  { title:'NHL Goalie Matchup Betting Strategy', sport:'NHL', tags:['nhl','goalie'] },
+  { title:'UFC Betting Guide: How to Bet MMA Fights', sport:'MMA', tags:['ufc','mma'] },
+  { title:'NFL Playoff Betting Guide: Spreads, Totals & Best Bets', sport:'NFL', tags:['nfl','playoffs'] },
+  { title:'Expected Value (+EV) in Sports Betting Explained', sport:'General', tags:['ev','advanced'] },
+  { title:'Fading the Public in NFL Betting: Does It Work?', sport:'NFL', tags:['nfl','contrarian'] },
+  { title:'NBA Player Props Betting: Finding the Best Values', sport:'NBA', tags:['nba','props'] },
+  { title:'Reverse Line Movement: The Most Powerful Betting Signal', sport:'General', tags:['rlm','sharp'] },
+  { title:'MLB Run Line Betting Strategy Explained', sport:'MLB', tags:['mlb','run line'] },
+  { title:'NFL Survivor Pool Strategy: How to Last All Season', sport:'NFL', tags:['nfl','survivor'] },
+  { title:'Prop Bet Guide: How to Find Value in Game Props', sport:'General', tags:['props','value'] },
+  { title:'Super Bowl Prop Bets: The Best Props Every Year', sport:'NFL', tags:['super bowl','props'] },
+  { title:'How to Avoid Tilt in Sports Betting', sport:'General', tags:['tilt','psychology'] },
+  { title:'NFL Divisional Games Betting Trends', sport:'NFL', tags:['nfl','divisional'] },
+  { title:'Line Shopping: How to Find the Best Odds Daily', sport:'General', tags:['line shopping','value'] },
+  { title:'Sports Betting for Beginners: Everything to Start', sport:'General', tags:['beginners','guide'] },
+];
+
+function getSchedule() {
+  try { return JSON.parse(localStorage.getItem(SCHEDULE_KEY) || '{}'); } catch { return {}; }
+}
+function saveSchedule(data) { localStorage.setItem(SCHEDULE_KEY, JSON.stringify(data)); }
+
+function getNextTopic() {
+  const posts = getPosts();
+  const usedTitles = new Set(posts.map(p => p.title.toLowerCase()));
+  const unused = TOPIC_POOL.filter(t => !usedTitles.has(t.title.toLowerCase()));
+  if (!unused.length) return TOPIC_POOL[Math.floor(Math.random() * TOPIC_POOL.length)];
+  return unused[0];
+}
+
+function getUpcomingQueue() {
+  const posts   = getPosts();
+  const usedSet = new Set(posts.map(p => p.title.toLowerCase()));
+  return TOPIC_POOL.filter(t => !usedSet.has(t.title.toLowerCase())).slice(0, 7);
+}
+
+function renderUpcomingQueue() {
+  const queue = getUpcomingQueue();
+  const el    = document.getElementById('upcoming-queue');
+  if (!queue.length) { el.innerHTML = '<p style="color:var(--muted);font-size:0.85rem;">All topics used! Queue will recycle automatically.</p>'; return; }
+  const today = new Date();
+  el.innerHTML = queue.map((t, i) => {
+    const d = new Date(today); d.setDate(d.getDate() + i);
+    const dateStr = d.toLocaleDateString('en-US', { weekday:'short', month:'short', day:'numeric' });
+    return `<div class="schedule-item">
+      <span style="font-size:1rem;">${sportEmoji(t.sport)}</span>
+      <span class="topic-title">${t.title}</span>
+      <span class="topic-date">${dateStr}</span>
+    </div>`;
+  }).join('');
+}
+
+function regenerateQueue() { renderUpcomingQueue(); }
+
+// ─────────────────────────────────────────────────────────
+// AI POST GENERATION  (calls Anthropic API)
+// ─────────────────────────────────────────────────────────
+async function generatePost() {
+  const s = getSettings();
+  if (!s.apiKey) {
+    alert('⚠️ No API key set. Go to Settings → AI Configuration and add your Anthropic API key (console.anthropic.com).');
+    switchTab('settings', document.querySelectorAll('.admin-tab')[3]);
+    return;
+  }
+
+  const mode         = document.getElementById('topic-mode').value;
+  const sportSel     = document.getElementById('gen-sport').value;
+  const tone         = document.getElementById('gen-tone').value;
+  const length       = document.getElementById('gen-length').value;
+  const includePick  = document.getElementById('gen-include-pick').value === 'yes';
+  const extraInstr   = document.getElementById('gen-instructions').value.trim();
+
+  let topic;
+  if (mode === 'custom') {
+    const ct = document.getElementById('custom-title').value.trim();
+    if (!ct) { alert('Please enter a custom title.'); return; }
+    topic = { title: ct, sport: sportSel === 'auto' ? 'General' : sportSel, tags: [] };
+  } else {
+    topic = getNextTopic();
+    if (sportSel !== 'auto') topic = { ...topic, sport: sportSel };
+  }
+
+  const wordTarget = { short:'700', medium:'1200', long:'1700' }[length] || '1200';
+
+  // Get today's pick for inclusion
+  let pickText = '';
+  if (includePick) {
+    const pick = JSON.parse(localStorage.getItem(GOTD_KEY) || '{}');
+    if (pick.matchup) {
+      pickText = `\n\nToday's featured free pick to naturally integrate near the end of the article:\nMatchup: ${pick.matchup}\nPick: ${pick.pick}\nLine: ${pick.line}\nAnalysis: ${pick.analysis}`;
+    }
+  }
+
+  const toneMap = {
+    expert:        'expert sports handicapper with 15+ years of experience, confident and authoritative',
+    educational:   'friendly educator breaking down betting concepts clearly for beginners',
+    data:          'data analyst who backs every claim with trends and statistics',
+    conversational:'knowledgeable friend who bets sports and shares genuine insights',
+  };
+
+  const systemPrompt = `You are a professional sports betting content writer for FreeSportsPicks.pro. 
+Write in the voice of a ${toneMap[tone] || toneMap.expert}.
+Always write original, SEO-optimized content. Never plagiarize.
+Format ALL output as clean HTML only — no markdown, no backticks, no preamble.
+Use these HTML elements only: <h2>, <h3>, <p>, <ul>, <li>, <ol>, <strong>, <blockquote>, <div class="key-takeaway">.
+Inside <div class="key-takeaway">, add <h4>Key Takeaway</h4> before the content.
+Internal links: link relevant phrases to site pages using <a href="/picks/SLUG/">anchor text</a>.
+Available internal slugs: nfl-picks, nba-picks, mlb-picks, nhl-picks, best-bets-today, parlay-picks, free-sports-picks, prop-bet-picks, sharp-picks, value-bets-today, free-nfl-picks, college-football-picks.
+At the end, always include an FAQ section with 3-4 questions as <h2>Frequently Asked Questions</h2> then <h3>Q: question?</h3><p>A: answer.</p> format.
+${extraInstr ? 'Additional instructions: ' + extraInstr : ''}`;
+
+  const userPrompt = `Write a ${wordTarget}-word sports betting blog post for FreeSportsPicks.pro.
+
+Topic: "${topic.title}"
+Sport: ${topic.sport}
+Site: FreeSportsPicks.pro — provides free NFL picks, NBA picks, and sports betting analysis
+
+Requirements:
+- Compelling opening paragraph that hooks the reader with a relatable scenario or bold claim
+- 4-6 main sections with <h2> headings
+- At least 2 subsections with <h3> headings  
+- At least one <blockquote> with a key insight
+- At least one <div class="key-takeaway"> box
+- Internal links to 2-3 relevant picks pages
+- Naturally mention that FreeSportsPicks.pro provides free picks (not promotional, just contextual)
+- End with FAQ section (3-4 questions)
+- Do NOT include a title — start directly with the first paragraph
+${pickText}
+
+Output clean HTML only. Begin immediately with <p>.`;
+
+  // ── SET UI TO LOADING ──
+  setStatus('loading', '🤖 AI agent is researching and writing your post...');
+  const btn = document.getElementById('gen-btn');
+  btn.disabled = true;
+  document.getElementById('gen-btn-icon').textContent = '⏳';
+  document.getElementById('gen-btn-text').textContent = 'Generating...';
+  document.getElementById('post-preview').innerHTML = '<p style="color:var(--muted);font-style:italic;text-align:center;padding:40px 0;">AI is writing your article. This takes 15–30 seconds...</p>';
+  document.getElementById('meta-preview').style.display = 'none';
+
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model:      s.model || 'claude-sonnet-4-5',
+        max_tokens: 4096,
+        system:     systemPrompt,
+        messages:   [{ role: 'user', content: userPrompt }],
+      }),
+    });
+
+    if (!response.ok) {
+      const err = await response.json();
+      throw new Error(err.error?.message || 'API error ' + response.status);
+    }
+
+    const data    = await response.json();
+    const html    = data.content?.[0]?.text || '';
+    const words   = html.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length;
+    const readTime = Math.max(3, Math.round(words / 200));
+    const slug    = slugify(topic.title);
+    const excerpt = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 180) + '...';
+    const metaDesc= html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 155) + '...';
+
+    generatedPost = {
+      title:          topic.title,
+      slug,
+      sport:          topic.sport,
+      tags:           topic.tags || [],
+      excerpt,
+      metaDescription: metaDesc,
+      htmlContent:    html,
+      readTime,
+      wordCount:      words,
+      publishedAt:    new Date().toISOString(),
+      status:         'draft',
+    };
+
+    // ── SHOW PREVIEW ──
+    document.getElementById('post-preview').innerHTML = html;
+    document.getElementById('meta-title').textContent     = topic.title;
+    document.getElementById('meta-slug').textContent      = '/blog/' + slug + '/';
+    document.getElementById('meta-desc-preview').textContent = metaDesc;
+    document.getElementById('meta-readtime').textContent  = readTime + ' min';
+    document.getElementById('meta-words').textContent     = words.toLocaleString() + ' words';
+    document.getElementById('meta-preview').style.display = 'block';
+
+    setStatus('done', '✅ Article generated! Review above, then click Publish.');
+  } catch (err) {
+    setStatus('error', '❌ Error: ' + err.message + ' — Check your API key in Settings.');
+  } finally {
+    btn.disabled = false;
+    document.getElementById('gen-btn-icon').textContent = '🤖';
+    document.getElementById('gen-btn-text').textContent = 'Generate Post with AI';
+  }
+}
+
+function publishPost() {
+  if (!generatedPost) return;
+  const posts = getPosts();
+  const exists = posts.findIndex(p => p.slug === generatedPost.slug);
+  generatedPost.status = 'published';
+  if (exists >= 0) posts[exists] = generatedPost;
+  else posts.unshift(generatedPost);
+  savePosts(posts);
+  document.getElementById('publish-success').style.display = 'block';
+  document.getElementById('publish-btn').disabled = true;
+  updateStats();
+  renderPostsList();
+}
+
+function resetGenerator() {
+  generatedPost = null;
+  document.getElementById('post-preview').innerHTML = '<p style="color:var(--muted);font-style:italic;text-align:center;padding:40px 0;">Your generated article will appear here...</p>';
+  document.getElementById('meta-preview').style.display = 'none';
+  setStatus('idle', 'Ready — configure options above and click Generate.');
+}
+
+// ─────────────────────────────────────────────────────────
+// SCHEDULER
+// ─────────────────────────────────────────────────────────
+function saveScheduleSettings() {
+  const sched = {
+    enabled: document.getElementById('auto-enabled').checked,
+    time:    document.getElementById('sched-time').value,
+    sport:   document.getElementById('sched-sport').value,
+    freq:    document.getElementById('sched-freq').value,
+    tone:    document.getElementById('sched-tone').value,
+  };
+  saveSchedule(sched);
+  updateScheduleDisplay();
+  if (sched.enabled) startScheduler(); else stopScheduler();
+}
+
+function loadScheduleSettings() {
+  const sched = getSchedule();
+  if (sched.enabled !== undefined) document.getElementById('auto-enabled').checked = sched.enabled;
+  if (sched.time)   document.getElementById('sched-time').value   = sched.time;
+  if (sched.sport)  document.getElementById('sched-sport').value  = sched.sport;
+  if (sched.freq)   document.getElementById('sched-freq').value   = sched.freq;
+  if (sched.tone)   document.getElementById('sched-tone').value   = sched.tone;
+  if (sched.enabled) startScheduler();
+}
+
+function updateScheduleDisplay() {
+  const sched = getSchedule();
+  const el    = document.getElementById('schedule-status-display');
+  if (!sched.enabled) {
+    el.innerHTML = '<span style="color:var(--red);">● Scheduler is OFF.</span> Enable it above to auto-post daily.';
+    return;
+  }
+  const posts = getPosts();
+  const today = new Date().toDateString();
+  const postedToday = posts.some(p => new Date(p.publishedAt).toDateString() === today);
+  el.innerHTML = `
+    <div><span style="color:var(--green);">● Scheduler is ON</span> — posts daily at <strong>${sched.time}</strong></div>
+    <div style="margin-top:6px;">Today's post: ${postedToday ? '<span style="color:var(--green);">✅ Published</span>' : '<span style="color:var(--amber);">⏳ Pending</span>'}</div>
+    <div style="margin-top:6px;">Total published: <strong>${posts.length}</strong> posts</div>
+    <div style="margin-top:6px;color:var(--muted);font-size:0.8rem;">Keep this tab open for automatic posting. For server-side automation, see Settings → Cron API.</div>`;
+}
+
+function startScheduler() {
+  if (schedulerTimer) clearInterval(schedulerTimer);
+  schedulerTimer = setInterval(checkSchedule, 60000); // check every minute
+  checkSchedule();
+}
+
+function stopScheduler() {
+  if (schedulerTimer) clearInterval(schedulerTimer);
+  schedulerTimer = null;
+}
+
+function checkSchedule() {
+  const sched = getSchedule();
+  if (!sched.enabled || !sched.time) return;
+  const now      = new Date();
+  const [hh, mm] = sched.time.split(':').map(Number);
+  const isTime   = now.getHours() === hh && now.getMinutes() === mm;
+  const posts    = getPosts();
+  const today    = now.toDateString();
+  const alreadyPosted = posts.some(p => new Date(p.publishedAt).toDateString() === today);
+  if (isTime && !alreadyPosted) triggerScheduledPost();
+}
+
+async function triggerScheduledPost() {
+  document.getElementById('sched-sport').value = getSchedule().sport || 'auto';
+  document.getElementById('gen-sport').value   = getSchedule().sport || 'auto';
+  document.getElementById('gen-tone').value    = getSchedule().tone  || 'expert';
+  document.getElementById('topic-mode').value  = 'queue';
+  switchTab('generate', document.querySelectorAll('.admin-tab')[0]);
+  await generatePost();
+  if (generatedPost) publishPost();
+  updateScheduleDisplay();
+}
+
+// ─────────────────────────────────────────────────────────
+// POSTS LIST
+// ─────────────────────────────────────────────────────────
+function renderPostsList() {
+  const filter = document.getElementById('posts-filter').value;
+  let posts    = getPosts();
+  if (filter !== 'all') posts = posts.filter(p => p.sport === filter);
+  const el    = document.getElementById('posts-list');
+  document.getElementById('post-count-label').textContent = posts.length;
+  if (!posts.length) { el.innerHTML = '<p style="color:var(--muted);font-size:0.85rem;padding:20px 0;">No posts yet. Generate your first post!</p>'; return; }
+  el.innerHTML = posts.map((p, i) => `
+    <div class="post-row">
+      <span class="post-row-sport">${sportEmoji(p.sport)}</span>
+      <div style="flex:1;">
+        <div class="post-row-title">${p.title}</div>
+        <div style="font-size:0.75rem;color:var(--muted);">/blog/${p.slug}/ · ${p.readTime||'?'} min · ${(p.wordCount||0).toLocaleString()} words</div>
+      </div>
+      <span class="post-row-date">${formatDate(p.publishedAt)}</span>
+      <div class="post-row-actions">
+        <a href="/blog/${p.slug}/" target="_blank" class="btn-sm">View ↗</a>
+        <button class="btn-sm danger" onclick="deletePost(${i})">Delete</button>
+      </div>
+    </div>`).join('');
+}
+
+function deletePost(idx) {
+  if (!confirm('Delete this post?')) return;
+  const posts = getPosts();
+  posts.splice(idx, 1);
+  savePosts(posts);
+  renderPostsList();
+  updateStats();
+}
+
+function clearAllPosts() {
+  savePosts([]);
+  renderPostsList();
+  updateStats();
+}
+
+// ─────────────────────────────────────────────────────────
+// STATS
+// ─────────────────────────────────────────────────────────
+function updateStats() {
+  const posts   = getPosts();
+  const words   = posts.length ? Math.round(posts.reduce((s,p) => s+(p.wordCount||1000), 0) / posts.length) : 0;
+  const sports  = new Set(posts.map(p => p.sport)).size;
+  document.getElementById('stat-total').textContent = posts.length;
+  document.getElementById('stat-words').textContent = words ? words.toLocaleString() : '—';
+  document.getElementById('stat-sports').textContent = sports || '—';
+}
+
+// ─────────────────────────────────────────────────────────
+// UI HELPERS
+// ─────────────────────────────────────────────────────────
+function switchTab(name, btn) {
+  document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  if (name === 'posts')    renderPostsList();
+  if (name === 'schedule') { renderUpcomingQueue(); updateScheduleDisplay(); }
+}
+
+function toggleTopicMode() {
+  const mode = document.getElementById('topic-mode').value;
+  document.getElementById('custom-topic-row').style.display = mode === 'custom' ? 'block' : 'none';
+}
+
+function setStatus(state, msg) {
+  const el = document.getElementById('ai-status');
+  el.className = 'ai-status ' + state;
+  document.getElementById('ai-status-text').textContent = msg;
+}
+
+function sportEmoji(sport) {
+  const m = { NFL:'🏈', NBA:'🏀', MLB:'⚾', NHL:'🏒', CFB:'🏈', CBB:'🏀', General:'🎯', MMA:'🥊', PGA:'⛳' };
+  return m[sport] || '🎯';
+}
+
+function slugify(title) {
+  return title.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').slice(0, 60);
+}
+
+function formatDate(iso) {
+  if (!iso) return '—';
+  return new Date(iso).toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
+}
+
+function resetScheduler() { saveSchedule({}); loadScheduleSettings(); updateScheduleDisplay(); }
+
+// ─────────────────────────────────────────────────────────
+// INIT
+// ─────────────────────────────────────────────────────────
+function onAdminLoad() {
+  loadSettings();
+  loadScheduleSettings();
+  updateStats();
+  renderUpcomingQueue();
+  updateScheduleDisplay();
+}
+</script>
+
+</body>
+</html>

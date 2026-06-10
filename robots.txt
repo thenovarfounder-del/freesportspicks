@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+Crawl-delay: 2
+
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: bingbot
+Allow: /
+
+Sitemap: https://www.freesportspicks.pro/sitemap.xml
+Sitemap: https://www.freesportspicks.pro/sitemap-news.xml

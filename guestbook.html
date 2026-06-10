@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sports Picks Community Guestbook | FreeSportsPicks.pro</title>
+  <meta name="description" content="Sign the FreeSportsPicks.pro guestbook and get today's free expert sports pick sent directly to your email. One free pick per email — join thousands of sports bettors.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.freesportspicks.pro/guestbook.html">
+  <meta property="og:title" content="Sign the Guestbook — Get a Free Sports Pick Emailed to You">
+  <meta property="og:description" content="Sign the FreeSportsPicks.pro guestbook and we'll email you today's top free pick instantly. One per email address.">
+  <meta property="og:url" content="https://www.freesportspicks.pro/guestbook.html">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Sports Picks Community Guestbook",
+    "url": "https://www.freesportspicks.pro/guestbook.html",
+    "description": "Sign the guestbook and receive today's free sports pick by email.",
+    "isPartOf": { "@id": "https://www.freesportspicks.pro/#website" }
+  }
+  </script>
+
+  <link rel="stylesheet" href="css/main.css">
+
+  <!-- EmailJS — free email delivery (200 sends/month) -->
+  <!-- SETUP: Register at https://emailjs.com, create a service + template, fill in EMAIL_CFG in js/main.js -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    // Initialize EmailJS with your public key (also set in main.js EMAIL_CFG)
+    // emailjs.init('YOUR_EMAILJS_PUBLIC_KEY');
+  </script>
+</head>
+<body>
+
+<header id="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="site-logo">Free<span>SportsPicks</span>.pro</a>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/picks/nfl-picks/">NFL Picks</a>
+      <a href="/picks/nba-picks/">NBA Picks</a>
+      <a href="/picks/best-bets-today/">Best Bets</a>
+      <a href="/guestbook.html" class="nav-cta active">Get Free Pick</a>
+    </nav>
+    <button class="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="main-content">
+
+  <!-- HERO -->
+  <section class="kw-hero">
+    <div class="kw-hero-inner">
+      <nav class="kw-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> › Guestbook &amp; Free Pick
+      </nav>
+      <h1>Sign In &amp; Get Your <span style="color:var(--green)">Free Pick</span></h1>
+      <p class="kw-hero-desc">
+        Sign the guestbook and we'll instantly email you today's top expert pick — full analysis, matchup breakdown, and confidence rating. One free pick per email address.
+      </p>
+      <div class="kw-meta">
+        <div class="kw-meta-item">📧 <strong>Instant Email Delivery</strong></div>
+        <div class="kw-meta-item">🔒 <strong>One Pick Per Email</strong></div>
+        <div class="kw-meta-item">💸 <strong>100% Free</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <div style="background:var(--navy-light);border-bottom:1px solid var(--border);padding:24px var(--gutter);">
+    <div class="container" style="display:flex;gap:0;flex-wrap:wrap;justify-content:center;max-width:860px;">
+      <div style="flex:1;min-width:160px;text-align:center;padding:8px 20px;position:relative;">
+        <div style="font-family:var(--font-display);font-size:2rem;font-weight:900;color:var(--green);">1</div>
+        <div style="font-size:0.85rem;color:var(--muted);margin-top:4px;">Fill out the<br>form below</div>
+      </div>
+      <div style="display:flex;align-items:center;color:var(--border);font-size:1.5rem;padding:0 4px;">›</div>
+      <div style="flex:1;min-width:160px;text-align:center;padding:8px 20px;">
+        <div style="font-family:var(--font-display);font-size:2rem;font-weight:900;color:var(--green);">2</div>
+        <div style="font-size:0.85rem;color:var(--muted);margin-top:4px;">Your pick unlocks<br>instantly on screen</div>
+      </div>
+      <div style="display:flex;align-items:center;color:var(--border);font-size:1.5rem;padding:0 4px;">›</div>
+      <div style="flex:1;min-width:160px;text-align:center;padding:8px 20px;">
+        <div style="font-family:var(--font-display);font-size:2rem;font-weight:900;color:var(--green);">3</div>
+        <div style="font-size:0.85rem;color:var(--muted);margin-top:4px;">Full analysis sent<br>to your email</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GUESTBOOK FORM + EMAIL SYSTEM -->
+  <section class="guestbook-section" id="sign">
+    <div class="guestbook-wrap">
+
+      <!-- This entire div gets swapped out on success or lock -->
+      <div id="guestbook-form-wrap">
+        <div class="guestbook-form">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:20px;">
+            <div>
+              <h2 style="font-family:var(--font-display);font-weight:900;text-transform:uppercase;font-size:1.5rem;margin-bottom:4px;">
+                ✍️ Sign the Guestbook
+              </h2>
+              <p style="color:var(--muted);font-size:0.85rem;">Your pick arrives in your inbox within 60 seconds.</p>
+            </div>
+            <!-- Today's pick teaser — blurred -->
+            <div style="background:var(--navy);border:1px solid var(--border);border-radius:6px;padding:12px 16px;min-width:200px;filter:blur(4px);user-select:none;" aria-hidden="true">
+              <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--green);letter-spacing:0.12em;text-transform:uppercase;">Today's Pick</div>
+              <div style="font-family:var(--font-display);font-weight:800;font-size:1rem;margin-top:4px;">Sign in to reveal →</div>
+            </div>
+          </div>
+
+          <form id="guestbook-form" novalidate>
+            <div class="form-grid">
+              <div class="form-row">
+                <label class="form-label" for="gb-name">Your Name *</label>
+                <input class="form-input" type="text" id="gb-name" name="name"
+                  placeholder="Mike T." maxlength="60" required autocomplete="name">
+              </div>
+              <div class="form-row">
+                <label class="form-label" for="gb-email">Email Address * <span style="color:var(--green);font-size:0.7rem;">(pick sent here)</span></label>
+                <input class="form-input" type="email" id="gb-email" name="email"
+                  placeholder="you@email.com" required autocomplete="email"
+                  style="border-color:rgba(0,230,118,0.3);">
+              </div>
+            </div>
+            <div class="form-grid">
+              <div class="form-row">
+                <label class="form-label" for="gb-location">City / State</label>
+                <input class="form-input" type="text" id="gb-location" name="location"
+                  placeholder="Las Vegas, NV" maxlength="60" autocomplete="address-level2">
+              </div>
+              <div class="form-row">
+                <label class="form-label" for="gb-team">Favorite Team</label>
+                <input class="form-input" type="text" id="gb-team" name="favTeam"
+                  placeholder="Kansas City Chiefs" maxlength="40">
+              </div>
+            </div>
+            <div class="form-grid">
+              <div class="form-row">
+                <label class="form-label" for="gb-sport">Favorite Sport</label>
+                <select class="form-select" id="gb-sport" name="favSport">
+                  <option value="all">All Sports</option>
+                  <option value="nfl">NFL Football</option>
+                  <option value="nba">NBA Basketball</option>
+                  <option value="mlb">MLB Baseball</option>
+                  <option value="nhl">NHL Hockey</option>
+                  <option value="cfb">College Football</option>
+                  <option value="cbb">College Basketball</option>
+                  <option value="soccer">Soccer / MLS</option>
+                  <option value="golf">PGA Golf</option>
+                  <option value="mma">UFC / MMA</option>
+                  <option value="tennis">Tennis</option>
+                  <option value="racing">Horse Racing</option>
+                </select>
+              </div>
+              <div class="form-row" style="display:flex;flex-direction:column;justify-content:flex-end;">
+                <div style="background:rgba(0,230,118,0.06);border:1px solid var(--border);border-radius:6px;padding:10px 12px;font-size:0.78rem;color:var(--muted);">
+                  📧 Check your inbox after signing. Full pick analysis sent instantly. One pick per email address — no duplicates.
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <label class="form-label" for="gb-message">Leave a Message for the Community *</label>
+              <textarea class="form-textarea" id="gb-message" name="message"
+                placeholder="Love the free picks! Hit a 4-team parlay last weekend. Keep it up! 🏈"
+                maxlength="500" required></textarea>
+            </div>
+
+            <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+              <button type="submit" class="btn-primary" id="gb-submit-btn">
+                Sign In &amp; Get My Free Pick →
+              </button>
+            </div>
+            <p class="form-note" style="margin-top:14px;">
+              🔒 Your email is used only to send your pick. We do not sell or share it. One free pick per email address per day.
+            </p>
+          </form>
+        </div>
+      </div><!-- /guestbook-form-wrap -->
+
+      <!-- ENTRIES LIST -->
+      <div style="margin:40px 0 16px;display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+        <h2 class="section-title" style="margin-bottom:0;">Community <span class="accent">Sign-Ins</span></h2>
+        <span style="font-family:var(--font-mono);font-size:0.75rem;color:var(--muted);" id="entry-count"></span>
+      </div>
+      <div id="guestbook-entries" aria-live="polite" aria-label="Guestbook entries"></div>
+
+    </div>
+  </section>
+
+</main>
+
+<div class="container">
+  <div class="disclaimer">
+    ⚠️ <strong>Disclaimer:</strong> FreeSportsPicks.pro is for entertainment only. Sports betting involves risk. Bet responsibly. Must be 21+ and in a jurisdiction where sports betting is legal.
+  </div>
+</div>
+
+<footer role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="site-logo">Free<span>SportsPicks</span>.pro</a>
+        <p>Expert free sports picks daily. NFL, NBA, MLB, NHL, and more. Sign the guestbook to get your free pick emailed instantly.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Top Picks</h4>
+        <a href="/picks/nfl-picks/">NFL Picks</a>
+        <a href="/picks/nba-picks/">NBA Picks</a>
+        <a href="/picks/best-bets-today/">Best Bets Today</a>
+        <a href="/picks/parlay-picks/">Parlay Picks</a>
+      </div>
+      <div class="footer-col">
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/guestbook.html">Guestbook</a>
+        <a href="/about.html">About</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024–2026 FreeSportsPicks.pro</span>
+      <span><a href="/sitemap.xml">Sitemap</a> · <a href="/llms.txt">LLMs.txt</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="data/keywords.js"></script>
+<script src="js/main.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const countEl = document.getElementById('entry-count');
+  function updateCount() {
+    const entries = JSON.parse(localStorage.getItem('fsp_guestbook_v1') || '[]');
+    if (countEl) countEl.textContent = entries.length + (entries.length === 1 ? ' entry' : ' entries');
+  }
+  updateCount();
+  document.getElementById('guestbook-form')?.addEventListener('submit', () => {
+    setTimeout(updateCount, 200);
+  });
+});
+</script>
+</body>
+</html>
