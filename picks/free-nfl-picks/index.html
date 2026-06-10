@@ -7,6 +7,7 @@
 <meta name="description" content="Get free NFL picks from expert handicappers. Daily NFL predictions with point spreads, totals, and moneyline analysis. No subscription required.">
 <link rel="canonical" href="https://www.freesportspicks.pro/picks/free-nfl-picks/">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/main.css">
 <style>
 .picks-page{max-width:960px;margin:0 auto;padding:2rem 1.5rem}
@@ -39,6 +40,7 @@ tr:nth-child(even) td{background:var(--bg2)}
 </style>
 </head>
 <body>
+<div style="padding-top:64px">
 <nav id="navbar">
 <div class="nav-inner">
 <a href="/" class="nav-logo">
@@ -128,5 +130,13 @@ if(window.scrollY>20)nav.classList.add('scrolled');
 else nav.classList.remove('scrolled');
 });
 </script>
+<script>
+window.addEventListener('scroll',function(){
+const nav=document.getElementById('navbar');
+if(window.scrollY>20)nav.classList.add('scrolled');
+else nav.classList.remove('scrolled');
+});
+</script>
+</div>
 </body>
 </html>
