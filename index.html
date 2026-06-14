@@ -273,8 +273,8 @@ async function loadGameOfDay() {
   try {
     const res = await fetch('https://ehjhsbrcbtqcvmgzjzkm.supabase.co/rest/v1/game_of_day?order=created_at.desc&limit=1', {
       headers: {
-        'apikey': 'sb_secret_B9AG8VXwdsj5D5SK7Ebn6g_KRLgiHOZ',
-        'Authorization': 'Bearer sb_secret_B9AG8VXwdsj5D5SK7Ebn6g_KRLgiHOZ'
+        'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVoamhzYnJjYnRxY3ZtZ3pqemttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5MDcwMjQsImV4cCI6MjA5MzQ4MzAyNH0.q96sEV0oUxX5kMCYyUJjysxxERMhhlq9cCBKAQ801_g',
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVoamhzYnJjYnRxY3ZtZ3pqemttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5MDcwMjQsImV4cCI6MjA5MzQ4MzAyNH0.q96sEV0oUxX5kMCYyUJjysxxERMhhlq9cCBKAQ801_g'
       }
     });
     const data = await res.json();
@@ -309,8 +309,8 @@ async function submitSignup() {
     const res = await fetch('https://ehjhsbrcbtqcvmgzjzkm.supabase.co/rest/v1/sportspicks_leads', {
       method: 'POST',
       headers: {
-        'apikey': 'sb_secret_B9AG8VXwdsj5D5SK7Ebn6g_KRLgiHOZ',
-        'Authorization': 'Bearer sb_secret_B9AG8VXwdsj5D5SK7Ebn6g_KRLgiHOZ',
+        'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVoamhzYnJjYnRxY3ZtZ3pqemttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5MDcwMjQsImV4cCI6MjA5MzQ4MzAyNH0.q96sEV0oUxX5kMCYyUJjysxxERMhhlq9cCBKAQ801_g',
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVoamhzYnJjYnRxY3ZtZ3pqemttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5MDcwMjQsImV4cCI6MjA5MzQ4MzAyNH0.q96sEV0oUxX5kMCYyUJjysxxERMhhlq9cCBKAQ801_g',
         'Content-Type': 'application/json',
         'Prefer': 'return=minimal'
       },
