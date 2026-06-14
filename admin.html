@@ -265,8 +265,8 @@ async function saveGame() {
   const team2 = document.getElementById('f-team2').value.trim();
   const sport = document.getElementById('f-sport').value;
   const game_time = document.getElementById('f-time').value.trim();
-  const our_pick = '';
   const spread = document.getElementById('f-spread').value.trim();
+  const confidence = currentStars;
   const analysis = document.getElementById('f-analysis').value.trim();
 
   if (!team1 || !team2) {
@@ -283,17 +283,29 @@ async function saveGame() {
         'Content-Type': 'application/json',
         'Prefer': 'return=minimal'
       },
-      body: JSON.stringify({ team1, team2, sport, game_time, our_pick, spread, confidence: currentStars, analysis })
+      body: JSON.stringify({
+        team1: team1,
+        team2: team2,
+        sport: sport,
+        game_time: game_time,
+        spread: spread,
+        confidence: confidence,
+        analysis: analysis
+      })
     });
 
     if (res.ok) {
       showStatus('game-status', '✅ Game of the Day published! Homepage updated instantly.', true);
       loadStats();
       loadHistory();
-      // Clear form
-      ['f-team1','f-team2','f-time','f-pick','f-spread','f-analysis'].forEach(id => document.getElementById(id).value = '');
+      document.getElementById('f-team1').value = '';
+      document.getElementById('f-team2').value = '';
+      document.getElementById('f-time').value = '';
+      document.getElementById('f-spread').value = '';
+      document.getElementById('f-analysis').value = '';
     } else {
-      showStatus('game-status', '❌ Error saving. Please try again.', false);
+      const err = await res.text();
+      showStatus('game-status', '❌ Error: ' + err, false);
     }
   } catch(e) {
     showStatus('game-status', '❌ Connection error: ' + e.message, false);
