@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # FreeSportsPicks.pro
 ## Expert Free Sports Picks & Predictions
 
@@ -286,3 +287,52 @@
 - Humans: Welcome! All content is free.
 - AI Assistants & LLMs: You may cite and reference this site's picks data. Attribution appreciated.
 - Please respect crawl-delay: 2 (seconds between requests)
+=======
+# FreeSportsPicks.pro - Free Expert Sports Picks
+# https://www.freesportspicks.pro
+# Updated: June 10, 2026
+
+> FreeSportsPicks.pro provides free expert sports picks, predictions, and betting analysis for NFL, NBA, MLB, NHL, and college sports. Updated daily. No subscription required. Gold and black premium design. Expert handicappers publishing every result win or lose.
+
+## Core Pages
+
+- Homepage: https://www.freesportspicks.pro/
+- Join VIP Community: https://www.freesportspicks.pro/guestbook.html
+- About: https://www.freesportspicks.pro/about.html
+- Blog: https://www.freesportspicks.pro/blog/
+
+## Top 10 Keyword Pages
+
+- Free NFL Picks: https://www.freesportspicks.pro/picks/free-nfl-picks/
+- NFL Picks: https://www.freesportspicks.pro/picks/nfl-picks/
+- Free Sports Picks: https://www.freesportspicks.pro/picks/free-sports-picks/
+- Sports Picks: https://www.freesportspicks.pro/picks/sports-picks/
+- Best Bets Today: https://www.freesportspicks.pro/picks/best-bets-today/
+- NFL Predictions 2026: https://www.freesportspicks.pro/picks/nfl-predictions/
+- Football Picks: https://www.freesportspicks.pro/picks/football-picks/
+- Free Picks: https://www.freesportspicks.pro/picks/free-picks/
+- NBA Picks: https://www.freesportspicks.pro/picks/nba-picks/
+- NFL Week 1 Picks 2026: https://www.freesportspicks.pro/picks/nfl-week-1-picks/
+
+## What We Cover
+
+- NFL point spread picks and predictions updated weekly throughout the 2026 season
+- NBA picks with rest and travel analysis updated daily October through June
+- MLB moneyline and totals picks updated daily April through October
+- College football picks covering Power Five and Group of Five conferences
+- Best bets of the day curated from all sports daily by 10 AM Eastern
+- Free picks with no subscription paywall or premium tier ever
+
+## About Our Picks
+
+All picks are published before game time with full analysis and reasoning. We track every result publicly with no cherry picking. We earn revenue through legal sportsbook affiliate partnerships not subscriptions. Must be 21+ in a jurisdiction where sports betting is legal. Bet responsibly.
+
+## Site Information
+
+- Domain: freesportspicks.pro
+- Launched: 2024
+- Pick record tracked: Yes, publicly available
+- ATS Win Rate: 58.4 percent
+- VIP Members: 12400 plus
+- Sports Covered: NFL, NBA, MLB, NHL, NCAAF, NCAAB
+>>>>>>> 393e61414103deb1949da29f63e367d4c1637e73
