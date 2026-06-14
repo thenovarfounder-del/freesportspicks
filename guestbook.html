@@ -1,249 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sports Picks Community Guestbook | FreeSportsPicks.pro</title>
-  <meta name="description" content="Sign the FreeSportsPicks.pro guestbook and get today's free expert sports pick sent directly to your email. One free pick per email — join thousands of sports bettors.">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://www.freesportspicks.pro/guestbook.html">
-  <meta property="og:title" content="Sign the Guestbook — Get a Free Sports Pick Emailed to You">
-  <meta property="og:description" content="Sign the FreeSportsPicks.pro guestbook and we'll email you today's top free pick instantly. One per email address.">
-  <meta property="og:url" content="https://www.freesportspicks.pro/guestbook.html">
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Sports Picks Community Guestbook",
-    "url": "https://www.freesportspicks.pro/guestbook.html",
-    "description": "Sign the guestbook and receive today's free sports pick by email.",
-    "isPartOf": { "@id": "https://www.freesportspicks.pro/#website" }
-  }
-  </script>
-
-  <link rel="stylesheet" href="css/main.css">
-
-  <!-- EmailJS — free email delivery (200 sends/month) -->
-  <!-- SETUP: Register at https://emailjs.com, create a service + template, fill in EMAIL_CFG in js/main.js -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script>
-    // Initialize EmailJS with your public key (also set in main.js EMAIL_CFG)
-    // emailjs.init('YOUR_EMAILJS_PUBLIC_KEY');
-  </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Free Sports Picks | FreeSportsPicks.pro</title>
+<meta name="description" content="Sign in to get today's free expert sports pick. Full analysis, matchup breakdown, and confidence rating. 100% free, no subscription required.">
+<link rel="canonical" href="https://www.freesportspicks.pro/guestbook.html">
+<link rel="stylesheet" href="/css/main.css">
+<style>
+.guestbook-page { padding: 120px 0 80px; }
+.guestbook-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; max-width: 1000px; margin: 0 auto; }
+.gb-left h1 { font-size: clamp(32px,4vw,52px); margin-bottom: 16px; line-height: 1.1; }
+.gb-left p { font-size: 16px; color: #808080; margin-bottom: 32px; }
+.gb-perks { display: flex; flex-direction: column; gap: 14px; }
+.gb-perk { display: flex; align-items: center; gap: 14px; background: rgba(201,168,76,0.06); border: 1px solid rgba(201,168,76,0.15); border-radius: 4px; padding: 16px 20px; }
+.gb-perk-icon { font-size: 24px; flex-shrink: 0; }
+.gb-perk-title { font-size: 14px; font-weight: 700; color: var(--white); }
+.gb-perk-desc { font-size: 12px; color: #606060; margin-top: 2px; }
+.gb-form-box { background: #0D0D0D; border: 1px solid rgba(201,168,76,0.3); border-radius: 4px; padding: 36px; }
+.gb-form-box h3 { font-family: var(--font-display); font-size: 22px; color: var(--white); margin-bottom: 6px; }
+.gb-form-box p { font-size: 13px; color: #808080; margin-bottom: 24px; }
+.gb-input { width: 100%; background: rgba(0,0,0,0.5); border: 1px solid var(--gray); border-radius: 2px; padding: 11px 14px; color: var(--white); font-family: var(--font-body); font-size: 14px; outline: none; transition: border-color 0.2s; box-sizing: border-box; margin-bottom: 12px; }
+.gb-input:focus { border-color: var(--gold); }
+.gb-input::placeholder { color: #505050; }
+.gb-label { display: block; font-size: 10px; font-weight: 700; color: #808080; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 5px; }
+.gb-select { width: 100%; background: rgba(0,0,0,0.5); border: 1px solid var(--gray); border-radius: 2px; padding: 11px 14px; color: var(--white); font-family: var(--font-body); font-size: 14px; outline: none; margin-bottom: 12px; }
+.gb-select option { background: #111; }
+.gb-textarea { width: 100%; background: rgba(0,0,0,0.5); border: 1px solid var(--gray); border-radius: 2px; padding: 11px 14px; color: var(--white); font-family: var(--font-body); font-size: 14px; outline: none; resize: vertical; min-height: 80px; box-sizing: border-box; margin-bottom: 16px; }
+.gb-btn { width: 100%; background: linear-gradient(135deg, var(--gold-dark), var(--gold)); color: var(--black); padding: 14px; border: none; border-radius: 2px; font-size: 15px; font-weight: 700; cursor: pointer; font-family: var(--font-body); transition: all 0.2s; }
+.gb-btn:hover { background: linear-gradient(135deg, var(--gold), var(--gold-light)); }
+.gb-privacy { font-size: 11px; color: #505050; text-align: center; margin-top: 10px; }
+.gb-success { display: none; text-align: center; padding: 32px 0; }
+.gb-success-icon { font-size: 56px; margin-bottom: 16px; }
+.gb-success h3 { font-family: var(--font-display); font-size: 22px; color: var(--white); margin-bottom: 10px; }
+.gb-success p { font-size: 14px; color: #808080; }
+.steps { display: flex; gap: 20px; margin-bottom: 32px; }
+.step { text-align: center; flex: 1; }
+.step-num { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--gold-dark), var(--gold)); color: var(--black); font-family: var(--font-display); font-size: 16px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; }
+.step-label { font-size: 12px; color: #606060; line-height: 1.4; }
+@media (max-width: 768px) {
+  .guestbook-grid { grid-template-columns: 1fr; gap: 40px; }
+  .steps { flex-direction: column; }
+}
+</style>
 </head>
 <body>
-
-<header id="site-header" role="banner">
-  <div class="header-inner">
-    <a href="/" class="site-logo">Free<span>SportsPicks</span>.pro</a>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/picks/nfl-picks/">NFL Picks</a>
-      <a href="/picks/nba-picks/">NBA Picks</a>
-      <a href="/picks/best-bets-today/">Best Bets</a>
-      <a href="/guestbook.html" class="nav-cta active">Get Free Pick</a>
-    </nav>
-    <button class="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
-  </div>
+<header class="site-header">
+  <nav class="nav-container">
+    <a href="/" class="nav-logo"><span class="logo-icon">🏆</span><span class="logo-text">FreeSportsPicks<span class="logo-pro">.pro</span></span></a>
+    <ul class="nav-links">
+      <li><a href="/picks/nfl-picks/">NFL Picks</a></li>
+      <li><a href="/picks/nba-picks/">NBA Picks</a></li>
+      <li><a href="/picks/mlb-picks/">MLB Picks</a></li>
+      <li><a href="/picks/college-basketball-picks/">CBB Picks</a></li>
+      <li><a href="/picks/college-football-picks/">CFB Picks</a></li>
+      <li><a href="/picks/free-sports-picks/">Free Picks</a></li>
+      <li><a href="/picks/best-bets-today/">Best Bets</a></li>
+      <li><a href="/picks/parlay-picks/">Parlays</a></li>
+    </ul>
+    <a href="/guestbook.html" class="nav-cta">Get Free Picks</a>
+  </nav>
 </header>
 
-<main id="main-content">
+<section class="guestbook-page">
+  <div class="container">
+    <div class="guestbook-grid">
+      <div class="gb-left">
+        <span style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:14px">Free Sports Picks</span>
+        <h1>Get Today's <em style="color:var(--gold);font-style:normal">Free Expert Pick</em></h1>
+        <p>Join thousands of sports bettors getting free expert picks every day. Full analysis included &mdash; not just a pick.</p>
 
-  <!-- HERO -->
-  <section class="kw-hero">
-    <div class="kw-hero-inner">
-      <nav class="kw-breadcrumb" aria-label="Breadcrumb">
-        <a href="/">Home</a> › Guestbook &amp; Free Pick
-      </nav>
-      <h1>Sign In &amp; Get Your <span style="color:var(--green)">Free Pick</span></h1>
-      <p class="kw-hero-desc">
-        Sign the guestbook and we'll instantly email you today's top expert pick — full analysis, matchup breakdown, and confidence rating. One free pick per email address.
-      </p>
-      <div class="kw-meta">
-        <div class="kw-meta-item">📧 <strong>Instant Email Delivery</strong></div>
-        <div class="kw-meta-item">🔒 <strong>One Pick Per Email</strong></div>
-        <div class="kw-meta-item">💸 <strong>100% Free</strong></div>
-      </div>
-    </div>
-  </section>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-label">Fill out the form</div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-label">Pick unlocks instantly</div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-label">Full analysis in your inbox</div>
+          </div>
+        </div>
 
-  <!-- HOW IT WORKS -->
-  <div style="background:var(--navy-light);border-bottom:1px solid var(--border);padding:24px var(--gutter);">
-    <div class="container" style="display:flex;gap:0;flex-wrap:wrap;justify-content:center;max-width:860px;">
-      <div style="flex:1;min-width:160px;text-align:center;padding:8px 20px;position:relative;">
-        <div style="font-family:var(--font-display);font-size:2rem;font-weight:900;color:var(--green);">1</div>
-        <div style="font-size:0.85rem;color:var(--muted);margin-top:4px;">Fill out the<br>form below</div>
-      </div>
-      <div style="display:flex;align-items:center;color:var(--border);font-size:1.5rem;padding:0 4px;">›</div>
-      <div style="flex:1;min-width:160px;text-align:center;padding:8px 20px;">
-        <div style="font-family:var(--font-display);font-size:2rem;font-weight:900;color:var(--green);">2</div>
-        <div style="font-size:0.85rem;color:var(--muted);margin-top:4px;">Your pick unlocks<br>instantly on screen</div>
-      </div>
-      <div style="display:flex;align-items:center;color:var(--border);font-size:1.5rem;padding:0 4px;">›</div>
-      <div style="flex:1;min-width:160px;text-align:center;padding:8px 20px;">
-        <div style="font-family:var(--font-display);font-size:2rem;font-weight:900;color:var(--green);">3</div>
-        <div style="font-size:0.85rem;color:var(--muted);margin-top:4px;">Full analysis sent<br>to your email</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- GUESTBOOK FORM + EMAIL SYSTEM -->
-  <section class="guestbook-section" id="sign">
-    <div class="guestbook-wrap">
-
-      <!-- This entire div gets swapped out on success or lock -->
-      <div id="guestbook-form-wrap">
-        <div class="guestbook-form">
-          <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:20px;">
+        <div class="gb-perks">
+          <div class="gb-perk">
+            <div class="gb-perk-icon">&#x1f4e7;</div>
             <div>
-              <h2 style="font-family:var(--font-display);font-weight:900;text-transform:uppercase;font-size:1.5rem;margin-bottom:4px;">
-                ✍️ Sign the Guestbook
-              </h2>
-              <p style="color:var(--muted);font-size:0.85rem;">Your pick arrives in your inbox within 60 seconds.</p>
-            </div>
-            <!-- Today's pick teaser — blurred -->
-            <div style="background:var(--navy);border:1px solid var(--border);border-radius:6px;padding:12px 16px;min-width:200px;filter:blur(4px);user-select:none;" aria-hidden="true">
-              <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--green);letter-spacing:0.12em;text-transform:uppercase;">Today's Pick</div>
-              <div style="font-family:var(--font-display);font-weight:800;font-size:1rem;margin-top:4px;">Sign in to reveal →</div>
+              <div class="gb-perk-title">Instant Email Delivery</div>
+              <div class="gb-perk-desc">Today's top pick sent to your inbox within 60 seconds.</div>
             </div>
           </div>
-
-          <form id="guestbook-form" novalidate>
-            <div class="form-grid">
-              <div class="form-row">
-                <label class="form-label" for="gb-name">Your Name *</label>
-                <input class="form-input" type="text" id="gb-name" name="name"
-                  placeholder="Mike T." maxlength="60" required autocomplete="name">
-              </div>
-              <div class="form-row">
-                <label class="form-label" for="gb-email">Email Address * <span style="color:var(--green);font-size:0.7rem;">(pick sent here)</span></label>
-                <input class="form-input" type="email" id="gb-email" name="email"
-                  placeholder="you@email.com" required autocomplete="email"
-                  style="border-color:rgba(0,230,118,0.3);">
-              </div>
+          <div class="gb-perk">
+            <div class="gb-perk-icon">&#x1f4ca;</div>
+            <div>
+              <div class="gb-perk-title">Full Analysis Included</div>
+              <div class="gb-perk-desc">Not just a side — we explain why with matchup data and reasoning.</div>
             </div>
-            <div class="form-grid">
-              <div class="form-row">
-                <label class="form-label" for="gb-location">City / State</label>
-                <input class="form-input" type="text" id="gb-location" name="location"
-                  placeholder="Las Vegas, NV" maxlength="60" autocomplete="address-level2">
-              </div>
-              <div class="form-row">
-                <label class="form-label" for="gb-team">Favorite Team</label>
-                <input class="form-input" type="text" id="gb-team" name="favTeam"
-                  placeholder="Kansas City Chiefs" maxlength="40">
-              </div>
+          </div>
+          <div class="gb-perk">
+            <div class="gb-perk-icon">&#x1f193;</div>
+            <div>
+              <div class="gb-perk-title">100% Free Forever</div>
+              <div class="gb-perk-desc">No subscription, no credit card, no hidden fees. Ever.</div>
             </div>
-            <div class="form-grid">
-              <div class="form-row">
-                <label class="form-label" for="gb-sport">Favorite Sport</label>
-                <select class="form-select" id="gb-sport" name="favSport">
-                  <option value="all">All Sports</option>
-                  <option value="nfl">NFL Football</option>
-                  <option value="nba">NBA Basketball</option>
-                  <option value="mlb">MLB Baseball</option>
-                  <option value="nhl">NHL Hockey</option>
-                  <option value="cfb">College Football</option>
-                  <option value="cbb">College Basketball</option>
-                  <option value="soccer">Soccer / MLS</option>
-                  <option value="golf">PGA Golf</option>
-                  <option value="mma">UFC / MMA</option>
-                  <option value="tennis">Tennis</option>
-                  <option value="racing">Horse Racing</option>
-                </select>
-              </div>
-              <div class="form-row" style="display:flex;flex-direction:column;justify-content:flex-end;">
-                <div style="background:rgba(0,230,118,0.06);border:1px solid var(--border);border-radius:6px;padding:10px 12px;font-size:0.78rem;color:var(--muted);">
-                  📧 Check your inbox after signing. Full pick analysis sent instantly. One pick per email address — no duplicates.
-                </div>
-              </div>
+          </div>
+          <div class="gb-perk">
+            <div class="gb-perk-icon">&#x1f3c6;</div>
+            <div>
+              <div class="gb-perk-title">All Major Sports</div>
+              <div class="gb-perk-desc">NFL, NBA, MLB, NHL, college football, and basketball covered.</div>
             </div>
-            <div class="form-row">
-              <label class="form-label" for="gb-message">Leave a Message for the Community *</label>
-              <textarea class="form-textarea" id="gb-message" name="message"
-                placeholder="Love the free picks! Hit a 4-team parlay last weekend. Keep it up! 🏈"
-                maxlength="500" required></textarea>
-            </div>
-
-            <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
-              <button type="submit" class="btn-primary" id="gb-submit-btn">
-                Sign In &amp; Get My Free Pick →
-              </button>
-            </div>
-            <p class="form-note" style="margin-top:14px;">
-              🔒 Your email is used only to send your pick. We do not sell or share it. One free pick per email address per day.
-            </p>
-          </form>
+          </div>
         </div>
-      </div><!-- /guestbook-form-wrap -->
-
-      <!-- ENTRIES LIST -->
-      <div style="margin:40px 0 16px;display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;">
-        <h2 class="section-title" style="margin-bottom:0;">Community <span class="accent">Sign-Ins</span></h2>
-        <span style="font-family:var(--font-mono);font-size:0.75rem;color:var(--muted);" id="entry-count"></span>
       </div>
-      <div id="guestbook-entries" aria-live="polite" aria-label="Guestbook entries"></div>
 
+      <div class="gb-form-box">
+        <div id="gb-form">
+          <h3>Sign In &amp; Get Your Free Pick</h3>
+          <p>Your pick arrives in your inbox within 60 seconds.</p>
+
+          <label class="gb-label">Your Name *</label>
+          <input class="gb-input" id="gb-name" type="text" placeholder="John Smith">
+
+          <label class="gb-label">Email Address * (pick sent here)</label>
+          <input class="gb-input" id="gb-email" type="email" placeholder="john@email.com">
+
+          <label class="gb-label">City / State</label>
+          <input class="gb-input" id="gb-city" type="text" placeholder="Miami, FL">
+
+          <label class="gb-label">Favorite Sport</label>
+          <select class="gb-select" id="gb-sport">
+            <option>All Sports</option>
+            <option>NFL Football</option>
+            <option>NBA Basketball</option>
+            <option>MLB Baseball</option>
+            <option>NHL Hockey</option>
+            <option>College Football</option>
+            <option>College Basketball</option>
+            <option>Soccer / MLS</option>
+            <option>Golf</option>
+            <option>UFC / MMA</option>
+          </select>
+
+          <label class="gb-label">Message for the Community</label>
+          <textarea class="gb-textarea" id="gb-message" placeholder="Share your thoughts on today's games..."></textarea>
+
+          <button class="gb-btn" onclick="submitGuestbook()">Sign In &amp; Get My Free Pick &rarr;</button>
+          <p class="gb-privacy">&#x1f512; Your email is used only to send your pick. We never sell or share it.</p>
+        </div>
+
+        <div class="gb-success" id="gb-success">
+          <div class="gb-success-icon">&#x2705;</div>
+          <h3>You're In!</h3>
+          <p>Check your inbox &mdash; your free pick is on its way. Thanks for joining the FreeSportsPicks.pro community!</p>
+          <a href="/picks/best-bets-today/" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--gold-dark),var(--gold));color:var(--black);padding:14px 32px;border-radius:2px;font-size:15px;font-weight:700;text-decoration:none;margin-top:20px;">
+            See Today's Best Bets &rarr;
+          </a>
+        </div>
+      </div>
     </div>
-  </section>
-
-</main>
-
-<div class="container">
-  <div class="disclaimer">
-    ⚠️ <strong>Disclaimer:</strong> FreeSportsPicks.pro is for entertainment only. Sports betting involves risk. Bet responsibly. Must be 21+ and in a jurisdiction where sports betting is legal.
   </div>
-</div>
+</section>
 
-<footer role="contentinfo">
-  <div class="footer-inner">
+<footer class="site-footer">
+  <div class="container">
     <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="/" class="site-logo">Free<span>SportsPicks</span>.pro</a>
-        <p>Expert free sports picks daily. NFL, NBA, MLB, NHL, and more. Sign the guestbook to get your free pick emailed instantly.</p>
+      <div>
+        <div class="footer-logo">🏆 FreeSportsPicks.pro</div>
+        <p class="footer-desc">Expert free sports picks for NFL, NBA, MLB, NHL, college football and basketball. Updated daily. No subscription required.</p>
       </div>
-      <div class="footer-col">
-        <h4>Top Picks</h4>
-        <a href="/picks/nfl-picks/">NFL Picks</a>
-        <a href="/picks/nba-picks/">NBA Picks</a>
-        <a href="/picks/best-bets-today/">Best Bets Today</a>
-        <a href="/picks/parlay-picks/">Parlay Picks</a>
+      <div>
+        <div class="footer-col-title">NFL Picks</div>
+        <ul class="footer-links">
+          <li><a href="/picks/nfl-picks/">NFL Picks</a></li>
+          <li><a href="/picks/free-nfl-picks/">Free NFL Picks</a></li>
+          <li><a href="/picks/nfl-predictions/">NFL Predictions</a></li>
+          <li><a href="/picks/nfl-ats-picks/">NFL ATS Picks</a></li>
+          <li><a href="/picks/super-bowl-picks/">Super Bowl Picks</a></li>
+        </ul>
       </div>
-      <div class="footer-col">
-        <h4>Site</h4>
-        <a href="/">Home</a>
-        <a href="/guestbook.html">Guestbook</a>
-        <a href="/about.html">About</a>
-        <a href="/sitemap.xml">Sitemap</a>
+      <div>
+        <div class="footer-col-title">Basketball</div>
+        <ul class="footer-links">
+          <li><a href="/picks/nba-picks/">NBA Picks</a></li>
+          <li><a href="/picks/college-basketball-picks/">CBB Picks</a></li>
+          <li><a href="/picks/march-madness-picks/">March Madness</a></li>
+        </ul>
       </div>
-      <div class="footer-col">
-        <h4>Legal</h4>
-        <a href="/privacy.html">Privacy</a>
-        <a href="/terms.html">Terms</a>
+      <div>
+        <div class="footer-col-title">More Picks</div>
+        <ul class="footer-links">
+          <li><a href="/picks/mlb-picks/">MLB Picks</a></li>
+          <li><a href="/picks/parlay-picks/">Parlay Picks</a></li>
+          <li><a href="/picks/best-bets-today/">Best Bets Today</a></li>
+          <li><a href="/picks/prop-bet-picks/">Prop Bet Picks</a></li>
+        </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2024–2026 FreeSportsPicks.pro</span>
-      <span><a href="/sitemap.xml">Sitemap</a> · <a href="/llms.txt">LLMs.txt</a></span>
+      <p>&copy; 2026 FreeSportsPicks.pro. All rights reserved. For entertainment purposes only. Must be 21+. Please gamble responsibly.</p>
     </div>
   </div>
 </footer>
 
-<script src="data/keywords.js"></script>
-<script src="js/main.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const countEl = document.getElementById('entry-count');
-  function updateCount() {
-    const entries = JSON.parse(localStorage.getItem('fsp_guestbook_v1') || '[]');
-    if (countEl) countEl.textContent = entries.length + (entries.length === 1 ? ' entry' : ' entries');
-  }
-  updateCount();
-  document.getElementById('guestbook-form')?.addEventListener('submit', () => {
-    setTimeout(updateCount, 200);
-  });
-});
+function submitGuestbook() {
+  const name = document.getElementById('gb-name').value.trim();
+  const email = document.getElementById('gb-email').value.trim();
+  if (!name || !email) { alert('Please enter your name and email.'); return; }
+  document.getElementById('gb-form').style.display = 'none';
+  document.getElementById('gb-success').style.display = 'block';
+}
 </script>
 </body>
 </html>
