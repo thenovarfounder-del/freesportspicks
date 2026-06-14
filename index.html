@@ -203,21 +203,239 @@
   </div>
 </section>
 
-<section style="padding:80px 0;text-align:center">
+
+<!-- GAME OF THE DAY + SIGNUP -->
+<section id="game-of-day" style="padding:80px 0;background:#0D0D0D;border-top:1px solid rgba(201,168,76,0.15);border-bottom:1px solid rgba(201,168,76,0.15);">
   <div class="container">
-    <span style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:12px">Start Now</span>
-    <h2 style="max-width:600px;margin:0 auto 16px">Ready to get expert picks for free?</h2>
-    <p style="max-width:480px;margin:0 auto 32px">No signup. No credit card. Just click and get today's best sports picks from our expert handicappers.</p>
-    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-      <a href="/picks/best-bets-today/" class="btn-gold" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--gold-dark),var(--gold));color:var(--black);padding:16px 36px;border-radius:2px;font-size:16px;font-weight:700;text-decoration:none;">
-        See Best Bets Today &rarr;
-      </a>
-      <a href="/guestbook.html" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--gold);padding:16px 36px;border-radius:2px;font-size:16px;font-weight:600;text-decoration:none;border:1px solid var(--gold);">
-        All Free Picks
-      </a>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;max-width:1100px;margin:0 auto;">
+      
+      <!-- LEFT: Game of the Day -->
+      <div id="gotd-box">
+        <span style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#C9A84C;display:block;margin-bottom:16px">&#x1f525; Game of the Day</span>
+        <h2 style="font-size:clamp(24px,3vw,38px);margin-bottom:24px;border:none;padding:0;">Today's Top Pick</h2>
+        
+        <div id="gotd-card" style="background:#111;border:1px solid rgba(201,168,76,0.3);border-radius:8px;padding:28px;position:relative;overflow:hidden;">
+          <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#A07830,#C9A84C,#A07830);"></div>
+          
+          <!-- Teams -->
+          <div id="gotd-teams" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+            <div style="text-align:center;flex:1;">
+              <div id="gotd-team1" style="font-family:'DM Serif Display',serif;font-size:clamp(18px,2.5vw,26px);color:#F5F5F0;font-weight:700;line-height:1.2;">Loading...</div>
+              <div style="font-size:11px;color:#606060;margin-top:4px;text-transform:uppercase;letter-spacing:0.08em;">Home</div>
+            </div>
+            <div style="text-align:center;padding:0 16px;">
+              <div style="font-family:'DM Serif Display',serif;font-size:28px;color:#C9A84C;font-weight:700;">VS</div>
+              <div id="gotd-time" style="font-size:11px;color:#606060;margin-top:4px;">Tonight</div>
+            </div>
+            <div style="text-align:center;flex:1;">
+              <div id="gotd-team2" style="font-family:'DM Serif Display',serif;font-size:clamp(18px,2.5vw,26px);color:#F5F5F0;font-weight:700;line-height:1.2;">Loading...</div>
+              <div style="font-size:11px;color:#606060;margin-top:4px;text-transform:uppercase;letter-spacing:0.08em;">Away</div>
+            </div>
+          </div>
+
+          <!-- Pick info - blurred until signup -->
+          <div style="border-top:1px solid #3A3A3A;padding-top:16px;margin-bottom:16px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+              <span style="font-size:12px;color:#606060;text-transform:uppercase;letter-spacing:0.08em;">Our Pick</span>
+              <span id="gotd-sport" style="font-size:11px;font-weight:700;color:#C9A84C;background:rgba(201,168,76,0.1);padding:3px 10px;border-radius:2px;">NFL</span>
+            </div>
+            <div style="position:relative;">
+              <div id="gotd-pick-blur" style="font-family:'DM Serif Display',serif;font-size:22px;color:#F5F5F0;font-weight:700;filter:blur(6px);user-select:none;">Chiefs -3.5 &#x2b50;&#x2b50;&#x2b50;&#x2b50;</div>
+              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+                <span style="font-size:12px;color:#C9A84C;font-weight:700;background:#111;padding:6px 14px;border-radius:2px;border:1px solid rgba(201,168,76,0.3);">&#x1f512; Sign in to reveal</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Confidence -->
+          <div style="display:flex;gap:8px;align-items:center;">
+            <span style="font-size:11px;color:#606060;">Confidence:</span>
+            <div style="display:flex;gap:3px;">
+              <span style="color:#C9A84C;font-size:14px;">&#x2b50;</span>
+              <span style="color:#C9A84C;font-size:14px;">&#x2b50;</span>
+              <span style="color:#C9A84C;font-size:14px;">&#x2b50;</span>
+              <span style="color:#C9A84C;font-size:14px;">&#x2b50;</span>
+              <span style="color:#3A3A3A;font-size:14px;">&#x2b50;</span>
+            </div>
+            <span style="font-size:11px;color:#C9A84C;font-weight:700;">4/5</span>
+          </div>
+        </div>
+
+        <!-- Stats row -->
+        <div style="display:flex;gap:24px;margin-top:24px;">
+          <div style="text-align:center;">
+            <div style="font-family:'DM Serif Display',serif;font-size:24px;color:#C9A84C;">100%</div>
+            <div style="font-size:11px;color:#606060;margin-top:2px;">Free Forever</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-family:'DM Serif Display',serif;font-size:24px;color:#C9A84C;">Daily</div>
+            <div style="font-size:11px;color:#606060;margin-top:2px;">New Pick</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-family:'DM Serif Display',serif;font-size:24px;color:#C9A84C;">All</div>
+            <div style="font-size:11px;color:#606060;margin-top:2px;">Sports</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Signup Form -->
+      <div>
+        <div style="background:#111;border:1px solid rgba(201,168,76,0.3);border-radius:8px;padding:36px;position:relative;overflow:hidden;">
+          <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#A07830,#C9A84C,#A07830);"></div>
+          
+          <div id="signup-form-wrap">
+            <span style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#C9A84C;display:block;margin-bottom:10px">Get Your Free Pick</span>
+            <h3 style="font-size:22px;color:#F5F5F0;margin-bottom:6px;font-family:'DM Serif Display',serif;">Unlock Today's Full Analysis</h3>
+            <p style="font-size:13px;color:#606060;margin-bottom:24px;">Sign in free. Get the pick, the spread, and our full expert breakdown.</p>
+
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <div>
+                <label style="display:block;font-size:10px;font-weight:700;color:#808080;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:5px;">Your Name *</label>
+                <input id="sp-name" type="text" placeholder="John Smith" style="width:100%;background:rgba(0,0,0,0.5);border:1px solid #3A3A3A;border-radius:2px;padding:11px 14px;color:#F5F5F0;font-size:14px;outline:none;box-sizing:border-box;transition:border-color 0.2s;" onfocus="this.style.borderColor='#C9A84C'" onblur="this.style.borderColor='#3A3A3A'">
+              </div>
+              <div>
+                <label style="display:block;font-size:10px;font-weight:700;color:#808080;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:5px;">Email Address *</label>
+                <input id="sp-email" type="email" placeholder="your@email.com" style="width:100%;background:rgba(0,0,0,0.5);border:1px solid #3A3A3A;border-radius:2px;padding:11px 14px;color:#F5F5F0;font-size:14px;outline:none;box-sizing:border-box;transition:border-color 0.2s;" onfocus="this.style.borderColor='#C9A84C'" onblur="this.style.borderColor='#3A3A3A'">
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+                <div>
+                  <label style="display:block;font-size:10px;font-weight:700;color:#808080;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:5px;">City</label>
+                  <input id="sp-city" type="text" placeholder="Miami, FL" style="width:100%;background:rgba(0,0,0,0.5);border:1px solid #3A3A3A;border-radius:2px;padding:11px 14px;color:#F5F5F0;font-size:14px;outline:none;box-sizing:border-box;">
+                </div>
+                <div>
+                  <label style="display:block;font-size:10px;font-weight:700;color:#808080;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:5px;">Favorite Sport</label>
+                  <select id="sp-sport" style="width:100%;background:rgba(0,0,0,0.8);border:1px solid #3A3A3A;border-radius:2px;padding:11px 14px;color:#F5F5F0;font-size:14px;outline:none;box-sizing:border-box;">
+                    <option>All Sports</option>
+                    <option>NFL Football</option>
+                    <option>NBA Basketball</option>
+                    <option>MLB Baseball</option>
+                    <option>NHL Hockey</option>
+                    <option>College Football</option>
+                    <option>College Basketball</option>
+                  </select>
+                </div>
+              </div>
+              <button onclick="submitSignup()" style="width:100%;background:linear-gradient(135deg,#A07830,#C9A84C);color:#0A0A0A;padding:15px;border:none;border-radius:2px;font-size:15px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s;margin-top:4px;" onmouseover="this.style.background='linear-gradient(135deg,#C9A84C,#E8C97A)'" onmouseout="this.style.background='linear-gradient(135deg,#A07830,#C9A84C)'">
+                Unlock Today's Pick &rarr;
+              </button>
+            </div>
+            <p style="font-size:11px;color:#505050;text-align:center;margin-top:12px;">&#x1f512; Free forever. No spam. No credit card.</p>
+          </div>
+
+          <!-- Success state -->
+          <div id="signup-success" style="display:none;text-align:center;padding:24px 0;">
+            <div style="font-size:52px;margin-bottom:16px;">&#x1f3c6;</div>
+            <h3 style="font-family:'DM Serif Display',serif;font-size:22px;color:#F5F5F0;margin-bottom:10px;">You're In!</h3>
+            <p style="font-size:14px;color:#808080;margin-bottom:20px;">Your free pick is unlocked. Check your inbox for the full analysis.</p>
+            <div id="gotd-reveal" style="background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.3);border-radius:6px;padding:20px;margin-bottom:20px;">
+              <div style="font-size:12px;color:#606060;margin-bottom:6px;">Today's Pick</div>
+              <div id="gotd-pick-reveal" style="font-family:'DM Serif Display',serif;font-size:26px;color:#C9A84C;font-weight:700;">Loading...</div>
+            </div>
+            <a href="/picks/best-bets-today/" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#A07830,#C9A84C);color:#0A0A0A;padding:12px 28px;border-radius:2px;font-size:14px;font-weight:700;text-decoration:none;">See All Best Bets &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Social proof -->
+        <div style="display:flex;align-items:center;gap:12px;margin-top:16px;padding:14px 18px;background:#111;border:1px solid #3A3A3A;border-radius:4px;">
+          <div style="display:flex;">
+            <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#A07830,#C9A84C);border:2px solid #0A0A0A;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#0A0A0A;margin-left:-6px;">M</div>
+            <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#3A3A3A,#606060);border:2px solid #0A0A0A;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#F5F5F0;margin-left:-6px;">J</div>
+            <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#A07830,#C9A84C);border:2px solid #0A0A0A;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#0A0A0A;margin-left:-6px;">S</div>
+          </div>
+          <div>
+            <div style="font-size:12px;font-weight:600;color:#F5F5F0;">Thousands of bettors get free picks daily</div>
+            <div style="font-size:11px;color:#606060;">No subscription &middot; No credit card &middot; Cancel anytime</div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
+
+<script>
+// Load Game of the Day from Supabase
+async function loadGameOfDay() {
+  try {
+    const res = await fetch('https://ehjhsbrcbtqcvmgzjzkm.supabase.co/rest/v1/game_of_day?order=created_at.desc&limit=1', {
+      headers: {
+        'apikey': 'sb_secret_B9AG8VXwdsj5D5SK7Ebn6g_KRLgiHOZ',
+        'Authorization': 'Bearer sb_secret_B9AG8VXwdsj5D5SK7Ebn6g_KRLgiHOZ'
+      }
+    });
+    const data = await res.json();
+    if (data && data.length > 0) {
+      const g = data[0];
+      document.getElementById('gotd-team1').textContent = g.team1 || 'TBD';
+      document.getElementById('gotd-team2').textContent = g.team2 || 'TBD';
+      document.getElementById('gotd-time').textContent = g.game_time || 'Tonight';
+      document.getElementById('gotd-sport').textContent = g.sport || 'NFL';
+      document.getElementById('gotd-pick-reveal').textContent = g.our_pick || 'Sign in to reveal';
+    }
+  } catch(e) {
+    console.log('Game of day load error:', e);
+  }
+}
+loadGameOfDay();
+
+// Submit signup to Supabase
+async function submitSignup() {
+  const name = document.getElementById('sp-name').value.trim();
+  const email = document.getElementById('sp-email').value.trim();
+  const city = document.getElementById('sp-city').value.trim();
+  const sport = document.getElementById('sp-sport').value;
+
+  if (!name || !email) {
+    alert('Please enter your name and email.');
+    return;
+  }
+
+  // Get today's game
+  let gameOfDay = '';
+  try {
+    const res = await fetch('https://ehjhsbrcbtqcvmgzjzkm.supabase.co/rest/v1/game_of_day?order=created_at.desc&limit=1', {
+      headers: { 'apikey': 'sb_secret_B9AG8VXwdsj5D5SK7Ebn6g_KRLgiHOZ', 'Authorization': 'Bearer sb_secret_B9AG8VXwdsj5D5SK7Ebn6g_KRLgiHOZ' }
+    });
+    const data = await res.json();
+    if (data && data.length > 0) gameOfDay = data[0].our_pick || '';
+  } catch(e) {}
+
+  // Save to Supabase
+  try {
+    await fetch('https://ehjhsbrcbtqcvmgzjzkm.supabase.co/rest/v1/sportspicks_leads', {
+      method: 'POST',
+      headers: {
+        'apikey': 'sb_secret_B9AG8VXwdsj5D5SK7Ebn6g_KRLgiHOZ',
+        'Authorization': 'Bearer sb_secret_B9AG8VXwdsj5D5SK7Ebn6g_KRLgiHOZ',
+        'Content-Type': 'application/json',
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify({ name, email, city, favorite_sport: sport, game_of_day: gameOfDay, source: 'homepage' })
+    });
+  } catch(e) {
+    console.log('Save error:', e);
+  }
+
+  // Unblur the pick
+  const pickBlur = document.getElementById('gotd-pick-blur');
+  if (pickBlur) pickBlur.style.filter = 'none';
+
+  // Show success
+  document.getElementById('signup-form-wrap').style.display = 'none';
+  document.getElementById('signup-success').style.display = 'block';
+
+  // Load pick into reveal
+  try {
+    const res = await fetch('https://ehjhsbrcbtqcvmgzjzkm.supabase.co/rest/v1/game_of_day?order=created_at.desc&limit=1', {
+      headers: { 'apikey': 'sb_secret_B9AG8VXwdsj5D5SK7Ebn6g_KRLgiHOZ', 'Authorization': 'Bearer sb_secret_B9AG8VXwdsj5D5SK7Ebn6g_KRLgiHOZ' }
+    });
+    const data = await res.json();
+    if (data && data.length > 0) {
+      document.getElementById('gotd-pick-reveal').textContent = data[0].our_pick || 'Check your email!';
+    }
+  } catch(e) {}
+}
+</script>
 
 
 
