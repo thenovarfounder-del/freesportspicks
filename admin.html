@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — FreeSportsPicks.pro</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body style="background:var(--navy);color:var(--white);min-height:100vh;">
+
+<header id="site-header">
+  <div class="header-inner">
+    <a href="/" class="site-logo">Free<span>SportsPicks</span>.pro</a>
+    <nav>
+      <a href="/">← Back to Site</a>
+      <span id="admin-user-badge" style="display:none;font-family:var(--font-mono);font-size:0.72rem;color:var(--green);letter-spacing:0.1em;text-transform:uppercase;">● ADMIN</span>
+    </nav>
+  </div>
+</header>
+
+<main id="main-content" style="padding:40px var(--gutter);">
+<div style="max-width:1060px;margin:0 auto;">
+
+<!-- ── LOGIN ── -->
+<div id="login-screen">
+  <div style="max-width:380px;margin:60px auto;text-align:center;">
+    <div style="font-size:3rem;margin-bottom:16px;">🔐</div>
+    <h1 style="font-family:var(--font-display);font-size:2rem;font-weight:900;text-transform:uppercase;margin-bottom:8px;">Admin Login</h1>
+    <p style="color:var(--muted);font-size:0.9rem;margin-bottom:28px;">FreeSportsPicks.pro backend — authorized access only.</p>
+    <div class="form-row">
+      <label class="form-label" for="admin-pw">Password</label>
+      <input class="form-input" type="password" id="admin-pw" placeholder="Enter admin password" autocomplete="current-password">
+    </div>
+    <div id="pw-error" style="display:none;color:var(--red);font-size:0.82rem;margin:8px 0;">Incorrect password.</div>
+    <button class="btn-primary" onclick="adminLogin()" style="margin-top:12px;width:100%;">Sign In →</button>
+    <p style="margin-top:20px;font-size:0.75rem;color:var(--muted);">Default: <code style="color:var(--green)">picks2024</code> — change ADMIN_PASSWORD in admin.html</p>
+  </div>
+</div>
+
+<!-- ── ADMIN DASHBOARD ── -->
+<div id="admin-dashboard" style="display:none;">
+
+  <!-- TOP BAR -->
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:32px;flex-wrap:wrap;gap:12px;">
+    <div>
+      <h1 style="font-family:var(--font-display);font-size:2rem;font-weight:900;text-transform:uppercase;letter-spacing:0.02em;">
+        📋 Picks Admin
+      </h1>
+      <p style="color:var(--muted);font-size:0.85rem;margin-top:4px;">Manage the Game of the Day, pick history, and your documented record.</p>
+    </div>
+    <div style="display:flex;gap:10px;align-items:center;">
+      <span id="live-status" style="font-family:var(--font-mono);font-size:0.72rem;color:var(--green);letter-spacing:0.1em;">● LIVE</span>
+      <a href="/" class="btn-secondary" style="font-size:0.85rem;padding:8px 18px;">View Site ↗</a>
+      <button onclick="adminLogout()" style="font-family:var(--font-display);font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;padding:8px 18px;border-radius:6px;border:1px solid var(--red);color:var(--red);background:none;cursor:pointer;">Logout</button>
+    </div>
+  </div>
+
+  <!-- STATS ROW -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-bottom:32px;" id="stats-row">
+    <!-- populated by JS -->
+  </div>
+
+  <!-- MAIN GRID -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;">
+
+    <!-- LEFT: EDITOR -->
+    <div>
+      <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:800;text-transform:uppercase;margin-bottom:16px;">
+        🏆 Game of the Day Editor
+      </h2>
+      <div class="guestbook-form" style="padding:24px;">
+
+        <div class="form-row">
+          <label class="form-label">Sport</label>
+          <select class="form-select" id="a-sport" onchange="updatePreview()">
+            <option value="NFL">🏈 NFL Football</option>
+            <option value="NBA">🏀 NBA Basketball</option>
+            <option value="MLB">⚾ MLB Baseball</option>
+            <option value="NHL">🏒 NHL Hockey</option>
+            <option value="CFB">🏈 College Football</option>
+            <option value="CBB">🏀 College Basketball</option>
+            <option value="MLS">⚽ Soccer / MLS</option>
+            <option value="PGA">⛳ PGA Golf</option>
+            <option value="UFC">🥊 UFC / MMA</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label class="form-label">Matchup</label>
+          <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;">
+            <input class="form-input" id="a-team1" placeholder="Team 1 / Home" oninput="updatePreview()">
+            <span style="text-align:center;font-family:var(--font-display);font-weight:800;color:var(--muted);font-size:0.9rem;">VS</span>
+            <input class="form-input" id="a-team2" placeholder="Team 2 / Away" oninput="updatePreview()">
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-row">
+            <label class="form-label">Your Pick / Selection</label>
+            <input class="form-input" id="a-pick" placeholder="Chiefs -3.5" oninput="updatePreview()">
+          </div>
+          <div class="form-row">
+            <label class="form-label">Line / Odds</label>
+            <input class="form-input" id="a-line" placeholder="-3.5 (-110)" oninput="updatePreview()">
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-row">
+            <label class="form-label">Game Time</label>
+            <input class="form-input" id="a-tipoff" placeholder="Sunday 4:25 PM ET" oninput="updatePreview()">
+          </div>
+          <div class="form-row">
+            <label class="form-label">Confidence (1–5)</label>
+            <div style="display:flex;gap:6px;padding-top:4px;" id="conf-btns">
+              <button class="conf-dot on" onclick="setConf(1)">1</button>
+              <button class="conf-dot on" onclick="setConf(2)">2</button>
+              <button class="conf-dot on" onclick="setConf(3)">3</button>
+              <button class="conf-dot on" onclick="setConf(4)">4</button>
+              <button class="conf-dot off" onclick="setConf(5)">5</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label class="form-label">Analysis <span style="color:var(--muted);font-size:0.75em;">(shown on site + emailed to members)</span></label>
+          <textarea class="form-textarea" id="a-analysis" placeholder="e.g. KC covers at home. Ravens secondary banged up. Sharp money moving KC since open..." oninput="updatePreview()"></textarea>
+        </div>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <button class="btn-primary" onclick="savePick()">💾 Save &amp; Go Live</button>
+          <button class="btn-secondary" onclick="clearForm()" style="padding:10px 20px;font-size:0.9rem;">Clear</button>
+        </div>
+
+        <div id="save-success" style="display:none;background:rgba(0,230,118,0.1);border:1px solid var(--green);color:var(--green);border-radius:6px;padding:12px 16px;margin-top:12px;font-size:0.88rem;">
+          ✅ Pick saved and live on the homepage! Email system updated.
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: PREVIEW + HISTORY -->
+    <div>
+      <!-- PREVIEW -->
+      <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:800;text-transform:uppercase;margin-bottom:16px;">
+        👁️ Live Preview
+      </h2>
+      <div class="pick-card" id="preview-card" style="margin-bottom:24px;border-color:var(--green);">
+        <div class="pick-sport" id="pv-sport" style="color:var(--green);">NFL</div>
+        <div class="pick-matchup" id="pv-matchup">Team 1 vs Team 2</div>
+        <div class="pick-line" id="pv-line">Line: — · Time: —</div>
+        <div class="pick-recommendation" id="pv-pick">✅ <strong>Your pick here</strong></div>
+        <p id="pv-analysis" style="font-size:0.82rem;color:var(--muted);margin-bottom:12px;font-style:italic;">Analysis will appear here...</p>
+        <div class="pick-confidence">
+          <div class="confidence-dots" id="pv-dots">
+            <span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span>
+          </div>
+          <span id="pv-conf-label">Confidence 4/5</span>
+        </div>
+      </div>
+
+      <!-- PICK HISTORY / RESULTS -->
+      <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:800;text-transform:uppercase;margin-bottom:16px;">
+        📊 Pick History &amp; Results
+      </h2>
+      <div class="guestbook-form" style="padding:0;overflow:hidden;">
+        <div style="padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
+          <span style="font-family:var(--font-mono);font-size:0.72rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;">Log Results</span>
+          <button onclick="addManualResult()" style="font-family:var(--font-display);font-size:0.8rem;font-weight:700;text-transform:uppercase;padding:6px 12px;border-radius:4px;border:1px solid var(--border);background:none;color:var(--muted);cursor:pointer;">+ Add Manual</button>
+        </div>
+        <div id="history-list" style="max-height:320px;overflow-y:auto;"></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /admin-dashboard -->
+</div>
+</main>
+
+<style>
+.conf-dot {
+  width:30px;height:30px;border-radius:50%;border:1px solid var(--border);
+  background:var(--navy-light);color:var(--muted);font-family:var(--font-display);
+  font-size:0.85rem;font-weight:700;cursor:pointer;transition:0.15s;
+}
+.conf-dot.on { background:var(--green);border-color:var(--green);color:var(--navy); }
+.conf-dot.off { background:var(--navy-light);border-color:var(--border);color:var(--muted); }
+.stat-box {
+  background:var(--navy-mid);border:1px solid var(--border);border-radius:6px;padding:16px;text-align:center;
+}
+.stat-box .num { font-family:var(--font-display);font-size:2rem;font-weight:900;color:var(--green); }
+.stat-box .lbl { font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-top:4px; }
+.hist-row {
+  display:flex;align-items:center;gap:10px;padding:10px 20px;border-bottom:1px solid var(--border);font-size:0.85rem;
+}
+.hist-row:last-child { border-bottom:none; }
+.hist-date { font-family:var(--font-mono);font-size:0.72rem;color:var(--muted);min-width:60px; }
+.hist-matchup { flex:1;font-weight:600;color:var(--white); }
+.hist-pick { font-size:0.78rem;color:var(--muted); }
+.result-sel {
+  font-size:0.78rem;padding:4px 8px;border-radius:4px;border:1px solid var(--border);
+  background:var(--navy);color:var(--white);cursor:pointer;font-family:var(--font-body);
+}
+</style>
+
+<script>
+// ── CONFIG — change this password ──
+const ADMIN_PASSWORD = 'picks2024';
+const PICK_KEY  = 'fsp_admin_pick_v1';
+const HIST_KEY  = 'fsp_pick_history_v1';
+let currentConf = 4;
+
+// ── AUTH ──
+function adminLogin() {
+  const pw = document.getElementById('admin-pw').value;
+  if (pw === ADMIN_PASSWORD) {
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('admin-dashboard').style.display = 'block';
+    document.getElementById('admin-user-badge').style.display = 'inline';
+    loadCurrentPick();
+    renderHistory();
+    renderStats();
+  } else {
+    document.getElementById('pw-error').style.display = 'block';
+    setTimeout(() => document.getElementById('pw-error').style.display = 'none', 2500);
+  }
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && document.getElementById('admin-pw') === document.activeElement) adminLogin();
+});
+function adminLogout() {
+  document.getElementById('admin-dashboard').style.display = 'none';
+  document.getElementById('login-screen').style.display = 'block';
+  document.getElementById('admin-pw').value = '';
+}
+
+// ── CONFIDENCE ──
+function setConf(n) {
+  currentConf = n;
+  document.querySelectorAll('.conf-dot').forEach((b, i) => {
+    b.className = 'conf-dot ' + (i < n ? 'on' : 'off');
+  });
+  updatePreview();
+}
+
+// ── PREVIEW ──
+function updatePreview() {
+  const sport    = document.getElementById('a-sport')?.value || 'NFL';
+  const t1       = document.getElementById('a-team1')?.value?.trim() || 'Team 1';
+  const t2       = document.getElementById('a-team2')?.value?.trim() || 'Team 2';
+  const pick     = document.getElementById('a-pick')?.value?.trim() || 'Your pick here';
+  const line     = document.getElementById('a-line')?.value?.trim() || '—';
+  const tipoff   = document.getElementById('a-tipoff')?.value?.trim() || '—';
+  const analysis = document.getElementById('a-analysis')?.value?.trim() || '';
+
+  document.getElementById('pv-sport').textContent = sport;
+  document.getElementById('pv-matchup').textContent = t1 + ' vs ' + t2;
+  document.getElementById('pv-line').textContent = 'Line: ' + line + ' · ' + tipoff;
+  document.getElementById('pv-pick').innerHTML = '✅ <strong>' + pick + '</strong>';
+  const el = document.getElementById('pv-analysis');
+  el.textContent = analysis || 'Analysis will appear here...';
+  el.style.fontStyle = analysis ? 'normal' : 'italic';
+
+  const dots = [1,2,3,4,5].map(i =>
+    `<span class="dot ${i <= currentConf ? 'filled' : ''}"></span>`).join('');
+  document.getElementById('pv-dots').innerHTML = dots;
+  document.getElementById('pv-conf-label').textContent = 'Confidence ' + currentConf + '/5';
+}
+
+// ── SAVE PICK ──
+function savePick() {
+  const t1 = document.getElementById('a-team1')?.value?.trim();
+  const t2 = document.getElementById('a-team2')?.value?.trim();
+  const pick = document.getElementById('a-pick')?.value?.trim();
+  if (!t1 || !t2 || !pick) {
+    alert('Please fill in Team 1, Team 2, and Your Pick at minimum.');
+    return;
+  }
+  const entry = {
+    sport:      document.getElementById('a-sport')?.value || 'NFL',
+    team1:      t1, team2: t2,
+    matchup:    t1 + ' vs ' + t2,
+    pick,
+    line:       document.getElementById('a-line')?.value?.trim() || '',
+    tipoff:     document.getElementById('a-tipoff')?.value?.trim() || '',
+    analysis:   document.getElementById('a-analysis')?.value?.trim() || '',
+    confidence: currentConf,
+    savedAt:    new Date().toISOString(),
+    date:       new Date().toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' }),
+    dateKey:    new Date().toISOString().split('T')[0],
+  };
+
+  // Save as current pick (homepage + email system reads this)
+  localStorage.setItem(PICK_KEY, JSON.stringify(entry));
+
+  // Add to history
+  const hist = JSON.parse(localStorage.getItem(HIST_KEY) || '[]');
+  const idx  = hist.findIndex(h => h.dateKey === entry.dateKey);
+  if (idx >= 0) hist[idx] = { ...entry, result: hist[idx].result || 'pending' };
+  else hist.unshift({ ...entry, result: 'pending' });
+  localStorage.setItem(HIST_KEY, JSON.stringify(hist.slice(0, 90)));
+
+  const suc = document.getElementById('save-success');
+  suc.style.display = 'block';
+  setTimeout(() => suc.style.display = 'none', 5000);
+  renderHistory();
+  renderStats();
+  document.getElementById('live-status').textContent = '● SAVED ' + new Date().toLocaleTimeString();
+  setTimeout(() => document.getElementById('live-status').textContent = '● LIVE', 6000);
+}
+
+// ── LOAD CURRENT PICK INTO FORM ──
+function loadCurrentPick() {
+  const raw = localStorage.getItem(PICK_KEY);
+  if (!raw) return;
+  const p = JSON.parse(raw);
+  const set = (id, v) => { const el = document.getElementById(id); if (el) el.value = v || ''; };
+  set('a-team1',   p.team1);
+  set('a-team2',   p.team2);
+  set('a-pick',    p.pick);
+  set('a-line',    p.line);
+  set('a-tipoff',  p.tipoff);
+  set('a-analysis',p.analysis);
+  if (p.sport) {
+    const sel = document.getElementById('a-sport');
+    if (sel) [...sel.options].forEach(o => o.selected = o.value === p.sport);
+  }
+  setConf(p.confidence || 4);
+  updatePreview();
+}
+
+// ── CLEAR FORM ──
+function clearForm() {
+  ['a-team1','a-team2','a-pick','a-line','a-tipoff','a-analysis'].forEach(id => {
+    const el = document.getElementById(id); if (el) el.value = '';
+  });
+  setConf(4);
+  updatePreview();
+}
+
+// ── HISTORY ──
+function renderHistory() {
+  const hist = JSON.parse(localStorage.getItem(HIST_KEY) || '[]');
+  const el   = document.getElementById('history-list');
+  if (!hist.length) {
+    el.innerHTML = '<div style="padding:24px;text-align:center;color:var(--muted);font-size:0.85rem;">No picks logged yet. Save your first pick above.</div>';
+    return;
+  }
+  el.innerHTML = hist.map((h, i) => `
+    <div class="hist-row">
+      <span class="hist-date">${h.date || '—'}</span>
+      <div style="flex:1;">
+        <div class="hist-matchup">${h.matchup || '—'}</div>
+        <div class="hist-pick">${h.sport || ''} · ${h.pick || ''} · ${h.line || ''}</div>
+      </div>
+      <select class="result-sel" onchange="setResult(${i}, this.value)">
+        <option value="pending" ${h.result==='pending'?'selected':''}>Pending</option>
+        <option value="win"     ${h.result==='win'    ?'selected':''}>✅ Win</option>
+        <option value="loss"    ${h.result==='loss'   ?'selected':''}>❌ Loss</option>
+        <option value="push"    ${h.result==='push'   ?'selected':''}>➡️ Push</option>
+      </select>
+    </div>`).join('');
+}
+
+function setResult(idx, result) {
+  const hist = JSON.parse(localStorage.getItem(HIST_KEY) || '[]');
+  if (hist[idx]) hist[idx].result = result;
+  localStorage.setItem(HIST_KEY, JSON.stringify(hist));
+  renderStats();
+}
+
+function addManualResult() {
+  const hist = JSON.parse(localStorage.getItem(HIST_KEY) || '[]');
+  hist.unshift({
+    matchup: 'Manual entry', sport: 'NFL', pick: 'Edit this',
+    line: '', date: new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}),
+    dateKey: new Date().toISOString().split('T')[0], result: 'pending'
+  });
+  localStorage.setItem(HIST_KEY, JSON.stringify(hist));
+  renderHistory(); renderStats();
+}
+
+// ── STATS ──
+function renderStats() {
+  const hist = JSON.parse(localStorage.getItem(HIST_KEY) || '[]');
+  const settled = hist.filter(h => h.result !== 'pending');
+  const wins    = settled.filter(h => h.result === 'win').length;
+  const losses  = settled.filter(h => h.result === 'loss').length;
+  const pushes  = settled.filter(h => h.result === 'push').length;
+  const pct     = (wins + losses) > 0 ? Math.round(wins / (wins + losses) * 100) : null;
+
+  document.getElementById('stats-row').innerHTML = [
+    { num: hist.length,                       lbl: 'Total Picks' },
+    { num: pct !== null ? pct + '%' : '—',   lbl: 'Win Rate (ATS)' },
+    { num: wins + '-' + losses + '-' + pushes, lbl: 'W · L · P' },
+    { num: settled.length,                    lbl: 'Settled Picks' },
+  ].map(s => `<div class="stat-box"><div class="num">${s.num}</div><div class="lbl">${s.lbl}</div></div>`).join('');
+}
+
+updatePreview();
+</script>
+
+</body>
+</html>

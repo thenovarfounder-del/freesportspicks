@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sports Betting Blog — Free Picks Tips & Strategies | FreeSportsPicks.pro</title>
+  <meta name="description" content="Expert sports betting strategies, NFL picks guides, NBA betting tips, and free handicapper analysis. Updated daily by professional bettors at FreeSportsPicks.pro.">
+  <meta name="keywords" content="sports betting blog, NFL picks strategy, sports betting tips, how to bet on sports, free picks analysis, handicapper blog">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://www.freesportspicks.pro/blog/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Sports Betting Blog — FreeSportsPicks.pro">
+  <meta property="og:description" content="Daily sports betting strategies, NFL picks guides, and expert handicapper analysis. All free.">
+  <meta property="og:url" content="https://www.freesportspicks.pro/blog/">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "FreeSportsPicks.pro Sports Betting Blog",
+    "url": "https://www.freesportspicks.pro/blog/",
+    "description": "Expert sports betting strategies, NFL picks guides, and free handicapper analysis updated daily.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "FreeSportsPicks.pro",
+      "url": "https://www.freesportspicks.pro"
+    }
+  }
+  </script>
+  <link rel="stylesheet" href="../css/main.css">
+  <style>
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .blog-card {
+      background: var(--navy-mid);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: border-color 0.2s, transform 0.15s;
+      text-decoration: none;
+      color: var(--white);
+    }
+    .blog-card:hover { border-color: var(--green); transform: translateY(-2px); text-decoration: none; }
+    .blog-tag {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--green);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .blog-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      line-height: 1.2;
+      letter-spacing: 0.01em;
+    }
+    .blog-excerpt {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+      flex: 1;
+    }
+    .blog-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    .blog-read-more {
+      color: var(--green);
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .filter-bar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+      max-width: var(--max-w);
+    }
+    .filter-btn {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 6px 14px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: none;
+      color: var(--muted);
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      border-color: var(--green);
+      color: var(--green);
+    }
+    .blog-featured {
+      background: linear-gradient(135deg, var(--navy-mid), #0D2A1A);
+      border: 2px solid var(--green);
+      border-radius: var(--radius);
+      padding: 32px;
+      margin-bottom: 32px;
+      max-width: var(--max-w);
+      position: relative;
+      overflow: hidden;
+    }
+    .blog-featured::before {
+      content: 'LATEST POST';
+      position: absolute;
+      top: 16px; right: 16px;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--green);
+      letter-spacing: 0.15em;
+      background: rgba(0,230,118,0.1);
+      padding: 4px 10px;
+      border-radius: 4px;
+      border: 1px solid rgba(0,230,118,0.3);
+    }
+    .empty-blog {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--muted);
+    }
+    .empty-blog h3 {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    @media (max-width: 768px) {
+      .blog-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header id="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="site-logo">Free<span>SportsPicks</span>.pro</a>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/picks/nfl-picks/">NFL Picks</a>
+      <a href="/picks/best-bets-today/">Best Bets</a>
+      <a href="/blog/" class="active">Blog</a>
+      <a href="/guestbook.html" class="nav-cta">Get Free Pick</a>
+    </nav>
+    <button class="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="main-content">
+
+  <section class="kw-hero">
+    <div class="kw-hero-inner">
+      <nav class="kw-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> › Blog
+      </nav>
+      <h1>Sports Betting <span style="color:var(--green)">Blog</span></h1>
+      <p class="kw-hero-desc">Expert NFL picks strategy, NBA betting guides, bankroll management tips, and daily sports betting analysis. Written by professional handicappers — 100% free.</p>
+      <div class="kw-meta">
+        <div class="kw-meta-item">✍️ <strong>AI-Powered</strong> Daily Posts</div>
+        <div class="kw-meta-item">📊 <strong>Expert</strong> Analysis</div>
+        <div class="kw-meta-item">🆓 <strong>Always</strong> Free</div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding: 40px var(--gutter) 60px;">
+
+    <!-- FEATURED POST -->
+    <div id="featured-post" style="display:none;">
+      <!-- populated by JS -->
+    </div>
+
+    <!-- FILTER BAR -->
+    <div class="filter-bar" id="filter-bar" role="toolbar" aria-label="Filter by sport">
+      <button class="filter-btn active" onclick="filterPosts('all', this)">All Posts</button>
+      <button class="filter-btn" onclick="filterPosts('NFL', this)">🏈 NFL</button>
+      <button class="filter-btn" onclick="filterPosts('NBA', this)">🏀 NBA</button>
+      <button class="filter-btn" onclick="filterPosts('MLB', this)">⚾ MLB</button>
+      <button class="filter-btn" onclick="filterPosts('NHL', this)">🏒 NHL</button>
+      <button class="filter-btn" onclick="filterPosts('General', this)">🎯 Strategy</button>
+      <button class="filter-btn" onclick="filterPosts('CFB', this)">🏈 CFB</button>
+    </div>
+
+    <!-- BLOG GRID -->
+    <div class="blog-grid" id="blog-grid" role="list"></div>
+
+    <!-- EMPTY STATE -->
+    <div id="blog-empty" class="empty-blog" style="display:none;">
+      <div style="font-size:3rem;margin-bottom:12px;">✍️</div>
+      <h3>First Post Coming Soon</h3>
+      <p style="max-width:400px;margin:0 auto 24px;">Our AI blog system is ready. Go to the admin panel and click "Generate Today's Post" to publish your first article.</p>
+      <a href="/admin.html" class="btn-primary">Open Admin Panel →</a>
+    </div>
+
+  </section>
+
+</main>
+
+<div class="container">
+  <div class="disclaimer">⚠️ <strong>Disclaimer:</strong> FreeSportsPicks.pro is for entertainment only. Bet responsibly.</div>
+</div>
+
+<footer role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="site-logo">Free<span>SportsPicks</span>.pro</a>
+        <p>Expert free sports picks and daily betting strategy blog. NFL, NBA, MLB, NHL, and more.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Top Picks</h4>
+        <a href="/picks/nfl-picks/">NFL Picks</a>
+        <a href="/picks/nba-picks/">NBA Picks</a>
+        <a href="/picks/best-bets-today/">Best Bets Today</a>
+        <a href="/picks/parlay-picks/">Parlay Picks</a>
+      </div>
+      <div class="footer-col">
+        <h4>Blog Topics</h4>
+        <a href="/blog/?filter=NFL">NFL Strategy</a>
+        <a href="/blog/?filter=General">Betting Basics</a>
+        <a href="/blog/?filter=NBA">NBA Betting</a>
+        <a href="/blog/?filter=MLB">MLB Betting</a>
+      </div>
+      <div class="footer-col">
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        <a href="/guestbook.html">Guestbook</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024–2026 FreeSportsPicks.pro</span>
+      <span><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script>
+const BLOG_KEY = 'fsp_blog_posts_v1';
+let allPosts = [];
+
+function loadPosts() {
+  try { return JSON.parse(localStorage.getItem(BLOG_KEY) || '[]'); }
+  catch { return []; }
+}
+
+function sportEmoji(sport) {
+  const m = { NFL:'🏈', NBA:'🏀', MLB:'⚾', NHL:'🏒', CFB:'🏈', CBB:'🏀', General:'🎯', MMA:'🥊', PGA:'⛳' };
+  return m[sport] || '🎯';
+}
+
+function renderPosts(posts) {
+  const grid = document.getElementById('blog-grid');
+  const empty = document.getElementById('blog-empty');
+  const featured = document.getElementById('featured-post');
+
+  if (!posts.length) {
+    grid.innerHTML = '';
+    empty.style.display = 'block';
+    if (featured) featured.style.display = 'none';
+    return;
+  }
+  empty.style.display = 'none';
+
+  // Featured = most recent
+  const [first, ...rest] = posts;
+  if (featured && allPosts[0] && posts[0].slug === allPosts[0].slug) {
+    featured.style.display = 'block';
+    featured.innerHTML = `
+      <a href="/blog/${first.slug}/" class="blog-featured" style="display:block;text-decoration:none;color:var(--white);">
+        <div class="blog-tag" style="margin-bottom:10px;">${sportEmoji(first.sport)} ${first.sport} · ${first.readTime || '8'} min read</div>
+        <h2 style="font-family:var(--font-display);font-size:clamp(1.4rem,3vw,2rem);font-weight:900;text-transform:uppercase;margin-bottom:12px;line-height:1.1;">${first.title}</h2>
+        <p style="color:rgba(240,244,255,0.75);font-size:0.95rem;line-height:1.7;max-width:680px;margin-bottom:16px;">${first.excerpt}</p>
+        <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+          <span style="font-family:var(--font-mono);font-size:0.72rem;color:var(--muted);">${formatDate(first.publishedAt)}</span>
+          <span class="blog-read-more">Read Full Article →</span>
+        </div>
+      </a>`;
+  } else {
+    featured.style.display = 'none';
+  }
+
+  const toRender = featured.style.display !== 'none' ? rest : posts;
+  grid.innerHTML = toRender.map(p => `
+    <a href="/blog/${p.slug}/" class="blog-card" role="listitem">
+      <div class="blog-tag">${sportEmoji(p.sport)} ${p.sport}</div>
+      <div class="blog-title">${p.title}</div>
+      <div class="blog-excerpt">${p.excerpt}</div>
+      <div class="blog-meta">
+        <span>${formatDate(p.publishedAt)}</span>
+        <span>${p.readTime || '8'} min read</span>
+      </div>
+      <div class="blog-read-more">Read More →</div>
+    </a>`).join('');
+}
+
+function filterPosts(sport, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const filtered = sport === 'all' ? allPosts : allPosts.filter(p => p.sport === sport);
+  renderPosts(filtered);
+}
+
+function formatDate(iso) {
+  if (!iso) return '';
+  return new Date(iso).toLocaleDateString('en-US', { month:'long', day:'numeric', year:'numeric' });
+}
+
+// Handle URL filter param
+function applyURLFilter() {
+  const params = new URLSearchParams(window.location.search);
+  const filter = params.get('filter');
+  if (filter) {
+    const btn = [...document.querySelectorAll('.filter-btn')].find(b => b.textContent.includes(filter));
+    if (btn) filterPosts(filter, btn);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  allPosts = loadPosts();
+  renderPosts(allPosts);
+  applyURLFilter();
+});
+</script>
+</body>
+</html>
