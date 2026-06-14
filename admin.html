@@ -138,10 +138,6 @@
             <input id="f-time" class="admin-input" type="text" placeholder="e.g. 8:20 PM ET">
           </div>
           <div class="admin-field">
-            <label class="admin-label">Our Pick * (shown after signup)</label>
-            <input id="f-pick" class="admin-input" type="text" placeholder="e.g. Ravens +3.5">
-          </div>
-          <div class="admin-field">
             <label class="admin-label">Spread / Line</label>
             <input id="f-spread" class="admin-input" type="text" placeholder="e.g. Ravens +3.5 (-110)">
           </div>
@@ -269,12 +265,12 @@ async function saveGame() {
   const team2 = document.getElementById('f-team2').value.trim();
   const sport = document.getElementById('f-sport').value;
   const game_time = document.getElementById('f-time').value.trim();
-  const our_pick = document.getElementById('f-pick').value.trim();
+  const our_pick = '';
   const spread = document.getElementById('f-spread').value.trim();
   const analysis = document.getElementById('f-analysis').value.trim();
 
-  if (!team1 || !team2 || !our_pick) {
-    showStatus('game-status', 'Please fill in Home Team, Away Team, and Our Pick.', false);
+  if (!team1 || !team2) {
+    showStatus('game-status', 'Please fill in Home Team and Away Team.', false);
     return;
   }
 

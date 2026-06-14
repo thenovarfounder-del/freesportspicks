@@ -296,28 +296,17 @@ loadGameOfDay();
 async function submitSignup() {
   const name = document.getElementById('sp-name').value.trim();
   const email = document.getElementById('sp-email').value.trim();
-  const city = document.getElementById('sp-city').value.trim();
   const phone = document.getElementById('sp-phone') ? document.getElementById('sp-phone').value.trim() : '';
-  const sport = document.getElementById('sp-sport').value;
+  const city = document.getElementById('sp-city') ? document.getElementById('sp-city').value.trim() : '';
+  const sport = document.getElementById('sp-sport') ? document.getElementById('sp-sport').value : '';
 
   if (!name || !email) {
     alert('Please enter your name and email.');
     return;
   }
 
-  // Get today's game
-  let gameOfDay = '';
   try {
-    const res = await fetch('https://ehjhsbrcbtqcvmgzjzkm.supabase.co/rest/v1/game_of_day?order=created_at.desc&limit=1', {
-      headers: { 'apikey': 'sb_secret_B9AG8VXwdsj5D5SK7Ebn6g_KRLgiHOZ', 'Authorization': 'Bearer sb_secret_B9AG8VXwdsj5D5SK7Ebn6g_KRLgiHOZ' }
-    });
-    const data = await res.json();
-    if (data && data.length > 0) gameOfDay = data[0].our_pick || '';
-  } catch(e) {}
-
-  // Save to Supabase
-  try {
-    await fetch('https://ehjhsbrcbtqcvmgzjzkm.supabase.co/rest/v1/sportspicks_leads', {
+    const res = await fetch('https://ehjhsbrcbtqcvmgzjzkm.supabase.co/rest/v1/sportspicks_leads', {
       method: 'POST',
       headers: {
         'apikey': 'sb_secret_B9AG8VXwdsj5D5SK7Ebn6g_KRLgiHOZ',
@@ -325,21 +314,23 @@ async function submitSignup() {
         'Content-Type': 'application/json',
         'Prefer': 'return=minimal'
       },
-      body: JSON.stringify({ name, email, city, favorite_sport: sport, game_of_day: gameOfDay, source: 'homepage', message: phone })
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        city: city,
+        favorite_sport: sport,
+        message: phone,
+        source: 'homepage'
+      })
     });
+    console.log('Saved:', res.status);
   } catch(e) {
     console.log('Save error:', e);
   }
 
-  // Unblur the pick
-  const pickBlur = document.getElementById('gotd-pick-blur');
-  if (pickBlur) pickBlur.style.filter = 'none';
-
   // Show success
   document.getElementById('signup-form-wrap').style.display = 'none';
   document.getElementById('signup-success').style.display = 'block';
-
-  // Pick reveal handled by static message above
 }
 </script>
 
