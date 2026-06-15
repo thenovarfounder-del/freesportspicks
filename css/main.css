@@ -35,7 +35,7 @@ li { color: #A0A0A0; line-height: 1.7; margin-bottom: 8px; font-size: 15px; }
 
 /* NAV */
 .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(10,10,10,0.97); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(201,168,76,0.2); }
-.nav-container { max-width: 1200px; margin: 0 auto; padding: 0 48px; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.nav-container { max-width: 1200px; margin: 0 auto; padding: 0 48px; display: flex; align-items: center; justify-content: space-between; height: 100px; min-height: 100px; }
 .nav-logo { font-family: var(--font-display); font-size: 20px; color: var(--white); text-decoration: none; display: flex; align-items: center; gap: 8px; }
 .logo-icon { font-size: 22px; }
 .logo-pro { color: var(--gold); }
