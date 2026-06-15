@@ -356,5 +356,23 @@ document.addEventListener('DOMContentLoaded', () => {
   loadPost();
 });
 </script>
+<script>
+(function() {
+  var ham = document.getElementById('hamburger');
+  var nav = document.getElementById('mobileNav');
+  if (!ham || !nav) return;
+  ham.addEventListener('click', function(e) {
+    e.stopPropagation();
+    ham.classList.toggle('open');
+    nav.classList.toggle('open');
+  });
+  document.addEventListener('click', function(e) {
+    if (nav.classList.contains('open') && !nav.contains(e.target) && !ham.contains(e.target)) {
+      ham.classList.remove('open');
+      nav.classList.remove('open');
+    }
+  });
+})();
+</script>
 </body>
 </html>
