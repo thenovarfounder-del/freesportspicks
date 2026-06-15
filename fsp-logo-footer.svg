@@ -17,9 +17,9 @@
 <text x="5" y="75" font-family="Georgia,serif" font-size="72" font-weight="700" fill="url(#flg1)">F</text>
 <text x="54" y="78" font-family="Georgia,serif" font-size="78" font-weight="700" fill="url(#flg2)">S</text>
 <text x="108" y="75" font-family="Georgia,serif" font-size="72" font-weight="700" fill="url(#flg1)">P</text>
-<line x1="168" y1="12" x2="168" y2="82" stroke="#C9A84C" stroke-width="1" opacity="0.4"/>
-<text x="180" y="38" font-family="Palatino Linotype,Palatino,Georgia,serif" font-size="17" font-weight="700" fill="#C9A84C" letter-spacing="1">FreeSportsPicks.pro</text>
-<line x1="180" y1="48" x2="328" y2="48" stroke="#C9A84C" stroke-width="0.6" opacity="0.5"/>
-<text x="180" y="64" font-family="Palatino Linotype,Palatino,Georgia,serif" font-size="13" font-style="italic" fill="#C9A84C" opacity="0.8" letter-spacing="0.5">The Edge. The Analysis. The Win.</text>
-<text x="180" y="80" font-family="Arial,sans-serif" font-size="9" fill="#C9A84C" opacity="0.5" letter-spacing="3">PROFESSIONAL HANDICAPPING</text>
+<line x1="168" y1="12" x2="168" y2="82" stroke="#B87333" stroke-width="1" opacity="0.5"/>
+<text x="180" y="30" font-family="Georgia,serif" font-size="11" font-weight="400" fill="#DA8A3D" letter-spacing="5">FREE SPORTS PICKS</text>
+<rect x="180" y="36" width="148" height="1.5" fill="#B87333" opacity="0.5" rx="1"/>
+<text x="180" y="62" font-family="Georgia,serif" font-size="24" font-weight="700" fill="#FFFFFF" letter-spacing="-0.5">FreeSportsPicks<tspan fill="#FFFFFF">.pro</tspan></text>
+<text x="180" y="80" font-family="Georgia,serif" font-size="11" font-style="italic" fill="#DA8A3D" letter-spacing="0.3">The Edge. The Analysis. The Win.</text>
 </svg>
