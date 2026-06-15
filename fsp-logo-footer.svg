@@ -1,22 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="330" height="90" viewBox="0 0 220 60">
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="60" viewBox="0 0 220 60">
 <defs>
-  <linearGradient id="lg1" x1="0%" y1="0%" x2="100%" y2="100%">
+  <linearGradient id="flg1" x1="0%" y1="0%" x2="100%" y2="100%">
     <stop offset="0%" stop-color="#E8C97A"/>
     <stop offset="50%" stop-color="#C9A84C"/>
     <stop offset="100%" stop-color="#7A5C0A"/>
   </linearGradient>
-  <linearGradient id="lg2" x1="0%" y1="0%" x2="100%" y2="100%">
+  <linearGradient id="flg2" x1="0%" y1="0%" x2="100%" y2="100%">
     <stop offset="0%" stop-color="#DA8A3D"/>
     <stop offset="100%" stop-color="#7A3D0A"/>
   </linearGradient>
 </defs>
-<polygon points="26,4 22,11 18,7 20,13 26,11 32,13 34,7 30,11" fill="url(#lg1)" opacity="0.95"/>
+<polygon points="26,4 22,11 18,7 20,13 26,11 32,13 34,7 30,11" fill="url(#flg1)" opacity="0.95"/>
 <circle cx="26" cy="3" r="1.8" fill="#E8C97A"/>
 <circle cx="18" cy="7" r="1.2" fill="#C9A84C"/>
 <circle cx="34" cy="7" r="1.2" fill="#C9A84C"/>
-<text x="4" y="44" font-family="Georgia,serif" font-size="46" font-weight="700" fill="url(#lg1)">F</text>
-<text x="37" y="46" font-family="Georgia,serif" font-size="50" font-weight="700" fill="url(#lg2)">S</text>
-<text x="72" y="44" font-family="Georgia,serif" font-size="46" font-weight="700" fill="url(#lg1)">P</text>
+<text x="4" y="44" font-family="Georgia,serif" font-size="46" font-weight="700" fill="url(#flg1)">F</text>
+<text x="37" y="46" font-family="Georgia,serif" font-size="50" font-weight="700" fill="url(#flg2)">S</text>
+<text x="72" y="44" font-family="Georgia,serif" font-size="46" font-weight="700" fill="url(#flg1)">P</text>
 <line x1="112" y1="16" x2="112" y2="50" stroke="#C9A84C" stroke-width="0.8" opacity="0.5"/>
 <text x="120" y="27" font-family="Palatino Linotype,Palatino,Georgia,serif" font-size="9" font-weight="400" fill="#C9A84C" letter-spacing="2">FREE SPORTS PICKS</text>
 <line x1="120" y1="33" x2="215" y2="33" stroke="#C9A84C" stroke-width="0.4" opacity="0.5"/>
