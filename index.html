@@ -712,5 +712,34 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script>
+
+<section id="sign-in" style="padding:80px 0;background:var(--navy-light)">
+  <div class="container" style="max-width:600px;margin:0 auto;text-align:center">
+    <div style="font-family:var(--font-display);font-size:11px;letter-spacing:3px;color:var(--amber);text-transform:uppercase;margin-bottom:12px">Get Free Picks</div>
+    <h2 style="font-family:var(--font-display);font-size:clamp(28px,4vw,42px);font-weight:900;text-transform:uppercase;margin-bottom:12px">Sign Up For Free Picks</h2>
+    <p style="color:var(--muted);margin-bottom:32px">Get today's expert pick delivered straight to your inbox. Free forever.</p>
+    <form action="https://formsubmit.co/thenovar.founder@gmail.com" method="POST" style="display:flex;flex-direction:column;gap:16px">
+      <input type="hidden" name="_subject" value="New FreeSportsPicks Signup!">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="name" placeholder="Your Name" required style="width:100%;padding:14px 18px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);border-radius:8px;color:#fff;font-size:15px;outline:none">
+      <input type="email" name="email" placeholder="Your Email" required style="width:100%;padding:14px 18px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);border-radius:8px;color:#fff;font-size:15px;outline:none">
+      <select name="sport" style="width:100%;padding:14px 18px;background:#1a2535;border:1px solid rgba(255,255,255,0.15);border-radius:8px;color:#fff;font-size:15px;outline:none">
+        <option value="">Favorite Sport (optional)</option>
+        <option value="NFL">NFL Football</option>
+        <option value="NBA">NBA Basketball</option>
+        <option value="MLB">MLB Baseball</option>
+        <option value="NHL">NHL Hockey</option>
+        <option value="CFB">College Football</option>
+        <option value="CBB">College Basketball</option>
+        <option value="Soccer">Soccer</option>
+        <option value="MMA">MMA/UFC</option>
+      </select>
+      <input type="text" name="favorite_team" placeholder="Favorite Team (optional)" style="width:100%;padding:14px 18px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);border-radius:8px;color:#fff;font-size:15px;outline:none">
+      <button type="submit" style="width:100%;padding:16px;background:var(--amber);color:#000;border:none;border-radius:8px;font-family:var(--font-display);font-size:16px;font-weight:900;text-transform:uppercase;cursor:pointer;letter-spacing:1px">Get My Free Pick Now</button>
+      <p style="font-size:12px;color:var(--muted)">No spam ever. Unsubscribe anytime.</p>
+    </form>
+  </div>
+</section>
 </body>
 </html>

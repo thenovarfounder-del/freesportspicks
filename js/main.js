@@ -60,7 +60,7 @@ function gbAdd(entry) {
 
 async function saveToSupabase(entry) {
   try {
-    const res = await fetch(SUPABASE_URL + '/rest/v1/sports_leads', {
+    const res = await fetch(SUPABASE_URL + '/rest/v1/sportspicks_leads', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
