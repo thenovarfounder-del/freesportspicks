@@ -183,6 +183,16 @@ function initGuestbookForm(formId, formWrapId, listId) {
 
     // Block email
     blockEmail(email);
+    // Send to Formspree
+    try {
+      var fd2 = new FormData();
+      fd2.append('name', entry.name);
+      fd2.append('email', entry.email);
+      fd2.append('sport', entry.favSport || '');
+      fd2.append('team', entry.favTeam || '');
+      fd2.append('message', entry.message || '');
+      fetch('https://formspree.io/f/mkoaavdg', { method: 'POST', body: fd2, headers: { 'Accept': 'application/json' } });
+    } catch(e) {}
 
     // Send email
     await sendThankYouEmail(entry);
