@@ -3,36 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin — FreeSportsPicks.pro</title>
+<title>Admin - FreeSportsPicks.pro</title>
 <meta name="robots" content="noindex,nofollow">
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #F8FAFC; color: #0F172A; }
 .login-wrap { min-height: 100vh; display: flex; align-items: center; justify-content: center; }
 .login-box { background: #fff; border: 1px solid #E2E8F0; border-radius: 12px; padding: 48px; width: 100%; max-width: 400px; text-align: center; }
-.login-icon { font-size: 48px; margin-bottom: 16px; }
-.login-title { font-size: 22px; font-weight: 700; color: #0F172A; margin-bottom: 8px; }
-.login-sub { font-size: 14px; color: #64748B; margin-bottom: 24px; }
 .form-input { width: 100%; padding: 12px 16px; border: 1px solid #E2E8F0; border-radius: 6px; font-size: 14px; outline: none; margin-bottom: 16px; }
 .btn-primary { background: #0EA5E9; color: #fff; border: none; border-radius: 6px; padding: 12px 24px; font-size: 15px; font-weight: 600; cursor: pointer; width: 100%; }
-.btn-primary:hover { background: #0284C7; }
 .container { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
 .dashboard { padding: 32px 0; }
-.dash-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 12px; }
-.dash-title { font-size: 28px; font-weight: 700; color: #0F172A; }
-.dash-sub { font-size: 14px; color: #64748B; margin-top: 4px; }
-.btn-group { display: flex; gap: 10px; flex-wrap: wrap; }
 .btn { padding: 8px 16px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; }
-.btn-refresh { background: #fff; border: 1px solid #E2E8F0; color: #64748B; }
-.btn-print { background: #0EA5E9; color: #fff; }
-.btn-delete-sel { background: #EF4444; color: #fff; }
-.btn-logout { background: none; border: 1px solid #E2E8F0; color: #64748B; }
 .stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-bottom: 24px; }
 .stat-card { background: #fff; border: 1px solid #E2E8F0; border-radius: 8px; padding: 20px; }
 .stat-val { font-size: 28px; font-weight: 700; margin-bottom: 4px; }
 .stat-label { font-size: 13px; color: #64748B; }
 .table-wrap { background: #fff; border: 1px solid #E2E8F0; border-radius: 8px; overflow: hidden; }
-.table-scroll { overflow-x: auto; }
 table { width: 100%; border-collapse: collapse; font-size: 13px; }
 thead tr { background: #F8FAFC; border-bottom: 1px solid #E2E8F0; }
 th { padding: 12px 14px; text-align: left; font-size: 11px; font-weight: 700; color: #64748B; letter-spacing: 1px; text-transform: uppercase; white-space: nowrap; }
@@ -40,51 +27,41 @@ td { padding: 12px 14px; border-bottom: 1px solid #F1F5F9; vertical-align: middl
 tr.selected { background: #EFF6FF !important; }
 tr:nth-child(even) { background: #FAFAFA; }
 .badge { padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; white-space: nowrap; }
-.badge-blue { background: #E0F2FE; color: #0284C7; }
-.badge-green { background: #DCFCE7; color: #16A34A; }
-.badge-purple { background: #F3E8FF; color: #7C3AED; }
-.action-btn { padding: 5px 10px; border-radius: 4px; font-size: 11px; font-weight: 600; cursor: pointer; border: none; }
+.action-btn { padding: 5px 10px; border-radius: 4px; font-size: 11px; font-weight: 600; cursor: pointer; border: none; margin: 0 2px; }
 .btn-print-row { background: #E0F2FE; color: #0284C7; }
 .btn-del-row { background: #FEE2E2; color: #DC2626; }
 .empty { padding: 40px; text-align: center; color: #94A3B8; }
-@media (max-width: 768px) {
-  .stats { grid-template-columns: 1fr 1fr; }
-  .dash-header { flex-direction: column; align-items: flex-start; }
-}
+@media (max-width: 768px) { .stats { grid-template-columns: 1fr 1fr; } }
 </style>
 </head>
 <body>
 
-<!-- LOGIN -->
 <div class="login-wrap" id="loginWrap">
   <div class="login-box">
-    <div class="login-icon">🔐</div>
-    <div class="login-title">Admin Panel</div>
-    <div class="login-sub">FreeSportsPicks.pro</div>
+    <div style="font-size:48px;margin-bottom:16px">&#128274;</div>
+    <div style="font-size:22px;font-weight:700;margin-bottom:8px">Admin Panel</div>
+    <div style="font-size:14px;color:#64748B;margin-bottom:24px">FreeSportsPicks.pro</div>
     <input class="form-input" type="password" id="pwInput" placeholder="Enter password" onkeydown="if(event.key==='Enter')login()">
-    <button class="btn-primary" onclick="login()">Access Admin →</button>
+    <button class="btn-primary" onclick="login()">Access Admin</button>
   </div>
 </div>
 
-<!-- DASHBOARD -->
 <div id="dashWrap" style="display:none">
   <div class="dashboard">
     <div class="container">
-
-      <div class="dash-header">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;flex-wrap:wrap;gap:12px">
         <div>
-          <div class="dash-title">📊 FreeSportsPicks Leads</div>
-          <div class="dash-sub" id="totalCount">Loading...</div>
+          <div style="font-size:28px;font-weight:700">FreeSportsPicks Leads</div>
+          <div style="font-size:14px;color:#64748B;margin-top:4px" id="totalCount">Loading...</div>
         </div>
-        <div class="btn-group">
-          <button class="btn btn-refresh" onclick="loadLeads()">🔄 Refresh</button>
-          <button class="btn btn-print" onclick="printLeads()">🖨️ Print All / Selected</button>
-          <button class="btn btn-delete-sel" id="deleteSelBtn" style="display:none" onclick="deleteSelected()">🗑️ Delete Selected</button>
-          <button class="btn btn-logout" onclick="logout()">Logout</button>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn" style="background:#fff;border:1px solid #E2E8F0;color:#64748B" onclick="loadLeads()">Refresh</button>
+          <button class="btn" style="background:#0EA5E9;color:#fff" onclick="printLeads()">Print All / Selected</button>
+          <button class="btn" style="background:#EF4444;color:#fff;display:none" id="deleteSelBtn" onclick="deleteSelected()">Delete Selected</button>
+          <button class="btn" style="background:none;border:1px solid #E2E8F0;color:#64748B" onclick="logout()">Logout</button>
         </div>
       </div>
 
-      <!-- Stats -->
       <div class="stats">
         <div class="stat-card"><div class="stat-val" id="statTotal" style="color:#0EA5E9">0</div><div class="stat-label">Total Leads</div></div>
         <div class="stat-card"><div class="stat-val" id="statWeek" style="color:#10B981">0</div><div class="stat-label">This Week</div></div>
@@ -92,9 +69,8 @@ tr:nth-child(even) { background: #FAFAFA; }
         <div class="stat-card"><div class="stat-val" id="statSport" style="color:#8B5CF6">0</div><div class="stat-label">With Sport</div></div>
       </div>
 
-      <!-- Table -->
       <div class="table-wrap">
-        <div class="table-scroll">
+        <div style="overflow-x:auto">
           <table>
             <thead>
               <tr>
@@ -116,44 +92,39 @@ tr:nth-child(even) { background: #FAFAFA; }
           </table>
         </div>
       </div>
-
     </div>
   </div>
 </div>
 
 <script>
-const ADMIN_PASSWORD = 'FreeSports2026!';
-const SUPABASE_URL = 'https://ehjhsbrcbtqcvmgzjzkm.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVoamhzYnJjYnRxY3ZtZ3pqemttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5MDcwMjQsImV4cCI6MjA5MzQ4MzAyNH0.q96sEV0oUxX5kMCYyUJjysxxERMhhlq9cCBKAQ801_g';
-
+const PASS = 'FreeSports2026!';
+const URL = 'https://ehjhsbrcbtqcvmgzjzkm.supabase.co';
+const KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVoamhzYnJjYnRxY3ZtZ3pqemttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5MDcwMjQsImV4cCI6MjA5MzQ4MzAyNH0.q96sEV0oUxX5kMCYyUJjysxxERMhhlq9cCBKAQ801_g';
 let allLeads = [];
-let selectedIds = new Set();
+let sel = new Set();
 
 function login() {
-  const pw = document.getElementById('pwInput').value;
-  if (pw === ADMIN_PASSWORD) {
+  if (document.getElementById('pwInput').value === PASS) {
     document.getElementById('loginWrap').style.display = 'none';
     document.getElementById('dashWrap').style.display = 'block';
     loadLeads();
-  } else {
-    alert('Incorrect password');
-  }
+  } else alert('Wrong password');
 }
 
 function logout() {
   document.getElementById('loginWrap').style.display = 'flex';
   document.getElementById('dashWrap').style.display = 'none';
   document.getElementById('pwInput').value = '';
-  allLeads = [];
-  selectedIds.clear();
+  allLeads = []; sel.clear();
 }
 
 async function loadLeads() {
   document.getElementById('leadsBody').innerHTML = '<tr><td colspan="10" class="empty">Loading...</td></tr>';
-  const res = await fetch(SUPABASE_URL + '/rest/v1/sports_leads?select=*&order=created_at.desc', {
-    headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY }
+  const res = await fetch(URL + '/rest/v1/sports_leads?select=*&order=created_at.desc', {
+    headers: { 'apikey': KEY, 'Authorization': 'Bearer ' + KEY }
   });
-  allLeads = await res.json();
+  const data = await res.json();
+  allLeads = Array.isArray(data) ? data : [];
   updateStats();
   renderTable();
 }
@@ -170,119 +141,87 @@ function updateStats() {
 
 function renderTable() {
   const tbody = document.getElementById('leadsBody');
-  if (!allLeads.length) {
-    tbody.innerHTML = '<tr><td colspan="10" class="empty">No leads yet.</td></tr>';
-    return;
-  }
-  tbody.innerHTML = allLeads.map((lead, i) => {
-    const isSelected = selectedIds.has(lead.id);
+  if (!allLeads.length) { tbody.innerHTML = '<tr><td colspan="10" class="empty">No leads yet.</td></tr>'; return; }
+  tbody.innerHTML = allLeads.map(lead => {
+    const isSelected = sel.has(lead.id);
     const date = new Date(lead.created_at).toLocaleDateString();
-    const sport = lead.sport || lead.favorite_sport || '—';
-    const team = lead.favorite_team || lead.team || '—';
-    const source = lead.source || '—';
-    return `<tr class="${isSelected ? 'selected' : ''}" id="row-${lead.id}">
-      <td><input type="checkbox" ${isSelected ? 'checked' : ''} onchange="toggleSelect('${lead.id}', this.checked)"></td>
-      <td style="white-space:nowrap;color:#64748B">${date}</td>
-      <td style="font-weight:600;white-space:nowrap">${lead.name || '—'}</td>
-      <td>${lead.email ? '<a href="mailto:'+lead.email+'" style="color:#0EA5E9;text-decoration:none">'+lead.email+'</a>' : '—'}</td>
-      <td style="white-space:nowrap;color:#64748B">${lead.phone || '—'}</td>
-      <td><span class="badge badge-blue">${sport}</span></td>
-      <td style="color:#64748B">${team}</td>
-      <td><span class="badge badge-green">${source}</span></td>
-      <td style="max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#64748B">${lead.message || lead.notes || '—'}</td>
-      <td>
-        <div style="display:flex;gap:6px">
-          <button class="action-btn btn-print-row" onclick="printLead('${lead.id}')">🖨️ Print</button>
-          <button class="action-btn btn-del-row" onclick="deleteLead('${lead.id}')">🗑️ Delete</button>
-        </div>
-      </td>
-    </tr>`;
+    const sport = lead.sport || lead.favorite_sport || '-';
+    const team = lead.favorite_team || lead.team || '-';
+    return '<tr class="' + (isSelected?'selected':'') + '" id="row-' + lead.id + '">' +
+      '<td><input type="checkbox" ' + (isSelected?'checked':'') + ' onchange="toggleSel('' + lead.id + '',this.checked)"></td>' +
+      '<td style="white-space:nowrap;color:#64748B">' + date + '</td>' +
+      '<td style="font-weight:600;white-space:nowrap">' + (lead.name||'-') + '</td>' +
+      '<td>' + (lead.email ? '<a href="mailto:'+lead.email+'" style="color:#0EA5E9;text-decoration:none">'+lead.email+'</a>' : '-') + '</td>' +
+      '<td style="color:#64748B;white-space:nowrap">' + (lead.phone||'-') + '</td>' +
+      '<td><span class="badge" style="background:#E0F2FE;color:#0284C7">' + sport + '</span></td>' +
+      '<td style="color:#64748B">' + team + '</td>' +
+      '<td><span class="badge" style="background:#DCFCE7;color:#16A34A">' + (lead.source||'-') + '</span></td>' +
+      '<td style="max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#64748B">' + (lead.message||lead.notes||'-') + '</td>' +
+      '<td>' +
+        '<button class="action-btn btn-print-row" onclick="printOne('' + lead.id + '')">Print</button>' +
+        '<button class="action-btn btn-del-row" onclick="delOne('' + lead.id + '')">Delete</button>' +
+      '</td>' +
+    '</tr>';
   }).join('');
 }
 
-function toggleSelect(id, checked) {
-  if (checked) selectedIds.add(id);
-  else selectedIds.delete(id);
+function toggleSel(id, checked) {
+  if (checked) sel.add(id); else sel.delete(id);
   const row = document.getElementById('row-' + id);
   if (row) row.className = checked ? 'selected' : '';
-  document.getElementById('deleteSelBtn').style.display = selectedIds.size > 0 ? 'block' : 'none';
-  document.getElementById('deleteSelBtn').textContent = '🗑️ Delete Selected (' + selectedIds.size + ')';
+  const btn = document.getElementById('deleteSelBtn');
+  btn.style.display = sel.size > 0 ? 'block' : 'none';
+  btn.textContent = 'Delete Selected (' + sel.size + ')';
 }
 
 function toggleAll(checked) {
   allLeads.forEach(l => {
-    if (checked) selectedIds.add(l.id);
-    else selectedIds.delete(l.id);
+    if (checked) sel.add(l.id); else sel.delete(l.id);
     const row = document.getElementById('row-' + l.id);
-    if (row) {
-      row.className = checked ? 'selected' : '';
-      const cb = row.querySelector('input[type=checkbox]');
-      if (cb) cb.checked = checked;
-    }
+    if (row) { row.className = checked ? 'selected' : ''; const cb = row.querySelector('input'); if (cb) cb.checked = checked; }
   });
-  document.getElementById('deleteSelBtn').style.display = checked && selectedIds.size > 0 ? 'block' : 'none';
-  if (checked) document.getElementById('deleteSelBtn').textContent = '🗑️ Delete Selected (' + selectedIds.size + ')';
+  const btn = document.getElementById('deleteSelBtn');
+  btn.style.display = checked && sel.size > 0 ? 'block' : 'none';
+  if (checked) btn.textContent = 'Delete Selected (' + sel.size + ')';
 }
 
-async function deleteLead(id) {
+async function delOne(id) {
   if (!confirm('Delete this lead?')) return;
-  await fetch(SUPABASE_URL + '/rest/v1/sports_leads?id=eq.' + id, {
-    method: 'DELETE',
-    headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY }
-  });
-  allLeads = allLeads.filter(l => l.id !== id);
-  selectedIds.delete(id);
-  updateStats();
-  renderTable();
+  await fetch(URL + '/rest/v1/sports_leads?id=eq.' + id, { method: 'DELETE', headers: { 'apikey': KEY, 'Authorization': 'Bearer ' + KEY } });
+  allLeads = allLeads.filter(l => l.id !== id); sel.delete(id); updateStats(); renderTable();
 }
 
 async function deleteSelected() {
-  if (!selectedIds.size) return;
-  if (!confirm('Delete ' + selectedIds.size + ' selected leads?')) return;
-  const ids = [...selectedIds].join(',');
-  await fetch(SUPABASE_URL + '/rest/v1/sports_leads?id=in.(' + ids + ')', {
-    method: 'DELETE',
-    headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY }
-  });
-  allLeads = allLeads.filter(l => !selectedIds.has(l.id));
-  selectedIds.clear();
+  if (!sel.size) return;
+  if (!confirm('Delete ' + sel.size + ' leads?')) return;
+  const ids = [...sel].join(',');
+  await fetch(URL + '/rest/v1/sports_leads?id=in.(' + ids + ')', { method: 'DELETE', headers: { 'apikey': KEY, 'Authorization': 'Bearer ' + KEY } });
+  allLeads = allLeads.filter(l => !sel.has(l.id)); sel.clear();
   document.getElementById('deleteSelBtn').style.display = 'none';
   document.getElementById('selectAll').checked = false;
-  updateStats();
-  renderTable();
+  updateStats(); renderTable();
 }
 
-function printLead(id) {
+function printOne(id) {
   const lead = allLeads.find(l => l.id === id);
   if (!lead) return;
   const win = window.open('', '_blank');
-  win.document.write(`<!DOCTYPE html><html><head><title>Lead — ${lead.name||''}</title>
-  <style>body{font-family:Arial;padding:30px;font-size:13px}h2{color:#0EA5E9;margin-bottom:4px}p{color:#666;font-size:11px;margin-bottom:20px}table{border-collapse:collapse;width:100%}td{padding:10px;border-bottom:1px solid #eee}td:first-child{font-weight:bold;color:#666;width:140px}@media print{body{padding:20px}}</style>
-  </head><body>
-  <h2>FreeSportsPicks.pro — Lead</h2>
-  <p>Printed: ${new Date().toLocaleString()}</p>
-  <table>
-  ${[['Date',new Date(lead.created_at).toLocaleString()],['Name',lead.name||'—'],['Email',lead.email||'—'],['Phone',lead.phone||'—'],['Sport',lead.sport||lead.favorite_sport||'—'],['Team',lead.favorite_team||lead.team||'—'],['Source',lead.source||'—'],['Message',lead.message||lead.notes||'—']].map(([k,v]) => '<tr><td>'+k+'</td><td>'+v+'</td></tr>').join('')}
-  </table></body></html>`);
-  win.document.close();
-  setTimeout(() => win.print(), 400);
+  win.document.write('<html><head><title>Lead - ' + (lead.name||'') + '</title><style>body{font-family:Arial;padding:30px;font-size:13px}h2{color:#0EA5E9}table{border-collapse:collapse;width:100%}td{padding:10px;border-bottom:1px solid #eee}td:first-child{font-weight:bold;color:#666;width:140px}</style></head><body>');
+  win.document.write('<h2>FreeSportsPicks.pro - Lead</h2><p>Printed: ' + new Date().toLocaleString() + '</p><table>');
+  [['Date',new Date(lead.created_at).toLocaleString()],['Name',lead.name||'-'],['Email',lead.email||'-'],['Phone',lead.phone||'-'],['Sport',lead.sport||lead.favorite_sport||'-'],['Team',lead.favorite_team||lead.team||'-'],['Source',lead.source||'-'],['Message',lead.message||lead.notes||'-']].forEach(([k,v]) => { win.document.write('<tr><td>'+k+'</td><td>'+v+'</td></tr>'); });
+  win.document.write('</table></body></html>');
+  win.document.close(); setTimeout(() => win.print(), 400);
 }
 
 function printLeads() {
-  const toPrint = selectedIds.size > 0 ? allLeads.filter(l => selectedIds.has(l.id)) : allLeads;
+  const toPrint = sel.size > 0 ? allLeads.filter(l => sel.has(l.id)) : allLeads;
   const win = window.open('', '_blank');
-  win.document.write(`<!DOCTYPE html><html><head><title>FreeSportsPicks Leads</title>
-  <style>body{font-family:Arial;font-size:11px;padding:20px}h1{font-size:16px;color:#0EA5E9;margin-bottom:4px}p{color:#666;font-size:10px;margin-bottom:16px}table{width:100%;border-collapse:collapse}th{background:#0EA5E9;color:#fff;padding:7px 8px;text-align:left;font-size:10px}td{padding:7px 8px;border-bottom:1px solid #eee;font-size:10px;vertical-align:top}tr:nth-child(even){background:#f9f9f9}@media print{body{padding:10px}}</style>
-  </head><body>
-  <h1>FreeSportsPicks.pro — Leads Report</h1>
-  <p>Printed: ${new Date().toLocaleString()} · Total: ${toPrint.length} leads</p>
-  <table>
-  <thead><tr><th>#</th><th>Date</th><th>Name</th><th>Email</th><th>Phone</th><th>Sport</th><th>Team</th><th>Source</th><th>Message</th></tr></thead>
-  <tbody>
-  ${toPrint.map((l,i) => `<tr><td>${i+1}</td><td>${new Date(l.created_at).toLocaleDateString()}</td><td><strong>${l.name||'—'}</strong></td><td>${l.email||'—'}</td><td>${l.phone||'—'}</td><td>${l.sport||l.favorite_sport||'—'}</td><td>${l.favorite_team||l.team||'—'}</td><td>${l.source||'—'}</td><td>${l.message||l.notes||'—'}</td></tr>`).join('')}
-  </tbody></table></body></html>`);
-  win.document.close();
-  setTimeout(() => win.print(), 400);
+  win.document.write('<html><head><title>FreeSportsPicks Leads</title><style>body{font-family:Arial;font-size:11px;padding:20px}h1{font-size:16px;color:#0EA5E9}table{width:100%;border-collapse:collapse}th{background:#0EA5E9;color:#fff;padding:7px 8px;text-align:left;font-size:10px}td{padding:7px 8px;border-bottom:1px solid #eee;font-size:10px}tr:nth-child(even){background:#f9f9f9}</style></head><body>');
+  win.document.write('<h1>FreeSportsPicks.pro - Leads</h1><p>Printed: ' + new Date().toLocaleString() + ' - Total: ' + toPrint.length + '</p>');
+  win.document.write('<table><thead><tr><th>#</th><th>Date</th><th>Name</th><th>Email</th><th>Phone</th><th>Sport</th><th>Team</th><th>Source</th><th>Message</th></tr></thead><tbody>');
+  toPrint.forEach((l,i) => { win.document.write('<tr><td>'+(i+1)+'</td><td>'+new Date(l.created_at).toLocaleDateString()+'</td><td>'+(l.name||'-')+'</td><td>'+(l.email||'-')+'</td><td>'+(l.phone||'-')+'</td><td>'+(l.sport||l.favorite_sport||'-')+'</td><td>'+(l.favorite_team||l.team||'-')+'</td><td>'+(l.source||'-')+'</td><td>'+(l.message||l.notes||'-')+'</td></tr>'); });
+  win.document.write('</tbody></table></body></html>');
+  win.document.close(); setTimeout(() => win.print(), 400);
 }
 </script>
 </body>
