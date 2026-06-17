@@ -3,425 +3,196 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin — Game of the Day | FreeSportsPicks.pro</title>
-<meta name="robots" content="noindex, nofollow">
-<link rel="stylesheet" href="/css/main.css">
+<title>Admin - FreeSportsPicks.pro</title>
+<meta name="robots" content="noindex,nofollow">
 <style>
-.admin-page { padding: 40px 0 80px; min-height: 100vh; }
-.admin-header { background: #0D0D0D; border-bottom: 1px solid rgba(201,168,76,0.2); padding: 16px 0; margin-bottom: 40px; }
-.admin-header-inner { max-width: 900px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
-.admin-logo { font-family: 'DM Serif Display', serif; font-size: 20px; color: #F5F5F0; }
-.admin-logo span { color: #C9A84C; }
-.admin-badge { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.3); color: #C9A84C; padding: 4px 12px; border-radius: 2px; }
-.admin-container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
-.admin-card { background: #111; border: 1px solid rgba(201,168,76,0.2); border-radius: 8px; padding: 36px; margin-bottom: 32px; position: relative; overflow: hidden; }
-.admin-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, #A07830, #C9A84C, #A07830); }
-.admin-card h2 { font-family: 'DM Serif Display', serif; font-size: 22px; color: #F5F5F0; margin-bottom: 24px; border: none; padding: 0; }
-.admin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.admin-field { display: flex; flex-direction: column; gap: 6px; }
-.admin-field.full { grid-column: 1 / -1; }
-.admin-label { font-size: 10px; font-weight: 700; color: #808080; letter-spacing: 0.08em; text-transform: uppercase; }
-.admin-input { background: rgba(0,0,0,0.5); border: 1px solid #3A3A3A; border-radius: 2px; padding: 11px 14px; color: #F5F5F0; font-family: 'DM Sans', sans-serif; font-size: 14px; outline: none; transition: border-color 0.2s; }
-.admin-input:focus { border-color: #C9A84C; }
-.admin-select { background: rgba(0,0,0,0.8); border: 1px solid #3A3A3A; border-radius: 2px; padding: 11px 14px; color: #F5F5F0; font-family: 'DM Sans', sans-serif; font-size: 14px; outline: none; }
-.admin-textarea { background: rgba(0,0,0,0.5); border: 1px solid #3A3A3A; border-radius: 2px; padding: 11px 14px; color: #F5F5F0; font-family: 'DM Sans', sans-serif; font-size: 14px; outline: none; resize: vertical; min-height: 100px; width: 100%; box-sizing: border-box; }
-.admin-textarea:focus { border-color: #C9A84C; }
-.admin-stars { display: flex; gap: 8px; align-items: center; }
-.star-btn { font-size: 24px; cursor: pointer; color: #3A3A3A; transition: color 0.2s; background: none; border: none; padding: 0; }
-.star-btn.active { color: #C9A84C; }
-.admin-btn { background: linear-gradient(135deg, #A07830, #C9A84C); color: #0A0A0A; padding: 14px 36px; border: none; border-radius: 2px; font-size: 15px; font-weight: 700; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s; }
-.admin-btn:hover { background: linear-gradient(135deg, #C9A84C, #E8C97A); }
-.admin-btn-danger { background: rgba(239,68,68,0.1); color: #EF4444; border: 1px solid rgba(239,68,68,0.3); padding: 8px 16px; border-radius: 2px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; }
-.status-msg { padding: 12px 16px; border-radius: 4px; font-size: 14px; margin-top: 16px; display: none; }
-.status-success { background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); color: #22C55E; }
-.status-error { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); color: #EF4444; }
-.leads-table { width: 100%; border-collapse: collapse; }
-.leads-table th { background: rgba(201,168,76,0.08); padding: 10px 14px; text-align: left; font-size: 11px; font-weight: 700; color: #C9A84C; letter-spacing: 0.08em; text-transform: uppercase; border-bottom: 1px solid #3A3A3A; }
-.leads-table td { padding: 12px 14px; border-bottom: 1px solid rgba(58,58,58,0.5); font-size: 13px; color: #A0A0A0; }
-.leads-table tr:hover td { background: rgba(201,168,76,0.03); }
-.login-screen { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: #0A0A0A; }
-.login-box { background: #111; border: 1px solid rgba(201,168,76,0.3); border-radius: 8px; padding: 48px; width: 360px; text-align: center; position: relative; overflow: hidden; }
-.login-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, #A07830, #C9A84C, #A07830); }
-.tab-nav { display: flex; gap: 2px; margin-bottom: 32px; background: #0A0A0A; border-radius: 4px; padding: 3px; }
-.tab-btn { flex: 1; padding: 10px; font-size: 13px; font-weight: 600; border: none; border-radius: 3px; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s; background: transparent; color: #606060; }
-.tab-btn.active { background: rgba(201,168,76,0.15); color: #C9A84C; }
-.tab-content { display: none; }
-.tab-content.active { display: block; }
-@media (max-width: 768px) { .admin-grid { grid-template-columns: 1fr; } }
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#F8FAFC;color:#0F172A}
+.lw{min-height:100vh;display:flex;align-items:center;justify-content:center}
+.lb{background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:48px;width:100%;max-width:400px;text-align:center}
+input[type=password]{width:100%;padding:12px 16px;border:1px solid #E2E8F0;border-radius:6px;font-size:14px;outline:none;margin-bottom:16px}
+.bp{background:#0EA5E9;color:#fff;border:none;border-radius:6px;padding:12px;font-size:15px;font-weight:600;cursor:pointer;width:100%}
+.btn{padding:8px 16px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;border:none}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+.sc{background:#fff;border:1px solid #E2E8F0;border-radius:8px;padding:20px}
+.sv{font-size:28px;font-weight:700;margin-bottom:4px}
+.tw{background:#fff;border:1px solid #E2E8F0;border-radius:8px;overflow:hidden}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{padding:12px 14px;text-align:left;font-size:11px;font-weight:700;color:#64748B;text-transform:uppercase;background:#F8FAFC;border-bottom:1px solid #E2E8F0;white-space:nowrap}
+td{padding:12px 14px;border-bottom:1px solid #F1F5F9;vertical-align:middle}
+tr:nth-child(even){background:#FAFAFA}
+.empty{padding:40px;text-align:center;color:#94A3B8}
+.ab{padding:5px 10px;border-radius:4px;font-size:11px;font-weight:600;cursor:pointer;border:none;margin:0 2px}
+@media(max-width:768px){.stats{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
-
-<!-- LOGIN SCREEN -->
-<div id="login-screen" class="login-screen">
-  <div class="login-box">
-    <div style="font-size:40px;margin-bottom:16px;">🏆</div>
-    <h2 style="font-family:'DM Serif Display',serif;font-size:24px;color:#F5F5F0;margin-bottom:6px;">Admin Login</h2>
-    <p style="font-size:13px;color:#606060;margin-bottom:28px;">FreeSportsPicks.pro Dashboard</p>
-    <input id="admin-password" type="password" placeholder="Enter admin password" style="width:100%;background:rgba(0,0,0,0.5);border:1px solid #3A3A3A;border-radius:2px;padding:12px 16px;color:#F5F5F0;font-family:'DM Sans',sans-serif;font-size:14px;outline:none;box-sizing:border-box;margin-bottom:12px;" onkeydown="if(event.key==='Enter')checkLogin()">
-    <button onclick="checkLogin()" style="width:100%;background:linear-gradient(135deg,#A07830,#C9A84C);color:#0A0A0A;padding:13px;border:none;border-radius:2px;font-size:15px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;">Enter Dashboard &rarr;</button>
-    <div id="login-error" style="display:none;margin-top:12px;font-size:13px;color:#EF4444;">Incorrect password. Try again.</div>
+<div class="lw" id="LW">
+  <div class="lb">
+    <div style="font-size:48px;margin-bottom:16px">&#128274;</div>
+    <div style="font-size:22px;font-weight:700;margin-bottom:8px">Admin Panel</div>
+    <div style="font-size:14px;color:#64748B;margin-bottom:24px">FreeSportsPicks.pro</div>
+    <input type="password" id="PW" placeholder="Enter password" onkeydown="if(event.key==='Enter')LGN()">
+    <button class="bp" onclick="LGN()">Access Admin</button>
   </div>
 </div>
-
-<!-- ADMIN DASHBOARD -->
-<div id="admin-dashboard" style="display:none;">
-
-  <div class="admin-header">
-    <div class="admin-header-inner">
-      <div class="admin-logo">🏆 FreeSportsPicks<span>.pro</span></div>
-      <div style="display:flex;align-items:center;gap:12px;">
-        <span class="admin-badge">Admin Dashboard</span>
-        <button onclick="logout()" style="font-size:12px;color:#606060;background:none;border:none;cursor:pointer;">Logout</button>
-      </div>
+<div id="DW" style="display:none;padding:32px 20px;max-width:1400px;margin:0 auto">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;flex-wrap:wrap;gap:12px">
+    <div>
+      <div style="font-size:28px;font-weight:700">FreeSportsPicks Leads</div>
+      <div style="font-size:14px;color:#64748B;margin-top:4px" id="TC">Loading...</div>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn" style="background:#fff;border:1px solid #E2E8F0;color:#64748B" onclick="LOAD()">Refresh</button>
+      <button class="btn" style="background:#0EA5E9;color:#fff" onclick="PALL()">Print All / Selected</button>
+      <button class="btn" style="background:#EF4444;color:#fff;display:none" id="DSB" onclick="DSEL()">Delete Selected</button>
+      <button class="btn" style="background:none;border:1px solid #E2E8F0;color:#64748B" onclick="LGT()">Logout</button>
     </div>
   </div>
-
-  <div class="admin-container">
-    
-    <!-- Stats Row -->
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px;" id="stats-row">
-      <div style="background:#111;border:1px solid #3A3A3A;border-radius:4px;padding:20px;text-align:center;">
-        <div id="stat-leads" style="font-family:'DM Serif Display',serif;font-size:32px;color:#C9A84C;">—</div>
-        <div style="font-size:11px;color:#606060;margin-top:4px;">Total Leads</div>
-      </div>
-      <div style="background:#111;border:1px solid #3A3A3A;border-radius:4px;padding:20px;text-align:center;">
-        <div id="stat-today" style="font-family:'DM Serif Display',serif;font-size:32px;color:#C9A84C;">—</div>
-        <div style="font-size:11px;color:#606060;margin-top:4px;">Today's Signups</div>
-      </div>
-      <div style="background:#111;border:1px solid #3A3A3A;border-radius:4px;padding:20px;text-align:center;">
-        <div id="stat-game" style="font-family:'DM Serif Display',serif;font-size:18px;color:#C9A84C;line-height:1.2;">—</div>
-        <div style="font-size:11px;color:#606060;margin-top:4px;">Today's Game</div>
-      </div>
-      <div style="background:#111;border:1px solid #3A3A3A;border-radius:4px;padding:20px;text-align:center;">
-        <div id="stat-pick" style="font-family:'DM Serif Display',serif;font-size:18px;color:#C9A84C;line-height:1.2;">—</div>
-        <div style="font-size:11px;color:#606060;margin-top:4px;">Today's Pick</div>
-      </div>
-    </div>
-
-    <!-- Tabs -->
-    <div class="tab-nav">
-      <button class="tab-btn active" onclick="switchTab('game')">&#x1f3ae; Game of the Day</button>
-      <button class="tab-btn" onclick="switchTab('leads')">&#x1f4e7; Leads</button>
-      <button class="tab-btn" onclick="switchTab('history')">&#x1f4ca; Pick History</button>
-    </div>
-
-    <!-- Tab: Game of the Day -->
-    <div id="tab-game" class="tab-content active">
-      <div class="admin-card">
-        <h2>&#x1f525; Set Today's Game of the Day</h2>
-        <div class="admin-grid">
-          <div class="admin-field">
-            <label class="admin-label">Home Team *</label>
-            <input id="f-team1" class="admin-input" type="text" placeholder="e.g. Kansas City Chiefs">
-          </div>
-          <div class="admin-field">
-            <label class="admin-label">Away Team *</label>
-            <input id="f-team2" class="admin-input" type="text" placeholder="e.g. Baltimore Ravens">
-          </div>
-          <div class="admin-field">
-            <label class="admin-label">Sport *</label>
-            <select id="f-sport" class="admin-select">
-              <option>NFL</option>
-              <option>NBA</option>
-              <option>MLB</option>
-              <option>NHL</option>
-              <option>CFB</option>
-              <option>CBB</option>
-              <option>MMA</option>
-              <option>Soccer</option>
-              <option>Golf</option>
-            </select>
-          </div>
-          <div class="admin-field">
-            <label class="admin-label">Game Time</label>
-            <input id="f-time" class="admin-input" type="text" placeholder="e.g. 8:20 PM ET">
-          </div>
-          <div class="admin-field">
-            <label class="admin-label">Spread / Line</label>
-            <input id="f-spread" class="admin-input" type="text" placeholder="e.g. Ravens +3.5 (-110)">
-          </div>
-          <div class="admin-field full">
-            <label class="admin-label">Confidence Rating</label>
-            <div class="admin-stars" id="star-rating">
-              <button class="star-btn active" data-val="1" onclick="setStars(1)">&#x2b50;</button>
-              <button class="star-btn active" data-val="2" onclick="setStars(2)">&#x2b50;</button>
-              <button class="star-btn active" data-val="3" onclick="setStars(3)">&#x2b50;</button>
-              <button class="star-btn active" data-val="4" onclick="setStars(4)">&#x2b50;</button>
-              <button class="star-btn" data-val="5" onclick="setStars(5)">&#x2b50;</button>
-              <span id="star-label" style="font-size:13px;color:#C9A84C;font-weight:700;margin-left:8px;">4/5</span>
-            </div>
-          </div>
-          <div class="admin-field full">
-            <label class="admin-label">Expert Analysis (shown after signup)</label>
-            <textarea id="f-analysis" class="admin-textarea" placeholder="Write your full analysis here. This is shown to users after they sign up..."></textarea>
-          </div>
-        </div>
-        <div style="margin-top:24px;display:flex;gap:12px;align-items:center;">
-          <button class="admin-btn" onclick="saveGame()">&#x1f4be; Publish Game of the Day</button>
-          <span style="font-size:13px;color:#606060;">Updates the homepage instantly</span>
-        </div>
-        <div id="game-status" class="status-msg"></div>
-      </div>
-    </div>
-
-    <!-- Tab: Leads -->
-    <div id="tab-leads" class="tab-content">
-      <div class="admin-card">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;">
-          <h2 style="margin:0;">&#x1f4e7; All Leads</h2>
-          <button class="admin-btn" onclick="exportLeads()" style="padding:10px 20px;font-size:13px;">Export CSV</button>
-        </div>
-        <div style="overflow-x:auto;">
-          <table class="leads-table" id="leads-table">
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>City</th>
-                <th>Sport</th>
-                <th>Source</th>
-              </tr>
-            </thead>
-            <tbody id="leads-body">
-              <tr><td colspan="6" style="text-align:center;color:#606060;">Loading...</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
-    <!-- Tab: Pick History -->
-    <div id="tab-history" class="tab-content">
-      <div class="admin-card">
-        <h2>&#x1f4ca; Pick History</h2>
-        <div style="overflow-x:auto;">
-          <table class="leads-table" id="history-table">
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>Game</th>
-                <th>Sport</th>
-                <th>Our Pick</th>
-                <th>Confidence</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody id="history-body">
-              <tr><td colspan="6" style="text-align:center;color:#606060;">Loading...</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
+  <div class="stats">
+    <div class="sc"><div class="sv" id="S1" style="color:#0EA5E9">0</div><div style="font-size:13px;color:#64748B">Total Leads</div></div>
+    <div class="sc"><div class="sv" id="S2" style="color:#10B981">0</div><div style="font-size:13px;color:#64748B">This Week</div></div>
+    <div class="sc"><div class="sv" id="S3" style="color:#F59E0B">0</div><div style="font-size:13px;color:#64748B">Today</div></div>
+    <div class="sc"><div class="sv" id="S4" style="color:#8B5CF6">0</div><div style="font-size:13px;color:#64748B">With Sport</div></div>
   </div>
+  <div class="tw"><div style="overflow-x:auto"><table>
+    <thead><tr>
+      <th><input type="checkbox" id="CA" onchange="SALL(this.checked)"></th>
+      <th>Date</th><th>Name</th><th>Email</th><th>City</th>
+      <th>Sport</th><th>Source</th><th>Message</th><th>Actions</th>
+    </tr></thead>
+    <tbody id="TB"><tr><td colspan="9" class="empty">Loading...</td></tr></tbody>
+  </table></div></div>
 </div>
-
 <script>
-const SUPA_URL = 'https://ehjhsbrcbtqcvmgzjzkm.supabase.co';
-const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVoamhzYnJjYnRxY3ZtZ3pqemttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5MDcwMjQsImV4cCI6MjA5MzQ4MzAyNH0.q96sEV0oUxX5kMCYyUJjysxxERMhhlq9cCBKAQ801_g';
-const ADMIN_PASS = 'FreeSports2026!';
-
-let currentStars = 4;
-
-function checkLogin() {
-  const pw = document.getElementById('admin-password').value;
-  if (pw === ADMIN_PASS) {
-    document.getElementById('login-screen').style.display = 'none';
-    document.getElementById('admin-dashboard').style.display = 'block';
-    loadStats();
-    loadLeads();
-    loadHistory();
-  } else {
-    document.getElementById('login-error').style.display = 'block';
-  }
+var PW="FreeSports2026!";
+var SB="https://ehjhsbrcbtqcvmgzjzkm.supabase.co";
+var SK="sb_secret_B9AG8VXwdsj5D5SK7Ebn6g_KRLgiHOZ";
+var LD=[];
+var SL=new Set();
+function LGN(){
+  var v=document.getElementById("PW").value;
+  if(v===PW){
+    document.getElementById("LW").style.display="none";
+    document.getElementById("DW").style.display="block";
+    LOAD();
+  } else { alert("Wrong password"); }
 }
-
-function logout() {
-  document.getElementById('login-screen').style.display = 'flex';
-  document.getElementById('admin-dashboard').style.display = 'none';
-  document.getElementById('admin-password').value = '';
+function LGT(){
+  document.getElementById("LW").style.display="flex";
+  document.getElementById("DW").style.display="none";
+  document.getElementById("PW").value="";
+  LD=[];SL.clear();
 }
-
-function switchTab(tab) {
-  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('tab-' + tab).classList.add('active');
-  event.target.classList.add('active');
-}
-
-function setStars(val) {
-  currentStars = val;
-  document.querySelectorAll('.star-btn').forEach((btn, i) => {
-    btn.classList.toggle('active', i < val);
-  });
-  document.getElementById('star-label').textContent = val + '/5';
-}
-
-async function saveGame() {
-  const team1 = document.getElementById('f-team1').value.trim();
-  const team2 = document.getElementById('f-team2').value.trim();
-  const sport = document.getElementById('f-sport').value;
-  const game_time = document.getElementById('f-time').value.trim();
-  const spread = document.getElementById('f-spread').value.trim();
-  const confidence = currentStars;
-  const analysis = document.getElementById('f-analysis').value.trim();
-
-  if (!team1 || !team2) {
-    showStatus('game-status', 'Please fill in Home Team and Away Team.', false);
-    return;
-  }
-
-  try {
-    const res = await fetch(SUPA_URL + '/rest/v1/game_of_day', {
-      method: 'POST',
-      headers: {
-        'apikey': SUPA_KEY,
-        'Authorization': 'Bearer ' + SUPA_KEY,
-        'Content-Type': 'application/json',
-        'Prefer': 'return=minimal'
-      },
-      body: JSON.stringify({
-        team1: team1,
-        team2: team2,
-        sport: sport,
-        game_time: game_time,
-        spread: spread,
-        confidence: confidence,
-        analysis: analysis
-      })
-    });
-
-    if (res.ok) {
-      showStatus('game-status', '✅ Game of the Day published! Homepage updated instantly.', true);
-      loadStats();
-      loadHistory();
-      document.getElementById('f-team1').value = '';
-      document.getElementById('f-team2').value = '';
-      document.getElementById('f-time').value = '';
-      document.getElementById('f-spread').value = '';
-      document.getElementById('f-analysis').value = '';
-    } else {
-      const err = await res.text();
-      showStatus('game-status', '❌ Error: ' + err, false);
-    }
-  } catch(e) {
-    showStatus('game-status', '❌ Connection error: ' + e.message, false);
-  }
-}
-
-async function loadStats() {
-  try {
-    // Total leads
-    const leadsRes = await fetch(SUPA_URL + '/rest/v1/sportspicks_leads?select=count', {
-      headers: { 'apikey': SUPA_KEY, 'Authorization': 'Bearer ' + SUPA_KEY, 'Prefer': 'count=exact', 'Range': '0-0' }
-    });
-    const count = leadsRes.headers.get('content-range');
-    if (count) document.getElementById('stat-leads').textContent = count.split('/')[1] || '0';
-
-    // Today's signups
-    const today = new Date().toISOString().split('T')[0];
-    const todayRes = await fetch(SUPA_URL + '/rest/v1/sportspicks_leads?created_at=gte.' + today + 'T00:00:00&select=count', {
-      headers: { 'apikey': SUPA_KEY, 'Authorization': 'Bearer ' + SUPA_KEY, 'Prefer': 'count=exact', 'Range': '0-0' }
-    });
-    const todayCount = todayRes.headers.get('content-range');
-    if (todayCount) document.getElementById('stat-today').textContent = todayCount.split('/')[1] || '0';
-
-    // Today's game
-    const gameRes = await fetch(SUPA_URL + '/rest/v1/game_of_day?order=created_at.desc&limit=1', {
-      headers: { 'apikey': SUPA_KEY, 'Authorization': 'Bearer ' + SUPA_KEY }
-    });
-    const gameData = await gameRes.json();
-    if (gameData && gameData.length > 0) {
-      document.getElementById('stat-game').textContent = gameData[0].team1 + ' vs ' + gameData[0].team2;
-      document.getElementById('stat-pick').textContent = gameData[0].our_pick;
-    }
-  } catch(e) { console.log(e); }
-}
-
-async function loadLeads() {
-  try {
-    const res = await fetch(SUPA_URL + '/rest/v1/sportspicks_leads?order=created_at.desc&limit=100', {
-      headers: { 'apikey': SUPA_KEY, 'Authorization': 'Bearer ' + SUPA_KEY }
-    });
-    const data = await res.json();
-    const tbody = document.getElementById('leads-body');
-    if (!data || data.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:#606060;">No leads yet.</td></tr>';
-      return;
-    }
-    tbody.innerHTML = data.map(l => {
-      const date = new Date(l.created_at).toLocaleDateString();
-      return '<tr><td>' + date + '</td><td>' + (l.name||'—') + '</td><td>' + (l.email||'—') + '</td><td>' + (l.city||'—') + '</td><td>' + (l.favorite_sport||'—') + '</td><td>' + (l.source||'—') + '</td></tr>';
-    }).join('');
-  } catch(e) { console.log(e); }
-}
-
-async function loadHistory() {
-  try {
-    const res = await fetch(SUPA_URL + '/rest/v1/game_of_day?order=created_at.desc&limit=30', {
-      headers: { 'apikey': SUPA_KEY, 'Authorization': 'Bearer ' + SUPA_KEY }
-    });
-    const data = await res.json();
-    const tbody = document.getElementById('history-body');
-    if (!data || data.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:#606060;">No picks yet.</td></tr>';
-      return;
-    }
-    tbody.innerHTML = data.map(g => {
-      const date = new Date(g.created_at).toLocaleDateString();
-      const stars = '⭐'.repeat(g.confidence || 4);
-      return '<tr><td>' + date + '</td><td>' + g.team1 + ' vs ' + g.team2 + '</td><td>' + g.sport + '</td><td style="color:#C9A84C;font-weight:700;">' + g.our_pick + '</td><td>' + stars + '</td><td><button class="admin-btn-danger" onclick="deleteGame(\'' + g.id + '\')">Delete</button></td></tr>';
-    }).join('');
-  } catch(e) { console.log(e); }
-}
-
-async function deleteGame(id) {
-  if (!confirm('Delete this pick?')) return;
-  try {
-    await fetch(SUPA_URL + '/rest/v1/game_of_day?id=eq.' + id, {
-      method: 'DELETE',
-      headers: { 'apikey': SUPA_KEY, 'Authorization': 'Bearer ' + SUPA_KEY }
-    });
-    loadHistory();
-    loadStats();
-  } catch(e) { console.log(e); }
-}
-
-function exportLeads() {
-  fetch(SUPA_URL + '/rest/v1/sportspicks_leads?order=created_at.desc&limit=1000', {
-    headers: { 'apikey': SUPA_KEY, 'Authorization': 'Bearer ' + SUPA_KEY }
-  })
-  .then(r => r.json())
-  .then(data => {
-    const csv = ['Date,Name,Email,City,Sport,Source'];
-    data.forEach(l => {
-      csv.push([
-        new Date(l.created_at).toLocaleDateString(),
-        l.name || '',
-        l.email || '',
-        l.city || '',
-        l.favorite_sport || '',
-        l.source || ''
-      ].map(v => '"' + v + '"').join(','));
-    });
-    const blob = new Blob([csv.join('\n')], { type: 'text/csv' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'sportspicks-leads-' + new Date().toISOString().split('T')[0] + '.csv';
-    a.click();
+function LOAD(){
+  document.getElementById("TB").innerHTML="<tr><td colspan=9 class=empty>Loading...</td></tr>";
+  fetch(SB+"/rest/v1/sportspicks_leads?select=*&order=created_at.desc",{
+    headers:{"apikey":SK,"Authorization":"Bearer "+SK}
+  }).then(function(r){return r.json();}).then(function(d){
+    LD=Array.isArray(d)?d:[];
+    STAT();REND();
+  }).catch(function(e){
+    document.getElementById("TB").innerHTML="<tr><td colspan=9 class=empty>Error: "+e.message+"</td></tr>";
   });
 }
-
-function showStatus(id, msg, success) {
-  const el = document.getElementById(id);
-  el.textContent = msg;
-  el.className = 'status-msg ' + (success ? 'status-success' : 'status-error');
-  el.style.display = 'block';
-  setTimeout(() => el.style.display = 'none', 5000);
+function STAT(){
+  var now=new Date();
+  var wk=new Date(now-7*24*60*60*1000);
+  document.getElementById("S1").textContent=LD.length;
+  document.getElementById("S2").textContent=LD.filter(function(l){return new Date(l.created_at)>wk;}).length;
+  document.getElementById("S3").textContent=LD.filter(function(l){return new Date(l.created_at).toDateString()===now.toDateString();}).length;
+  document.getElementById("S4").textContent=LD.filter(function(l){return l.favorite_sport;}).length;
+  document.getElementById("TC").textContent=LD.length+" total leads";
+}
+function ESC(s){return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+function REND(){
+  var tb=document.getElementById("TB");
+  if(!LD.length){tb.innerHTML="<tr><td colspan=9 class=empty>No leads yet.</td></tr>";return;}
+  var h="";
+  for(var i=0;i<LD.length;i++){
+    var l=LD[i];
+    var id=l.id;
+    var dt=new Date(l.created_at).toLocaleDateString();
+    var sp=ESC(l.favorite_sport||"-");
+    var sr=ESC(l.source||"-");
+    var ms=ESC(l.message||"-");
+    var nm=ESC(l.name||"-");
+    var em=l.email||"";
+    var cy=ESC(l.city||"-");
+    var bg=SL.has(id)?"background:#EFF6FF":"";
+    var ck=SL.has(id)?"checked":"";
+    h+="<tr id=R"+id+" style='"+bg+"'>";
+    h+="<td><input type=checkbox "+ck+" onchange='TOG(\""+id+"\",this.checked)'></td>";
+    h+="<td style='white-space:nowrap;color:#64748B'>"+dt+"</td>";
+    h+="<td style='font-weight:600'>"+nm+"</td>";
+    h+="<td>"+(em?"<a href='mailto:"+em+"' style='color:#0EA5E9;text-decoration:none'>"+ESC(em)+"</a>":"-")+"</td>";
+    h+="<td style='color:#64748B'>"+cy+"</td>";
+    h+="<td><span style='background:#E0F2FE;color:#0284C7;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600'>"+sp+"</span></td>";
+    h+="<td><span style='background:#DCFCE7;color:#16A34A;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600'>"+sr+"</span></td>";
+    h+="<td style='max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#64748B'>"+ms+"</td>";
+    h+="<td style='white-space:nowrap'>";
+    h+="<button class=ab style='background:#E0F2FE;color:#0284C7' onclick='PR1(\""+id+"\")'>Print</button>";
+    h+="<button class=ab style='background:#FEE2E2;color:#DC2626' onclick='D1(\""+id+"\")'>Delete</button>";
+    h+="</td></tr>";
+  }
+  tb.innerHTML=h;
+}
+function TOG(id,chk){
+  if(chk)SL.add(id);else SL.delete(id);
+  var r=document.getElementById("R"+id);
+  if(r)r.style.background=chk?"#EFF6FF":"";
+  var b=document.getElementById("DSB");
+  b.style.display=SL.size>0?"block":"none";
+  b.textContent="Delete Selected ("+SL.size+")";
+}
+function SALL(chk){
+  LD.forEach(function(l){
+    if(chk)SL.add(l.id);else SL.delete(l.id);
+    var r=document.getElementById("R"+l.id);
+    if(r){r.style.background=chk?"#EFF6FF":"";var c=r.querySelector("input[type=checkbox]");if(c)c.checked=chk;}
+  });
+  var b=document.getElementById("DSB");
+  b.style.display=chk&&SL.size>0?"block":"none";
+  if(chk)b.textContent="Delete Selected ("+SL.size+")";
+}
+function D1(id){
+  if(!confirm("Delete this lead?"))return;
+  fetch(SB+"/rest/v1/sportspicks_leads?id=eq."+id,{method:"DELETE",headers:{"apikey":SK,"Authorization":"Bearer "+SK}})
+  .then(function(){LD=LD.filter(function(l){return l.id!==id;});SL.delete(id);STAT();REND();});
+}
+function DSEL(){
+  if(!SL.size)return;
+  if(!confirm("Delete "+SL.size+" leads?"))return;
+  var ids=Array.from(SL).join(",");
+  fetch(SB+"/rest/v1/sportspicks_leads?id=in.("+ids+")",{method:"DELETE",headers:{"apikey":SK,"Authorization":"Bearer "+SK}})
+  .then(function(){
+    LD=LD.filter(function(l){return!SL.has(l.id);});
+    SL.clear();
+    document.getElementById("DSB").style.display="none";
+    document.getElementById("CA").checked=false;
+    STAT();REND();
+  });
+}
+function PR1(id){
+  var l=LD.find(function(x){return x.id===id;});
+  if(!l)return;
+  var w=window.open("","_blank");
+  w.document.write("<html><head><title>Lead</title><style>body{font-family:Arial;padding:30px;font-size:13px}table{border-collapse:collapse;width:100%}td{padding:10px;border-bottom:1px solid #eee}td:first-child{font-weight:bold;color:#666;width:130px}</style></head><body>");
+  w.document.write("<h2 style=color:#0EA5E9>FreeSportsPicks.pro Lead</h2><p>"+new Date().toLocaleString()+"</p><table>");
+  var rows=[["Date",new Date(l.created_at).toLocaleString()],["Name",l.name||"-"],["Email",l.email||"-"],["City",l.city||"-"],["Sport",l.favorite_sport||"-"],["Source",l.source||"-"],["Message",l.message||"-"]];
+  rows.forEach(function(r){w.document.write("<tr><td>"+r[0]+"</td><td>"+r[1]+"</td></tr>");});
+  w.document.write("</table></body></html>");
+  w.document.close();setTimeout(function(){w.print();},400);
+}
+function PALL(){
+  var list=SL.size>0?LD.filter(function(l){return SL.has(l.id);}):LD;
+  var w=window.open("","_blank");
+  w.document.write("<html><head><title>FSP Leads</title><style>body{font-family:Arial;font-size:11px;padding:20px}h1{font-size:16px;color:#0EA5E9}table{width:100%;border-collapse:collapse}th{background:#0EA5E9;color:#fff;padding:7px;text-align:left;font-size:10px}td{padding:7px;border-bottom:1px solid #eee;font-size:10px}tr:nth-child(even){background:#f9f9f9}</style></head><body>");
+  w.document.write("<h1>FreeSportsPicks.pro Leads</h1><p>"+new Date().toLocaleString()+" - "+list.length+" leads</p>");
+  w.document.write("<table><thead><tr><th>#</th><th>Date</th><th>Name</th><th>Email</th><th>City</th><th>Sport</th><th>Source</th><th>Message</th></tr></thead><tbody>");
+  list.forEach(function(l,i){w.document.write("<tr><td>"+(i+1)+"</td><td>"+new Date(l.created_at).toLocaleDateString()+"</td><td>"+(l.name||"-")+"</td><td>"+(l.email||"-")+"</td><td>"+(l.city||"-")+"</td><td>"+(l.favorite_sport||"-")+"</td><td>"+(l.source||"-")+"</td><td>"+(l.message||"-")+"</td></tr>");});
+  w.document.write("</tbody></table></body></html>");
+  w.document.close();setTimeout(function(){w.print();},400);
 }
 </script>
 </body>
