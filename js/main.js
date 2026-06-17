@@ -27,7 +27,7 @@ function normalizeEmail(email) {
   return (email || '').trim().toLowerCase();
 }
 
-function isEmailBlocked(email) { return false; }
+function isEmailBlocked(email){ return false; }
 
 function blockEmail(email) {
   try {
