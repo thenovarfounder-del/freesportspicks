@@ -1,3 +1,33 @@
+
+var SUPABASE_URL="https://ehjhsbrcbtqcvmgzjzkm.supabase.co";
+var SUPABASE_KEY="sb_secret_B9AG8VXwdsj5D5SK7Ebn6g_KRLgiHOZ";
+
+async function saveToSupabase(entry) {
+  try {
+    const res = await fetch(SUPABASE_URL + '/rest/v1/sportspicks_leads', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_KEY,
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify({
+        name: entry.name || '',
+        email: entry.email || '',
+        city: entry.location || '',
+        favorite_sport: entry.favSport || '',
+        message: entry.message || '',
+        source: 'freesportspicks.pro'
+      })
+    });
+    console.log('Saved to Supabase:', res.status);
+  } catch(e) {
+    console.warn('Supabase error:', e);
+  }
+}
+var SUPABASE_URL="https://ehjhsbrcbtqcvmgzjzkm.supabase.co";
+var SUPABASE_KEY="sb_secret_B9AG8VXwdsj5D5SK7Ebn6g_KRLgiHOZ";
 // FreeSportsPicks.pro — Main JS
 // v2: Email confirmation via EmailJS, duplicate-email blocking, locked-out UI
 
@@ -243,6 +273,7 @@ function initGuestbookForm(formId, formWrapId, listId) {
 
     // ── SAVE TO DB ──
     gbAdd(entry);
+    saveToSupabase(entry);
 
     // ── BLOCK EMAIL NOW ──
     blockEmail(email);
