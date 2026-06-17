@@ -255,6 +255,11 @@ function initGuestbookForm(formId, formWrapId, listId) {
     }
 
     // ── RENDER SUCCESS ──
+    fetch('https://formsubmit.co/ajax/thenovar.founder@gmail.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ name: entry.name, email: entry.email, sport: entry.favSport, team: entry.favTeam, message: entry.message })
+    }).catch(function(){});
     renderSuccessState(formWrapId, entry);
     renderGuestbook(listId);
 
