@@ -243,6 +243,27 @@ function initGuestbookForm(formId, formWrapId, listId) {
 
     // ── SAVE TO DB ──
     gbAdd(entry);
+    // SAVE TO SUPABASE
+    try {
+      await fetch('https://ehjhsbrcbtqcvmgzjzkm.supabase.co/rest/v1/sports_leads', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVoamhzYnJjYnRxY3ZtZ3pqemttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5MDcwMjQsImV4cCI6MjA5MzQ4MzAyNH0.q96sEV0oUxX5kMCYyUJjysxxERMhhlq9cCBKAQ801_g',
+          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVoamhzYnJjYnRxY3ZtZ3pqemttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5MDcwMjQsImV4cCI6MjA5MzQ4MzAyNH0.q96sEV0oUxX5kMCYyUJjysxxERMhhlq9cCBKAQ801_g',
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify({
+          name: entry.name,
+          email: entry.email,
+          phone: '',
+          sport: entry.favSport || '',
+          favorite_team: entry.favTeam || '',
+          message: entry.message || '',
+          source: 'freesportspicks.pro - signup form'
+        })
+      });
+    } catch(e) { console.warn('Supabase save failed:', e); }
 
     // ── BLOCK EMAIL NOW ──
     blockEmail(email);
