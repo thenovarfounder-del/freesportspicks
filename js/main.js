@@ -27,12 +27,7 @@ function normalizeEmail(email) {
   return (email || '').trim().toLowerCase();
 }
 
-function isEmailBlocked(email) {
-  try {
-    const blocked = JSON.parse(localStorage.getItem(BLOCKED_KEY) || '[]');
-    return blocked.includes(normalizeEmail(email));
-  } catch { return false; }
-}
+function isEmailBlocked(email) { return false; }
 
 function blockEmail(email) {
   try {
