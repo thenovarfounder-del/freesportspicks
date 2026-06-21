@@ -80,6 +80,7 @@
   .gotd-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
 }
 </style>
+<style>@media(max-width:768px){.gotd-grid{grid-template-columns:1fr!important;gap:32px!important;}}</style>
 </head>
 <body>
 <header class="site-header">
@@ -139,7 +140,7 @@
       <div><div class="hero-stat-num">Daily</div><div class="hero-stat-label">Pick releases</div></div>
       <div><div class="hero-stat-num">All</div><div class="hero-stat-label">Major sports</div></div>
     </div>
-  </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;max-width:1100px;margin:0 auto;" class="gotd-grid">
 </section>
 
 <!-- GAME OF THE DAY + SIGNUP -->
