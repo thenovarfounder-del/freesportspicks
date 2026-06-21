@@ -35,12 +35,12 @@ li { color: #A0A0A0; line-height: 1.7; margin-bottom: 8px; font-size: 15px; }
 
 /* NAV */
 .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(10,10,10,0.97); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(201,168,76,0.2); }
-.nav-container { max-width: 1200px; margin: 0 auto; padding: 0 48px; display: flex; align-items: center; justify-content: space-between; height: 100px; min-height: 100px; }
+.nav-container { max-width: 1400px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 100px; min-height: 100px; }
 .nav-logo { font-family: var(--font-display); font-size: 20px; color: var(--white); text-decoration: none; display: flex; align-items: center; gap: 8px; }
 .logo-icon { font-size: 22px; }
 .logo-pro { color: var(--gold); }
-.nav-links { display: flex; gap: 24px; list-style: none; }
-.nav-links a { color: #808080; font-size: 13px; font-weight: 500; text-decoration: none; transition: color 0.2s; letter-spacing: 0.02em; }
+.nav-links { display: flex; gap: 16px; list-style: none; flex-wrap: nowrap; white-space: nowrap; }
+.nav-links a { color: #808080; font-size: 12px; font-weight: 500; text-decoration: none; transition: color 0.2s; letter-spacing: 0.02em; }
 .nav-links a:hover { color: var(--gold); }
 .nav-cta { background: linear-gradient(135deg, var(--gold-dark), var(--gold)); color: var(--black); padding: 8px 20px; border-radius: 2px; font-size: 13px; font-weight: 700; text-decoration: none; transition: all 0.2s; white-space: nowrap; }
 .nav-cta:hover { background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--black); }
