@@ -7,6 +7,7 @@ export default async function handler(req, res) {
     const SUPABASE_URL = process.env.SUPABASE_URL;
     const SUPABASE_KEY = process.env.SUPABASE_KEY;
     const PREMIUM_CHANNEL = process.env.PREMIUM_CHANNEL_ID;
+    const FREE_CHANNEL = '-1004292743858';
 
     async function sendMessage(chat, msg, keyboard) {
       const body = { chat_id: chat, text: msg, parse_mode: 'HTML' };
@@ -62,6 +63,21 @@ export default async function handler(req, res) {
     const body = req.body;
     const callback_query = body.callback_query;
     const message = body.message;
+
+    if (body.chat_member) {
+      const member = body.chat_member;
+      const chatId = member.chat ? member.chat.id.toString() : '';
+      const newStatus = member.new_chat_member ? member.new_chat_member.status : '';
+      const userId = member.new_chat_member ? member.new_chat_member.user.id : null;
+
+      if (chatId === FREE_CHANNEL && newStatus === 'member' && userId) {
+        await sendMessage(userId,
+          '<b>Welcome to FreeSportsPicks Pro!</b>\n\nToday\'s free pick is ready and waiting for you.\n\n🆓 Unlock it here: freesportspicks.pro\n\n💎 Want the full premium card with 3-5 picks?\nType /premium and get access today.',
+          [[{ text: 'Get Free Pick', url: 'https://freesportspicks.pro' }, { text: 'Premium $5.99', callback_data: 'premium' }]]
+        );
+      }
+      return res.status(200).json({ ok: true });
+    }
 
     if (callback_query) {
       const chatId = callback_query.message.chat.id;
