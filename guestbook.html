@@ -17,6 +17,7 @@
 <meta name="description" content="Sign in to get today's free expert sports pick. Full analysis, matchup breakdown, and confidence rating. 100% free, no subscription required.">
 <link rel="canonical" href="https://www.freesportspicks.pro/guestbook.html">
 <link rel="stylesheet" href="/css/main.css">
+<script src="https://www.google.com/recaptcha/api.js?render=6LdCwi0tAAAAAJz3kc-dhrwlHrmLktFnC4-tRkIr"></script>
 <style>
 .guestbook-page { padding: 120px 0 80px; }
 .guestbook-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; max-width: 1000px; margin: 0 auto; }
@@ -307,14 +308,27 @@ async function submitGuestbook() {
   const phone = document.getElementById('gb-phone').value.trim();
   if (!name || !email) { alert('Please enter your name and email.'); return; }
 
+  // Device fingerprint check
   const today = new Date().toISOString().split('T')[0];
+  const deviceKey = 'fsp_pick_' + today;
+  if (localStorage.getItem(deviceKey)) {
+    const pickText = await getTodaysPick();
+    showPick(pickText);
+    return;
+  }
 
-  // Check if this email already signed up today
+  // reCAPTCHA v3 check
+  let recaptchaToken = '';
+  try {
+    recaptchaToken = await grecaptcha.execute('6LdCwi0tAAAAAJz3kc-dhrwlHrmLktFnC4-tRkIr', { action: 'submit' });
+  } catch(e) {}
+
+  // Check duplicate email today
   try {
     const checkRes = await fetch(SUPA_URL + '/rest/v1/leads?email=eq.' + encodeURIComponent(email) + '&created_at=gte.' + today + 'T00:00:00', { headers: SUPA_HEADERS });
     const existing = await checkRes.json();
     if (existing && existing.length > 0) {
-      // Already signed up today - show pick anyway but don't save again
+      localStorage.setItem(deviceKey, '1');
       const pickText = await getTodaysPick();
       showPick(pickText);
       return;
@@ -326,9 +340,12 @@ async function submitGuestbook() {
     await fetch(SUPA_URL + '/rest/v1/leads', {
       method: 'POST',
       headers: SUPA_HEADERS,
-      body: JSON.stringify({ name, email, phone })
+      body: JSON.stringify({ name, email, phone, recaptcha_token: recaptchaToken })
     });
   } catch(e) {}
+
+  // Set device fingerprint so same device can't abuse
+  localStorage.setItem(deviceKey, '1');
 
   // Show pick
   const pickText = await getTodaysPick();
