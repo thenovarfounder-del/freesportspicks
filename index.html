@@ -298,6 +298,26 @@
 </section>
 
 <script>
+// Check if device already used on page load
+window.addEventListener('DOMContentLoaded', function() {
+  if (localStorage.getItem('fsp_used')) {
+    const formWrap = document.getElementById('signup-form-wrap');
+    const successDiv = document.getElementById('signup-success');
+    if (formWrap && successDiv) {
+      formWrap.style.display = 'none';
+      successDiv.innerHTML = `
+        <div style="text-align:center;padding:24px 0;">
+          <div style="font-size:48px;margin-bottom:16px;">&#x1F512;</div>
+          <h3 style="font-family:'DM Serif Display',serif;font-size:22px;color:#F5F5F0;margin-bottom:10px;">You've Already Claimed Your Free Pick</h3>
+          <p style="font-size:14px;color:#808080;margin-bottom:20px;">Upgrade to premium for daily picks with full analysis.</p>
+          <a href="https://t.me/FreeSportsPicksProBot" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#A07830,#C9A84C);color:#0A0A0A;padding:14px 32px;border-radius:2px;font-size:15px;font-weight:700;text-decoration:none;">&#x1F48E; Get Premium Access →</a>
+        </div>
+      `;
+      successDiv.style.display = 'block';
+    }
+  }
+});
+
 // Load Game of the Day from Supabase
 async function loadGameOfDay() {
   try {
