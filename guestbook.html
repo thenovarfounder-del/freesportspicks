@@ -17,7 +17,6 @@
 <meta name="description" content="Sign in to get today's free expert sports pick. Full analysis, matchup breakdown, and confidence rating. 100% free, no subscription required.">
 <link rel="canonical" href="https://www.freesportspicks.pro/guestbook.html">
 <link rel="stylesheet" href="/css/main.css">
-<script src="https://www.google.com/recaptcha/api.js?render=6LdCwi0tAAAAAJz3kc-dhrwlHrmLktFnC4-tRkIr"></script>
 <style>
 .guestbook-page { padding: 120px 0 80px; }
 .guestbook-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; max-width: 1000px; margin: 0 auto; }
@@ -338,7 +337,7 @@ async function submitGuestbook() {
   // reCAPTCHA v3
   let recaptchaToken = '';
   try {
-    recaptchaToken = await grecaptcha.execute('6LdCwi0tAAAAAJz3kc-dhrwlHrmLktFnC4-tRkIr', { action: 'submit' });
+    
   } catch(e) {}
 
   // Check if email already exists in database ever
