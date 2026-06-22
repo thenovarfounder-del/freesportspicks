@@ -272,12 +272,67 @@
 </footer>
 
 <script>
-function submitGuestbook() {
+const SUPA_URL = 'https://ehjhsbrcbtqcvmgzjzkm.supabase.co';
+const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVoamhzYnJjYnRxY3ZtZ3pqemttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5MDcwMjQsImV4cCI6MjA5MzQ4MzAyNH0.q96sEV0oUxX5kMCYyUJjysxxERMhhlq9cCBKAQ801_g';
+const SUPA_HEADERS = { 'apikey': SUPA_KEY, 'Authorization': 'Bearer ' + SUPA_KEY, 'Content-Type': 'application/json' };
+
+function showPick(pickText) {
+  document.getElementById('gb-form').style.display = 'none';
+  const successDiv = document.getElementById('gb-success');
+  successDiv.innerHTML = `
+    <div class="gb-success-icon">&#x2705;</div>
+    <h3>Here's Today's Free Pick</h3>
+    <div style="background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.3);border-radius:4px;padding:24px;margin:20px 0;text-align:left;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">&#x1F3C6; Today's Free Pick</div>
+      <p style="color:#F5F5F0;font-size:15px;line-height:1.7;margin:0;">${pickText || 'Check back shortly or visit @freesportspickspro on Telegram.'}</p>
+    </div>
+    <p style="font-size:13px;color:#808080;">Want 3-5 picks with full analysis every day?</p>
+    <a href="https://t.me/FreeSportsPicksProBot" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--gold-dark),var(--gold));color:var(--black);padding:14px 32px;border-radius:2px;font-size:15px;font-weight:700;text-decoration:none;margin-top:12px;">
+      &#x1F48E; Get Premium Access →
+    </a>
+  `;
+  successDiv.style.display = 'block';
+}
+
+async function getTodaysPick() {
+  const today = new Date().toISOString().split('T')[0];
+  const res = await fetch(SUPA_URL + '/rest/v1/daily_picks?date=eq.' + today + '&limit=1', { headers: SUPA_HEADERS });
+  const data = await res.json();
+  return data && data[0] ? data[0].free_pick : '';
+}
+
+async function submitGuestbook() {
   const name = document.getElementById('gb-name').value.trim();
   const email = document.getElementById('gb-email').value.trim();
+  const phone = document.getElementById('gb-phone').value.trim();
   if (!name || !email) { alert('Please enter your name and email.'); return; }
-  document.getElementById('gb-form').style.display = 'none';
-  document.getElementById('gb-success').style.display = 'block';
+
+  const today = new Date().toISOString().split('T')[0];
+
+  // Check if this email already signed up today
+  try {
+    const checkRes = await fetch(SUPA_URL + '/rest/v1/leads?email=eq.' + encodeURIComponent(email) + '&created_at=gte.' + today + 'T00:00:00', { headers: SUPA_HEADERS });
+    const existing = await checkRes.json();
+    if (existing && existing.length > 0) {
+      // Already signed up today - show pick anyway but don't save again
+      const pickText = await getTodaysPick();
+      showPick(pickText);
+      return;
+    }
+  } catch(e) {}
+
+  // Save new lead
+  try {
+    await fetch(SUPA_URL + '/rest/v1/leads', {
+      method: 'POST',
+      headers: SUPA_HEADERS,
+      body: JSON.stringify({ name, email, phone })
+    });
+  } catch(e) {}
+
+  // Show pick
+  const pickText = await getTodaysPick();
+  showPick(pickText);
 }
 </script>
 
