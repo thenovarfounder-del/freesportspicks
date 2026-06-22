@@ -276,20 +276,6 @@ const SUPA_URL = 'https://ehjhsbrcbtqcvmgzjzkm.supabase.co';
 const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVoamhzYnJjYnRxY3ZtZ3pqemttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5MDcwMjQsImV4cCI6MjA5MzQ4MzAyNH0.q96sEV0oUxX5kMCYyUJjysxxERMhhlq9cCBKAQ801_g';
 const SUPA_HEADERS = { 'apikey': SUPA_KEY, 'Authorization': 'Bearer ' + SUPA_KEY, 'Content-Type': 'application/json' };
 
-function showBlocked() {
-  document.getElementById('gb-form').style.display = 'none';
-  const successDiv = document.getElementById('gb-success');
-  successDiv.innerHTML = `
-    <div class="gb-success-icon">&#x1F512;</div>
-    <h3>You've Already Claimed Your Free Pick</h3>
-    <p style="font-size:14px;color:#808080;margin:16px 0;">Your one-time free pick has been used. To get daily picks with full analysis, upgrade to premium.</p>
-    <a href="https://t.me/FreeSportsPicksProBot" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--gold-dark),var(--gold));color:var(--black);padding:14px 32px;border-radius:2px;font-size:15px;font-weight:700;text-decoration:none;margin-top:12px;">
-      &#x1F48E; Get Premium Access →
-    </a>
-  `;
-  successDiv.style.display = 'block';
-}
-
 function showPick(pickText) {
   document.getElementById('gb-form').style.display = 'none';
   const successDiv = document.getElementById('gb-success');
@@ -298,7 +284,7 @@ function showPick(pickText) {
     <h3>Here's Your Free Pick</h3>
     <div style="background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.3);border-radius:4px;padding:24px;margin:20px 0;text-align:left;">
       <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">&#x1F3C6; Today's Free Pick</div>
-      <p style="color:#F5F5F0;font-size:15px;line-height:1.7;margin:0;">${pickText || 'Check @freesportspickspro on Telegram.'}</p>
+      <p style="color:#F5F5F0;font-size:15px;line-height:1.7;margin:0;">${pickText || 'Visit @freesportspickspro on Telegram for today\'s pick.'}</p>
     </div>
     <p style="font-size:13px;color:#808080;margin-top:16px;">This was your one-time free pick. Want daily picks with full analysis?</p>
     <a href="https://t.me/FreeSportsPicksProBot" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--gold-dark),var(--gold));color:var(--black);padding:14px 32px;border-radius:2px;font-size:15px;font-weight:700;text-decoration:none;margin-top:12px;">
@@ -319,39 +305,19 @@ async function submitGuestbook() {
   const name = document.getElementById('gb-name').value.trim();
   const email = document.getElementById('gb-email').value.trim();
   const phone = document.getElementById('gb-phone').value.trim();
+  const city = document.getElementById('gb-city') ? document.getElementById('gb-city').value.trim() : '';
+  const sport = document.getElementById('gb-sport') ? document.getElementById('gb-sport').value : '';
+
   if (!name || !email) { alert('Please enter your name and email.'); return; }
 
-  // Device already used - block forever
-  if (localStorage.getItem('fsp_used')) {
-    showBlocked();
-    return;
-  }
-
-  // reCAPTCHA v3
-  let recaptchaToken = '';
+  // Save to sportspicks_leads table (same as admin reads)
   try {
-    
-  } catch(e) {}
-
-  // Check if email already exists in database ever
-  try {
-    const checkRes = await fetch(SUPA_URL + '/rest/v1/leads?email=eq.' + encodeURIComponent(email), { headers: SUPA_HEADERS });
-    const existing = await checkRes.json();
-    if (existing && existing.length > 0) {
-      localStorage.setItem('fsp_used', '1');
-      showBlocked();
-      return;
-    }
-  } catch(e) {}
-
-  // Save new lead
-  try {
-    await fetch(SUPA_URL + '/rest/v1/leads', {
+    await fetch(SUPA_URL + '/rest/v1/sportspicks_leads', {
       method: 'POST',
       headers: SUPA_HEADERS,
-      body: JSON.stringify({ name, email, phone, recaptcha_token: recaptchaToken })
+      body: JSON.stringify({ name, email, message: phone, city, favorite_sport: sport, source: 'guestbook' })
     });
-  } catch(e) {}
+  } catch(e) { console.log('Save error:', e); }
 
   // Show pick
   const pickText = await getTodaysPick();
