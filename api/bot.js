@@ -4,6 +4,7 @@ export default async function handler(req, res) {
   try {
     const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
     const TON_WALLET = process.env.TON_WALLET_ADDRESS;
+    const USDT_WALLET = 'TSq5g6gtJhBxKctXzVa59yKrbsecrJmamb';
     const SUPABASE_URL = process.env.SUPABASE_URL;
     const SUPABASE_KEY = process.env.SUPABASE_KEY;
     const PREMIUM_CHANNEL = process.env.PREMIUM_CHANNEL_ID;
@@ -61,6 +62,9 @@ export default async function handler(req, res) {
       } catch(e) { return null; }
     }
 
+    const PREMIUM_MSG = (username, TON_WALLET, USDT_WALLET) =>
+      '<b>Premium Full Card - $5.99/day</b>\n\nGet 3-5 expert picks + crypto signals every morning.\n\n<b>Pay with TON:</b>\nSend exactly <b>1.5 TON</b> to:\n<code>' + TON_WALLET + '</code>\nMemo: <b>@' + (username || 'yourusername') + '</b>\n\n<b>Pay with USDT (TRC20):</b>\nSend exactly <b>$5.99 USDT</b> to:\n<code>' + USDT_WALLET + '</code>\nMemo: <b>@' + (username || 'yourusername') + '</b>\n\nTap below after sending:';
+
     const body = req.body;
     const callback_query = body.callback_query;
     const message = body.message;
@@ -73,7 +77,7 @@ export default async function handler(req, res) {
 
       if (chatId === FREE_CHANNEL && newStatus === 'member' && userId) {
         await sendMessage(userId,
-          '<b>Welcome to FreeSportsPicks Pro!</b>\n\nToday\'s free pick is ready and waiting for you.\n\n🆓 Unlock it here: freesportspicks.pro\n\n💎 Want the full premium card with 3-5 picks?\nType /premium and get access today.',
+          '<b>Welcome to FreeSportsPicks Pro!</b>\n\nToday\'s free pick is ready and waiting for you.\n\n≡ƒåô Unlock it here: freesportspicks.pro\n\n≡ƒÆÄ Want the full premium card with 3-5 picks?\nType /premium and get access today.',
           [[{ text: 'Get Free Pick', url: 'https://freesportspicks.pro' }, { text: 'Premium $5.99', callback_data: 'premium' }]]
         );
       }
@@ -103,12 +107,12 @@ export default async function handler(req, res) {
         } else if (result) {
           const inviteLink = await createInviteLink();
           if (inviteLink) {
-            await sendMessage(chatId, '<b>Payment confirmed!</b>\n\nYour private invite link:\n' + inviteLink + '\n\nClick it now. Works once, expires in 24 hours.\n\n⚠️ Your access expires in 24 hours. Pay again tomorrow for the next card.');
+            await sendMessage(chatId, '<b>Payment confirmed!</b>\n\nYour private invite link:\n' + inviteLink + '\n\nClick it now. Works once, expires in 24 hours.\n\nΓÜá∩╕Å Your access expires in 24 hours. Pay again tomorrow for the next card.');
           } else {
             await sendMessage(chatId, 'Payment confirmed! Invite link failed. Please contact support.');
           }
         } else {
-          await sendMessage(chatId, 'Payment not found. Make sure you:\n1. Sent exactly 1.5 TON\n2. Put @' + username + ' in the memo field\n\nWait 60 seconds and try again.',
+          await sendMessage(chatId, 'Payment not found. Make sure you:\n1. Sent exact amount\n2. Put @' + username + ' in the memo field\n\nWait 60 seconds and try again.',
             [[{ text: 'Check Again', callback_data: 'verify' }]]
           );
         }
@@ -121,8 +125,7 @@ export default async function handler(req, res) {
       }
 
       if (data === 'premium') {
-        await sendMessage(chatId,
-          '<b>Premium Full Card - $5.99/day</b>\n\nGet 3-5 expert picks every morning.\n\n<b>How to pay:</b>\n1. Open TON wallet\n2. Send exactly <b>1.5 TON</b> to:\n<code>' + TON_WALLET + '</code>\n3. In memo field type: <b>@' + (username || 'yourusername') + '</b>\n4. Tap button below after sending',
+        await sendMessage(chatId, PREMIUM_MSG(username, TON_WALLET, USDT_WALLET),
           [[{ text: 'I Sent Payment', callback_data: 'verify' }]]
         );
       }
@@ -147,8 +150,7 @@ export default async function handler(req, res) {
         [[{ text: 'Get Free Pick', url: 'https://freesportspicks.pro' }]]
       );
     } else if (text === '/premium') {
-      await sendMessage(chatId,
-        '<b>Premium Full Card - $5.99/day</b>\n\nGet 3-5 expert picks every morning.\n\n<b>How to pay:</b>\n1. Open TON wallet\n2. Send exactly <b>1.5 TON</b> to:\n<code>' + TON_WALLET + '</code>\n3. In memo field type: <b>@' + (username || 'yourusername') + '</b>\n4. Tap button below after sending',
+      await sendMessage(chatId, PREMIUM_MSG(username, TON_WALLET, USDT_WALLET),
         [[{ text: 'I Sent Payment', callback_data: 'verify' }]]
       );
     } else {
