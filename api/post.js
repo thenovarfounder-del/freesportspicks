@@ -9,20 +9,6 @@ export default async function handler(req, res) {
     const FREE_CHANNEL = '-1004292743858';
     const PREMIUM_CHANNEL = '-1004296241315';
 
-    const LANGUAGE_GROUPS = {
-      en: ['-1003046940406','-1001521913892','-1001059500837','-1001660625132','-1001364392463','-1002106350595','-1001410288757','-1003608894174','-1002298915392','-1001238236676'],
-      zh: ['-1002104091566','-1001480765102'],
-      vi: ['-1001183388302'],
-      es: ['-1001729332644'],
-      ru: ['-1001428699099','-1001208656374'],
-      ar: ['-1002348048888','-1001419563233']
-    };
-
-    const LANGUAGE_NAMES = {
-      en: 'English', zh: 'Mandarin Chinese', vi: 'Vietnamese',
-      es: 'Spanish', ru: 'Russian', ar: 'Arabic'
-    };
-
     async function apiPost(url, headers, body) {
       const resp = await fetch(url, {
         method: 'POST',
@@ -53,15 +39,6 @@ export default async function handler(req, res) {
       );
     }
 
-    async function translate(text, langName) {
-      const r = await apiPost(
-        'https://api.groq.com/openai/v1/chat/completions',
-        { 'Authorization': 'Bearer ' + GROQ_KEY },
-        { model: 'llama-3.3-70b-versatile', messages: [{ role: 'user', content: 'Translate to ' + langName + '. Keep team names and numbers in English. Return translation only:\n\n' + text }], max_tokens: 500 }
-      );
-      return r.choices && r.choices[0] ? r.choices[0].message.content : text;
-    }
-
     const picks = await getTodaysPicks();
     if (!picks) {
       return res.status(200).json({ ok: false, error: 'No picks found for today' });
@@ -81,20 +58,23 @@ export default async function handler(req, res) {
     );
     console.log('Premium channel:', premiumResult.ok ? 'OK' : 'FAILED');
 
-    // Post to language groups - no sleep delays to avoid timeout
-    const results = [];
-    for (const lang of Object.keys(LANGUAGE_GROUPS)) {
-      const ids = LANGUAGE_GROUPS[lang];
-      if (!ids.length) continue;
-      const msg = lang === 'en' ? picks.free_pick : await translate(picks.free_pick, LANGUAGE_NAMES[lang]);
-      const post = '\u{1F3C6} <b>FREE PICK \u2014 ' + today + '</b>\n\n' + msg + '\n\n\u{1F517} freesportspicks.pro\n\u{1F48E} Premium: t.me/FreeSportsPicksProBot';
-      for (const id of ids) {
-        const r = await postTG(id, post);
-        results.push({ lang, id, ok: r.ok });
-      }
-    }
+    // OWN LANGUAGE CHANNELS - ADD IDs HERE AS YOU CREATE THEM
+    const OWN_CHANNELS = {
+      // Format: 'Channel Name': 'channel_id'
+      // Add each new channel ID here after creating it in Telegram
+      // Example: 'FSP Crypto Vietnam': '-1001234567890',
+    };
 
-    return res.status(200).json({ ok: true, date: today, results });
+    console.log('Own channels ready for:', Object.keys(OWN_CHANNELS).length, 'channels');
+    console.log('DONE - Posts sent to free and premium channels!');
+
+    return res.status(200).json({ 
+      ok: true, 
+      date: today, 
+      free_channel: freeResult.ok,
+      premium_channel: premiumResult.ok
+    });
+
   } catch(e) {
     console.error('Post error:', e);
     return res.status(200).json({ ok: false, error: e.message });
