@@ -339,7 +339,20 @@ async function loadGameOfDay() {
       if (games && games.length > 0) {
         if (t1) t1.textContent = games[0].strHomeTeam || 'TBD';
         if (t2) t2.textContent = games[0].strAwayTeam || 'TBD';
-        if (tm) tm.textContent = games[0].strTime || 'Tonight';
+        if (tm) {
+        const rawTime = games[0].strTime || '';
+        if (rawTime) {
+          const parts = rawTime.split(':');
+          let h = parseInt(parts[0]);
+          const m = parts[1] || '00';
+          const easternH = (h - 4 + 24) % 24;
+          const period = easternH >= 12 ? 'PM' : 'AM';
+          const displayH = easternH > 12 ? easternH - 12 : (easternH === 0 ? 12 : easternH);
+          tm.textContent = displayH + ':' + m + ' ' + period + ' ET';
+        } else {
+          tm.textContent = 'Tonight';
+        }
+      }
         if (sp) sp.textContent = sport || 'MLB';
       }
     }
