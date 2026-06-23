@@ -5,6 +5,7 @@ export default async function handler(req, res) {
 
     const SUPABASE_KEY = process.env.SUPABASE_KEY;
     const GROQ_KEY = process.env.GROQ_KEY;
+    const SUPABASE_URL = 'https://ehjhsbrcbtqcvmgzjzkm.supabase.co';
 
     async function apiPost(url, headers, body) {
       const resp = await fetch(url, {
@@ -65,7 +66,7 @@ export default async function handler(req, res) {
       const dh = eh > 12 ? eh - 12 : (eh === 0 ? 12 : eh);
       const easternTime = dh + ':' + String(m).padStart(2,'0') + ' ' + period + ' ET';
       await apiPost(
-        'https://ehjhsbrcbtqcvmgzjzkm.supabase.co/rest/v1/game_of_day',
+        SUPABASE_URL + '/rest/v1/game_of_day',
         { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY, 'Prefer': 'resolution=merge-duplicates' },
         { date: today, home_team: game.strHomeTeam, away_team: game.strAwayTeam, sport: game.strSport, game_time: easternTime, league: game.strLeague }
       );
@@ -74,19 +75,43 @@ export default async function handler(req, res) {
 
     async function savePicks(free_pick, premium_picks, game_data) {
       await apiPost(
-        'https://ehjhsbrcbtqcvmgzjzkm.supabase.co/rest/v1/daily_picks',
+        SUPABASE_URL + '/rest/v1/daily_picks',
         { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY, 'Prefer': 'resolution=merge-duplicates' },
         { date: today, free_pick, premium_picks, game_data }
       );
       console.log('Picks saved');
     }
 
+    async function generateCryptoSignals() {
+      console.log('Fetching crypto data from CoinGecko...');
+      const coins = await apiGet('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=volume_desc&per_page=10&page=1');
+      const coinSummary = coins.map(c =>
+        c.name + ' (' + c.symbol.toUpperCase() + '): $' + c.current_price + ', 24h change: ' + (c.price_change_percentage_24h?.toFixed(2)) + '%, Volume: $' + (c.total_volume/1e9).toFixed(2) + 'B'
+      ).join('\n');
+
+      const prompt = 'You are a crypto analyst. Based on this market data, pick the BEST single coin for a free signal and the top 3 coins for a premium signal card.\n\nMarket data:\n' + coinSummary + '\n\nRespond in this EXACT format:\n\nFREE SIGNAL:\nCOIN: [name and symbol]\nENTRY: $[price]\nTARGET: $[price] ([+X%])\nSTOP LOSS: $[price] ([-X%])\nANALYSIS: [3-4 sentences explaining why]\nNot financial advice. Full premium card: t.me/FreeSportsPicksProBot\n\n---PREMIUM---\nCOIN 1: [name] | ENTRY: $[price] | TARGET: $[price] | STOP: $[price] | [1 sentence]\nCOIN 2: [name] | ENTRY: $[price] | TARGET: $[price] | STOP: $[price] | [1 sentence]\nCOIN 3: [name] | ENTRY: $[price] | TARGET: $[price] | STOP: $[price] | [1 sentence]';
+
+      const signals = await groqCall(prompt);
+      const parts = signals.split('---PREMIUM---');
+      const freeSignal = parts[0].trim();
+      const premiumSignals = parts[1] ? parts[1].trim() : '';
+
+      await apiPost(
+        SUPABASE_URL + '/rest/v1/crypto_signals',
+        { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY, 'Prefer': 'return=representation' },
+        { date: today, free_signal: freeSignal, premium_signals: premiumSignals, coin_data: coins }
+      );
+      console.log('Crypto signals saved');
+      return { freeSignal, premiumSignals };
+    }
+
     const { games, sport } = await getTodaysGames();
     if (games.length > 0) await saveGameOfDay(games[0]);
     const { free_pick, premium_picks } = await generatePicks(games, sport);
     await savePicks(free_pick, premium_picks, { games: games.slice(0,10), sport });
+    const { freeSignal } = await generateCryptoSignals();
 
-    return res.status(200).json({ ok: true, date: today, games: games.length, sport, free_pick });
+    return res.status(200).json({ ok: true, date: today, games: games.length, sport, free_pick, crypto_signal: freeSignal });
   } catch(e) {
     console.error('Generate error:', e);
     return res.status(200).json({ ok: false, error: e.message });
