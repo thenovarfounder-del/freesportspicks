@@ -48,12 +48,13 @@ export default async function handler(req, res) {
             });
             const existing = await check.json();
             if (existing.length > 0) return 'already_used';
+            const expiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString();
             await fetch(SUPABASE_URL + '/rest/v1/ton_payments', {
               method: 'POST',
               headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY, 'Content-Type': 'application/json' },
-              body: JSON.stringify({ tx_hash: txHash, amount, tg_username: tgUsername, status: 'confirmed' })
+              body: JSON.stringify({ tx_hash: txHash, amount, tg_username: tgUsername, status: 'confirmed', expires_at: expiresAt })
             });
-            return txHash;
+            return { txHash, tgUsername };
           }
         }
         return null;
@@ -96,13 +97,13 @@ export default async function handler(req, res) {
           return res.status(200).json({ ok: true });
         }
         await sendMessage(chatId, 'Checking payment for @' + username + '... please wait.');
-        const txHash = await checkTonPayment(username);
-        if (txHash === 'already_used') {
+        const result = await checkTonPayment(username);
+        if (result === 'already_used') {
           await sendMessage(chatId, 'This payment was already used. Send a new 1.5 TON payment for today.');
-        } else if (txHash) {
+        } else if (result) {
           const inviteLink = await createInviteLink();
           if (inviteLink) {
-            await sendMessage(chatId, '<b>Payment confirmed!</b>\n\nYour private invite link:\n' + inviteLink + '\n\nClick it now. Works once, expires in 24 hours.');
+            await sendMessage(chatId, '<b>Payment confirmed!</b>\n\nYour private invite link:\n' + inviteLink + '\n\nClick it now. Works once, expires in 24 hours.\n\n⚠️ Your access expires in 24 hours. Pay again tomorrow for the next card.');
           } else {
             await sendMessage(chatId, 'Payment confirmed! Invite link failed. Please contact support.');
           }
