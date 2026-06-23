@@ -317,10 +317,11 @@ window.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-// Load Game of the Day from Supabase
+// Load Game of the Day from daily_picks table
 async function loadGameOfDay() {
   try {
-    const res = await fetch('https://ehjhsbrcbtqcvmgzjzkm.supabase.co/rest/v1/game_of_day?order=created_at.desc&limit=1', {
+    const today = new Date().toISOString().split('T')[0];
+    const res = await fetch('https://ehjhsbrcbtqcvmgzjzkm.supabase.co/rest/v1/daily_picks?date=eq.' + today + '&limit=1', {
       headers: {
         'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVoamhzYnJjYnRxY3ZtZ3pqemttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5MDcwMjQsImV4cCI6MjA5MzQ4MzAyNH0.q96sEV0oUxX5kMCYyUJjysxxERMhhlq9cCBKAQ801_g',
         'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVoamhzYnJjYnRxY3ZtZ3pqemttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5MDcwMjQsImV4cCI6MjA5MzQ4MzAyNH0.q96sEV0oUxX5kMCYyUJjysxxERMhhlq9cCBKAQ801_g'
@@ -328,12 +329,19 @@ async function loadGameOfDay() {
     });
     const data = await res.json();
     if (data && data.length > 0) {
-      const g = data[0];
-      document.getElementById('gotd-team1').textContent = g.team1 || 'TBD';
-      document.getElementById('gotd-team2').textContent = g.team2 || 'TBD';
-      document.getElementById('gotd-time').textContent = g.game_time || 'Tonight';
-      document.getElementById('gotd-sport').textContent = g.sport || 'NFL';
-      document.getElementById('gotd-pick-reveal').textContent = g.our_pick || 'Sign in to reveal';
+      const pick = data[0];
+      const games = pick.game_data && pick.game_data.games;
+      const sport = pick.game_data && pick.game_data.sport;
+      const t1 = document.getElementById('gotd-team1');
+      const t2 = document.getElementById('gotd-team2');
+      const tm = document.getElementById('gotd-time');
+      const sp = document.getElementById('gotd-sport');
+      if (games && games.length > 0) {
+        if (t1) t1.textContent = games[0].strHomeTeam || 'TBD';
+        if (t2) t2.textContent = games[0].strAwayTeam || 'TBD';
+        if (tm) tm.textContent = games[0].strTime || 'Tonight';
+        if (sp) sp.textContent = sport || 'MLB';
+      }
     }
   } catch(e) {
     console.log('Game of day load error:', e);
