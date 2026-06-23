@@ -60,6 +60,13 @@ export default async function handler(req, res) {
 
     // OWN LANGUAGE CHANNELS - ADD IDs HERE AS YOU CREATE THEM
     const OWN_CHANNELS = {
+  "FSP Crypto Vietnam": "-1003945068539",
+  "FSP Crypto Philippines": "-1003904361668",
+  "FSP Crypto Indonesia": "-1003774895679",
+  "FSP Crypto Thailand": "-1004338838208",
+  "FSP Crypto Malaysia": "-1003978299451",
+  "FSP Crypto Myanmar": "-1003868180038",
+  "FSP Crypto Cambodia": "-1004440862289",
       // Format: 'Channel Name': 'channel_id'
       // Add each new channel ID here after creating it in Telegram
       // Example: 'FSP Crypto Vietnam': '-1001234567890',
