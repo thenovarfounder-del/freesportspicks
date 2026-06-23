@@ -63,7 +63,18 @@ export default async function handler(req, res) {
     }
 
     const PREMIUM_MSG = (username, TON_WALLET, USDT_WALLET) =>
-      '<b>Premium Full Card - $5.99/day</b>\n\nGet 3-5 expert picks + crypto signals every morning.\n\n<b>Pay with TON:</b>\nSend exactly <b>1.5 TON</b> to:\n<code>' + TON_WALLET + '</code>\nMemo: <b>@' + (username || 'yourusername') + '</b>\n\n<b>Pay with USDT (TRC20):</b>\nSend exactly <b>$5.99 USDT</b> to:\n<code>' + USDT_WALLET + '</code>\nMemo: <b>@' + (username || 'yourusername') + '</b>\n\nTap below after sending:';
+      '<b>🔥 FSP Premium — Sports Picks + Crypto Signals</b>\n\n' +
+      '<b>DAILY — $5.99</b>\n' +
+      'TON: <code>1.5 TON</code> → <code>' + TON_WALLET + '</code>\n' +
+      'USDT: <code>$5.99</code> → <code>' + USDT_WALLET + '</code>\n\n' +
+      '<b>WEEKLY — $19.99</b>\n' +
+      'TON: <code>5 TON</code> → <code>' + TON_WALLET + '</code>\n' +
+      'USDT: <code>$19.99</code> → <code>' + USDT_WALLET + '</code>\n\n' +
+      '<b>MONTHLY — $59.99</b>\n' +
+      'TON: <code>15 TON</code> → <code>' + TON_WALLET + '</code>\n' +
+      'USDT: <code>$59.99</code> → <code>' + USDT_WALLET + '</code>\n\n' +
+      '📝 Memo: <b>@' + (username || 'yourusername') + '</b>\n\n' +
+      'Tap below after sending:';
 
     const body = req.body;
     const callback_query = body.callback_query;
