@@ -8,6 +8,10 @@
     {
       "path": "/api/post",
       "schedule": "0 13 * * *"
+    },
+    {
+      "path": "/api/evening",
+      "schedule": "0 22 * * *"
     }
   ],
   "functions": {
@@ -20,6 +24,10 @@
       "maxDuration": 30
     },
     "api/post.js": {
+      "memory": 1024,
+      "maxDuration": 60
+    },
+    "api/evening.js": {
       "memory": 1024,
       "maxDuration": 60
     }
