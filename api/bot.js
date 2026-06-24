@@ -275,8 +275,25 @@ export default async function handler(req, res) {
           '🔗 <b>YOUR REFERRAL LINK</b>\n\nhttps://t.me/FreeSportsPicksProBot?start=ref_' + username + '\n\n📊 Your stats:\nTotal referrals: <b>' + count + '</b>\nUntil next free day: <b>' + needed + ' more</b>\n\n💡 Share this link with traders. When 3 of them pay for premium — you get 1 FREE day automatically!\n\n🏆 Every 3 paying referrals = 1 free premium day. No limit!'
         );
       }
+    } else if (text === '/signal') {
+      const today = new Date().toISOString().split('T')[0];
+      try {
+        const r = await fetch(SUPABASE_URL + '/rest/v1/crypto_signals?date=eq.' + today + '&limit=1', {
+          headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY }
+        });
+        const data = await r.json();
+        if (data && data[0] && data[0].free_signal) {
+          await sendMessage(chatId,
+            '💰 <b>TODAY\'S CRYPTO SIGNAL</b>\n\n' + data[0].free_signal + '\n\n🤖 Powered by FSP AI\n💎 Full premium card: /premium'
+          );
+        } else {
+          await sendMessage(chatId, '⏰ Today\'s signal is generating now. Check back at 9AM ET.\n\n💎 Full premium card: /premium');
+        }
+      } catch(e) {
+        await sendMessage(chatId, 'Signal not available right now. Check back at 9AM ET.');
+      }
     } else {
-      await sendMessage(chatId, 'Use /freepick for today\'s free pick, /premium to unlock the full card, or /refer to earn free days.');
+      await sendMessage(chatId, 'Use /freepick for today\'s free pick, /premium to unlock the full card, /signal for today\'s crypto signal, or /refer to earn free days.');
     }
 
     return res.status(200).json({ ok: true });
