@@ -220,7 +220,7 @@ var TASKS = ['quora','reddit','medium','prlog','linkedin','gbp','console','dirs'
 
 function doLogin() {
   var v = document.getElementById('pwInput').value;
-  if (v === PASS) {
+  if (v == 'admin123') {
     document.getElementById('loginScreen').style.display = 'none';
     document.getElementById('mainApp').style.display = 'block';
     loadTasks();
