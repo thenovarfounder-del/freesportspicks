@@ -1,0 +1,400 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/><title>FSP Admin</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#0a0a0f;color:#fff;min-height:100vh}
+#loginScreen{min-height:100vh;display:flex;align-items:center;justify-content:center}
+.lb{background:#1a1a2e;border:2px solid #FFD700;border-radius:20px;padding:40px;text-align:center;width:320px}
+.lb h1{color:#FFD700;font-size:22px;margin-bottom:6px}
+.lb p{color:#888;margin-bottom:20px;font-size:13px}
+.lb input{width:100%;padding:12px;border-radius:8px;border:1px solid #333;background:#0a0a0f;color:#fff;font-size:16px;margin-bottom:12px;text-align:center;outline:none}
+.lb button{width:100%;padding:12px;background:#FFD700;color:#000;border:none;border-radius:8px;font-size:15px;font-weight:900;cursor:pointer}
+.err{color:#ff4444;font-size:12px;margin-top:8px;display:none}
+#mainApp{display:none}
+header{background:#1a1a2e;border-bottom:2px solid #FFD700;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.logo{color:#FFD700;font-size:18px;font-weight:900}
+.hbtns{display:flex;gap:8px}
+.hbtn{padding:7px 14px;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;border:1px solid #333;background:transparent;color:#ccc}
+.tabs{display:flex;gap:4px;padding:14px 24px 0;background:#0d0d1a;overflow-x:auto;border-bottom:1px solid #222}
+.tab{padding:9px 18px;border-radius:8px 8px 0 0;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:1px;white-space:nowrap;color:#666;border:1px solid #222;border-bottom:none;background:none}
+.tab.active{background:#1a1a2e;color:#FFD700;border-color:#FFD700}
+.content{padding:20px;max-width:1400px;margin:0 auto}
+.stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-bottom:20px}
+.stat{background:#1a1a2e;border:1px solid #222;border-radius:10px;padding:16px}
+.stat-val{font-size:28px;font-weight:900;color:#FFD700}
+.stat-label{font-size:10px;color:#666;margin-top:3px;text-transform:uppercase;letter-spacing:1px}
+.tw{overflow-x:auto;border-radius:10px;border:1px solid #222}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{padding:10px 14px;text-align:left;font-size:10px;font-weight:700;color:#FFD700;text-transform:uppercase;background:#111;border-bottom:1px solid #333;letter-spacing:1px;white-space:nowrap}
+td{padding:10px 14px;border-bottom:1px solid #111;vertical-align:middle;color:#ccc}
+tr:hover td{background:#111}
+.empty{padding:40px;text-align:center;color:#444;font-size:13px}
+.del-btn{background:transparent;color:#ff4444;border:1px solid #ff4444;border-radius:5px;padding:3px 10px;font-size:10px;font-weight:700;cursor:pointer}
+.exp-btn{background:#FFD700;color:#000;border:none;border-radius:6px;padding:8px 16px;font-size:12px;font-weight:700;cursor:pointer;margin-bottom:16px}
+.del-all-btn{background:transparent;color:#ff4444;border:1px solid #ff4444;border-radius:6px;padding:8px 16px;font-size:12px;font-weight:700;cursor:pointer;margin-bottom:16px;margin-left:8px}
+.win-badge{background:#00ff8820;color:#00ff88;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;border:1px solid #00ff88}
+.loss-badge{background:#ff444420;color:#ff4444;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;border:1px solid #ff4444}
+.pend-badge{background:#FFD70020;color:#FFD700;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;border:1px solid #FFD700}
+.win-btn{background:#00ff8820;color:#00ff88;border:1px solid #00ff88;border-radius:5px;padding:4px 10px;font-size:10px;font-weight:700;cursor:pointer;margin-right:4px}
+.loss-btn{background:#ff444420;color:#ff4444;border:1px solid #ff4444;border-radius:5px;padding:4px 10px;font-size:10px;font-weight:700;cursor:pointer}
+.sig-card{background:#1a1a2e;border:1px solid #222;border-radius:10px;padding:16px;margin-bottom:10px}
+.sig-date{font-size:10px;color:#666;margin-bottom:6px}
+.sig-text{font-size:12px;line-height:1.7;color:#ccc;white-space:pre-wrap}
+.sig-actions{margin-top:10px;display:flex;align-items:center;gap:8px}
+.ch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+.ch-card{background:#1a1a2e;border:1px solid #222;border-radius:10px;padding:16px;text-align:center}
+.ch-flag{font-size:32px;margin-bottom:6px}
+.ch-name{font-size:12px;font-weight:700;color:#fff;margin-bottom:4px}
+.ch-subs{font-size:26px;font-weight:900;color:#FFD700}
+.ch-label{font-size:9px;color:#666;text-transform:uppercase;letter-spacing:1px}
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-bottom:20px}
+.rev-card{background:#1a1a2e;border:1px solid #222;border-radius:10px;padding:18px}
+.rev-card h3{color:#FFD700;font-size:10px;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px}
+.rev-amount{font-size:28px;font-weight:900;color:#fff}
+.task-list{display:flex;flex-direction:column;gap:8px}
+.task-item{background:#1a1a2e;border:1px solid #222;border-radius:10px;padding:14px;display:flex;align-items:center;gap:12px}
+.task-item.done{opacity:0.4}
+.task-check{width:22px;height:22px;border-radius:50%;border:2px solid #FFD700;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px}
+.task-check.checked{background:#FFD700;color:#000}
+.task-title{font-size:13px;font-weight:700;color:#fff;margin-bottom:2px}
+.task-desc{font-size:11px;color:#666}
+.task-link{font-size:11px;color:#FFD700;text-decoration:none;margin-left:auto;white-space:nowrap}
+.priority-high{border-left:3px solid #ff4444}
+.priority-med{border-left:3px solid #FFD700}
+.priority-low{border-left:3px solid #00ff88}
+@media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.ch-grid{grid-template-columns:repeat(2,1fr)}}
+</style></head><body><header>
+    <div class="logo">FSP ADMIN</div>
+    <div class="hbtns">
+      <button class="hbtn" onclick="loadAll()">Refresh</button>
+      <button class="hbtn" style="color:#ff4444;border-color:#ff4444" onclick="doLogout()">Logout</button>
+    </div>
+  </header>
+  <div class="tabs">
+    <div class="tab active" onclick="showTab('leads',this)">LEADS</div>
+    <div class="tab" onclick="showTab('signals',this)">SIGNALS</div>
+    <div class="tab" onclick="showTab('picks',this)">PICKS</div>
+    <div class="tab" onclick="showTab('channels',this)">CHANNELS</div>
+    <div class="tab" onclick="showTab('backlinks',this)">BACKLINKS</div>
+    <div class="tab" onclick="showTab('revenue',this)">REVENUE</div>
+  </div>
+  <div class="content">
+
+    <div id="tab-leads">
+      <div class="stats">
+        <div class="stat"><div class="stat-val" id="s1">0</div><div class="stat-label">Total Leads</div></div>
+        <div class="stat"><div class="stat-val" id="s2">0</div><div class="stat-label">This Week</div></div>
+        <div class="stat"><div class="stat-val" id="s3">0</div><div class="stat-label">Today</div></div>
+        <div class="stat"><div class="stat-val" id="s4">0</div><div class="stat-label">With Sport</div></div>
+      </div>
+      <button class="exp-btn" onclick="exportCSV()">Export CSV</button>
+      <button class="del-all-btn" onclick="deleteAll()">Delete All</button>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Date</th><th>Name</th><th>Email</th><th>City</th><th>Sport</th><th>Source</th><th>Message</th><th>Del</th></tr></thead>
+          <tbody id="leadsBody"><tr><td colspan="8" class="empty">Loading...</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="tab-signals" style="display:none">
+      <div class="stats">
+        <div class="stat"><div class="stat-val" id="sig-t">0</div><div class="stat-label">Total</div></div>
+        <div class="stat"><div class="stat-val" id="sig-w" style="color:#00ff88">0</div><div class="stat-label">Wins</div></div>
+        <div class="stat"><div class="stat-val" id="sig-l" style="color:#ff4444">0</div><div class="stat-label">Losses</div></div>
+        <div class="stat"><div class="stat-val" id="sig-r">--</div><div class="stat-label">Win Rate</div></div>
+      </div>
+      <div id="sigList"><div class="empty">Loading...</div></div>
+    </div>
+
+    <div id="tab-picks" style="display:none">
+      <div id="pickList"><div class="empty">Loading...</div></div>
+    </div>
+
+    <div id="tab-channels" style="display:none">
+      <div class="ch-grid" id="chGrid"><div class="empty">Loading...</div></div>
+    </div>
+
+    <div id="tab-backlinks" style="display:none">
+      <div class="task-list">
+        <div class="task-item priority-high" id="t-quora">
+          <div class="task-check" id="c-quora" onclick="toggleTask('quora')"></div>
+          <div><div class="task-title">Quora Answer — 1 per day MAX</div><div class="task-desc">Upvote 2-3 answers first. Answer naturally. No raw links.</div></div>
+          <a href="https://www.quora.com" target="_blank" class="task-link">OPEN</a>
+        </div>
+        <div class="task-item priority-high" id="t-reddit">
+          <div class="task-check" id="c-reddit" onclick="toggleTask('reddit')"></div>
+          <div><div class="task-title">Reddit — r/CryptoSignals + r/sportsbetting</div><div class="task-desc">Share today free signal with analysis. Link channel naturally.</div></div>
+          <a href="https://www.reddit.com/r/CryptoSignals" target="_blank" class="task-link">OPEN</a>
+        </div>
+        <div class="task-item priority-med" id="t-medium">
+          <div class="task-check" id="c-medium" onclick="toggleTask('medium')"></div>
+          <div><div class="task-title">Medium Article — 2x per week</div><div class="task-desc">Write crypto signal analysis. Link back to freesportspicks.pro</div></div>
+          <a href="https://medium.com/new-story" target="_blank" class="task-link">OPEN</a>
+        </div>
+        <div class="task-item priority-med" id="t-prlog">
+          <div class="task-check" id="c-prlog" onclick="toggleTask('prlog')"></div>
+          <div><div class="task-title">PRLog Press Release — Fridays only</div><div class="task-desc">Submit press release about FSP Crypto launch or performance.</div></div>
+          <a href="https://www.prlog.org/post" target="_blank" class="task-link">OPEN</a>
+        </div>
+        <div class="task-item priority-med" id="t-linkedin">
+          <div class="task-check" id="c-linkedin" onclick="toggleTask('linkedin')"></div>
+          <div><div class="task-title">LinkedIn Article — Thursdays only</div><div class="task-desc">Crypto market analysis. Professional tone. Link to site.</div></div>
+          <a href="https://www.linkedin.com/post/new" target="_blank" class="task-link">OPEN</a>
+        </div>
+        <div class="task-item priority-high" id="t-gbp">
+          <div class="task-check" id="c-gbp" onclick="toggleTask('gbp')"></div>
+          <div><div class="task-title">Google Business Profile — FloridaImpactShield</div><div class="task-desc">Biggest free SEO win for FIS. DO THIS ASAP.</div></div>
+          <a href="https://business.google.com" target="_blank" class="task-link">OPEN</a>
+        </div>
+        <div class="task-item priority-low" id="t-console">
+          <div class="task-check" id="c-console" onclick="toggleTask('console')"></div>
+          <div><div class="task-title">Google Search Console — Daily Check</div><div class="task-desc">Check indexed pages, clicks, impressions for freesportspicks.pro</div></div>
+          <a href="https://search.google.com/search-console" target="_blank" class="task-link">OPEN</a>
+        </div>
+        <div class="task-item priority-low" id="t-dirs">
+          <div class="task-check" id="c-dirs" onclick="toggleTask('dirs')"></div>
+          <div><div class="task-title">Crypto Directories — Weekly</div><div class="task-desc">Submit to CoinGecko community, CryptoCompare directories.</div></div>
+          <a href="https://www.coingecko.com" target="_blank" class="task-link">OPEN</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="tab-revenue" style="display:none">
+      <div class="rev-grid">
+        <div class="rev-card"><h3>Today</h3><div class="rev-amount" id="r-today">$0.00</div></div>
+        <div class="rev-card"><h3>This Week</h3><div class="rev-amount" id="r-week">$0.00</div></div>
+        <div class="rev-card"><h3>This Month</h3><div class="rev-amount" id="r-month">$0.00</div></div>
+        <div class="rev-card"><h3>Total Payments</h3><div class="rev-amount" id="r-count">0</div></div>
+      </div>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Date</th><th>Username</th><th>Amount</th><th>USD</th><th>Status</th></tr></thead>
+          <tbody id="revBody"><tr><td colspan="5" class="empty">Loading...</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+var PASS = 'admin123';
+var SB = 'https://ehjhsbrcbtqcvmgzjzkm.supabase.co';
+var SK = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVoamhzYnJjYnRxY3ZtZ3pqemttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5MDcwMjQsImV4cCI6MjA5MzQ4MzAyNH0.q96sEV0oUxX5kMCYyUJjysxxERMhhlq9cCBKAQ801_g';
+var BOT = '8684401835:AAGdROhnSdcNUkCvvgNTXlYidNPS_yWncZE';
+var LD = [];
+
+var CHANNELS = [
+  {name:'Free Channel',flag:'🆓',id:'-1004292743858'},
+  {name:'Premium',flag:'💎',id:'-1004296241315'},
+  {name:'Vietnam',flag:'🇻🇳',id:'-1003945068539'},
+  {name:'Philippines',flag:'🇵🇭',id:'-1003904361668'},
+  {name:'Indonesia',flag:'🇮🇩',id:'-1003774895679'},
+  {name:'Thailand',flag:'🇹🇭',id:'-1004338838208'},
+  {name:'Malaysia',flag:'🇲🇾',id:'-1003978299451'},
+  {name:'Myanmar',flag:'🇲🇲',id:'-1003868180038'},
+  {name:'Cambodia',flag:'🇰🇭',id:'-1004440862289'}
+];
+
+var TASKS = ['quora','reddit','medium','prlog','linkedin','gbp','console','dirs'];
+
+function doLogin() {
+  document.getElementById('loginScreen').style.display = 'none';
+  document.getElementById('mainApp').style.display = 'block';
+  loadTasks();
+  loadAll();
+} else {
+    document.getElementById('pwErr').style.display = 'block';
+  }
+}
+
+function doLogout() {
+  document.getElementById('loginScreen').style.display = 'flex';
+  document.getElementById('mainApp').style.display = 'none';
+  document.getElementById('pwInput').value = '';
+}
+
+function showTab(name, el) {
+  document.querySelectorAll('[id^="tab-"]').forEach(t => t.style.display = 'none');
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + name).style.display = 'block';
+  el.classList.add('active');
+  if (name === 'channels') loadChannels();
+}
+
+function E(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function loadTasks() {
+  var today = new Date().toDateString();
+  if (localStorage.getItem('taskDate') !== today) {
+    TASKS.forEach(t => localStorage.removeItem('task-' + t));
+    localStorage.setItem('taskDate', today);
+  }
+  TASKS.forEach(function(t) {
+    if (localStorage.getItem('task-' + t) === '1') {
+      var c = document.getElementById('c-' + t);
+      var i = document.getElementById('t-' + t);
+      if (c) { c.classList.add('checked'); c.textContent = '✓'; }
+      if (i) i.classList.add('done');
+    }
+  });
+}
+
+function toggleTask(t) {
+  var c = document.getElementById('c-' + t);
+  var i = document.getElementById('t-' + t);
+  var on = !c.classList.contains('checked');
+  c.classList.toggle('checked', on);
+  c.textContent = on ? '✓' : '';
+  i.classList.toggle('done', on);
+  localStorage.setItem('task-' + t, on ? '1' : '0');
+}
+
+async function loadAll() {
+  await loadLeads();
+  await loadSignals();
+  await loadPicks();
+  await loadRevenue();
+}
+
+async function loadLeads() {
+  try {
+    var r = await fetch(SB + '/rest/v1/sportspicks_leads?select=*&order=created_at.desc', { headers: { apikey: SK, Authorization: 'Bearer ' + SK } });
+    LD = await r.json();
+    if (!Array.isArray(LD)) LD = [];
+    var now = new Date();
+    var wk = new Date(now - 7 * 86400000);
+    document.getElementById('s1').textContent = LD.length;
+    document.getElementById('s2').textContent = LD.filter(l => new Date(l.created_at) > wk).length;
+    document.getElementById('s3').textContent = LD.filter(l => new Date(l.created_at).toDateString() === now.toDateString()).length;
+    document.getElementById('s4').textContent = LD.filter(l => l.favorite_sport).length;
+    var h = '';
+    LD.forEach(function(l) {
+      var dt = new Date(l.created_at).toLocaleDateString();
+      h += '<tr>';
+      h += '<td style="white-space:nowrap;color:#666">' + dt + '</td>';
+      h += '<td style="font-weight:600;color:#fff">' + E(l.name||'-') + '</td>';
+      h += '<td><a href="mailto:' + E(l.email) + '" style="color:#FFD700;text-decoration:none;font-size:11px">' + E(l.email||'-') + '</a></td>';
+      h += '<td>' + E(l.city||'-') + '</td>';
+      h += '<td><span style="background:#FFD70020;color:#FFD700;padding:2px 6px;border-radius:8px;font-size:10px;font-weight:700">' + E(l.favorite_sport||'-') + '</span></td>';
+      h += '<td><span style="background:#8888ff20;color:#aaf;padding:2px 6px;border-radius:8px;font-size:10px">' + E(l.source||'-') + '</span></td>';
+      h += '<td style="max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#666">' + E(l.message||'-') + '</td>';
+      h += '<td><button class="del-btn" onclick="delLead(' + l.id + ')">DEL</button></td>';
+      h += '</tr>';
+    });
+    document.getElementById('leadsBody').innerHTML = h || '<tr><td colspan="8" class="empty">No leads yet.</td></tr>';
+  } catch(e) { document.getElementById('leadsBody').innerHTML = '<tr><td colspan="8" class="empty">Error loading</td></tr>'; }
+}
+
+async function delLead(id) {
+  if (!confirm('Delete this lead?')) return;
+  await fetch(SB + '/rest/v1/sportspicks_leads?id=eq.' + id, { method: 'DELETE', headers: { apikey: SK, Authorization: 'Bearer ' + SK } });
+  await loadLeads();
+}
+
+async function deleteAll() {
+  if (!confirm('Delete ALL ' + LD.length + ' leads? This cannot be undone.')) return;
+  var ids = LD.map(l => l.id).join(',');
+  await fetch(SB + '/rest/v1/sportspicks_leads?id=in.(' + ids + ')', { method: 'DELETE', headers: { apikey: SK, Authorization: 'Bearer ' + SK } });
+  await loadLeads();
+}
+
+function exportCSV() {
+  if (!LD.length) { alert('No leads to export.'); return; }
+  var csv = 'Date,Name,Email,Phone,City,Sport,Source,Message
+';
+  LD.forEach(function(l) {
+    csv += [new Date(l.created_at).toLocaleDateString(), l.name||'', l.email||'', l.phone||'', l.city||'', l.favorite_sport||'', l.source||'', (l.message||'').replace(/,/g,';')].join(',') + '
+';
+  });
+  var blob = new Blob([csv], { type: 'text/csv' });
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'fsp-leads-' + new Date().toISOString().split('T')[0] + '.csv';
+  a.click();
+}
+
+async function loadSignals() {
+  try {
+    var r = await fetch(SB + '/rest/v1/crypto_signals?select=*&order=created_at.desc&limit=30', { headers: { apikey: SK, Authorization: 'Bearer ' + SK } });
+    var sigs = await r.json();
+    if (!Array.isArray(sigs) || !sigs.length) { document.getElementById('sigList').innerHTML = '<div class="empty">No signals yet.</div>'; return; }
+    var wins = sigs.filter(s => s.result === 'win').length;
+    var losses = sigs.filter(s => s.result === 'loss').length;
+    var total = wins + losses;
+    document.getElementById('sig-t').textContent = sigs.length;
+    document.getElementById('sig-w').textContent = wins;
+    document.getElementById('sig-l').textContent = losses;
+    document.getElementById('sig-r').textContent = total > 0 ? Math.round(wins / total * 100) + '%' : '--';
+    var h = '';
+    sigs.forEach(function(s) {
+      var badge = s.result === 'win' ? '<span class="win-badge">WIN</span>' : s.result === 'loss' ? '<span class="loss-badge">LOSS</span>' : '<span class="pend-badge">PENDING</span>';
+      var btns = (!s.result || s.result === 'pending') ? '<button class="win-btn" onclick="markSig(' + s.id + ','win')">WIN</button><button class="loss-btn" onclick="markSig(' + s.id + ','loss')">LOSS</button>' : '';
+      h += '<div class="sig-card"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><div class="sig-date">' + s.date + '</div>' + badge + '</div><div class="sig-text">' + E(s.free_signal||'') + '</div><div class="sig-actions">' + btns + '</div></div>';
+    });
+    document.getElementById('sigList').innerHTML = h;
+  } catch(e) { document.getElementById('sigList').innerHTML = '<div class="empty">Error loading signals</div>'; }
+}
+
+async function markSig(id, result) {
+  await fetch(SB + '/rest/v1/crypto_signals?id=eq.' + id, { method: 'PATCH', headers: { apikey: SK, Authorization: 'Bearer ' + SK, 'Content-Type': 'application/json', Prefer: 'return=representation' }, body: JSON.stringify({ result }) });
+  await loadSignals();
+}
+
+async function loadPicks() {
+  try {
+    var r = await fetch(SB + '/rest/v1/daily_picks?select=*&order=created_at.desc&limit=14', { headers: { apikey: SK, Authorization: 'Bearer ' + SK } });
+    var picks = await r.json();
+    if (!Array.isArray(picks) || !picks.length) { document.getElementById('pickList').innerHTML = '<div class="empty">No picks yet.</div>'; return; }
+    var h = '';
+    picks.forEach(function(p) {
+      h += '<div style="background:#1a1a2e;border:1px solid #222;border-radius:10px;padding:16px;margin-bottom:10px">';
+      h += '<div style="font-size:10px;color:#666;margin-bottom:8px">' + p.date + '</div>';
+      h += '<div style="font-size:10px;color:#FFD700;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Free Pick</div>';
+      h += '<div style="font-size:12px;line-height:1.7;color:#ccc;white-space:pre-wrap;margin-bottom:12px">' + E(p.free_pick||'') + '</div>';
+      h += '<div style="font-size:10px;color:#FFD700;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Premium Card</div>';
+      h += '<div style="font-size:12px;line-height:1.7;color:#ccc;white-space:pre-wrap">' + E(p.premium_picks||'') + '</div>';
+      h += '</div>';
+    });
+    document.getElementById('pickList').innerHTML = h;
+  } catch(e) { document.getElementById('pickList').innerHTML = '<div class="empty">Error loading picks</div>'; }
+}
+
+async function loadChannels() {
+  document.getElementById('chGrid').innerHTML = '<div class="empty">Loading...</div>';
+  var h = '';
+  for (var ch of CHANNELS) {
+    try {
+      var r = await fetch('https://api.telegram.org/bot' + BOT + '/getChatMemberCount?chat_id=' + ch.id);
+      var d = await r.json();
+      var count = d.ok ? d.result.toLocaleString() : '--';
+      h += '<div class="ch-card"><div class="ch-flag">' + ch.flag + '</div><div class="ch-name">' + ch.name + '</div><div class="ch-subs">' + count + '</div><div class="ch-label">subscribers</div></div>';
+    } catch(e) {
+      h += '<div class="ch-card"><div class="ch-flag">' + ch.flag + '</div><div class="ch-name">' + ch.name + '</div><div class="ch-subs">--</div><div class="ch-label">subscribers</div></div>';
+    }
+  }
+  document.getElementById('chGrid').innerHTML = h;
+}
+
+async function loadRevenue() {
+  try {
+    var r = await fetch(SB + '/rest/v1/ton_payments?select=*&order=created_at.desc', { headers: { apikey: SK, Authorization: 'Bearer ' + SK } });
+    var pays = await r.json();
+    if (!Array.isArray(pays) || !pays.length) { document.getElementById('revBody').innerHTML = '<tr><td colspan="5" class="empty">No payments yet.</td></tr>'; return; }
+    var now = new Date();
+    var today = now.toISOString().split('T')[0];
+    var wk = new Date(now - 7 * 86400000).toISOString();
+    var mo = new Date(now - 30 * 86400000).toISOString();
+    document.getElementById('r-today').textContent = '$' + pays.filter(p => p.created_at.startsWith(today)).reduce((s, p) => s + p.amount * 3.99, 0).toFixed(2);
+    document.getElementById('r-week').textContent = '$' + pays.filter(p => p.created_at > wk).reduce((s, p) => s + p.amount * 3.99, 0).toFixed(2);
+    document.getElementById('r-month').textContent = '$' + pays.filter(p => p.created_at > mo).reduce((s, p) => s + p.amount * 3.99, 0).toFixed(2);
+    document.getElementById('r-count').textContent = pays.length;
+    var h = '';
+    pays.forEach(function(p) {
+      h += '<tr><td>' + new Date(p.created_at).toLocaleDateString() + '</td><td style="color:#FFD700">@' + E(p.tg_username||'-') + '</td><td>' + p.amount + ' TON</td><td style="color:#00ff88">$' + (p.amount * 3.99).toFixed(2) + '</td><td><span class="win-badge">confirmed</span></td></tr>';
+    });
+    document.getElementById('revBody').innerHTML = h;
+  } catch(e) {}
+}
+</script>
+</body>
+</html>
