@@ -11,40 +11,43 @@ body{background:#0a0a0a;color:#fff;font-family:-apple-system,BlinkMacSystemFont,
 .login-box{background:#111;border:2px solid #f0b429;border-radius:16px;padding:48px 40px;width:360px;text-align:center;}
 .login-box h1{color:#f0b429;font-size:22px;margin-bottom:8px;}
 .login-box p{color:#666;font-size:13px;margin-bottom:28px;}
-.login-box input{width:100%;padding:12px 16px;background:#1a1a1a;border:1px solid #333;border-radius:8px;color:#fff;font-size:15px;margin-bottom:14px;outline:none;display:block;}
-.login-box button{width:100%;padding:13px;background:#f0b429;color:#000;font-weight:700;font-size:15px;border:none;border-radius:8px;cursor:pointer;}
+#pin-display{font-size:32px;letter-spacing:12px;color:#f0b429;min-height:48px;margin-bottom:20px;font-weight:700;}
+.pin-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px;}
+.pin-btn{background:#1a1a1a;border:1px solid #333;color:#fff;font-size:20px;font-weight:600;padding:18px;border-radius:10px;cursor:pointer;}
+.pin-btn:hover{background:#f0b429;color:#000;}
+.pin-clear{background:#330d0d;border:1px solid #440000;color:#ff4444;font-size:14px;padding:14px;border-radius:10px;cursor:pointer;width:100%;margin-top:4px;}
 #err{color:#ff4444;font-size:13px;margin-top:10px;}
 #admin-screen{display:none;}
 .topbar{background:#111;border-bottom:2px solid #f0b429;padding:0 28px;display:flex;align-items:center;justify-content:space-between;height:60px;}
 .topbar h1{color:#f0b429;font-size:18px;font-weight:700;}
 .topbar button{background:transparent;border:1px solid #f0b429;color:#f0b429;padding:7px 18px;border-radius:6px;cursor:pointer;font-size:13px;}
-.tabs{display:flex;background:#111;border-bottom:1px solid #222;padding:0 28px;}
-.tab{padding:14px 22px;cursor:pointer;color:#666;font-size:14px;font-weight:600;border-bottom:2px solid transparent;}
+.tabs{display:flex;background:#111;border-bottom:1px solid #222;padding:0 28px;overflow-x:auto;}
+.tab{padding:14px 18px;cursor:pointer;color:#666;font-size:13px;font-weight:600;border-bottom:2px solid transparent;white-space:nowrap;}
 .tab.active{color:#f0b429;border-bottom-color:#f0b429;}
-.content{padding:28px;max-width:1100px;margin:0 auto;}
+.content{padding:20px;max-width:1100px;margin:0 auto;}
 .panel{display:none;}
 .panel.active{display:block;}
-.card{background:#111;border:1px solid #222;border-radius:12px;padding:24px;margin-bottom:20px;}
-.card h2{color:#f0b429;font-size:15px;font-weight:700;margin-bottom:18px;}
-table{width:100%;border-collapse:collapse;font-size:13px;}
-th{color:#666;font-weight:600;padding:10px 12px;text-align:left;border-bottom:1px solid #222;}
-td{padding:10px 12px;border-bottom:1px solid #1a1a1a;color:#ccc;}
+.card{background:#111;border:1px solid #222;border-radius:12px;padding:20px;margin-bottom:20px;}
+.card h2{color:#f0b429;font-size:14px;font-weight:700;margin-bottom:16px;}
+table{width:100%;border-collapse:collapse;font-size:12px;}
+th{color:#666;font-weight:600;padding:8px 10px;text-align:left;border-bottom:1px solid #222;}
+td{padding:8px 10px;border-bottom:1px solid #1a1a1a;color:#ccc;}
 tr:hover td{background:#1a1a1a;}
-.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;}
+.badge{display:inline-block;padding:3px 8px;border-radius:20px;font-size:10px;font-weight:700;}
 .badge-win{background:#0d3320;color:#00cc66;}
 .badge-loss{background:#330d0d;color:#ff4444;}
 .badge-pending{background:#1a1a00;color:#f0b429;}
-.btn-sm{padding:5px 12px;border-radius:6px;border:none;cursor:pointer;font-size:12px;font-weight:600;margin:2px;}
+.btn-sm{padding:4px 10px;border-radius:6px;border:none;cursor:pointer;font-size:11px;font-weight:600;margin:2px;}
 .btn-win{background:#0d3320;color:#00cc66;}
 .btn-loss{background:#330d0d;color:#ff4444;}
 .btn-delete{background:#1a0a0a;color:#ff4444;border:1px solid #330d0d;}
-.btn-gold{background:#f0b429;color:#000;padding:8px 18px;border:none;border-radius:8px;cursor:pointer;font-size:13px;font-weight:700;margin-right:8px;margin-bottom:16px;}
-.btn-red{background:transparent;color:#ff4444;border:1px solid #330d0d;padding:8px 18px;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600;margin-bottom:16px;}
-.stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px;margin-bottom:20px;}
-.stat-card{background:#0a0a0a;border:1px solid #222;border-radius:10px;padding:18px;text-align:center;}
-.stat-card .num{font-size:28px;font-weight:700;color:#f0b429;}
-.stat-card .lbl{font-size:12px;color:#666;margin-top:4px;}
-.loading{color:#555;font-size:13px;text-align:center;padding:20px;}
+.btn-gold{background:#f0b429;color:#000;padding:7px 16px;border:none;border-radius:8px;cursor:pointer;font-size:12px;font-weight:700;margin-right:8px;margin-bottom:14px;}
+.btn-red{background:transparent;color:#ff4444;border:1px solid #330d0d;padding:7px 16px;border-radius:8px;cursor:pointer;font-size:12px;margin-bottom:14px;}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-bottom:16px;}
+.stat-card{background:#0a0a0a;border:1px solid #222;border-radius:10px;padding:14px;text-align:center;}
+.stat-card .num{font-size:24px;font-weight:700;color:#f0b429;}
+.stat-card .lbl{font-size:11px;color:#666;margin-top:4px;}
+.loading{color:#555;font-size:12px;text-align:center;padding:16px;}
 </style>
 </head>
 <body>
@@ -52,9 +55,21 @@ tr:hover td{background:#1a1a1a;}
 <div id="login-screen">
   <div class="login-box">
     <h1>FSP ADMIN</h1>
-    <p>Free Sports Picks Pro</p>
-    <input type="password" id="pw" placeholder="Password">
-    <button onclick="doLogin()">Sign In</button>
+    <p>Enter PIN to access</p>
+    <div id="pin-display">----</div>
+    <div class="pin-grid">
+      <button class="pin-btn" onclick="addPin('1')">1</button>
+      <button class="pin-btn" onclick="addPin('2')">2</button>
+      <button class="pin-btn" onclick="addPin('3')">3</button>
+      <button class="pin-btn" onclick="addPin('4')">4</button>
+      <button class="pin-btn" onclick="addPin('5')">5</button>
+      <button class="pin-btn" onclick="addPin('6')">6</button>
+      <button class="pin-btn" onclick="addPin('7')">7</button>
+      <button class="pin-btn" onclick="addPin('8')">8</button>
+      <button class="pin-btn" onclick="addPin('9')">9</button>
+      <button class="pin-btn" onclick="addPin('0')" style="grid-column:2">0</button>
+    </div>
+    <button class="pin-clear" onclick="clearPin()">Clear</button>
     <div id="err"></div>
   </div>
 </div>
@@ -124,6 +139,8 @@ tr:hover td{background:#1a1a1a;}
 </div>
 
 <script>
+var pin = '';
+var CORRECT = '2026';
 var SUPA_URL = 'https://ehjhsbrcbtqcvmgzjzkm.supabase.co';
 var SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVoamhzYnJjYnRxY3ZtZ3pqemttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5MDcwMjQsImV4cCI6MjA5MzQ4MzAyNH0.q96sEV0oUxX5kMCYyUJjysxxERMhhlq9cCBKAQ801_g';
 var BOT = '8684401835:AAGdROhnSdcNUkCvvgNTXlYidNPS_yWncZE';
@@ -139,28 +156,40 @@ var CHANNELS = [
   {name:'FSP Crypto Cambodia',id:'-1004440862289',user:'fspcryptocambodia'}
 ];
 
-function doLogin(){
-  var v = document.getElementById('pw').value.trim();
-  var correct = ['F','r','e','e','S','p','o','r','t','s','2','0','2','6'].join('');
-  if(v === correct){
-    document.getElementById('login-screen').style.display = 'none';
-    document.getElementById('admin-screen').style.display = 'block';
-    loadLeads();
-  } else {
-    document.getElementById('err').textContent = 'Wrong password. Try again.';
+function addPin(d){
+  if(pin.length>=4) return;
+  pin += d;
+  var display = pin.split('').map(function(){return '*';}).join(' ');
+  var dashes = '- - - -'.split(' ');
+  var chars = pin.split('').map(function(){return '*';});
+  while(chars.length<4) chars.push('-');
+  document.getElementById('pin-display').textContent = chars.join(' ');
+  if(pin.length===4){
+    setTimeout(function(){
+      if(pin === CORRECT){
+        document.getElementById('login-screen').style.display='none';
+        document.getElementById('admin-screen').style.display='block';
+        loadLeads();
+      } else {
+        document.getElementById('err').textContent='Wrong PIN. Try again.';
+        pin='';
+        document.getElementById('pin-display').textContent='- - - -';
+      }
+    },300);
   }
 }
 
-function doLogout(){
-  document.getElementById('login-screen').style.display = 'flex';
-  document.getElementById('admin-screen').style.display = 'none';
-  document.getElementById('pw').value = '';
-  document.getElementById('err').textContent = '';
+function clearPin(){
+  pin='';
+  document.getElementById('pin-display').textContent='- - - -';
+  document.getElementById('err').textContent='';
 }
 
-document.getElementById('pw').addEventListener('keydown', function(e){
-  if(e.key === 'Enter') doLogin();
-});
+function doLogout(){
+  document.getElementById('login-screen').style.display='flex';
+  document.getElementById('admin-screen').style.display='none';
+  clearPin();
+}
 
 function showTab(name){
   document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});
