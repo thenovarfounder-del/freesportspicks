@@ -1,301 +1,380 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Admin — FreeSportsPicks.pro</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FSP Admin</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;background:#F8FAFC;color:#0F1727}
-.lw{min-height:100vh;display:flex;align-items:center;justify-content:center}
-.lb{background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:48px;width:100%;max-width:400px;text-align:center}
-input[type=password]{width:100%;padding:12px 16px;border:1px solid #E2E8EB;border-radius:6px;font-size:14px;outline:none;margin-bottom:16px}
-.bp{background:#0EA5E9;color:#fff;border:none;border-radius:6px;padding:12px;font-size:15px;font-weight:600;cursor:pointer;width:100%}
-.btn{padding:8px 16px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;border:none}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
-.sc{background:#fff;border:1px solid #E2E8F0;border-radius:8px;padding:20px}
-.sv{font-size:28px;font-weight:700}
-.tw{background:#fff;border:1px solid #E2E8F0;border-radius:8px;overflow:hidden}
-table{width:100%;border-collapse:collapse;font-size:13px}
-th{padding:12px 14px;text-align:left;font-size:11px;font-weight:700;color:#647488;text-transform:uppercase;background:#F8FAFC;border-bottom:1px solid #E2E8F0;white-space:nowrap}
-td{padding:12px 14px;border-bottom:1px solid #F1F5F9;vertical-align:middle}
-tr:nth-child(even){background:#FAFAFF}
-.empty{padding:40px;text-align:center;color:#94A3B8}
-a{padding:5px 10px;border-radius:4px;font-size:11px;font-weight:600;cursor:pointer;border:none;margin:0 2px}
-.ab{background:#E0F2FE;color:#0284C7;text-decoration:none}
-.db{background:#FEE2E2;color:#DC2626;text-decoration:none}
-em{padding:2px 8px;border-radius:20px;font-size:10px;font-weight:600}
-#DW{display:none;padding:32px 20px;max-width:1400px;margin:0 auto}
-.tabs{display:flex;gap:4px;margin-bottom:20px;background:#fff;border:1px solid #E2E8F0;border-radius:8px;padding:4px}
-.tab{padding:8px 20px;border-radius:6px;cursor:pointer;font-size:13px;font-weight:600;color:#666;border:none;background:none}
-.tab.active{background:#0EA5E9;color:#fff}
-.section-title{font-size:13px;color:#647488;letter-spacing:1px;margin-bottom:12px;font-weight:700}
-.signal-card{background:#fff;border:1px solid #E2E8F0;border-radius:8px;padding:20px;margin-bottom:12px}
-.signal-date{font-size:11px;color:#94A3B8;margin-bottom:8px}
-.signal-text{font-size:13px;line-height:1.6;white-space:pre-wrap;color:#0F1727}
-.win-badge{background:#DCFCE7;color:#16A34A;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700}
-.loss-badge{background:#FEE2E2;color:#DC2626;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700}
-.pending-badge{background:#FEF9C3;color:#CA8A04;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700}
-.result-btns{margin-top:12px;display:flex;gap:8px}
-.win-btn{background:#DCFCE7;color:#16A34A;border:1px solid #16A34A;border-radius:6px;padding:6px 14px;font-size:12px;font-weight:700;cursor:pointer}
-.loss-btn{background:#FEE2E2;color:#DC2626;border:1px solid #DC2626;border-radius:6px;padding:6px 14px;font-size:12px;font-weight:700;cursor:pointer}
-@media(max-width:768px){.stats{grid-template-columns:repeat(2,1fr)}.tabs{overflow-x:auto}.tab{white-space:nowrap}}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#fff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:100vh;}
+#login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;background:#0a0a0a;}
+.login-box{background:#111;border:1px solid #f0b429;border-radius:16px;padding:48px 40px;width:360px;text-align:center;}
+.login-box h1{color:#f0b429;font-size:22px;margin-bottom:8px;letter-spacing:1px;}
+.login-box p{color:#666;font-size:13px;margin-bottom:28px;}
+.login-box input{width:100%;padding:12px 16px;background:#1a1a1a;border:1px solid #333;border-radius:8px;color:#fff;font-size:15px;margin-bottom:14px;outline:none;}
+.login-box input:focus{border-color:#f0b429;}
+.login-box button{width:100%;padding:13px;background:#f0b429;color:#000;font-weight:700;font-size:15px;border:none;border-radius:8px;cursor:pointer;letter-spacing:0.5px;}
+.login-box button:hover{background:#ffc940;}
+.err{color:#ff4444;font-size:13px;margin-top:10px;display:none;}
+#admin-screen{display:none;}
+.topbar{background:#111;border-bottom:1px solid #f0b429;padding:0 28px;display:flex;align-items:center;justify-content:space-between;height:60px;}
+.topbar h1{color:#f0b429;font-size:18px;font-weight:700;letter-spacing:1px;}
+.topbar button{background:transparent;border:1px solid #f0b429;color:#f0b429;padding:7px 18px;border-radius:6px;cursor:pointer;font-size:13px;}
+.topbar button:hover{background:#f0b429;color:#000;}
+.tabs{display:flex;background:#111;border-bottom:1px solid #222;padding:0 28px;}
+.tab{padding:14px 22px;cursor:pointer;color:#666;font-size:14px;font-weight:600;border-bottom:2px solid transparent;transition:all 0.2s;}
+.tab:hover{color:#f0b429;}
+.tab.active{color:#f0b429;border-bottom-color:#f0b429;}
+.content{padding:28px;max-width:1100px;margin:0 auto;}
+.panel{display:none;}
+.panel.active{display:block;}
+.card{background:#111;border:1px solid #222;border-radius:12px;padding:24px;margin-bottom:20px;}
+.card h2{color:#f0b429;font-size:15px;font-weight:700;margin-bottom:18px;letter-spacing:0.5px;}
+table{width:100%;border-collapse:collapse;font-size:13px;}
+th{color:#666;font-weight:600;padding:10px 12px;text-align:left;border-bottom:1px solid #222;}
+td{padding:10px 12px;border-bottom:1px solid #1a1a1a;color:#ccc;}
+tr:last-child td{border-bottom:none;}
+tr:hover td{background:#1a1a1a;}
+.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;}
+.badge-win{background:#0d3320;color:#00cc66;}
+.badge-loss{background:#330d0d;color:#ff4444;}
+.badge-pending{background:#1a1a00;color:#f0b429;}
+.btn-sm{padding:5px 12px;border-radius:6px;border:none;cursor:pointer;font-size:12px;font-weight:600;}
+.btn-win{background:#0d3320;color:#00cc66;}
+.btn-win:hover{background:#00cc66;color:#000;}
+.btn-loss{background:#330d0d;color:#ff4444;}
+.btn-loss:hover{background:#ff4444;color:#fff;}
+.btn-delete{background:#1a0a0a;color:#ff4444;border:1px solid #330d0d;}
+.btn-delete:hover{background:#ff4444;color:#fff;}
+.btn-export{background:#f0b429;color:#000;padding:8px 18px;border:none;border-radius:8px;cursor:pointer;font-size:13px;font-weight:700;margin-bottom:16px;}
+.btn-export:hover{background:#ffc940;}
+.btn-danger{background:transparent;color:#ff4444;border:1px solid #330d0d;padding:8px 18px;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600;}
+.btn-danger:hover{background:#ff4444;color:#fff;}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-bottom:20px;}
+.stat-card{background:#111;border:1px solid #222;border-radius:10px;padding:18px;text-align:center;}
+.stat-card .num{font-size:28px;font-weight:700;color:#f0b429;}
+.stat-card .lbl{font-size:12px;color:#666;margin-top:4px;}
+.flag{font-size:20px;margin-right:8px;}
+.sub-count{color:#f0b429;font-weight:700;}
+.loading{color:#555;font-size:13px;text-align:center;padding:20px;}
+.action-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:16px;}
 </style>
 </head>
 <body>
-<div class="lw" id="LW">
-<div class="lb">
-  <div style="font-size:48px;margin-bottom:16px">🏆</div>
-  <div style="font-size:22px;font-weight:700;margin-bottom:8px">Admin Panel</div>
-  <div style="font-size:14px;color:#647488;margin-bottom:24px">FreeSportsPicks.pro</div>
-  <input type="password" id="PW" placeholder="Enter password" onkeydown="if(event.key==='Enter')LGN()"/>
-  <button class="bp" onclick="LGN()">Access Admin</button>
-</div>
-</div>
 
-<div id="DW">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px">
-    <div>
-      <div style="font-size:28px;font-weight:700">FreeSportsPicks.pro</div>
-      <div style="font-size:14px;color:#647488;margin-top:4px" id="TC">Loading...</div>
-    </div>
-    <div style="display:flex;gap:10px;flex-wrap:wrap">
-      <button class="btn" style="background:#fff;border:1px solid #E2E8F0;color:#647488" onclick="LOAD()">Refresh</button>
-      <button class="btn" style="background:#0EA5E9;color:#fff" onclick="PALL()">Print All Selected</button>
-      <button class="btn" style="background:#EF4444;color:#fff;display:none" id="DSB" onclick="DEL()">Delete Selected</button>
-      <button class="btn" style="background:none;border:1px solid #E2E8F0;color:#647488" onclick="LGT()">Logout</button>
-    </div>
+<div id="login-screen">
+  <div class="login-box">
+    <h1>&#9917; FSP ADMIN</h1>
+    <p>Free Sports Picks Pro</p>
+    <input type="password" id="pw-input" placeholder="Enter password" onkeydown="if(event.key==='Enter')tryLogin()">
+    <button onclick="tryLogin()">Sign In</button>
+    <div class="err" id="err-msg">Wrong password. Try again.</div>
   </div>
+</div>
 
+<div id="admin-screen">
+  <div class="topbar">
+    <h1>&#9917; FSP ADMIN PANEL</h1>
+    <button onclick="logout()">Sign Out</button>
+  </div>
   <div class="tabs">
-    <button class="tab active" onclick="showTab('leads',this)">📋 LEADS</button>
-    <button class="tab" onclick="showTab('signals',this)">📈 CRYPTO SIGNALS</button>
-    <button class="tab" onclick="showTab('picks',this)">🏆 SPORTS PICKS</button>
-    <button class="tab" onclick="showTab('revenue',this)">💰 REVENUE</button>
+    <div class="tab active" onclick="showTab('leads',this)">&#128100; Leads</div>
+    <div class="tab" onclick="showTab('crypto',this)">&#128201; Crypto Signals</div>
+    <div class="tab" onclick="showTab('picks',this)">&#127944; Sports Picks</div>
+    <div class="tab" onclick="showTab('channels',this)">&#128242; Channels</div>
+    <div class="tab" onclick="showTab('revenue',this)">&#128176; Revenue</div>
+    <div class="tab" onclick="showTab('backlinks',this)">&#128279; Backlinks</div>
   </div>
+  <div class="content">
 
-  <!-- LEADS TAB -->
-  <div id="tab-leads">
-    <div class="stats">
-      <div class="sc"><div class="sv" id="S1" style="color:#0EA5E9">0</div><div style="font-size:13px;color:#647488">Total Leads</div></div>
-      <div class="sc"><div class="sv" id="S2" style="color:#10B981">0</div><div style="font-size:13px;color:#647488">This Week</div></div>
-      <div class="sc"><div class="sv" id="S3" style="color:#F59E0B">0</div><div style="font-size:13px;color:#647488">Today</div></div>
-      <div class="sc"><div class="sv" id="S4" style="color:#8B5CF6">0</div><div style="font-size:13px;color:#647488">With Sport</div></div>
-    </div>
-    <div class="tw">
-      <div style="overflow-x:auto">
+    <!-- LEADS -->
+    <div id="panel-leads" class="panel active">
+      <div class="card">
+        <h2>&#128100; LEADS</h2>
+        <div class="action-row">
+          <button class="btn-export" onclick="exportCSV()">&#11015; Export CSV</button>
+          <button class="btn-danger" onclick="deleteAllLeads()">&#128465; Delete All</button>
+        </div>
+        <div id="leads-stats" class="stat-grid"></div>
         <table>
-          <thead><tr>
-            <th><input type="checkbox" id="CA" onchange="SAL(this.checked)"/></th>
-            <th>Date</th><th>Name</th><th>Email</th><th>City</th>
-            <th>Sport</th><th>Source</th><th>Message</th><th>Actions</th>
-          </tr></thead>
-          <tbody id="TB"><tr><td colspan="9" class="empty">Loading...</td></tr></tbody>
+          <thead><tr><th>#</th><th>Name</th><th>Email</th><th>Source</th><th>Date</th><th>Action</th></tr></thead>
+          <tbody id="leads-body"><tr><td colspan="6" class="loading">Loading leads...</td></tr></tbody>
         </table>
       </div>
     </div>
-  </div>
 
-  <!-- SIGNALS TAB -->
-  <div id="tab-signals" style="display:none">
-    <div class="stats">
-      <div class="sc"><div class="sv" id="sig-total" style="color:#0EA5E9">0</div><div style="font-size:13px;color:#647488">Total Signals</div></div>
-      <div class="sc"><div class="sv" id="sig-wins" style="color:#10B981">0</div><div style="font-size:13px;color:#647488">Wins</div></div>
-      <div class="sc"><div class="sv" id="sig-losses" style="color:#EF4444">0</div><div style="font-size:13px;color:#647488">Losses</div></div>
-      <div class="sc"><div class="sv" id="sig-winrate" style="color:#8B5CF6">—</div><div style="font-size:13px;color:#647488">Win Rate</div></div>
-    </div>
-    <div id="signalsList"><div class="empty">Loading signals...</div></div>
-  </div>
-
-  <!-- PICKS TAB -->
-  <div id="tab-picks" style="display:none">
-    <div id="picksList"><div class="empty">Loading picks...</div></div>
-  </div>
-
-  <!-- REVENUE TAB -->
-  <div id="tab-revenue" style="display:none">
-    <div class="stats">
-      <div class="sc"><div class="sv" id="rev-today" style="color:#10B981">$0</div><div style="font-size:13px;color:#647488">Today</div></div>
-      <div class="sc"><div class="sv" id="rev-week" style="color:#0EA5E9">$0</div><div style="font-size:13px;color:#647488">This Week</div></div>
-      <div class="sc"><div class="sv" id="rev-month" style="color:#8B5CF6">$0</div><div style="font-size:13px;color:#647488">This Month</div></div>
-      <div class="sc"><div class="sv" id="rev-total" style="color:#F59E0B">0</div><div style="font-size:13px;color:#647488">Total Payments</div></div>
-    </div>
-    <div class="tw">
-      <div style="overflow-x:auto">
+    <!-- CRYPTO SIGNALS -->
+    <div id="panel-crypto" class="panel">
+      <div class="card">
+        <h2>&#128201; CRYPTO SIGNALS</h2>
+        <div id="crypto-stats" class="stat-grid"></div>
         <table>
-          <thead><tr><th>Date</th><th>Username</th><th>Amount (TON)</th><th>USD Value</th><th>Status</th></tr></thead>
-          <tbody id="revTable"><tr><td colspan="5" class="empty">Loading...</td></tr></tbody>
+          <thead><tr><th>Date</th><th>Coin</th><th>Entry</th><th>Target</th><th>Stop Loss</th><th>Signal</th><th>Result</th><th>Action</th></tr></thead>
+          <tbody id="crypto-body"><tr><td colspan="8" class="loading">Loading signals...</td></tr></tbody>
         </table>
       </div>
     </div>
+
+    <!-- SPORTS PICKS -->
+    <div id="panel-picks" class="panel">
+      <div class="card">
+        <h2>&#127944; SPORTS PICKS HISTORY</h2>
+        <div id="picks-stats" class="stat-grid"></div>
+        <table>
+          <thead><tr><th>Date</th><th>Sport</th><th>Matchup</th><th>Pick</th><th>Result</th><th>Action</th></tr></thead>
+          <tbody id="picks-body"><tr><td colspan="6" class="loading">Loading picks...</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- CHANNELS -->
+    <div id="panel-channels" class="panel">
+      <div class="card">
+        <h2>&#128242; LIVE CHANNEL STATS</h2>
+        <button class="btn-export" style="margin-bottom:16px" onclick="loadChannels()">&#8635; Refresh</button>
+        <table>
+          <thead><tr><th>Flag</th><th>Channel</th><th>Username</th><th>Subscribers</th></tr></thead>
+          <tbody id="channels-body"><tr><td colspan="4" class="loading">Loading channels...</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- REVENUE -->
+    <div id="panel-revenue" class="panel">
+      <div class="card">
+        <h2>&#128176; TON PAYMENT HISTORY</h2>
+        <div id="revenue-stats" class="stat-grid"></div>
+        <table>
+          <thead><tr><th>Date</th><th>Username</th><th>Amount</th><th>Wallet</th><th>Status</th></tr></thead>
+          <tbody id="revenue-body"><tr><td colspan="5" class="loading">Loading payments...</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- BACKLINKS -->
+    <div id="panel-backlinks" class="panel">
+      <div class="card">
+        <h2>&#128279; DAILY BACKLINK TASKS</h2>
+        <div id="backlinks-content"></div>
+      </div>
+    </div>
+
   </div>
 </div>
 
 <script>
-var PW='FreeSports2026!';
-var SB='https://ehjhsbrcbtqcvmgzjzkm.supabase.co';
-var SK='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVoamhzYnJjYnRxY3ZtZ3pqemttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5MDcwMjQsImV4cCI6MjA5MzQ4MzAyNH0.q96sEV0oUxX5kMCYyUJjysxxERMhhlq9cCBKAQ801_g';
-var LD=[];
-var SL=new Set();
+var PASS = 'FreeSports2026';
+var SUPA_URL = 'https://ehjhsbrcbtqcvmgzjzkm.supabase.co';
+var SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVoamhzYnJjYnRxY3ZtZ3pqemttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5MDcwMjQsImV4cCI6MjA5MzQ4MzAyNH0.q96sEV0oUxX5kMCYyUJjysxxERMhhlq9cCBKAQ801_g';
+var BOT_TOKEN = '8684401835:AAGdROhnSdcNUkCvvgNTXlYidNPS_yWncZE';
 
-function showTab(name,el){
-  document.querySelectorAll('[id^="tab-"]').forEach(t=>t.style.display='none');
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-  document.getElementById('tab-'+name).style.display='block';
-  el.classList.add('active');
-}
+var CHANNELS = [
+  {flag:'&#127987;&#65039;',name:'FSP Free Channel',id:'-1004292743858',user:'freesportspickspro'},
+  {flag:'&#127973;',name:'FSP Premium',id:'-1004296241315',user:'FSPPremiumPicks'},
+  {flag:'&#127987;&#65039;',name:'FSP Crypto Vietnam',id:'-1003945068539',user:'fspcryptovietnam'},
+  {flag:'&#127987;&#65039;',name:'FSP Crypto Philippines',id:'-1003904361668',user:'fspcryptophilippines'},
+  {flag:'&#127987;&#65039;',name:'FSP Crypto Indonesia',id:'-1003774895679',user:'fspcryptoindonesia'},
+  {flag:'&#127987;&#65039;',name:'FSP Crypto Thailand',id:'-1004338838208',user:'fspcryptothailand'},
+  {flag:'&#127987;&#65039;',name:'FSP Crypto Malaysia',id:'-1003978299451',user:'fspcryptomalaysia'},
+  {flag:'&#127987;&#65039;',name:'FSP Crypto Myanmar',id:'-1003868180038',user:'fspcryptomyanmar'},
+  {flag:'&#127987;&#65039;',name:'FSP Crypto Cambodia',id:'-1004440862289',user:'fspcryptocambodia'}
+];
 
-function LGN(){
-  var v=document.getElementById('PW').value;
-  if(v===PW){
-    document.getElementById('LW').style.display='none';
-    document.getElementById('DW').style.display='block';
-    LOAD();
-  }else{alert('Wrong password');}
-}
+var BACKLINK_TASKS = [
+  {day:'Monday',task:'Post FIS Quora answer — browse + upvote 3 answers first',link:'https://quora.com'},
+  {day:'Tuesday',task:'Post FSP Quora answer — browse + upvote 3 answers first',link:'https://quora.com'},
+  {day:'Wednesday',task:'Post CBI Quora answer — browse + upvote 3 answers first',link:'https://quora.com'},
+  {day:'Thursday',task:'Publish LinkedIn article — rotate FIS / FSP / CBI',link:'https://linkedin.com'},
+  {day:'Friday',task:'Submit PRLog press releases — FSP and CBI',link:'https://prlog.org/post'},
+  {day:'Sunday',task:'Run node write-social.js in traffikfuel — generate fresh backlinks.txt',link:''}
+];
 
-function LGT(){
-  document.getElementById('LW').style.display='flex';
-  document.getElementById('DW').style.display='none';
-  document.getElementById('PW').value='';
-}
-
-function ESC(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
-
-function STAT(){
-  var now=new Date();
-  var wk=new Date(now-7*24*60*60*1000);
-  document.getElementById('S1').textContent=LD.length;
-  document.getElementById('S2').textContent=LD.filter(l=>new Date(l.created_at)>wk).length;
-  document.getElementById('S3').textContent=LD.filter(l=>new Date(l.created_at).toDateString()===now.toDateString()).length;
-  document.getElementById('S4').textContent=LD.filter(l=>l.favorite_sport).length;
-  document.getElementById('TC').textContent=LD.length+' total leads';
-}
-
-function REND(){
-  var tb=document.getElementById('TB');
-  if(!LD.length){tb.innerHTML='<tr><td colspan="9" class="empty">No leads yet.</td></tr>';return;}
-  var h='';
-  for(var i=0;i<LD.length;i++){
-    var l=LD[i];var id=l.id;
-    var bg=SL.has(id)?'background:#EFF6FF':'';
-    var ck=SL.has(id)?'checked':'';
-    var dt=new Date(l.created_at).toLocaleDateString();
-    var sp=l.favorite_sport||'-';var sr=l.source||'-';var ms=l.message||'-';
-    h+='<tr id="R'+id+'" style="'+bg+'">';
-    h+='<td><input type="checkbox" '+ck+' onchange="TOG(\"'+id+'\",this.checked)"/></td>';
-    h+='<td style="white-space:nowrap;color:#647488">'+dt+'</td>';
-    h+='<td style="white-space:nowrap;color:#647488">'+ESC(l.name||'-')+'</td>';
-    h+='<td><a href="mailto:'+ESC(l.email)+'" class="ab" style="font-size:11px">'+ESC(l.email||'-')+'</a></td>';
-    h+='<td>'+ESC(l.city||'-')+'</td>';
-    h+='<td><em style="background:#E0F2FE;color:#0284C7">'+ESC(sp)+'</em></td>';
-    h+='<td><em style="background:#F3E8FF;color:#7C3AED">'+ESC(sr)+'</em></td>';
-    h+='<td style="max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+ESC(ms)+'</td>';
-    h+='<td><a class="ab" onclick="PR1('+id+')">Print</a><a class="db" onclick="D1('+id+')">Delete</a></td>';
-    h+='</tr>';
+function tryLogin(){
+  var val = document.getElementById('pw-input').value;
+  if(val === PASS){
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('admin-screen').style.display = 'block';
+    loadLeads();
+  } else {
+    document.getElementById('err-msg').style.display = 'block';
   }
-  tb.innerHTML=h;
 }
 
-function TOG(id,chk){
-  if(chk)SL.add(id);else SL.delete(id);
-  var r=document.getElementById('R'+id);
-  if(r)r.style.background=chk?'#EFF6FF':'';
-  document.getElementById('DSB').style.display=SL.size>0?'block':'none';
+function logout(){
+  document.getElementById('login-screen').style.display = 'flex';
+  document.getElementById('admin-screen').style.display = 'none';
+  document.getElementById('pw-input').value = '';
+  document.getElementById('err-msg').style.display = 'none';
 }
 
-function SAL(chk){
-  LD.forEach(l=>{SL[chk?'add':'delete'](l.id);});
-  REND();
-  document.getElementById('DSB').style.display=chk&&SL.size>0?'block':'none';
+function showTab(name, el){
+  document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});
+  document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active');});
+  el.classList.add('active');
+  document.getElementById('panel-'+name).classList.add('active');
+  if(name==='leads') loadLeads();
+  if(name==='crypto') loadCrypto();
+  if(name==='picks') loadPicks();
+  if(name==='channels') loadChannels();
+  if(name==='revenue') loadRevenue();
+  if(name==='backlinks') loadBacklinks();
 }
 
-async function LOAD(){
-  document.getElementById('TB').innerHTML='<tr><td colspan="9" class="empty">Loading...</td></tr>';
-  try{
-    var r=await fetch(SB+'/rest/v1/sportspicks_leads?select=*&order=created_at.desc',{headers:{apikey:SK,Authorization:'Bearer '+SK}});
-    LD=await r.json();
-    if(!Array.isArray(LD))LD=[];
-    STAT();REND();
-    await loadSignals();
-    await loadPicks();
-    await loadRevenue();
-  }catch(e){document.getElementById('TB').innerHTML='<tr><td colspan="9" class="empty">Error: '+e.message+'</td></tr>';}
+function supaFetch(table, params){
+  var url = SUPA_URL + '/rest/v1/' + table + '?' + (params||'order=created_at.desc&limit=100');
+  return fetch(url, {headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY}}).then(function(r){return r.json();});
 }
 
-async function loadSignals(){
-  try{
-    var r=await fetch(SB+'/rest/v1/crypto_signals?select=*&order=created_at.desc&limit=30',{headers:{apikey:SK,Authorization:'Bearer '+SK}});
-    var signals=await r.json();
-    if(!Array.isArray(signals)||!signals.length){document.getElementById('signalsList').innerHTML='<div class="empty">No signals yet.</div>';return;}
-    var wins=signals.filter(s=>s.result==='win').length;
-    var losses=signals.filter(s=>s.result==='loss').length;
-    var total=wins+losses;
-    document.getElementById('sig-total').textContent=signals.length;
-    document.getElementById('sig-wins').textContent=wins;
-    document.getElementById('sig-losses').textContent=losses;
-    document.getElementById('sig-winrate').textContent=total>0?Math.round(wins/total*100)+'%':'—';
-    var h='';
-    signals.forEach(sig=>{
-      var badge=sig.result==='win'?'<span class="win-badge">✅ WIN</span>':sig.result==='loss'?'<span class="loss-badge">❌ LOSS</span>':'<span class="pending-badge">⏳ PENDING</span>';
-      var btns=sig.result==='pending'||!sig.result?'<div class="result-btns"><button class="win-btn" onclick="markSignal('+sig.id+','win')">✅ Mark WIN</button><button class="loss-btn" onclick="markSignal('+sig.id+','loss')">❌ Mark LOSS</button></div>':'';
-      h+='<div class="signal-card"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><div class="signal-date">'+sig.date+'</div>'+badge+'</div><div class="signal-text">'+ESC(sig.free_signal||'')+'</div>'+btns+'</div>';
+function supaDelete(table, id){
+  return fetch(SUPA_URL+'/rest/v1/'+table+'?id=eq.'+id, {method:'DELETE',headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY,'Prefer':'return=minimal'}});
+}
+
+function supaPatch(table, id, body){
+  return fetch(SUPA_URL+'/rest/v1/'+table+'?id=eq.'+id, {method:'PATCH',headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify(body)});
+}
+
+function fmtDate(d){
+  if(!d) return '-';
+  return new Date(d).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+}
+
+// LEADS
+function loadLeads(){
+  supaFetch('sportspicks_leads').then(function(data){
+    var tbody = document.getElementById('leads-body');
+    var stats = document.getElementById('leads-stats');
+    if(!data||!data.length){tbody.innerHTML='<tr><td colspan="6" class="loading">No leads yet.</td></tr>';return;}
+    stats.innerHTML = '<div class="stat-card"><div class="num">'+data.length+'</div><div class="lbl">Total Leads</div></div>';
+    tbody.innerHTML = data.map(function(r,i){
+      return '<tr><td>'+(i+1)+'</td><td>'+(r.name||'-')+'</td><td>'+(r.email||'-')+'</td><td>'+(r.source||'website')+'</td><td>'+fmtDate(r.created_at)+'</td><td><button class="btn-sm btn-delete" onclick="deleteLead('+r.id+')">&#128465; Delete</button></td></tr>';
+    }).join('');
+  }).catch(function(){document.getElementById('leads-body').innerHTML='<tr><td colspan="6" class="loading">Error loading leads.</td></tr>';});
+}
+
+function deleteLead(id){
+  if(!confirm('Delete this lead?')) return;
+  supaDelete('sportspicks_leads',id).then(function(){loadLeads();});
+}
+
+function deleteAllLeads(){
+  if(!confirm('Delete ALL leads? This cannot be undone.')) return;
+  fetch(SUPA_URL+'/rest/v1/sportspicks_leads?id=gt.0',{method:'DELETE',headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY,'Prefer':'return=minimal'}}).then(function(){loadLeads();});
+}
+
+function exportCSV(){
+  supaFetch('sportspicks_leads').then(function(data){
+    if(!data||!data.length){alert('No leads to export.');return;}
+    var csv = 'Name,Email,Source,Date
+';
+    data.forEach(function(r){csv+='"'+(r.name||'')+'",'+(r.email||'')+',"'+(r.source||'website')+'",'+fmtDate(r.created_at)+'
+';});
+    var a = document.createElement('a');
+    a.href = 'data:text/csv;charset=utf-8,'+encodeURIComponent(csv);
+    a.download = 'fsp-leads-'+new Date().toISOString().slice(0,10)+'.csv';
+    a.click();
+  });
+}
+
+// CRYPTO
+function loadCrypto(){
+  supaFetch('crypto_signals').then(function(data){
+    var tbody = document.getElementById('crypto-body');
+    var stats = document.getElementById('crypto-stats');
+    if(!data||!data.length){tbody.innerHTML='<tr><td colspan="8" class="loading">No signals yet.</td></tr>';return;}
+    var wins=data.filter(function(r){return r.result==='WIN';}).length;
+    var losses=data.filter(function(r){return r.result==='LOSS';}).length;
+    var wr=wins+losses>0?Math.round(wins/(wins+losses)*100):0;
+    stats.innerHTML='<div class="stat-card"><div class="num">'+data.length+'</div><div class="lbl">Total Signals</div></div><div class="stat-card"><div class="num" style="color:#00cc66">'+wins+'</div><div class="lbl">Wins</div></div><div class="stat-card"><div class="num" style="color:#ff4444">'+losses+'</div><div class="lbl">Losses</div></div><div class="stat-card"><div class="num">'+wr+'%</div><div class="lbl">Win Rate</div></div>';
+    tbody.innerHTML=data.map(function(r){
+      var badge=r.result==='WIN'?'badge-win':r.result==='LOSS'?'badge-loss':'badge-pending';
+      var label=r.result||'Pending';
+      var btns=r.result?'<span class="badge '+badge+'">'+label+'</span>':'<button class="btn-sm btn-win" onclick="markSignal('+r.id+','WIN')">WIN</button> <button class="btn-sm btn-loss" onclick="markSignal('+r.id+','LOSS')">LOSS</button>';
+      return '<tr><td>'+fmtDate(r.created_at)+'</td><td>'+(r.coin||r.symbol||'-')+'</td><td>'+(r.entry_price?'$'+Number(r.entry_price).toLocaleString():'-')+'</td><td>'+(r.target_price?'$'+Number(r.target_price).toLocaleString():'-')+'</td><td>'+(r.stop_loss?'$'+Number(r.stop_loss).toLocaleString():'-')+'</td><td>'+(r.signal_type||r.direction||'-')+'</td><td><span class="badge '+badge+'">'+label+'</span></td><td>'+btns+'</td></tr>';
+    }).join('');
+  }).catch(function(){document.getElementById('crypto-body').innerHTML='<tr><td colspan="8" class="loading">Error loading signals.</td></tr>';});
+}
+
+function markSignal(id,result){
+  supaPatch('crypto_signals',id,{result:result}).then(function(){loadCrypto();});
+}
+
+// PICKS
+function loadPicks(){
+  supaFetch('daily_picks').then(function(data){
+    var tbody = document.getElementById('picks-body');
+    var stats = document.getElementById('picks-stats');
+    if(!data||!data.length){tbody.innerHTML='<tr><td colspan="6" class="loading">No picks yet.</td></tr>';return;}
+    var wins=data.filter(function(r){return r.result==='WIN';}).length;
+    var losses=data.filter(function(r){return r.result==='LOSS';}).length;
+    var wr=wins+losses>0?Math.round(wins/(wins+losses)*100):0;
+    stats.innerHTML='<div class="stat-card"><div class="num">'+data.length+'</div><div class="lbl">Total Picks</div></div><div class="stat-card"><div class="num" style="color:#00cc66">'+wins+'</div><div class="lbl">Wins</div></div><div class="stat-card"><div class="num" style="color:#ff4444">'+losses+'</div><div class="lbl">Losses</div></div><div class="stat-card"><div class="num">'+wr+'%</div><div class="lbl">Win Rate</div></div>';
+    tbody.innerHTML=data.map(function(r){
+      var badge=r.result==='WIN'?'badge-win':r.result==='LOSS'?'badge-loss':'badge-pending';
+      var label=r.result||'Pending';
+      var btns=r.result?'':'<button class="btn-sm btn-win" onclick="markPick('+r.id+','WIN')">WIN</button> <button class="btn-sm btn-loss" onclick="markPick('+r.id+','LOSS')">LOSS</button>';
+      return '<tr><td>'+fmtDate(r.game_date||r.created_at)+'</td><td>'+(r.sport||'-')+'</td><td>'+(r.team1&&r.team2?r.team1+' vs '+r.team2:(r.matchup||'-'))+'</td><td>'+(r.pick||'-')+'</td><td><span class="badge '+badge+'">'+label+'</span></td><td>'+btns+'</td></tr>';
+    }).join('');
+  }).catch(function(){document.getElementById('picks-body').innerHTML='<tr><td colspan="6" class="loading">Error loading picks.</td></tr>';});
+}
+
+function markPick(id,result){
+  supaPatch('daily_picks',id,{result:result}).then(function(){loadPicks();});
+}
+
+// CHANNELS
+function loadChannels(){
+  var tbody = document.getElementById('channels-body');
+  tbody.innerHTML='<tr><td colspan="4" class="loading">Fetching live counts...</td></tr>';
+  var rows=[];
+  var done=0;
+  CHANNELS.forEach(function(ch,i){
+    fetch('https://api.telegram.org/bot'+BOT_TOKEN+'/getChatMembersCount?chat_id='+ch.id)
+    .then(function(r){return r.json();})
+    .then(function(data){
+      rows[i]={ch:ch,count:data.result||0};
+    }).catch(function(){
+      rows[i]={ch:ch,count:'N/A'};
+    }).finally(function(){
+      done++;
+      if(done===CHANNELS.length){
+        tbody.innerHTML=rows.map(function(r){
+          return '<tr><td>'+r.ch.flag+'</td><td>'+r.ch.name+'</td><td><a href="https://t.me/'+r.ch.user+'" target="_blank" style="color:#f0b429">@'+r.ch.user+'</a></td><td class="sub-count">'+(typeof r.count==='number'?r.count.toLocaleString():r.count)+'</td></tr>';
+        }).join('');
+      }
     });
-    document.getElementById('signalsList').innerHTML=h;
-  }catch(e){document.getElementById('signalsList').innerHTML='<div class="empty">Error loading signals.</div>';}
+  });
 }
 
-async function markSignal(id,result){
-  await fetch(SB+'/rest/v1/crypto_signals?id=eq.'+id,{method:'PATCH',headers:{apikey:SK,Authorization:'Bearer '+SK,'Content-Type':'application/json',Prefer:'return=representation'},body:JSON.stringify({result})});
-  await loadSignals();
+// REVENUE
+function loadRevenue(){
+  supaFetch('ton_payments').then(function(data){
+    var tbody = document.getElementById('revenue-body');
+    var stats = document.getElementById('revenue-stats');
+    if(!data||!data.length){tbody.innerHTML='<tr><td colspan="5" class="loading">No payments yet.</td></tr>';return;}
+    var total=data.reduce(function(s,r){return s+(parseFloat(r.amount)||0);},0);
+    stats.innerHTML='<div class="stat-card"><div class="num">'+data.length+'</div><div class="lbl">Payments</div></div><div class="stat-card"><div class="num">'+total.toFixed(2)+'</div><div class="lbl">Total TON</div></div>';
+    tbody.innerHTML=data.map(function(r){
+      return '<tr><td>'+fmtDate(r.created_at)+'</td><td>'+(r.username||'-')+'</td><td>'+(r.amount||'-')+' TON</td><td style="font-size:11px;color:#555">'+(r.wallet||'-').slice(0,20)+'...</td><td><span class="badge badge-win">Confirmed</span></td></tr>';
+    }).join('');
+  }).catch(function(){document.getElementById('revenue-body').innerHTML='<tr><td colspan="5" class="loading">Error loading payments.</td></tr>';});
 }
 
-async function loadPicks(){
-  try{
-    var r=await fetch(SB+'/rest/v1/daily_picks?select=*&order=created_at.desc&limit=14',{headers:{apikey:SK,Authorization:'Bearer '+SK}});
-    var picks=await r.json();
-    if(!Array.isArray(picks)||!picks.length){document.getElementById('picksList').innerHTML='<div class="empty">No picks yet.</div>';return;}
-    var h='';
-    picks.forEach(p=>{
-      h+='<div class="signal-card"><div class="signal-date">'+p.date+'</div><div style="font-size:13px;font-weight:700;margin-bottom:8px;color:#0EA5E9">FREE PICK</div><div class="signal-text">'+ESC(p.free_pick||'')+'</div><div style="font-size:13px;font-weight:700;margin:12px 0 8px;color:#8B5CF6">PREMIUM CARD</div><div class="signal-text">'+ESC(p.premium_picks||'')+'</div></div>';
-    });
-    document.getElementById('picksList').innerHTML=h;
-  }catch(e){document.getElementById('picksList').innerHTML='<div class="empty">Error loading picks.</div>';}
+// BACKLINKS
+function loadBacklinks(){
+  var days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  var today=days[new Date().getDay()];
+  var html='<p style="color:#666;font-size:13px;margin-bottom:20px">Today is <strong style="color:#f0b429">'+today+'</strong></p>';
+  html+='<table><thead><tr><th>Day</th><th>Task</th><th>Link</th><th>Done</th></tr></thead><tbody>';
+  BACKLINK_TASKS.forEach(function(t){
+    var isToday=t.day===today;
+    var rowStyle=isToday?'background:#1a1400':''
+    var link=t.link?'<a href="'+t.link+'" target="_blank" style="color:#f0b429">Open</a>':'-';
+    var badge=isToday?'<span class="badge badge-pending">TODAY</span>':'';
+    html+='<tr style="'+rowStyle+'"><td>'+t.day+' '+badge+'</td><td>'+t.task+'</td><td>'+link+'</td><td><input type="checkbox"></td></tr>';
+  });
+  html+='</tbody></table>';
+  document.getElementById('backlinks-content').innerHTML=html;
 }
-
-async function loadRevenue(){
-  try{
-    var r=await fetch(SB+'/rest/v1/ton_payments?select=*&order=created_at.desc',{headers:{apikey:SK,Authorization:'Bearer '+SK}});
-    var payments=await r.json();
-    if(!Array.isArray(payments)||!payments.length){document.getElementById('revTable').innerHTML='<tr><td colspan="5" class="empty">No payments yet.</td></tr>';return;}
-    var now=new Date();
-    var today=now.toISOString().split('T')[0];
-    var wk=new Date(now-7*86400000).toISOString();
-    var mo=new Date(now-30*86400000).toISOString();
-    var todayTot=payments.filter(p=>p.created_at.startsWith(today)).reduce((s,p)=>s+(p.amount*3.99),0);
-    var wkTot=payments.filter(p=>p.created_at>wk).reduce((s,p)=>s+(p.amount*3.99),0);
-    var moTot=payments.filter(p=>p.created_at>mo).reduce((s,p)=>s+(p.amount*3.99),0);
-    document.getElementById('rev-today').textContent='$'+todayTot.toFixed(2);
-    document.getElementById('rev-week').textContent='$'+wkTot.toFixed(2);
-    document.getElementById('rev-month').textContent='$'+moTot.toFixed(2);
-    document.getElementById('rev-total').textContent=payments.length;
-    var h='';
-    payments.forEach(p=>{
-      var dt=new Date(p.created_at).toLocaleDateString();
-      var usd=(p.amount*3.99).toFixed(2);
-      h+='<tr><td>'+dt+'</td><td>@'+ESC(p.tg_username||'-')+'</td><td>'+p.amount+' TON</td><td>$'+usd+'</td><td><em style="background:#DCFCE7;color:#16A34A">'+ESC(p.status||'confirmed')+'</em></td></tr>';
-    });
-    document.getElementById('revTable').innerHTML=h;
-  }catch(e){}
-}
-
-function D1(id){if(!confirm('Delete this lead?'))return;fetch(SB+'/rest/v1/sportspicks_leads?id=eq.'+id,{method:'DELETE',headers:{apikey:SK,Authorization:'Bearer '+SK}}).then(()=>{LD=LD.filter(l=>l.id!=id);SL.delete(id);STAT();REND();});}
-
-function DEL(){if(!SL.size)return;if(!confirm('Delete '+SL.size+' leads?'))return;var ids=Array.from(SL).join(',');fetch(SB+'/rest/v1/sportspicks_leads?id=in.('+ids+')',{method:'DELETE',headers:{apikey:SK,Authorization:'Bearer '+SK}}).then(()=>{LD=LD.filter(l=>!SL.has(l.id));SL.clear();document.getElementById('DSB').style.display='none';document.getElementById('CA').checked=false;STAT();REND();});}
-
-function PR1(id){var l=LD.find(x=>x.id===id);if(!l)return;var w=window.open('','_blank');w.document.write('<html><head><title>Lead</title><style>body{font-family:Arial;padding:30px;font-size:13px}h2{color:#0EA5E9}table{width:100%;border-collapse:collapse}td{padding:10px;border-bottom:1px solid #eee}td:first-child{font-weight:600;width:130px}</style></head><body>');w.document.write('<h2>FreeSportsPicks.pro Lead</h2><p>'+new Date(l.created_at).toLocaleDateString()+' - '+l.name+'</p><table>');var rows=[['Name',l.name],['Email',l.email],['City',l.city],['Sport',l.favorite_sport],['Source',l.source],['Message',l.message]];rows.forEach(r=>{w.document.write('<tr><td>'+r[0]+'</td><td>'+(r[1]||'-')+'</td></tr>');});w.document.write('</table></body></html>');w.document.close();setTimeout(()=>{w.print();},400);}
-
-function PALL(){var list=SL.size>0?LD.filter(l=>SL.has(l.id)):LD;if(!list.length)return;var w=window.open('','_blank');w.document.write('<html><head><title>FSP Leads</title><style>body{font-family:Arial;padding:20px;font-size:12px}h1{color:#0EA5E9;font-size:16px}table{width:100%;border-collapse:collapse}th{background:#0EA5E9;color:#fff;padding:8px;text-align:left;font-size:11px}td{padding:7px;border-bottom:1px solid #eee}tr:nth-child(even){background:#f9f9f9}</style></head><body>');w.document.write('<h1>FreeSportsPicks.pro Leads — '+new Date().toLocaleDateString()+'</h1><p>'+list.length+' leads</p><table><tr><th>#</th><th>Date</th><th>Name</th><th>Email</th><th>City</th><th>Sport</th><th>Source</th><th>Message</th></tr>');list.forEach((l,i)=>{w.document.write('<tr><td>'+(i+1)+'</td><td>'+new Date(l.created_at).toLocaleDateString()+'</td><td>'+(l.name||'-')+'</td><td>'+(l.email||'-')+'</td><td>'+(l.city||'-')+'</td><td>'+(l.favorite_sport||'-')+'</td><td>'+(l.source||'-')+'</td><td>'+(l.message||'-')+'</td></tr>');});w.document.write('</table></body></html>');w.document.close();setTimeout(()=>{w.print();},400);}
 </script>
 </body>
 </html>
