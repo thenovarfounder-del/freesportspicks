@@ -795,5 +795,66 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script>
+
+<script>
+(async function() {
+  var SB = 'https://ehjhsbrcbtqcvmgzjzkm.supabase.co';
+  var SK = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVoamhzYnJjYnRxY3ZtZ3pqemttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5MDcwMjQsImV4cCI6MjA5MzQ4MzAyNH0.q96sEV0oUxX5kMCYyUJjysxxERMhhlq9cCBKAQ801_g';
+  
+  try {
+    var res = await fetch(SB + '/rest/v1/daily_picks?select=free_pick,game_data&order=date.desc&limit=1', {
+      headers: { 'apikey': SK, 'Authorization': 'Bearer ' + SK }
+    });
+    var data = await res.json();
+    if (!data || !data[0]) return;
+    
+    var pick = data[0];
+    var gameData = pick.game_data && pick.game_data.games && pick.game_data.games[0];
+    
+    // Update team names
+    if (gameData) {
+      var h = document.getElementById('home-team');
+      var a = document.getElementById('away-team');
+      var t = document.getElementById('game-time-display');
+      if (h) h.textContent = gameData.strHomeTeam || '--';
+      if (a) a.textContent = gameData.strAwayTeam || '--';
+      
+      // Check if game already started
+      if (gameData.strTime) {
+        var parts = gameData.strTime.split(':');
+        var gameUTC = new Date();
+        gameUTC.setUTCHours(parseInt(parts[0]), parseInt(parts[1] || 0), 0);
+        var now = new Date();
+        
+        if (now > gameUTC) {
+          // Game started — hide game section completely
+          var gameSection = document.querySelector('[id*="got"]') || document.querySelector('.game-of-day') || (h && h.closest('section'));
+          if (gameSection) gameSection.style.display = 'none';
+        } else {
+          // Game not started — show time in ET
+          var etH = (parseInt(parts[0]) - 4 + 24) % 24;
+          var period = etH >= 12 ? 'PM' : 'AM';
+          var dH = etH > 12 ? etH - 12 : (etH === 0 ? 12 : etH);
+          if (t) t.textContent = dH + ':' + (parts[1] || '00') + ' ' + period + ' ET';
+        }
+      }
+    }
+    
+    // Load pick text when form submitted
+    window._pickText = pick.free_pick || '';
+    
+    // Override success to show real pick
+    var origSubmit = window.submitGuestbook;
+    window.submitGuestbook = async function() {
+      if (origSubmit) await origSubmit();
+      setTimeout(function() {
+        var el = document.getElementById('idx-pick-text');
+        if (el && window._pickText) el.textContent = window._pickText;
+      }, 800);
+    };
+    
+  } catch(e) { console.log('Smart script error:', e); }
+})();
+</script>
 </body>
 </html>
