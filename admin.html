@@ -7,131 +7,124 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:#0a0a0a;color:#fff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:100vh;}
-#login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;}
-.login-box{background:#111;border:2px solid #f0b429;border-radius:16px;padding:48px 40px;width:360px;text-align:center;}
-.login-box h1{color:#f0b429;font-size:22px;margin-bottom:8px;}
-.login-box p{color:#666;font-size:13px;margin-bottom:28px;}
-#pin-display{font-size:32px;letter-spacing:12px;color:#f0b429;min-height:48px;margin-bottom:20px;font-weight:700;}
-.pin-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px;}
-.pin-btn{background:#1a1a1a;border:1px solid #333;color:#fff;font-size:20px;font-weight:600;padding:18px;border-radius:10px;cursor:pointer;}
-.pin-btn:hover{background:#f0b429;color:#000;}
-.pin-clear{background:#330d0d;border:1px solid #440000;color:#ff4444;font-size:14px;padding:14px;border-radius:10px;cursor:pointer;width:100%;margin-top:4px;}
-#err{color:#ff4444;font-size:13px;margin-top:10px;}
-#admin-screen{display:none;}
-.topbar{background:#111;border-bottom:2px solid #f0b429;padding:0 28px;display:flex;align-items:center;justify-content:space-between;height:60px;}
-.topbar h1{color:#f0b429;font-size:18px;font-weight:700;}
-.topbar button{background:transparent;border:1px solid #f0b429;color:#f0b429;padding:7px 18px;border-radius:6px;cursor:pointer;font-size:13px;}
-.tabs{display:flex;background:#111;border-bottom:1px solid #222;padding:0 28px;overflow-x:auto;}
-.tab{padding:14px 18px;cursor:pointer;color:#666;font-size:13px;font-weight:600;border-bottom:2px solid transparent;white-space:nowrap;}
+#L{display:flex;align-items:center;justify-content:center;min-height:100vh;}
+.box{background:#111;border:2px solid #f0b429;border-radius:16px;padding:40px 32px;width:340px;text-align:center;}
+h1{color:#f0b429;font-size:20px;margin-bottom:6px;}
+.sub{color:#666;font-size:12px;margin-bottom:24px;}
+#disp{font-size:36px;letter-spacing:16px;color:#f0b429;margin-bottom:24px;min-height:50px;}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:8px;}
+.pb{background:#1a1a1a;border:2px solid #333;color:#fff;font-size:22px;font-weight:700;padding:16px;border-radius:10px;cursor:pointer;}
+.pb:active{background:#f0b429;color:#000;}
+.clr{background:#1a0000;border:2px solid #440000;color:#ff4444;font-size:14px;padding:14px;border-radius:10px;cursor:pointer;width:100%;margin-top:4px;}
+#msg{color:#ff4444;font-size:12px;margin-top:10px;min-height:18px;}
+#A{display:none;}
+.topbar{background:#111;border-bottom:2px solid #f0b429;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:56px;}
+.topbar h1{color:#f0b429;font-size:16px;}
+.topbar button{background:transparent;border:1px solid #f0b429;color:#f0b429;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:12px;}
+.tabs{display:flex;background:#111;border-bottom:1px solid #222;padding:0 20px;overflow-x:auto;}
+.tab{padding:12px 16px;cursor:pointer;color:#666;font-size:13px;font-weight:600;border-bottom:2px solid transparent;white-space:nowrap;}
 .tab.active{color:#f0b429;border-bottom-color:#f0b429;}
-.content{padding:20px;max-width:1100px;margin:0 auto;}
+.content{padding:16px;max-width:1100px;margin:0 auto;}
 .panel{display:none;}
 .panel.active{display:block;}
-.card{background:#111;border:1px solid #222;border-radius:12px;padding:20px;margin-bottom:20px;}
-.card h2{color:#f0b429;font-size:14px;font-weight:700;margin-bottom:16px;}
+.card{background:#111;border:1px solid #222;border-radius:12px;padding:18px;margin-bottom:16px;}
+.card h2{color:#f0b429;font-size:13px;font-weight:700;margin-bottom:14px;}
 table{width:100%;border-collapse:collapse;font-size:12px;}
-th{color:#666;font-weight:600;padding:8px 10px;text-align:left;border-bottom:1px solid #222;}
-td{padding:8px 10px;border-bottom:1px solid #1a1a1a;color:#ccc;}
-tr:hover td{background:#1a1a1a;}
-.badge{display:inline-block;padding:3px 8px;border-radius:20px;font-size:10px;font-weight:700;}
-.badge-win{background:#0d3320;color:#00cc66;}
-.badge-loss{background:#330d0d;color:#ff4444;}
-.badge-pending{background:#1a1a00;color:#f0b429;}
-.btn-sm{padding:4px 10px;border-radius:6px;border:none;cursor:pointer;font-size:11px;font-weight:600;margin:2px;}
-.btn-win{background:#0d3320;color:#00cc66;}
-.btn-loss{background:#330d0d;color:#ff4444;}
-.btn-delete{background:#1a0a0a;color:#ff4444;border:1px solid #330d0d;}
-.btn-gold{background:#f0b429;color:#000;padding:7px 16px;border:none;border-radius:8px;cursor:pointer;font-size:12px;font-weight:700;margin-right:8px;margin-bottom:14px;}
-.btn-red{background:transparent;color:#ff4444;border:1px solid #330d0d;padding:7px 16px;border-radius:8px;cursor:pointer;font-size:12px;margin-bottom:14px;}
-.stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-bottom:16px;}
-.stat-card{background:#0a0a0a;border:1px solid #222;border-radius:10px;padding:14px;text-align:center;}
-.stat-card .num{font-size:24px;font-weight:700;color:#f0b429;}
-.stat-card .lbl{font-size:11px;color:#666;margin-top:4px;}
-.loading{color:#555;font-size:12px;text-align:center;padding:16px;}
+th{color:#666;font-weight:600;padding:8px;text-align:left;border-bottom:1px solid #222;}
+td{padding:8px;border-bottom:1px solid #1a1a1a;color:#ccc;}
+.badge{display:inline-block;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:700;}
+.bw{background:#0d3320;color:#00cc66;}
+.bl{background:#330d0d;color:#ff4444;}
+.bp{background:#1a1a00;color:#f0b429;}
+.bs{padding:4px 10px;border-radius:6px;border:none;cursor:pointer;font-size:11px;font-weight:600;margin:2px;}
+.bwin{background:#0d3320;color:#00cc66;}
+.blos{background:#330d0d;color:#ff4444;}
+.bdel{background:#1a0a0a;color:#ff4444;border:1px solid #330d0d;}
+.bgold{background:#f0b429;color:#000;padding:7px 14px;border:none;border-radius:8px;cursor:pointer;font-size:12px;font-weight:700;margin-right:6px;margin-bottom:12px;}
+.bred{background:transparent;color:#ff4444;border:1px solid #330d0d;padding:7px 14px;border-radius:8px;cursor:pointer;font-size:12px;margin-bottom:12px;}
+.sg{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-bottom:14px;}
+.sc{background:#0a0a0a;border:1px solid #222;border-radius:10px;padding:14px;text-align:center;}
+.sc .n{font-size:22px;font-weight:700;color:#f0b429;}
+.sc .l{font-size:11px;color:#666;margin-top:4px;}
+.ld{color:#555;font-size:12px;text-align:center;padding:14px;}
 </style>
 </head>
 <body>
 
-<div id="login-screen">
-  <div class="login-box">
+<div id="L">
+  <div class="box">
     <h1>FSP ADMIN</h1>
-    <p>Enter PIN to access</p>
-    <div id="pin-display">----</div>
-    <div class="pin-grid">
-      <button class="pin-btn" onclick="addPin('1')">1</button>
-      <button class="pin-btn" onclick="addPin('2')">2</button>
-      <button class="pin-btn" onclick="addPin('3')">3</button>
-      <button class="pin-btn" onclick="addPin('4')">4</button>
-      <button class="pin-btn" onclick="addPin('5')">5</button>
-      <button class="pin-btn" onclick="addPin('6')">6</button>
-      <button class="pin-btn" onclick="addPin('7')">7</button>
-      <button class="pin-btn" onclick="addPin('8')">8</button>
-      <button class="pin-btn" onclick="addPin('9')">9</button>
-      <button class="pin-btn" onclick="addPin('0')" style="grid-column:2">0</button>
+    <div class="sub">Tap your PIN</div>
+    <div id="disp">_ _ _ _</div>
+    <div class="grid">
+      <button class="pb" id="b1">1</button>
+      <button class="pb" id="b2">2</button>
+      <button class="pb" id="b3">3</button>
+      <button class="pb" id="b4">4</button>
+      <button class="pb" id="b5">5</button>
+      <button class="pb" id="b6">6</button>
+      <button class="pb" id="b7">7</button>
+      <button class="pb" id="b8">8</button>
+      <button class="pb" id="b9">9</button>
+      <button class="pb" id="b0" style="grid-column:2">0</button>
     </div>
-    <button class="pin-clear" onclick="clearPin()">Clear</button>
-    <div id="err"></div>
+    <button class="clr" id="bclear">Clear</button>
+    <div id="msg"></div>
   </div>
 </div>
 
-<div id="admin-screen">
+<div id="A">
   <div class="topbar">
     <h1>FSP ADMIN PANEL</h1>
-    <button onclick="doLogout()">Sign Out</button>
+    <button id="logout-btn">Sign Out</button>
   </div>
   <div class="tabs">
-    <div class="tab active" id="tab-leads" onclick="showTab('leads')">Leads</div>
-    <div class="tab" id="tab-crypto" onclick="showTab('crypto')">Crypto Signals</div>
-    <div class="tab" id="tab-picks" onclick="showTab('picks')">Sports Picks</div>
-    <div class="tab" id="tab-channels" onclick="showTab('channels')">Channels</div>
-    <div class="tab" id="tab-revenue" onclick="showTab('revenue')">Revenue</div>
-    <div class="tab" id="tab-backlinks" onclick="showTab('backlinks')">Backlinks</div>
+    <div class="tab active" id="tab-leads">Leads</div>
+    <div class="tab" id="tab-crypto">Crypto Signals</div>
+    <div class="tab" id="tab-picks">Sports Picks</div>
+    <div class="tab" id="tab-channels">Channels</div>
+    <div class="tab" id="tab-revenue">Revenue</div>
+    <div class="tab" id="tab-backlinks">Backlinks</div>
   </div>
   <div class="content">
     <div id="panel-leads" class="panel active">
-      <div class="card">
-        <h2>LEADS</h2>
-        <div><button class="btn-gold" onclick="exportCSV()">Export CSV</button><button class="btn-red" onclick="deleteAll()">Delete All</button></div>
-        <div id="leads-stats" class="stat-grid"></div>
-        <table><thead><tr><th>#</th><th>Name</th><th>Email</th><th>Source</th><th>Date</th><th>Action</th></tr></thead>
-        <tbody id="leads-body"><tr><td colspan="6" class="loading">Loading...</td></tr></tbody></table>
+      <div class="card"><h2>LEADS</h2>
+        <div><button class="bgold" id="btn-export">Export CSV</button><button class="bred" id="btn-delall">Delete All</button></div>
+        <div id="leads-stats" class="sg"></div>
+        <table><thead><tr><th>#</th><th>Name</th><th>Email</th><th>Source</th><th>Date</th><th>Del</th></tr></thead>
+        <tbody id="leads-body"><tr><td colspan="6" class="ld">Loading...</td></tr></tbody></table>
       </div>
     </div>
     <div id="panel-crypto" class="panel">
-      <div class="card">
-        <h2>CRYPTO SIGNALS</h2>
-        <div id="crypto-stats" class="stat-grid"></div>
+      <div class="card"><h2>CRYPTO SIGNALS</h2>
+        <div id="crypto-stats" class="sg"></div>
         <table><thead><tr><th>Date</th><th>Coin</th><th>Entry</th><th>Target</th><th>Stop</th><th>Result</th><th>Action</th></tr></thead>
-        <tbody id="crypto-body"><tr><td colspan="7" class="loading">Loading...</td></tr></tbody></table>
+        <tbody id="crypto-body"><tr><td colspan="7" class="ld">Loading...</td></tr></tbody></table>
       </div>
     </div>
     <div id="panel-picks" class="panel">
-      <div class="card">
-        <h2>SPORTS PICKS</h2>
-        <div id="picks-stats" class="stat-grid"></div>
+      <div class="card"><h2>SPORTS PICKS</h2>
+        <div id="picks-stats" class="sg"></div>
         <table><thead><tr><th>Date</th><th>Sport</th><th>Matchup</th><th>Pick</th><th>Result</th><th>Action</th></tr></thead>
-        <tbody id="picks-body"><tr><td colspan="6" class="loading">Loading...</td></tr></tbody></table>
+        <tbody id="picks-body"><tr><td colspan="6" class="ld">Loading...</td></tr></tbody></table>
       </div>
     </div>
     <div id="panel-channels" class="panel">
-      <div class="card">
-        <h2>LIVE CHANNEL STATS</h2>
-        <button class="btn-gold" onclick="loadChannels()">Refresh</button>
+      <div class="card"><h2>LIVE CHANNEL STATS</h2>
+        <button class="bgold" id="btn-refresh-ch">Refresh</button>
         <table><thead><tr><th>Channel</th><th>Username</th><th>Subscribers</th></tr></thead>
-        <tbody id="channels-body"><tr><td colspan="3" class="loading">Loading...</td></tr></tbody></table>
+        <tbody id="channels-body"><tr><td colspan="3" class="ld">Loading...</td></tr></tbody></table>
       </div>
     </div>
     <div id="panel-revenue" class="panel">
-      <div class="card">
-        <h2>TON PAYMENTS</h2>
-        <div id="revenue-stats" class="stat-grid"></div>
+      <div class="card"><h2>TON PAYMENTS</h2>
+        <div id="revenue-stats" class="sg"></div>
         <table><thead><tr><th>Date</th><th>Username</th><th>Amount</th><th>Status</th></tr></thead>
-        <tbody id="revenue-body"><tr><td colspan="4" class="loading">Loading...</td></tr></tbody></table>
+        <tbody id="revenue-body"><tr><td colspan="4" class="ld">Loading...</td></tr></tbody></table>
       </div>
     </div>
     <div id="panel-backlinks" class="panel">
-      <div class="card">
-        <h2>DAILY BACKLINK TASKS</h2>
+      <div class="card"><h2>DAILY BACKLINK TASKS</h2>
         <div id="backlinks-body"></div>
       </div>
     </div>
@@ -139,192 +132,224 @@ tr:hover td{background:#1a1a1a;}
 </div>
 
 <script>
-var pin = '';
-var CORRECT = '2026';
-var SUPA_URL = 'https://ehjhsbrcbtqcvmgzjzkm.supabase.co';
-var SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVoamhzYnJjYnRxY3ZtZ3pqemttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5MDcwMjQsImV4cCI6MjA5MzQ4MzAyNH0.q96sEV0oUxX5kMCYyUJjysxxERMhhlq9cCBKAQ801_g';
-var BOT = '8684401835:AAGdROhnSdcNUkCvvgNTXlYidNPS_yWncZE';
-var CHANNELS = [
-  {name:'FSP Free Channel',id:'-1004292743858',user:'freesportspickspro'},
-  {name:'FSP Premium',id:'-1004296241315',user:'FSPPremiumPicks'},
-  {name:'FSP Crypto Vietnam',id:'-1003945068539',user:'fspcryptovietnam'},
-  {name:'FSP Crypto Philippines',id:'-1003904361668',user:'fspcryptophilippines'},
-  {name:'FSP Crypto Indonesia',id:'-1003774895679',user:'fspcryptoindonesia'},
-  {name:'FSP Crypto Thailand',id:'-1004338838208',user:'fspcryptothailand'},
-  {name:'FSP Crypto Malaysia',id:'-1003978299451',user:'fspcryptomalaysia'},
-  {name:'FSP Crypto Myanmar',id:'-1003868180038',user:'fspcryptomyanmar'},
-  {name:'FSP Crypto Cambodia',id:'-1004440862289',user:'fspcryptocambodia'}
-];
+(function(){
+  var SU='https://ehjhsbrcbtqcvmgzjzkm.supabase.co';
+  var SK='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVoamhzYnJjYnRxY3ZtZ3pqemttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5MDcwMjQsImV4cCI6MjA5MzQ4MzAyNH0.q96sEV0oUxX5kMCYyUJjysxxERMhhlq9cCBKAQ801_g';
+  var BT='8684401835:AAGdROhnSdcNUkCvvgNTXlYidNPS_yWncZE';
+  var PIN='2026';
+  var entered='';
+  var CH=[
+    {name:'FSP Free Channel',id:'-1004292743858',user:'freesportspickspro'},
+    {name:'FSP Premium',id:'-1004296241315',user:'FSPPremiumPicks'},
+    {name:'FSP Crypto Vietnam',id:'-1003945068539',user:'fspcryptovietnam'},
+    {name:'FSP Crypto Philippines',id:'-1003904361668',user:'fspcryptophilippines'},
+    {name:'FSP Crypto Indonesia',id:'-1003774895679',user:'fspcryptoindonesia'},
+    {name:'FSP Crypto Thailand',id:'-1004338838208',user:'fspcryptothailand'},
+    {name:'FSP Crypto Malaysia',id:'-1003978299451',user:'fspcryptomalaysia'},
+    {name:'FSP Crypto Myanmar',id:'-1003868180038',user:'fspcryptomyanmar'},
+    {name:'FSP Crypto Cambodia',id:'-1004440862289',user:'fspcryptocambodia'}
+  ];
 
-function addPin(d){
-  if(pin.length>=4) return;
-  pin += d;
-  var display = pin.split('').map(function(){return '*';}).join(' ');
-  var dashes = '- - - -'.split(' ');
-  var chars = pin.split('').map(function(){return '*';});
-  while(chars.length<4) chars.push('-');
-  document.getElementById('pin-display').textContent = chars.join(' ');
-  if(pin.length===4){
-    setTimeout(function(){
-      if(pin === CORRECT){
-        document.getElementById('login-screen').style.display='none';
-        document.getElementById('admin-screen').style.display='block';
-        loadLeads();
-      } else {
-        document.getElementById('err').textContent='Wrong PIN. Try again.';
-        pin='';
-        document.getElementById('pin-display').textContent='- - - -';
-      }
-    },300);
+  function updateDisp(){
+    var s='';
+    for(var i=0;i<4;i++) s+=(i<entered.length?'*':'_')+(i<3?' ':'');
+    document.getElementById('disp').textContent=s;
   }
-}
 
-function clearPin(){
-  pin='';
-  document.getElementById('pin-display').textContent='- - - -';
-  document.getElementById('err').textContent='';
-}
+  function pressPin(d){
+    if(entered.length>=4) return;
+    entered+=d;
+    updateDisp();
+    if(entered.length===4){
+      setTimeout(function(){
+        if(entered===PIN){
+          document.getElementById('L').style.display='none';
+          document.getElementById('A').style.display='block';
+          loadLeads();
+        } else {
+          document.getElementById('msg').textContent='Wrong PIN';
+          entered='';
+          updateDisp();
+        }
+      },200);
+    }
+  }
 
-function doLogout(){
-  document.getElementById('login-screen').style.display='flex';
-  document.getElementById('admin-screen').style.display='none';
-  clearPin();
-}
+  for(var i=0;i<=9;i++){
+    (function(digit){
+      var el=document.getElementById('b'+digit);
+      if(el) el.addEventListener('click',function(){pressPin(String(digit));});
+    })(i);
+  }
 
-function showTab(name){
-  document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});
-  document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active');});
-  document.getElementById('tab-'+name).classList.add('active');
-  document.getElementById('panel-'+name).classList.add('active');
-  if(name==='leads') loadLeads();
-  if(name==='crypto') loadCrypto();
-  if(name==='picks') loadPicks();
-  if(name==='channels') loadChannels();
-  if(name==='revenue') loadRevenue();
-  if(name==='backlinks') loadBacklinks();
-}
-
-function sfetch(table){
-  return fetch(SUPA_URL+'/rest/v1/'+table+'?order=created_at.desc&limit=100',{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY}}).then(function(r){return r.json();});
-}
-function sdel(table,id){
-  return fetch(SUPA_URL+'/rest/v1/'+table+'?id=eq.'+id,{method:'DELETE',headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY,'Prefer':'return=minimal'}});
-}
-function spatch(table,id,body){
-  return fetch(SUPA_URL+'/rest/v1/'+table+'?id=eq.'+id,{method:'PATCH',headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify(body)});
-}
-function fd(d){if(!d)return '-';return new Date(d).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});}
-
-function loadLeads(){
-  sfetch('sportspicks_leads').then(function(data){
-    var tb=document.getElementById('leads-body');
-    var st=document.getElementById('leads-stats');
-    if(!data||!data.length){tb.innerHTML='<tr><td colspan="6" class="loading">No leads yet.</td></tr>';return;}
-    st.innerHTML='<div class="stat-card"><div class="num">'+data.length+'</div><div class="lbl">Total Leads</div></div>';
-    tb.innerHTML=data.map(function(r,i){return '<tr><td>'+(i+1)+'</td><td>'+(r.name||'-')+'</td><td>'+(r.email||'-')+'</td><td>'+(r.source||'website')+'</td><td>'+fd(r.created_at)+'</td><td><button class="btn-sm btn-delete" onclick="delLead('+r.id+')">Delete</button></td></tr>';}).join('');
+  document.getElementById('bclear').addEventListener('click',function(){
+    entered='';updateDisp();document.getElementById('msg').textContent='';
   });
-}
-function delLead(id){if(!confirm('Delete?'))return;sdel('sportspicks_leads',id).then(loadLeads);}
-function deleteAll(){if(!confirm('Delete ALL leads?'))return;fetch(SUPA_URL+'/rest/v1/sportspicks_leads?id=gt.0',{method:'DELETE',headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY,'Prefer':'return=minimal'}}).then(loadLeads);}
-function exportCSV(){
-  sfetch('sportspicks_leads').then(function(data){
-    if(!data||!data.length){alert('No leads.');return;}
-    var csv='Name,Email,Source,Date
-';
-    data.forEach(function(r){csv+='"'+(r.name||'')+'","'+(r.email||'')+'","'+(r.source||'website')+'","'+fd(r.created_at)+'"
-';});
-    var a=document.createElement('a');a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(csv);a.download='leads.csv';a.click();
-  });
-}
 
-function loadCrypto(){
-  sfetch('crypto_signals').then(function(data){
-    var tb=document.getElementById('crypto-body');
-    var st=document.getElementById('crypto-stats');
-    if(!data||!data.length){tb.innerHTML='<tr><td colspan="7" class="loading">No signals yet.</td></tr>';return;}
-    var w=data.filter(function(r){return r.result==='WIN';}).length;
-    var l=data.filter(function(r){return r.result==='LOSS';}).length;
-    var wr=w+l>0?Math.round(w/(w+l)*100):0;
-    st.innerHTML='<div class="stat-card"><div class="num">'+data.length+'</div><div class="lbl">Signals</div></div><div class="stat-card"><div class="num" style="color:#00cc66">'+w+'</div><div class="lbl">Wins</div></div><div class="stat-card"><div class="num" style="color:#ff4444">'+l+'</div><div class="lbl">Losses</div></div><div class="stat-card"><div class="num">'+wr+'%</div><div class="lbl">Win Rate</div></div>';
-    tb.innerHTML=data.map(function(r){
-      var b=r.result==='WIN'?'badge-win':r.result==='LOSS'?'badge-loss':'badge-pending';
-      var btns=r.result?'':'<button class="btn-sm btn-win" onclick="markCrypto('+r.id+','WIN')">WIN</button><button class="btn-sm btn-loss" onclick="markCrypto('+r.id+','LOSS')">LOSS</button>';
-      return '<tr><td>'+fd(r.created_at)+'</td><td>'+(r.coin||r.symbol||'-')+'</td><td>'+(r.entry_price?'$'+Number(r.entry_price).toLocaleString():'-')+'</td><td>'+(r.target_price?'$'+Number(r.target_price).toLocaleString():'-')+'</td><td>'+(r.stop_loss?'$'+Number(r.stop_loss).toLocaleString():'-')+'</td><td><span class="badge '+b+'">'+(r.result||'Pending')+'</span></td><td>'+btns+'</td></tr>';
-    }).join('');
+  document.getElementById('logout-btn').addEventListener('click',function(){
+    document.getElementById('L').style.display='flex';
+    document.getElementById('A').style.display='none';
+    entered='';updateDisp();
   });
-}
-function markCrypto(id,result){spatch('crypto_signals',id,{result:result}).then(loadCrypto);}
 
-function loadPicks(){
-  sfetch('daily_picks').then(function(data){
-    var tb=document.getElementById('picks-body');
-    var st=document.getElementById('picks-stats');
-    if(!data||!data.length){tb.innerHTML='<tr><td colspan="6" class="loading">No picks yet.</td></tr>';return;}
-    var w=data.filter(function(r){return r.result==='WIN';}).length;
-    var l=data.filter(function(r){return r.result==='LOSS';}).length;
-    var wr=w+l>0?Math.round(w/(w+l)*100):0;
-    st.innerHTML='<div class="stat-card"><div class="num">'+data.length+'</div><div class="lbl">Picks</div></div><div class="stat-card"><div class="num" style="color:#00cc66">'+w+'</div><div class="lbl">Wins</div></div><div class="stat-card"><div class="num" style="color:#ff4444">'+l+'</div><div class="lbl">Losses</div></div><div class="stat-card"><div class="num">'+wr+'%</div><div class="lbl">Win Rate</div></div>';
-    tb.innerHTML=data.map(function(r){
-      var b=r.result==='WIN'?'badge-win':r.result==='LOSS'?'badge-loss':'badge-pending';
-      var btns=r.result?'':'<button class="btn-sm btn-win" onclick="markPick('+r.id+','WIN')">WIN</button><button class="btn-sm btn-loss" onclick="markPick('+r.id+','LOSS')">LOSS</button>';
-      return '<tr><td>'+fd(r.game_date||r.created_at)+'</td><td>'+(r.sport||'-')+'</td><td>'+(r.team1&&r.team2?r.team1+' vs '+r.team2:(r.matchup||'-'))+'</td><td>'+(r.pick||'-')+'</td><td><span class="badge '+b+'">'+(r.result||'Pending')+'</span></td><td>'+btns+'</td></tr>';
-    }).join('');
-  });
-}
-function markPick(id,result){spatch('daily_picks',id,{result:result}).then(loadPicks);}
-
-function loadChannels(){
-  var tb=document.getElementById('channels-body');
-  tb.innerHTML='<tr><td colspan="3" class="loading">Fetching live counts...</td></tr>';
-  var results=new Array(CHANNELS.length);
-  var done=0;
-  CHANNELS.forEach(function(ch,i){
-    fetch('https://api.telegram.org/bot'+BOT+'/getChatMembersCount?chat_id='+ch.id)
-    .then(function(r){return r.json();})
-    .then(function(d){results[i]={ch:ch,n:d.result||0};})
-    .catch(function(){results[i]={ch:ch,n:'N/A'};})
-    .finally(function(){
-      done++;
-      if(done===CHANNELS.length){
-        tb.innerHTML=results.map(function(r){return '<tr><td>'+r.ch.name+'</td><td><a href="https://t.me/'+r.ch.user+'" target="_blank" style="color:#f0b429">@'+r.ch.user+'</a></td><td style="color:#f0b429;font-weight:700">'+(typeof r.n==='number'?r.n.toLocaleString():r.n)+'</td></tr>';}).join('');
-      }
+  var tabNames=['leads','crypto','picks','channels','revenue','backlinks'];
+  tabNames.forEach(function(name){
+    document.getElementById('tab-'+name).addEventListener('click',function(){
+      document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});
+      document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active');});
+      document.getElementById('tab-'+name).classList.add('active');
+      document.getElementById('panel-'+name).classList.add('active');
+      if(name==='leads') loadLeads();
+      if(name==='crypto') loadCrypto();
+      if(name==='picks') loadPicks();
+      if(name==='channels') loadChannels();
+      if(name==='revenue') loadRevenue();
+      if(name==='backlinks') loadBacklinks();
     });
   });
-}
 
-function loadRevenue(){
-  sfetch('ton_payments').then(function(data){
-    var tb=document.getElementById('revenue-body');
-    var st=document.getElementById('revenue-stats');
-    if(!data||!data.length){tb.innerHTML='<tr><td colspan="4" class="loading">No payments yet.</td></tr>';return;}
-    var total=data.reduce(function(s,r){return s+(parseFloat(r.amount)||0);},0);
-    st.innerHTML='<div class="stat-card"><div class="num">'+data.length+'</div><div class="lbl">Payments</div></div><div class="stat-card"><div class="num">'+total.toFixed(2)+'</div><div class="lbl">Total TON</div></div>';
-    tb.innerHTML=data.map(function(r){return '<tr><td>'+fd(r.created_at)+'</td><td>'+(r.username||'-')+'</td><td>'+(r.amount||'-')+' TON</td><td><span class="badge badge-win">Confirmed</span></td></tr>';}).join('');
-  });
-}
+  document.getElementById('btn-export').addEventListener('click',exportCSV);
+  document.getElementById('btn-delall').addEventListener('click',deleteAll);
+  document.getElementById('btn-refresh-ch').addEventListener('click',loadChannels);
 
-function loadBacklinks(){
-  var days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-  var today=days[new Date().getDay()];
-  var tasks=[
-    {day:'Monday',task:'Post FIS Quora answer',link:'https://quora.com'},
-    {day:'Tuesday',task:'Post FSP Quora answer',link:'https://quora.com'},
-    {day:'Wednesday',task:'Post CBI Quora answer',link:'https://quora.com'},
-    {day:'Thursday',task:'Publish LinkedIn article',link:'https://linkedin.com'},
-    {day:'Friday',task:'Submit PRLog press releases',link:'https://prlog.org/post'},
-    {day:'Sunday',task:'Run write-social.js - generate backlinks.txt',link:''}
-  ];
-  var html='<p style="color:#666;font-size:13px;margin-bottom:20px">Today is <strong style="color:#f0b429">'+today+'</strong></p>';
-  html+='<table><thead><tr><th>Day</th><th>Task</th><th>Link</th></tr></thead><tbody>';
-  tasks.forEach(function(t){
-    var hl=t.day===today?'background:#1a1400':'';
-    var badge=t.day===today?' <span class="badge badge-pending">TODAY</span>':'';
-    var lk=t.link?'<a href="'+t.link+'" target="_blank" style="color:#f0b429">Open</a>':'-';
-    html+='<tr style="'+hl+'"><td>'+t.day+badge+'</td><td>'+t.task+'</td><td>'+lk+'</td></tr>';
-  });
-  html+='</tbody></table>';
-  document.getElementById('backlinks-body').innerHTML=html;
-}
+  function sf(table){
+    return fetch(SU+'/rest/v1/'+table+'?order=created_at.desc&limit=100',{headers:{'apikey':SK,'Authorization':'Bearer '+SK}}).then(function(r){return r.json();});
+  }
+  function sd(table,id){
+    return fetch(SU+'/rest/v1/'+table+'?id=eq.'+id,{method:'DELETE',headers:{'apikey':SK,'Authorization':'Bearer '+SK,'Prefer':'return=minimal'}});
+  }
+  function sp(table,id,body){
+    return fetch(SU+'/rest/v1/'+table+'?id=eq.'+id,{method:'PATCH',headers:{'apikey':SK,'Authorization':'Bearer '+SK,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify(body)});
+  }
+  function fd(d){if(!d)return '-';return new Date(d).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});}
+
+  function loadLeads(){
+    sf('sportspicks_leads').then(function(data){
+      var tb=document.getElementById('leads-body');
+      var st=document.getElementById('leads-stats');
+      if(!data||!data.length){tb.innerHTML='<tr><td colspan="6" class="ld">No leads yet.</td></tr>';return;}
+      st.innerHTML='<div class="sc"><div class="n">'+data.length+'</div><div class="l">Total Leads</div></div>';
+      tb.innerHTML=data.map(function(r,i){
+        return '<tr><td>'+(i+1)+'</td><td>'+(r.name||'-')+'</td><td>'+(r.email||'-')+'</td><td>'+(r.source||'website')+'</td><td>'+fd(r.created_at)+'</td><td><button class="bs bdel" data-id="'+r.id+'">Del</button></td></tr>';
+      }).join('');
+      document.querySelectorAll('.bdel').forEach(function(btn){
+        btn.addEventListener('click',function(){
+          if(confirm('Delete?')) sd('sportspicks_leads',this.getAttribute('data-id')).then(loadLeads);
+        });
+      });
+    });
+  }
+
+  function deleteAll(){
+    if(!confirm('Delete ALL leads?')) return;
+    fetch(SU+'/rest/v1/sportspicks_leads?id=gt.0',{method:'DELETE',headers:{'apikey':SK,'Authorization':'Bearer '+SK,'Prefer':'return=minimal'}}).then(loadLeads);
+  }
+
+  function exportCSV(){
+    sf('sportspicks_leads').then(function(data){
+      if(!data||!data.length){alert('No leads.');return;}
+      var csv='Name,Email,Source,Date
+';
+      data.forEach(function(r){csv+='"'+(r.name||'')+'","'+(r.email||'')+'","'+(r.source||'website')+'","'+fd(r.created_at)+'"
+';});
+      var a=document.createElement('a');a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(csv);a.download='leads.csv';a.click();
+    });
+  }
+
+  function loadCrypto(){
+    sf('crypto_signals').then(function(data){
+      var tb=document.getElementById('crypto-body');
+      var st=document.getElementById('crypto-stats');
+      if(!data||!data.length){tb.innerHTML='<tr><td colspan="7" class="ld">No signals yet.</td></tr>';return;}
+      var w=data.filter(function(r){return r.result==='WIN';}).length;
+      var l=data.filter(function(r){return r.result==='LOSS';}).length;
+      var wr=w+l>0?Math.round(w/(w+l)*100):0;
+      st.innerHTML='<div class="sc"><div class="n">'+data.length+'</div><div class="l">Signals</div></div><div class="sc"><div class="n" style="color:#00cc66">'+w+'</div><div class="l">Wins</div></div><div class="sc"><div class="n" style="color:#ff4444">'+l+'</div><div class="l">Losses</div></div><div class="sc"><div class="n">'+wr+'%</div><div class="l">Win Rate</div></div>';
+      tb.innerHTML=data.map(function(r){
+        var b=r.result==='WIN'?'bw':r.result==='LOSS'?'bl':'bp';
+        var btns=r.result?'':'<button class="bs bwin" data-id="'+r.id+'" data-v="WIN">WIN</button><button class="bs blos" data-id="'+r.id+'" data-v="LOSS">LOSS</button>';
+        return '<tr><td>'+fd(r.created_at)+'</td><td>'+(r.coin||r.symbol||'-')+'</td><td>'+(r.entry_price?'$'+Number(r.entry_price).toLocaleString():'-')+'</td><td>'+(r.target_price?'$'+Number(r.target_price).toLocaleString():'-')+'</td><td>'+(r.stop_loss?'$'+Number(r.stop_loss).toLocaleString():'-')+'</td><td><span class="badge '+b+'">'+(r.result||'Pending')+'</span></td><td>'+btns+'</td></tr>';
+      }).join('');
+      document.querySelectorAll('.bwin,.blos').forEach(function(btn){
+        btn.addEventListener('click',function(){sp('crypto_signals',this.getAttribute('data-id'),{result:this.getAttribute('data-v')}).then(loadCrypto);});
+      });
+    });
+  }
+
+  function loadPicks(){
+    sf('daily_picks').then(function(data){
+      var tb=document.getElementById('picks-body');
+      var st=document.getElementById('picks-stats');
+      if(!data||!data.length){tb.innerHTML='<tr><td colspan="6" class="ld">No picks yet.</td></tr>';return;}
+      var w=data.filter(function(r){return r.result==='WIN';}).length;
+      var l=data.filter(function(r){return r.result==='LOSS';}).length;
+      var wr=w+l>0?Math.round(w/(w+l)*100):0;
+      st.innerHTML='<div class="sc"><div class="n">'+data.length+'</div><div class="l">Picks</div></div><div class="sc"><div class="n" style="color:#00cc66">'+w+'</div><div class="l">Wins</div></div><div class="sc"><div class="n" style="color:#ff4444">'+l+'</div><div class="l">Losses</div></div><div class="sc"><div class="n">'+wr+'%</div><div class="l">Win Rate</div></div>';
+      tb.innerHTML=data.map(function(r){
+        var b=r.result==='WIN'?'bw':r.result==='LOSS'?'bl':'bp';
+        var btns=r.result?'':'<button class="bs bwin" data-id="'+r.id+'" data-v="WIN">WIN</button><button class="bs blos" data-id="'+r.id+'" data-v="LOSS">LOSS</button>';
+        return '<tr><td>'+fd(r.game_date||r.created_at)+'</td><td>'+(r.sport||'-')+'</td><td>'+(r.team1&&r.team2?r.team1+' vs '+r.team2:(r.matchup||'-'))+'</td><td>'+(r.pick||'-')+'</td><td><span class="badge '+b+'">'+(r.result||'Pending')+'</span></td><td>'+btns+'</td></tr>';
+      }).join('');
+      document.querySelectorAll('.bwin,.blos').forEach(function(btn){
+        btn.addEventListener('click',function(){sp('daily_picks',this.getAttribute('data-id'),{result:this.getAttribute('data-v')}).then(loadPicks);});
+      });
+    });
+  }
+
+  function loadChannels(){
+    var tb=document.getElementById('channels-body');
+    tb.innerHTML='<tr><td colspan="3" class="ld">Fetching...</td></tr>';
+    var res=new Array(CH.length);
+    var done=0;
+    CH.forEach(function(ch,i){
+      fetch('https://api.telegram.org/bot'+BT+'/getChatMembersCount?chat_id='+ch.id)
+      .then(function(r){return r.json();})
+      .then(function(d){res[i]={ch:ch,n:d.result||0};})
+      .catch(function(){res[i]={ch:ch,n:'N/A'};})
+      .finally(function(){
+        done++;
+        if(done===CH.length){
+          tb.innerHTML=res.map(function(r){return '<tr><td>'+r.ch.name+'</td><td><a href="https://t.me/'+r.ch.user+'" target="_blank" style="color:#f0b429">@'+r.ch.user+'</a></td><td style="color:#f0b429;font-weight:700">'+(typeof r.n==='number'?r.n.toLocaleString():r.n)+'</td></tr>';}).join('');
+        }
+      });
+    });
+  }
+
+  function loadRevenue(){
+    sf('ton_payments').then(function(data){
+      var tb=document.getElementById('revenue-body');
+      var st=document.getElementById('revenue-stats');
+      if(!data||!data.length){tb.innerHTML='<tr><td colspan="4" class="ld">No payments yet.</td></tr>';return;}
+      var total=data.reduce(function(s,r){return s+(parseFloat(r.amount)||0);},0);
+      st.innerHTML='<div class="sc"><div class="n">'+data.length+'</div><div class="l">Payments</div></div><div class="sc"><div class="n">'+total.toFixed(2)+'</div><div class="l">Total TON</div></div>';
+      tb.innerHTML=data.map(function(r){return '<tr><td>'+fd(r.created_at)+'</td><td>'+(r.username||'-')+'</td><td>'+(r.amount||'-')+' TON</td><td><span class="badge bw">Confirmed</span></td></tr>';}).join('');
+    });
+  }
+
+  function loadBacklinks(){
+    var days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    var today=days[new Date().getDay()];
+    var tasks=[
+      {day:'Monday',task:'Post FIS Quora answer',link:'https://quora.com'},
+      {day:'Tuesday',task:'Post FSP Quora answer',link:'https://quora.com'},
+      {day:'Wednesday',task:'Post CBI Quora answer',link:'https://quora.com'},
+      {day:'Thursday',task:'Publish LinkedIn article',link:'https://linkedin.com'},
+      {day:'Friday',task:'Submit PRLog press releases',link:'https://prlog.org/post'},
+      {day:'Sunday',task:'Run write-social.js',link:''}
+    ];
+    var html='<p style="color:#666;font-size:12px;margin-bottom:16px">Today: <strong style="color:#f0b429">'+today+'</strong></p>';
+    html+='<table><thead><tr><th>Day</th><th>Task</th><th>Link</th></tr></thead><tbody>';
+    tasks.forEach(function(t){
+      var hl=t.day===today?'background:#1a1400':'';
+      var badge=t.day===today?' <span class="badge bp">TODAY</span>':'';
+      var lk=t.link?'<a href="'+t.link+'" target="_blank" style="color:#f0b429">Open</a>':'-';
+      html+='<tr style="'+hl+'"><td>'+t.day+badge+'</td><td>'+t.task+'</td><td>'+lk+'</td></tr>';
+    });
+    html+='</tbody></table>';
+    document.getElementById('backlinks-body').innerHTML=html;
+  }
+
+})();
 </script>
 </body>
 </html>
