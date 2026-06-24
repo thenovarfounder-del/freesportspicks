@@ -61,6 +61,7 @@ em{padding:2px 8px;border-radius:20px;font-size:10px;font-weight:600}
 <button class="tab active" onclick="showTab('leads',this)">LEADS</button>
 <button class="tab" onclick="showTab('signals',this)">CRYPTO SIGNALS</button>
 <button class="tab" onclick="showTab('picks',this)">SPORTS PICKS</button>
+<button class="tab" onclick="showTab('channels',this)">CHANNELS</button>
 <button class="tab" onclick="showTab('revenue',this)">REVENUE</button>
 </div>
 <div id="tab-leads">
@@ -71,7 +72,7 @@ em{padding:2px 8px;border-radius:20px;font-size:10px;font-weight:600}
 <div class="sc"><div class="sv" id="S4" style="color:#8B5CF6">0</div><div style="font-size:13px;color:#647488">With Sport</div></div>
 </div>
 <div class="tw"><div style="overflow-x:auto"><table>
-<thead><tr><th>Date</th><th>Name</th><th>Email</th><th>City</th><th>Sport</th><th>Source</th><th>Message</th></tr></thead>
+<thead><tr><th>Date</th><th>Name</th><th>Email</th><th>City</th><th>Sport</th><th>Source</th><th>Message</th><th>Action</th></tr></thead>
 <tbody id="TB"><tr><td colspan="7" class="empty">Loading...</td></tr></tbody>
 </table></div></div>
 </div>
@@ -86,6 +87,10 @@ em{padding:2px 8px;border-radius:20px;font-size:10px;font-weight:600}
 </div>
 <div id="tab-picks" style="display:none">
 <div id="picksList"><div class="empty">Loading picks...</div></div>
+</div>
+<div id="tab-channels" style="display:none">
+<div style="font-size:13px;color:#FFD700;letter-spacing:2px;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid #eee;font-weight:700">LIVE CHANNEL SUBSCRIBERS</div>
+<div id="channelStats" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px">Loading...</div>
 </div>
 <div id="tab-revenue" style="display:none">
 <div class="stats">
@@ -105,12 +110,12 @@ var PW="FreeSports2026";
 var SB="https://ehjhsbrcbtqcvmgzjzkm.supabase.co";
 var SK="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVoamhzYnJjYnRxY3ZtZ3pqemttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5MDcwMjQsImV4cCI6MjA5MzQ4MzAyNH0.q96sEV0oUxX5kMCYyUJjysxxERMhhlq9cCBKAQ801_g";
 var LD=[];
-function showTab(name,el){document.querySelectorAll("[id^=tab-]").forEach(t=>t.style.display="none");document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));document.getElementById("tab-"+name).style.display="block";el.classList.add("active");}
+function showTab(name,el){document.querySelectorAll("[id^=tab-]").forEach(t=>t.style.display="none");document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));document.getElementById("tab-"+name).style.display="block";el.classList.add("active");if(name==='channels')loadChannels();}
 function LGN(){var v=document.getElementById("PW").value;if(v===PW){document.getElementById("LW").style.display="none";document.getElementById("DW").style.display="block";LOAD();}else{document.getElementById("PWERR").style.display="block";}}
 function LGT(){document.getElementById("LW").style.display="flex";document.getElementById("DW").style.display="none";document.getElementById("PW").value="";}
 function ESC(s){return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
 function STAT(){var now=new Date();var wk=new Date(now-7*24*60*60*1000);document.getElementById("S1").textContent=LD.length;document.getElementById("S2").textContent=LD.filter(l=>new Date(l.created_at)>wk).length;document.getElementById("S3").textContent=LD.filter(l=>new Date(l.created_at).toDateString()===now.toDateString()).length;document.getElementById("S4").textContent=LD.filter(l=>l.favorite_sport).length;document.getElementById("TC").textContent=LD.length+" total leads";}
-function REND(){var tb=document.getElementById("TB");if(!LD.length){tb.innerHTML='<tr><td colspan="7" class="empty">No leads yet.</td></tr>';return;}var h="";for(var i=0;i<LD.length;i++){var l=LD[i];var dt=new Date(l.created_at).toLocaleDateString();h+='<tr><td style="white-space:nowrap;color:#647488">'+dt+'</td><td>'+ESC(l.name||"-")+'</td><td><a href="mailto:'+ESC(l.email)+'" class="ab">'+ESC(l.email||"-")+'</a></td><td>'+ESC(l.city||"-")+'</td><td>'+ESC(l.favorite_sport||"-")+'</td><td>'+ESC(l.source||"-")+'</td><td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+ESC(l.message||"-")+'</td></tr>';}tb.innerHTML=h;}
+function REND(){var tb=document.getElementById("TB");if(!LD.length){tb.innerHTML='<tr><td colspan="8" class="empty">No leads yet.</td></tr>';return;}var h="";for(var i=0;i<LD.length;i++){var l=LD[i];var dt=new Date(l.created_at).toLocaleDateString();h+='<tr><td style="white-space:nowrap;color:#647488">'+dt+'</td><td>'+ESC(l.name||"-")+'</td><td><a href="mailto:'+ESC(l.email)+'" class="ab">'+ESC(l.email||"-")+'</a></td><td>'+ESC(l.city||"-")+'</td><td>'+ESC(l.favorite_sport||"-")+'</td><td>'+ESC(l.source||"-")+'</td><td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+ESC(l.message||"-")+'</td><td><button onclick="D1('+l.id+')" style="background:#FEE2E2;color:#DC2626;border:1px solid #DC2626;border-radius:4px;padding:4px 10px;font-size:11px;font-weight:700;cursor:pointer">DELETE</button></td></tr>';}tb.innerHTML=h;}
 async function LOAD(){document.getElementById("TB").innerHTML='<tr><td colspan="7" class="empty">Loading...</td></tr>';try{var r=await fetch(SB+"/rest/v1/sportspicks_leads?select=*&order=created_at.desc",{headers:{apikey:SK,Authorization:"Bearer "+SK}});LD=await r.json();if(!Array.isArray(LD))LD=[];STAT();REND();await loadSignals();await loadPicks();await loadRevenue();}catch(e){document.getElementById("TB").innerHTML='<tr><td colspan="7" class="empty">Error: '+e.message+'</td></tr>';}}
 async function loadSignals(){try{var r=await fetch(SB+"/rest/v1/crypto_signals?select=*&order=created_at.desc&limit=30",{headers:{apikey:SK,Authorization:"Bearer "+SK}});var signals=await r.json();if(!Array.isArray(signals)||!signals.length){document.getElementById("signalsList").innerHTML='<div class="empty">No signals yet.</div>';return;}var wins=signals.filter(s=>s.result==="win").length;var losses=signals.filter(s=>s.result==="loss").length;var total=wins+losses;document.getElementById("sig-total").textContent=signals.length;document.getElementById("sig-wins").textContent=wins;document.getElementById("sig-losses").textContent=losses;document.getElementById("sig-winrate").textContent=total>0?Math.round(wins/total*100)+"%":"--";var h="";signals.forEach(sig=>{var badge=sig.result==="win"?'<span class="win-badge">WIN</span>':sig.result==="loss"?'<span class="loss-badge">LOSS</span>':'<span class="pending-badge">PENDING</span>';var btns=(!sig.result||sig.result==="pending")?'<div class="result-btns"><button class="win-btn" onclick="markSignal('+sig.id+',\'win\')">Mark WIN</button><button class="loss-btn" onclick="markSignal('+sig.id+',\'loss\')">Mark LOSS</button></div>':"";h+='<div class="signal-card"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><div class="signal-date">'+sig.date+'</div>'+badge+'</div><div class="signal-text">'+ESC(sig.free_signal||"")+'</div>'+btns+'</div>';});document.getElementById("signalsList").innerHTML=h;}catch(e){document.getElementById("signalsList").innerHTML='<div class="empty">Error loading signals.</div>';}}
 async function markSignal(id,result){await fetch(SB+"/rest/v1/crypto_signals?id=eq."+id,{method:"PATCH",headers:{apikey:SK,Authorization:"Bearer "+SK,"Content-Type":"application/json",Prefer:"return=representation"},body:JSON.stringify({result})});await loadSignals();}
