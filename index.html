@@ -1,5 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lasync function loadGameOfDay() {
+  try {
+    const today = new Date().toISOString().split('T')[0];
+    const res = await fetch('https://ehjhsbrcbtqcvmgzjzkm.supabase.co/rest/v1/daily_picks?select=free_pick,game_data&order=date.desc&limit=1', {
+      headers: {
+        'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVoamhzYnJjYnRxY3ZtZ3pqemttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5MDcwMjQsImV4cCI6MjA5MzQ4MzAyNH0.q96sEV0oUxX5kMCYyUJjysxxERMhhlq9cCBKAQ801_g',
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVoamhzYnJjYnRxY3ZtZ3pqemttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5MDcwMjQsImV4cCI6MjA5MzQ4MzAyNH0.q96sEV0oUxX5kMCYyUJjysxxERMhhlq9cCBKAQ801_g'
+      }
+    });
+    const data = await res.json();
+    if (data && data[0]) {
+      const pick = data[0];
+      const gameData = pick.game_data && pick.game_data.games && pick.game_data.games[0];
+      const t1 = document.getElementById('got-team1');
+      const t2 = document.getElementById('got-team2');
+      const tm = document.getElementById('got-time');
+      const sp = document.getElementById('gotd-sport');
+      if (gameData) {
+        if (t1) t1.textContent = gameData.strHomeTeam || 'Home';
+        if (t2) t2.textContent = gameData.strAwayTeam || 'Away';
+        if (tm) tm.textContent = gameData.strTime || 'Tonight';
+        if (sp) sp.textContent = pick.game_data.sport || 'MLB';
+      } else {
+        if (t1) t1.textContent = 'Angels';
+        if (t2) t2.textContent = 'Orioles';
+        if (tm) tm.textContent = 'Tonight';
+        if (sp) sp.textContent = 'MLB';
+      }
+    }
+  } catch(e) { console.log('Game load error:', e); }
+}ng="en">
 <head>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="shortcut icon" href="/favicon.svg">
