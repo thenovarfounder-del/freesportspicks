@@ -219,13 +219,11 @@ var CHANNELS = [
 var TASKS = ['quora','reddit','medium','prlog','linkedin','gbp','console','dirs'];
 
 function doLogin() {
-  var v = document.getElementById('pwInput').value;
-  if (v == 'admin123') {
-    document.getElementById('loginScreen').style.display = 'none';
-    document.getElementById('mainApp').style.display = 'block';
-    loadTasks();
-    loadAll();
-  } else {
+  document.getElementById('loginScreen').style.display = 'none';
+  document.getElementById('mainApp').style.display = 'block';
+  loadTasks();
+  loadAll();
+} else {
     document.getElementById('pwErr').style.display = 'block';
   }
 }
