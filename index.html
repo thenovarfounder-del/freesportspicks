@@ -189,15 +189,15 @@
           <!-- Teams -->
           <div id="gotd-teams" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
             <div style="text-align:center;flex:1;">
-              <div id="gotd-team1" style="font-family:'DM Serif Display',serif;font-size:clamp(18px,2.5vw,26px);color:#F5F5F0;font-weight:700;line-height:1.2;">Loading...</div>
+              <div id="gotd-team1" style="font-family:'DM Serif Display',serif;font-size:clamp(18px,2.5vw,26px);color:#F5F5F0;font-weight:700;line-height:1.2;" id="got-team1">--</div>
               <div style="font-size:11px;color:#606060;margin-top:4px;text-transform:uppercase;letter-spacing:0.08em;">Home</div>
             </div>
             <div style="text-align:center;padding:0 16px;">
               <div style="font-family:'DM Serif Display',serif;font-size:28px;color:#C9A84C;font-weight:700;">VS</div>
-              <div id="gotd-time" style="font-size:11px;color:#606060;margin-top:4px;">Loading...</div>
+              <div id="gotd-time" style="font-size:11px;color:#606060;margin-top:4px;">Tonight</div>
             </div>
             <div style="text-align:center;flex:1;">
-              <div id="gotd-team2" style="font-family:'DM Serif Display',serif;font-size:clamp(18px,2.5vw,26px);color:#F5F5F0;font-weight:700;line-height:1.2;">Loading...</div>
+              <div id="gotd-team2" style="font-family:'DM Serif Display',serif;font-size:clamp(18px,2.5vw,26px);color:#F5F5F0;font-weight:700;line-height:1.2;" id="got-team2">--</div>
               <div style="font-size:11px;color:#606060;margin-top:4px;text-transform:uppercase;letter-spacing:0.08em;">Away</div>
             </div>
           </div>
@@ -800,49 +800,54 @@ document.addEventListener('DOMContentLoaded', function() {
 (async function() {
   var SB = 'https://ehjhsbrcbtqcvmgzjzkm.supabase.co';
   var SK = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVoamhzYnJjYnRxY3ZtZ3pqemttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5MDcwMjQsImV4cCI6MjA5MzQ4MzAyNH0.q96sEV0oUxX5kMCYyUJjysxxERMhhlq9cCBKAQ801_g';
-  
+
   try {
     var res = await fetch(SB + '/rest/v1/daily_picks?select=free_pick,game_data&order=date.desc&limit=1', {
       headers: { 'apikey': SK, 'Authorization': 'Bearer ' + SK }
     });
     var data = await res.json();
     if (!data || !data[0]) return;
-    
+
     var pick = data[0];
+    window._pickText = pick.free_pick || '';
+
     var gameData = pick.game_data && pick.game_data.games && pick.game_data.games[0];
-    
-    // Update team names
+
     if (gameData) {
-      var h = document.getElementById('home-team');
-      var a = document.getElementById('away-team');
-      var t = document.getElementById('game-time-display');
-      if (h) h.textContent = gameData.strHomeTeam || '--';
-      if (a) a.textContent = gameData.strAwayTeam || '--';
-      
-      // Check if game already started
+      var t1 = document.getElementById('got-team1');
+      var t2 = document.getElementById('got-team2');
+      var tm = document.getElementById('gotd-time');
+      var sp = document.getElementById('gotd-sport');
+
+      if (t1) t1.textContent = gameData.strHomeTeam || '--';
+      if (t2) t2.textContent = gameData.strAwayTeam || '--';
+      if (sp) sp.textContent = (pick.game_data && pick.game_data.sport) || 'MLB';
+
       if (gameData.strTime) {
         var parts = gameData.strTime.split(':');
-        var gameUTC = new Date();
-        gameUTC.setUTCHours(parseInt(parts[0]), parseInt(parts[1] || 0), 0);
+        var utcH = parseInt(parts[0]);
+        var utcM = parseInt(parts[1] || 0);
         var now = new Date();
-        
+        var gameUTC = new Date();
+        gameUTC.setUTCHours(utcH, utcM, 0, 0);
+
         if (now > gameUTC) {
-          // Game started — hide game section completely
-          var gameSection = document.querySelector('[id*="got"]') || document.querySelector('.game-of-day') || (h && h.closest('section'));
-          if (gameSection) gameSection.style.display = 'none';
+          // Game already started — hide game section
+          var gameSection = document.getElementById('got-team1');
+          if (gameSection) {
+            var section = gameSection.closest('section') || gameSection.closest('.container') || gameSection.parentElement.parentElement.parentElement;
+            if (section) section.style.display = 'none';
+          }
         } else {
-          // Game not started — show time in ET
-          var etH = (parseInt(parts[0]) - 4 + 24) % 24;
+          // Show time in ET
+          var etH = (utcH - 4 + 24) % 24;
           var period = etH >= 12 ? 'PM' : 'AM';
           var dH = etH > 12 ? etH - 12 : (etH === 0 ? 12 : etH);
-          if (t) t.textContent = dH + ':' + (parts[1] || '00') + ' ' + period + ' ET';
+          if (tm) tm.textContent = dH + ':' + String(utcM).padStart(2,'0') + ' ' + period + ' ET';
         }
       }
     }
-    
-    // Load pick text when form submitted
-    window._pickText = pick.free_pick || '';
-    
+
     // Override success to show real pick
     var origSubmit = window.submitGuestbook;
     window.submitGuestbook = async function() {
@@ -852,8 +857,8 @@ document.addEventListener('DOMContentLoaded', function() {
         if (el && window._pickText) el.textContent = window._pickText;
       }, 800);
     };
-    
-  } catch(e) { console.log('Smart script error:', e); }
+
+  } catch(e) { console.log('Game loader error:', e); }
 })();
 </script>
 </body>
