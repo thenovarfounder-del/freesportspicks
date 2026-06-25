@@ -18,7 +18,19 @@ export default async function handler(req, res) {
       '-1004338838208': { name: 'FSP Crypto Thailand', language: 'Thai', link: 'https://t.me/fspcryptothailand' },
       '-1003978299451': { name: 'FSP Crypto Malaysia', language: 'Malay', link: 'https://t.me/fspcryptomalaysia' },
       '-1003868180038': { name: 'FSP Crypto Myanmar', language: 'Burmese', link: 'https://t.me/fspcryptomyanmar' },
-      '-1004440862289': { name: 'FSP Crypto Cambodia', language: 'Khmer', link: 'https://t.me/fspcryptocambodia' }
+      '-1004440862289': { name: 'FSP Crypto Cambodia', language: 'Khmer', link: 'https://t.me/fspcryptocambodia' },
+        '-1004421194036': { name: 'FSP Crypto Hong Kong', language: 'Cantonese', link: 'https://t.me/fspcryptohongkong' },
+        '-1004385446236': { name: 'FSP Crypto Singapore', language: 'English', link: 'https://t.me/fspcryptosingapore' },
+        '-1004305304607': { name: 'FSP Crypto South Korea', language: 'Korean', link: 'https://t.me/fspcryptosouthkorea' },
+        '-1004356903238': { name: 'FSP Crypto Japan', language: 'Japanese', link: 'https://t.me/fspcryptojapan' },
+        '-1004384761881': { name: 'FSP Crypto Taiwan', language: 'Mandarin', link: 'https://t.me/fspcryptotaiwan' },
+        '-1004351616026': { name: 'FSP Crypto Macau', language: 'Cantonese', link: 'https://t.me/fspcryptomacau' },
+        '-1004437977246': { name: 'FSP Crypto India', language: 'Hindi', link: 'https://t.me/fspcryptoindia' },
+        '-1004452301597': { name: 'FSP Crypto Pakistan', language: 'Urdu', link: 'https://t.me/fspcryptopakistan' },
+        '-1004380997518': { name: 'FSP Crypto Bangladesh', language: 'Bengali', link: 'https://t.me/fspcryptobangladesh' },
+        '-1003926907809': { name: 'FSP Crypto Sri Lanka', language: 'Sinhala', link: 'https://t.me/fspcryptosrilanka' },
+        '-1003906546084': { name: 'FSP Crypto Nepal', language: 'Nepali', link: 'https://t.me/fspcryptonepal' },
+        '-1004315496099': { name: 'FSP Crypto Kazakhstan', language: 'Kazakh', link: 'https://t.me/fspcryptokazakhstan' }
     };
 
     async function sendMessage(chat, msg, keyboard) {
