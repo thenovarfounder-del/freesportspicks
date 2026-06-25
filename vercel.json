@@ -12,6 +12,14 @@
     {
       "path": "/api/evening",
       "schedule": "0 22 * * *"
+    },
+    {
+      "path": "/api/results",
+      "schedule": "0 14 * * *"
+    },
+    {
+      "path": "/api/weekly",
+      "schedule": "0 13 * * 0"
     }
   ],
   "functions": {
@@ -28,6 +36,14 @@
       "maxDuration": 60
     },
     "api/evening.js": {
+      "memory": 1024,
+      "maxDuration": 60
+    },
+    "api/results.js": {
+      "memory": 1024,
+      "maxDuration": 60
+    },
+    "api/weekly.js": {
       "memory": 1024,
       "maxDuration": 60
     }
