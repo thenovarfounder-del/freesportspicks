@@ -1,5 +1,19 @@
 export default async function handler(req, res) {
-  if (req.method !== 'POST') return res.status(200).json({ ok: true });
+  if (req.method !== 'POST') return 
+  // Auto-delete non-admin messages in channels
+  if (update.message && update.message.chat && update.message.chat.type === 'channel') {
+    const chatId = update.message.chat.id.toString();
+    const msgId = update.message.message_id;
+    try {
+      await fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/deleteMessage', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: chatId, message_id: msgId })
+      });
+    } catch(e) {}
+  }
+
+  res.status(200).json({ ok: true });
 
   try {
     const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
@@ -183,6 +197,8 @@ export default async function handler(req, res) {
       }
 
       if (ASIAN_CHANNELS[chatId] && newStatus === 'member' && userId) {
+        // Send VIP payment button
+        const welcomeKeyboard = [[{ text: '💎 Join VIP — 1 TON', url: 'https://t.me/FreeSportsPicksProBot' }, { text: '🌐 Free Pick', url: 'https://freesportspicks.pro' }]];
         const channel = ASIAN_CHANNELS[chatId];
         const today = new Date().toISOString().split('T')[0];
         const cryptoData = await fetch('https://ehjhsbrcbtqcvmgzjzkm.supabase.co/rest/v1/crypto_signals?date=eq.' + today + '&limit=1', {
