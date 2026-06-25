@@ -173,7 +173,7 @@ export default async function handler(req, res) {
 
       // Crypto signal
       if (todayCrypto) {
-        const cryptoMsg = '💰 <b>CRYPTO SIGNAL — ' + today + '</b>\n\n' + todayCrypto.free_signal + '\n\n🤖 Powered by FSP AI\n📩 Full premium card: t.me/FreeSportsPicksProBot';
+        const cryptoMsg = '💰 <b>CRYPTO SIGNAL — ' + today + '</b>\n\n' + todayCrypto.free_signal + '\n\n🤖 Powered by FSP AI\n📩 Full premium card: t.me/FreeSportsPicksProBot' + '\n\n🌍 Also follow: ' + OWN_CHANNELS[Object.keys(OWN_CHANNELS)[Math.floor(Math.random() * Object.keys(OWN_CHANNELS).length)]].link;
         const translated = await groqTranslate(cryptoMsg, ch.lang);
         const result = await postTG(ch.id, translated);
         console.log(name + ' signal:', result.ok ? 'OK' : 'FAILED');
