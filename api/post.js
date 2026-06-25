@@ -26,7 +26,12 @@ export default async function handler(req, res) {
       "FSP Crypto Japan": { id: "-1004356903238", link: "t.me/fspcryptojapan", lang: "Japanese" },
       "FSP Crypto Taiwan": { id: "-1004384761881", link: "t.me/fspcryptotaiwan", lang: "Mandarin" },
       "FSP Crypto Macau": { id: "-1004351616026", link: "t.me/fspcryptomacau", lang: "Cantonese" },
-      "FSP Crypto India": { id: "-1004437977246", link: "t.me/fspcryptoindia", lang: "Hindi" }
+      "FSP Crypto India": { id: "-1004437977246", link: "t.me/fspcryptoindia", lang: "Hindi" },
+      "FSP Crypto Pakistan": { id: "-1004452301597", link: "t.me/fspcryptopakistan", lang: "Urdu" },
+      "FSP Crypto Bangladesh": { id: "-1004380997518", link: "t.me/fspcryptobangladesh", lang: "Bengali" },
+      "FSP Crypto Sri Lanka": { id: "-1003926907809", link: "t.me/fspcryptosrilanka", lang: "Sinhala" },
+      "FSP Crypto Nepal": { id: "-1003906546084", link: "t.me/fspcryptonepal", lang: "Nepali" },
+      "FSP Crypto Kazakhstan": { id: "-1004315496099", link: "t.me/fspcryptokazakhstan", lang: "Kazakh" }
     };
 
     async function apiGet(url, headers = {}) {
