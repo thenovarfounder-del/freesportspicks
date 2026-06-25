@@ -197,8 +197,26 @@ export default async function handler(req, res) {
       }
 
       if (ASIAN_CHANNELS[chatId] && newStatus === 'member' && userId) {
-        // Send VIP payment button
+        const channelInfo = ASIAN_CHANNELS[chatId];
+        const channelLang = channelInfo ? channelInfo.language : 'English';
         const welcomeKeyboard = [[{ text: '💎 Join VIP — 1 TON', url: 'https://t.me/FreeSportsPicksProBot' }, { text: '🌐 Free Pick', url: 'https://freesportspicks.pro' }]];
+        const welcomeEnglish = '👋 Welcome to FSP Crypto!\n\n✅ Free daily crypto signal every morning\n💸 Full premium card with 3-5 signals daily\n🌐 Get today\'s free signal: freesportspicks.pro\n\n💎 Want VIP access?\nType /premium or tap below ↓';
+        let welcomeMsg = welcomeEnglish;
+        try {
+          const translateR = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + GROQ_KEY },
+            body: JSON.stringify({
+              model: 'llama-3.3-70b-versatile',
+              messages: [{ role: 'user', content: 'Translate EXACTLY to ' + channelLang + '. Keep all emojis, links, and formatting exactly as they are. Only translate the words:\n\n' + welcomeEnglish }],
+              max_tokens: 300
+            })
+          });
+          const translateJ = await translateR.json();
+          if(translateJ.choices && translateJ.choices[0]) {
+            welcomeMsg = translateJ.choices[0].message.content;
+          }
+        } catch(e) {}
         const channel = ASIAN_CHANNELS[chatId];
         const today = new Date().toISOString().split('T')[0];
         const cryptoData = await fetch('https://ehjhsbrcbtqcvmgzjzkm.supabase.co/rest/v1/crypto_signals?date=eq.' + today + '&limit=1', {
