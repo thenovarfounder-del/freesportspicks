@@ -50,6 +50,20 @@ export default async function handler(req, res) {
       try { await postTG(channelId, msg); } catch(e) {}
     }
     
+    // Check subscriber milestone on Free Channel
+    try {
+      const countR = await fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/getChatMembersCount?chat_id=-1004292743858');
+      const countJ = await countR.json();
+      if(countJ.ok) {
+        const count = countJ.result;
+        const milestones = [100,250,500,1000,2500,5000,10000];
+        const hit = milestones.find(m => count >= m && count < m + 50);
+        if(hit) {
+          const milestone = '🎉 We just hit ' + hit + ' members on FSP Free Channel!\n\nThank you for being part of the empire. Share us with a friend 👏\nt.me/freesportspickspro';
+          await postTG('-1004292743858', milestone);
+        }
+      }
+    } catch(e) {}
     res.status(200).json({ success: true, wins, losses, winRate });
   } catch(e) {
     res.status(500).json({ error: e.message });
