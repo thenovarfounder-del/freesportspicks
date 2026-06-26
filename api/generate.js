@@ -4,7 +4,7 @@ export default async function handler(req, res) {
     console.log('FSP Generate Picks - Date:', today);
 
     const SUPABASE_KEY = process.env.SUPABASE_KEY;
-    const GROQ_KEY = process.env.GROQ_KEY || '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';
+    const GROQ_KEY = process.env.GROQ_KEY;
     const SUPABASE_URL = 'https://ehjhsbrcbtqcvmgzjzkm.supabase.co';
 
     async function apiPost(url, headers, body) {
