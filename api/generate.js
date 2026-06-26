@@ -1,3 +1,20 @@
+async function callGroq(prompt, retries = 3) {
+  for(let i = 0; i < retries; i++) {
+    try {
+      const r = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + process.env.GROQ_KEY },
+        body: JSON.stringify({ model: 'llama-3.3-70b-versatile', messages: [{ role: 'user', content: prompt }], max_tokens: 1000 })
+      });
+      const text = await r.text();
+      if(!text || text.length < 10) { await new Promise(res => setTimeout(res, 2000)); continue; }
+      const j = JSON.parse(text);
+      if(j.choices && j.choices[0]) return j.choices[0].message.content;
+    } catch(e) { await new Promise(res => setTimeout(res, 2000)); }
+  }
+  return null;
+}
+
 export default async function handler(req, res) {
   try {
     const today = new Date().toISOString().split('T')[0];
