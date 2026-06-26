@@ -27,14 +27,11 @@ export default async function handler(req, res) {
       "FSP Crypto Taiwan": { id: "-1004384761881", link: "t.me/fspcryptotaiwan", lang: "Mandarin" },
       "FSP Crypto Macau": { id: "-1004351616026", link: "t.me/fspcryptomacau", lang: "Cantonese" },
       "FSP Crypto India": { id: "-1004437977246", link: "t.me/fspcryptoindia", lang: "Hindi" },
-      "FSP Crypto Pakistan": { id: "-1004452301597", link: "t.me/fspcryptopakistan", lang: "Urdu" },
-      "FSP Crypto Bangladesh": { id: "-1004380997518", link: "t.me/fspcryptobangladesh", lang: "Bengali" },
       "FSP Crypto Sri Lanka": { id: "-1003926907809", link: "t.me/fspcryptosrilanka", lang: "Sinhala" },
       "FSP Crypto Nepal": { id: "-1003906546084", link: "t.me/fspcryptonepal", lang: "Nepali" },
-      
+      "FSP Crypto Kazakhstan": { id: "-1004315496099", link: "t.me/fspcryptokazakhstan", lang: "Kazakh" },
       "FSP Crypto Russia": { id: "-1004312236522", link: "t.me/fspcryptorussia", lang: "Russian" },
-      "FSP Crypto Turkey": { id: "-1003973361171", link: "t.me/fspcryptoturkey", lang: "Turkish" },
-      "FSP Crypto Kazakhstan": { id: "-1004315496099", link: "t.me/fspcryptokazakhstan", lang: "Kazakh" }
+      "FSP Crypto Turkey": { id: "-1003973361171", link: "t.me/fspcryptoturkey", lang: "Turkish" }
     };
 
     async function apiGet(url, headers = {}) {
@@ -60,6 +57,7 @@ export default async function handler(req, res) {
     }
 
     async function groqTranslate(text, language) {
+      if (language === 'English') return text;
       const r = await fetch('https://api.groq.com/openai/v1/chat/completions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + GROQ_KEY },
@@ -73,68 +71,6 @@ export default async function handler(req, res) {
       return data.choices && data.choices[0] ? data.choices[0].message.content : text;
     }
 
-    async function getChatMemberCount(chatId) {
-      try {
-        const r = await fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/getChatMemberCount?chat_id=' + chatId);
-        const data = await r.json();
-        return data.ok ? data.result : 0;
-      } catch(e) { return 0; }
-    }
-
-    async function runGiveaway(channelId, channelName, channelLang, channelLink) {
-      try {
-        const alreadyRan = await apiGet(
-          SUPABASE_URL + '/rest/v1/giveaway_winners?channel_id=eq.' + channelId + '&announced_at=gte.' + today,
-          { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY }
-        );
-        if (alreadyRan.length > 0) { console.log(channelName + ' giveaway already ran today'); return; }
-
-        const memberCount = await getChatMemberCount(channelId);
-        if (memberCount < 2) { console.log(channelName + ' not enough members for giveaway'); return; }
-
-        const winnerNumber = Math.floor(Math.random() * (memberCount - 1)) + 1;
-        const winnerUsername = 'member' + winnerNumber;
-
-        await apiPost(
-          SUPABASE_URL + '/rest/v1/giveaway_winners',
-          { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY },
-          { username: winnerUsername, channel_id: channelId, prize: '1 day premium' }
-        );
-
-        const r = await fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/createChatInviteLink', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ chat_id: PREMIUM_CHANNEL, member_limit: 1, expire_date: Math.floor(Date.now() / 1000) + 86400 })
-        });
-        const linkData = await r.json();
-        const inviteLink = linkData.result ? linkData.result.invite_link : '';
-
-        const giveawayEn = '🎉 <b>WEEKLY GIVEAWAY WINNER!</b>\n\nCongratulations to our lucky member this week!\n\n🏆 Prize: 1 FREE day of Premium Signals\n💎 3-5 crypto signals daily\n\n' + (inviteLink ? 'Winner — claim your prize here:\n' + inviteLink + '\n\n' : '') + '🔔 Want to win next week? Stay subscribed!\n\n📢 Share this channel: ' + channelLink + '\n\n💎 Or get premium anytime: t.me/FreeSportsPicksProBot';
-
-        const translated = await groqTranslate(giveawayEn, channelLang);
-        await postTG(channelId, translated);
-        console.log(channelName + ' giveaway posted');
-      } catch(e) { console.log('Giveaway error:', e.message); }
-    }
-
-    async function getWeeklyBest() {
-      const weekAgo = new Date(now - 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
-      const data = await apiGet(
-        SUPABASE_URL + '/rest/v1/crypto_signals?date=gte.' + weekAgo + '&result=eq.win&order=created_at.desc&limit=1',
-        { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY }
-      );
-      if (data && data[0]) return data[0];
-      const all = await apiGet(
-        SUPABASE_URL + '/rest/v1/crypto_signals?date=gte.' + weekAgo + '&order=created_at.desc&limit=1',
-        { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY }
-      );
-      return all && all[0] ? all[0] : null;
-    }
-
-    const channelLinks = Object.entries(OWN_CHANNELS)
-      .map(([name, ch]) => '👉 ' + ch.link)
-      .join('\n');
-
     const picks = await apiGet(
       SUPABASE_URL + '/rest/v1/daily_picks?date=eq.' + today + '&limit=1',
       { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY }
@@ -147,71 +83,50 @@ export default async function handler(req, res) {
     );
     const todayCrypto = cryptoData && cryptoData[0] ? cryptoData[0] : null;
 
-    // POST 1 — Morning hype countdown to free channel (30 min before signal)
-    const hypeMsg = '⚡ <b>SIGNAL DROPPING IN 30 MINUTES</b>\n\nOur AI just finished scanning the top 10 coins by volume.\n\nToday\'s free crypto signal posts at 9AM ET.\n\n🔥 Share this channel with 1 trader friend right now so they don\'t miss it:\nt.me/freesportspickspro\n\n💎 Want the full premium card with 3-5 signals? t.me/FreeSportsPicksProBot';
-    await postTG(FREE_CHANNEL, hypeMsg);
-    console.log('Free channel hype: OK');
+    // POST to free channel
+    await postTG(FREE_CHANNEL, 'FSP SIGNAL READY\n\nToday\'s free crypto signal is live.\n\nVisit freesportspicks.pro to unlock it.\n\nWant 3-5 signals daily? t.me/FreeSportsPicksProBot');
+    console.log('Free channel: OK');
 
-    // POST 2 — Sports pick to free + premium channels
+    // POST to premium channel
     if (todayPicks) {
-      const freeResult = await postTG(FREE_CHANNEL,
-        '🏆 <b>FREE PICK IS READY — ' + today + '</b>\n\n🔒 Today\'s pick is locked.\n\nVisit freesportspicks.pro, sign the guestbook and unlock today\'s free pick instantly.\n\n💎 Want the full premium card?\nTap /premium to get access.'
-      );
-      console.log('Free channel pick:', freeResult.ok ? 'OK' : 'FAILED');
-
       const premiumResult = await postTG(PREMIUM_CHANNEL,
-        '💎 <b>FSP PREMIUM CARD — ' + today + '</b>\n\n' + todayPicks.premium_picks + '\n\n———\n🔒 Private channel. Do not share.\n✅ Good luck today!'
+        'FSP PREMIUM CARD - ' + today + '\n\n' + todayPicks.premium_picks + '\n\nPrivate channel. Do not share.\nGood luck today!'
       );
       console.log('Premium channel:', premiumResult.ok ? 'OK' : 'FAILED');
     }
 
-    // POST 3 — All posts to each Asian channel
+    // POST crypto signal to premium channel
+    if (todayCrypto) {
+      const premiumCrypto = await postTG(PREMIUM_CHANNEL,
+        'FSP PREMIUM CRYPTO - ' + today + '\n\n' + (todayCrypto.premium_signals || todayCrypto.free_signal) + '\n\nNot financial advice. DYOR.'
+      );
+      console.log('Premium crypto:', premiumCrypto.ok ? 'OK' : 'FAILED');
+    }
+
+    // Build translation cache by language to avoid duplicate Groq calls
+    const translationCache = {};
+    async function getTranslated(text, lang) {
+      const key = lang + '::' + text.substring(0, 30);
+      if (!translationCache[key]) {
+        translationCache[key] = await groqTranslate(text, lang);
+      }
+      return translationCache[key];
+    }
+
+    // POST to each own channel - signal only, one translation per channel
     for (const [name, ch] of Object.entries(OWN_CHANNELS)) {
-
-      // Morning hype in local language
-      const hypeEn = '⚡ <b>SIGNAL DROPPING IN 30 MINUTES</b>\n\nOur AI just finished scanning the top 10 coins by volume.\n\nFree crypto signal posts at 9AM ET.\n\n🔥 Share this channel with 1 trader friend:\n' + ch.link + '\n\n💎 Full premium card: t.me/FreeSportsPicksProBot';
-      const hypeTranslated = await groqTranslate(hypeEn, ch.lang);
-      await postTG(ch.id, hypeTranslated);
-      console.log(name + ' hype: OK');
-
-      // Crypto signal
       if (todayCrypto) {
-        const sportsSection = todayPicks && todayPicks.pick ? '\n\n🏆 <b>TODAY\'S SPORTS PICK</b>\n' + (todayPicks.game || '') + '\n✔️ Pick: <b>' + todayPicks.pick + '</b>' : '';
-        const cryptoMsg = '💰 <b>CRYPTO SIGNAL — ' + today + '</b>\n\n' + todayCrypto.free_signal + '\n\n🤖 Powered by FSP AI\n📩 Full premium card: t.me/FreeSportsPicksProBot' + '\n\n🌍 Also follow: ' + OWN_CHANNELS[Object.keys(OWN_CHANNELS)[Math.floor(Math.random() * Object.keys(OWN_CHANNELS).length)]].link;
-        const translated = await groqTranslate(cryptoMsg, ch.lang);
+        const cryptoMsgEn = 'FSP CRYPTO SIGNAL - ' + today + '\n\n' + todayCrypto.free_signal + '\n\nFull premium card: t.me/FreeSportsPicksProBot\nJoin: ' + ch.link;
+        const translated = await getTranslated(cryptoMsgEn, ch.lang);
         const result = await postTG(ch.id, translated);
         console.log(name + ' signal:', result.ok ? 'OK' : 'FAILED');
+      } else {
+        const noSignalEn = 'FSP CRYPTO\n\nFree signal coming soon. Visit freesportspicks.pro\n\nJoin: ' + ch.link;
+        const translated = await getTranslated(noSignalEn, ch.lang);
+        await postTG(ch.id, translated);
+        console.log(name + ' no signal posted');
       }
-
-      // Cross promotion
-      const crossPromoEn = '🌐 <b>JOIN ALL FSP CRYPTO CHANNELS</b>\n\nGet free crypto signals in your language every day!\n\n' + channelLinks + '\n\n📩 Premium card with 3-5 signals: t.me/FreeSportsPicksProBot';
-      const crossPromoTranslated = await groqTranslate(crossPromoEn, ch.lang);
-      await postTG(ch.id, crossPromoTranslated);
-      console.log(name + ' cross promo: OK');
-
-      // FOMO post
-      const fomoEn = '⏰ <b>TOMORROW\'S SIGNAL IS GENERATING NOW...</b>\n\nOur AI is scanning the top 10 coins by volume right now.\n\nTomorrow\'s free signal drops at 9AM ET.\n\n🔥 Don\'t miss it — share this channel with 1 trader friend now:\n' + ch.link + '\n\n💎 Want 3-5 signals daily? t.me/FreeSportsPicksProBot';
-      const fomoTranslated = await groqTranslate(fomoEn, ch.lang);
-      await postTG(ch.id, fomoTranslated);
-      console.log(name + ' FOMO: OK');
-
-      // Sunday giveaway
-      if (dayOfWeek === 0) {
-        await runGiveaway(ch.id, name, ch.lang, ch.link);
-      }
-
-      // Sunday weekly recap
-      if (dayOfWeek === 0) {
-        const weeklyBest = await getWeeklyBest();
-        if (weeklyBest) {
-          const weeklyEn = '📊 <b>FSP CRYPTO — BEST SIGNAL THIS WEEK</b>\n\n' + weeklyBest.free_signal + '\n\n🔥 Want signals like this every day?\n💎 Premium card: t.me/FreeSportsPicksProBot\n\n📢 Share this channel: ' + ch.link;
-          const weeklyTranslated = await groqTranslate(weeklyEn, ch.lang);
-          await postTG(ch.id, weeklyTranslated);
-          console.log(name + ' weekly recap: OK');
-        }
-      }
-
-      await new Promise(r => setTimeout(r, 2000));
+      await new Promise(r => setTimeout(r, 500));
     }
 
     return res.status(200).json({ ok: true, date: today });
