@@ -123,6 +123,7 @@ export default async function handler(req, res) {
     return res.status(200).json({ ok: true, date: today, games: games.length, sport, free_pick, crypto_signal: freeSignal });
   } catch(e) {
     console.error('Generate error:', e);
-    return res.status(200).json({ ok: false, error: e.message });
+    console.error('Stack:', e.stack);
+    return res.status(200).json({ ok: false, error: e.message, stack: e.stack });
   }
 }
