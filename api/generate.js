@@ -1,20 +1,3 @@
-async function callGroq(prompt, retries = 3) {
-  for(let i = 0; i < retries; i++) {
-    try {
-      const r = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + process.env.GROQ_KEY },
-        body: JSON.stringify({ model: 'llama-3.3-70b-versatile', messages: [{ role: 'user', content: prompt }], max_tokens: 1000 })
-      });
-      const text = await r.text();
-      if(!text || text.length < 10) { await new Promise(res => setTimeout(res, 2000)); continue; }
-      const j = JSON.parse(text);
-      if(j.choices && j.choices[0]) return j.choices[0].message.content;
-    } catch(e) { await new Promise(res => setTimeout(res, 2000)); }
-  }
-  return null;
-}
-
 export default async function handler(req, res) {
   try {
     const today = new Date().toISOString().split('T')[0];
@@ -50,13 +33,18 @@ export default async function handler(req, res) {
       return { games: [], sport: 'Baseball' };
     }
 
-    async function groqCall(prompt) {
+    async function groqCall(prompt, retries = 3) {
+  for(let attempt = 0; attempt < retries; attempt++) {
+  try {
       const r = await apiPost(
         'https://api.groq.com/openai/v1/chat/completions',
         { 'Authorization': 'Bearer ' + GROQ_KEY },
         { model: 'llama-3.3-70b-versatile', messages: [{ role: 'user', content: prompt }], max_tokens: 1000 }
       );
       return r.choices && r.choices[0] ? r.choices[0].message.content : '';
+  } catch(e) { if(attempt < retries-1) { await new Promise(res=>setTimeout(res,2000)); continue; } return ''; }
+  }
+  return '';
     }
 
     async function generatePicks(games, sport) {
