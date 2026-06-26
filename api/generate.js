@@ -89,23 +89,18 @@ export default async function handler(req, res) {
         c.name + ' (' + c.symbol.toUpperCase() + '): $' + c.current_price + ', 24h change: ' + (c.price_change_percentage_24h?.toFixed(2)) + '%, Volume: $' + (c.total_volume/1e9).toFixed(2) + 'B'
       ).join('\n');
 
-      // Get yesterday's top coin price movement for transparency post
-      const topCoin = coins[0];
-      const yesterdayCoin = coins[1];
       const marketSentiment = coins.filter(c => c.price_change_percentage_24h > 0).length >= 6 ? 'Bullish' : coins.filter(c => c.price_change_percentage_24h > 0).length <= 3 ? 'Bearish' : 'Neutral';
-      const marketEmoji = marketSentiment === 'Bullish' ? '🌊' : marketSentiment === 'Bearish' ? '⛈️' : '😐';
 
-      const prompt = 'You are an elite crypto analyst for a premium signal service. Based on this market data, generate a professional signal.\n\nMarket data:\n' + coinSummary + '\n\nMarket sentiment: ' + marketSentiment + '\n\nRespond in this EXACT format and nothing else:\n\nFREE SIGNAL:\n⚡ CONFIDENCE: [X]% — [LOW/MEDIUM/HIGH/VERY HIGH]\n' + marketEmoji + ' MARKET: ' + marketSentiment + ' — [one sentence market condition]\n\n🪙 COIN: [Full Name (SYMBOL)]\n🏷️ CATEGORY: [Layer 1/Layer 2/DeFi/Exchange Token] | [Large/Mid/Small Cap] | [Low/Medium/High Risk]\n💵 ENTRY: $[exact current price]\n🎯 TARGET: $[price] (+[X]%)\n🛑 STOP LOSS: $[price] (-[X]%)\n⚖️ RISK/REWARD: 1:[ratio]\n⏱ TIMEFRAME: [12-24 hours/24-48 hours/2-5 days]\n💼 POSITION SIZE: [X]% of portfolio max\n📍 AVAILABLE ON: [2-3 major exchanges]\n\n🔍 WHY TODAY:\n[4-5 specific sentences about volume, price action, market conditions, catalysts. Be specific with numbers.]\n\n---PREMIUM---\nCOIN 1: [name] | ENTRY: $[price] | TARGET: $[price] (+[X]%) | STOP: $[price] | CONFIDENCE: [X]% | [1 specific sentence why]\nCOIN 2: [name] | ENTRY: $[price] | TARGET: $[price] (+[X]%) | STOP: $[price] | CONFIDENCE: [X]% | [1 specific sentence why]\nCOIN 3: [name] | ENTRY: $[price] | TARGET: $[price] (+[X]%) | STOP: $[price] | CONFIDENCE: [X]% | [1 specific sentence why]\nCOIN 4: [name] | ENTRY: $[price] | TARGET: $[price] (+[X]%) | STOP: $[price] | CONFIDENCE: [X]% | [1 specific sentence why]\nCOIN 5: [name] | ENTRY: $[price] | TARGET: $[price] (+[X]%) | STOP: $[price] | CONFIDENCE: [X]% | [1 specific sentence why]';
+      const prompt = 'You are an elite crypto analyst. Based on this market data generate a professional signal.\n\nMarket data:\n' + coinSummary + '\n\nMarket sentiment: ' + marketSentiment + '\n\nRespond in this EXACT format and nothing else:\n\nFREE SIGNAL:\nCONFIDENCE: [X]% - [LOW/MEDIUM/HIGH/VERY HIGH]\nMARKET: ' + marketSentiment + ' - [one sentence market condition]\n\nCOIN: [Full Name (SYMBOL)]\nCATEGORY: [Layer 1/Layer 2/DeFi/Exchange Token]\nENTRY: $[exact current price]\nTARGET: $[price] (+[X]%)\nSTOP LOSS: $[price] (-[X]%)\nRISK/REWARD: 1:[ratio]\nTIMEFRAME: [12-24 hours/24-48 hours/2-5 days]\nPOSITION SIZE: [X]% of portfolio max\n\nWHY TODAY:\n[4-5 specific sentences about volume, price action, market conditions. Be specific with numbers.]\n\n---PREMIUM---\nCOIN 1: [name] | ENTRY: $[price] | TARGET: $[price] (+[X]%) | STOP: $[price] | CONFIDENCE: [X]% | [1 sentence why]\nCOIN 2: [name] | ENTRY: $[price] | TARGET: $[price] (+[X]%) | STOP: $[price] | CONFIDENCE: [X]% | [1 sentence why]\nCOIN 3: [name] | ENTRY: $[price] | TARGET: $[price] (+[X]%) | STOP: $[price] | CONFIDENCE: [X]% | [1 sentence why]';
 
       const signals = await groqCall(prompt);
       const parts = signals.split('---PREMIUM---');
-      const rawSignal = parts[0].replace('FREE SIGNAL:', '').trim();
-      const freeSignal = '📊 <b>FSP SIGNAL STRENGTH: ⭐⭐⭐⭐⭐</b>\n' + rawSignal + '\n\n💎 <b>PREMIUM CARD TODAY:</b>\n🔒 Signal #2 — [LOCKED]\n🔒 Signal #3 — [LOCKED]\n🔒 Signal #4 — [LOCKED]\n🔒 Signal #5 — [LOCKED]\n👉 Unlock: t.me/FreeSportsPicksProBot\n\n⚠️ Not financial advice. DYOR.';
+      const freeSignal = 'FSP CRYPTO SIGNAL\n\n' + (parts[0] || '').replace('FREE SIGNAL:', '').trim() + '\n\nPREMIUM SIGNALS - LOCKED\nSignal 2 - LOCKED\nSignal 3 - LOCKED\nUnlock: t.me/FreeSportsPicksProBot\n\nNot financial advice. DYOR.';
       const premiumSignals = parts[1] ? parts[1].trim() : '';
 
       await apiPost(
         SUPABASE_URL + '/rest/v1/crypto_signals',
-        { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY, 'Prefer': 'return=representation' },
+        { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY, 'Prefer': 'resolution=merge-duplicates' },
         { date: today, free_signal: freeSignal, premium_signals: premiumSignals, coin_data: coins }
       );
       console.log('Crypto signals saved');
