@@ -31,6 +31,9 @@ export default async function handler(req, res) {
       "FSP Crypto Bangladesh": { id: "-1004380997518", link: "t.me/fspcryptobangladesh", lang: "Bengali" },
       "FSP Crypto Sri Lanka": { id: "-1003926907809", link: "t.me/fspcryptosrilanka", lang: "Sinhala" },
       "FSP Crypto Nepal": { id: "-1003906546084", link: "t.me/fspcryptonepal", lang: "Nepali" },
+      
+      "FSP Crypto Russia": { id: "-1004312236522", link: "t.me/fspcryptorussia", lang: "Russian" },
+      "FSP Crypto Turkey": { id: "-1003973361171", link: "t.me/fspcryptoturkey", lang: "Turkish" },
       "FSP Crypto Kazakhstan": { id: "-1004315496099", link: "t.me/fspcryptokazakhstan", lang: "Kazakh" }
     };
 
