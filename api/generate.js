@@ -84,7 +84,9 @@ export default async function handler(req, res) {
 
     async function generateCryptoSignals() {
       console.log('Fetching crypto data from CoinGecko...');
-      const coins = await apiGet('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=volume_desc&per_page=10&page=1');
+      const rawCoins = await apiGet('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=volume_desc&per_page=10&page=1');
+      const coins = Array.isArray(rawCoins) ? rawCoins : [];
+      if (!coins.length) throw new Error('CoinGecko returned no data');
       const coinSummary = coins.map(c =>
         c.name + ' (' + c.symbol.toUpperCase() + '): $' + c.current_price + ', 24h change: ' + (c.price_change_percentage_24h?.toFixed(2)) + '%, Volume: $' + (c.total_volume/1e9).toFixed(2) + 'B'
       ).join('\n');
