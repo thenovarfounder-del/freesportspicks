@@ -44,6 +44,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Free Sports Picks 2026 | Expert NFL, NBA, MLB Predictions | FreeSportsPicks.pro</title>
+<!-- Performance: DNS Prefetch + Preconnect -->
+<meta http-equiv="x-dns-prefetch-control" content="on">
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="dns-prefetch" href="//www.googletagmanager.com">
+<link rel="dns-prefetch" href="//ehjhsbrcbtqcvmgzjzkm.supabase.co">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <meta name="description" content="Get today's best free sports picks from expert handicappers. Free NFL picks, NBA picks, MLB picks, and more. Updated daily. No signup required.">
 <link rel="canonical" href="https://www.freesportspicks.pro">
 <meta property="og:type" content="website">
@@ -111,6 +118,10 @@
 }
 </style>
 <style>@media(max-width:768px){.gotd-grid{grid-template-columns:1fr!important;gap:32px!important;}}</style>
+
+<!-- Resource Preloads -->
+<link rel="preload" href="/css/main.css" as="style">
+<link rel="preload" href="/js/main.js" as="script">
 </head>
 <body>
 <header class="site-header">
@@ -860,6 +871,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
   } catch(e) { console.log('Game loader error:', e); }
 })();
+</script>
+
+<!-- Service Worker Registration -->
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/sw.js').then(function(reg) {
+      console.log('SW registered');
+    }).catch(function(err) {
+      console.log('SW error:', err);
+    });
+  });
+}
 </script>
 </body>
 </html>

@@ -479,3 +479,58 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+
+// ─── PERFORMANCE: Prefetch on hover + lazy load ───────────────────────────
+window.addEventListener('load', function() {
+  // Lazy load images with data-src
+  var lazyImgs = document.querySelectorAll('img[data-src]');
+  if ('IntersectionObserver' in window) {
+    var imgObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var img = entry.target;
+          img.src = img.dataset.src;
+          img.removeAttribute('data-src');
+          imgObs.unobserve(img);
+        }
+      });
+    });
+    lazyImgs.forEach(function(img) { imgObs.observe(img); });
+  }
+
+  // Prefetch internal links on hover
+  var prefetched = {};
+  document.querySelectorAll('a[href^="/"]').forEach(function(link) {
+    link.addEventListener('mouseenter', function() {
+      var href = this.getAttribute('href');
+      if (href && !href.startsWith('#') && !prefetched[href]) {
+        prefetched[href] = true;
+        var el = document.createElement('link');
+        el.rel = 'prefetch';
+        el.href = href;
+        document.head.appendChild(el);
+      }
+    });
+  });
+});
+
+// ─── OPTIMIZED SUPABASE EMAIL SUBMIT ─────────────────────────────────────
+async function submitEmail(email, source) {
+  source = source || 'website';
+  try {
+    var res = await fetch('https://ehjhsbrcbtqcvmgzjzkm.supabase.co/rest/v1/sportspicks_leads', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVoamhzYnJjYnRxY3ZtZ3pqemttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5MDcwMjQsImV4cCI6MjA5MzQ4MzAyNH0.q96sEV0oUxX5kMCYyUJjysxxERMhhlq9cCBKAQ801_g',
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVoamhzYnJjYnRxY3ZtZ3pqemttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5MDcwMjQsImV4cCI6MjA5MzQ4MzAyNH0.q96sEV0oUxX5kMCYyUJjysxxERMhhlq9cCBKAQ801_g'
+      },
+      body: JSON.stringify({ email: email, source: source })
+    });
+    return res.ok;
+  } catch(err) {
+    console.error('Email submission error:', err);
+    return false;
+  }
+}
