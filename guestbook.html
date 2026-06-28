@@ -226,5 +226,32 @@ async function showPick(today) {
   document.addEventListener('click', function(e) { if (nav.classList.contains('open') && !nav.contains(e.target) && !ham.contains(e.target)) { ham.classList.remove('open'); nav.classList.remove('open'); } });
 })();
 </script>
+
+<!-- Dynamic Track Record Loader -->
+<script>
+(async function() {
+  try {
+    const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVoamhzYnJjYnRxY3ZtZ3pqemttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5MDcwMjQsImV4cCI6MjA5MzQ4MzAyNH0.q96sEV0oUxX5kMCYyUJjysxxERMhhlq9cCBKAQ801_g';
+    const r = await fetch('https://ehjhsbrcbtqcvmgzjzkm.supabase.co/rest/v1/daily_picks?select=result&not=result.is.null', {
+      headers: { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY }
+    });
+    const picks = await r.json();
+    if (!Array.isArray(picks)) return;
+    let wins = 0, losses = 0, pushes = 0;
+    picks.forEach(p => {
+      if (p.result === 'win') wins++;
+      else if (p.result === 'loss') losses++;
+      else if (p.result === 'push') pushes++;
+    });
+    const total = wins + losses;
+    const winRate = total > 0 ? ((wins/total)*100).toFixed(1) + '%' : '0%';
+    const record = wins + '-' + losses + (pushes > 0 ? '-' + pushes : '');
+    const recEl = document.getElementById('tr-record');
+    const rateEl = document.getElementById('tr-winrate');
+    if (recEl) recEl.textContent = record;
+    if (rateEl) rateEl.textContent = winRate;
+  } catch(e) {}
+})();
+</script>
 </body>
 </html>

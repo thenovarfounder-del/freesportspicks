@@ -24,6 +24,14 @@
     {
       "path": "/api/reengage",
       "schedule": "0 18 * * 4"
+    },
+    {
+      "path": "/api/publish-blog",
+      "schedule": "0 15 * * *"
+    },
+    {
+      "path": "/api/update-record",
+      "schedule": "0 16 * * *"
     }
   ],
   "functions": {
@@ -54,6 +62,14 @@
     "api/reengage.js": {
       "memory": 1024,
       "maxDuration": 60
+    },
+    "api/publish-blog.js": {
+      "memory": 1024,
+      "maxDuration": 30
+    },
+    "api/update-record.js": {
+      "memory": 1024,
+      "maxDuration": 30
     }
   }
 }
