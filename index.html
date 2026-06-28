@@ -894,7 +894,7 @@ async function loadGameOfDay() {
     const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVoamhzYnJjYnRxY3ZtZ3pqemttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5MDcwMjQsImV4cCI6MjA5MzQ4MzAyNH0.q96sEV0oUxX5kMCYyUJjysxxERMhhlq9cCBKAQ801_g';
     const SB_URL = 'https://ehjhsbrcbtqcvmgzjzkm.supabase.co';
     const [godRes, pickRes] = await Promise.all([
-      fetch(SB_URL + '/rest/v1/game_of_day?date=eq.' + today + '&limit=1', { headers: { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY } }),
+      fetch(SB_URL + '/rest/v1/game_of_day?order=created_at.desc&limit=1', { headers: { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY } }),
       fetch(SB_URL + '/rest/v1/daily_picks?date=eq.' + today + '&limit=1', { headers: { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY } })
     ]);
     const godData = await godRes.json();
