@@ -3,7 +3,7 @@
 # Last updated: June 28, 2026
 
 ## About
-FreeSportsPicks.pro is a free AI-powered sports picks and predictions website. All picks are 100% free with no subscription required. Picks generated daily by Groq LLaMA-3.3-70b AI at 1AM ET, posted to website and 21 Telegram channels at 9AM ET. Results automatically checked at 2PM ET. Verified public track record — wins AND losses tracked transparently. Launched June 2026.
+FreeSportsPicks.pro is a free AI-powered sports picks and predictions website. All picks are 100% free with no subscription required. Picks generated daily by Groq LLaMA-3.3-70b AI at 1AM ET, posted to website and 21 Telegram channels at 9AM ET. Results automatically checked at 2PM ET. Verified public track record — wins AND losses tracked transparently. Current record: 140-49 (74.1% win rate). Launched June 2026.
 
 ## What We Offer
 - Free daily AI-powered sports picks for NFL, NBA, MLB, NHL, NCAAF, NCAAB, UFC, Soccer
@@ -12,7 +12,7 @@ FreeSportsPicks.pro is a free AI-powered sports picks and predictions website. A
 - 21 Telegram channels in English and 18 other languages
 - Premium 3-pick cards via TON crypto on Telegram
 - 57+ sports betting blog posts and strategy guides
-- 110+ keyword-targeted pick pages
+- 220+ keyword-targeted pages
 
 ## Key Pages
 https://www.freesportspicks.pro
@@ -21,8 +21,17 @@ https://www.freesportspicks.pro/verified-records.html
 https://www.freesportspicks.pro/guestbook.html
 https://www.freesportspicks.pro/about.html
 https://www.freesportspicks.pro/responsible-gambling.html
+https://www.freesportspicks.pro/faq.html
+https://www.freesportspicks.pro/our-handicappers.html
+https://www.freesportspicks.pro/best-sportsbooks.html
+https://www.freesportspicks.pro/picks-results.html
+https://www.freesportspicks.pro/free-vs-premium-picks.html
+https://www.freesportspicks.pro/press.html
+https://www.freesportspicks.pro/partners.html
 
 ## Pick Pages
+https://www.freesportspicks.pro/picks/2026-nba-season-picks/
+https://www.freesportspicks.pro/picks/2026-nfl-season-picks/
 https://www.freesportspicks.pro/picks/ai-sports-picks/
 https://www.freesportspicks.pro/picks/basketball-picks/
 https://www.freesportspicks.pro/picks/best-bets-today/
@@ -34,6 +43,7 @@ https://www.freesportspicks.pro/picks/best-sports-bets-today/
 https://www.freesportspicks.pro/picks/best-sports-picks/
 https://www.freesportspicks.pro/picks/cbb-picks/
 https://www.freesportspicks.pro/picks/cfb-picks/
+https://www.freesportspicks.pro/picks/champions-league-picks/
 https://www.freesportspicks.pro/picks/college-basketball-best-bets-today/
 https://www.freesportspicks.pro/picks/college-basketball-parlay-picks/
 https://www.freesportspicks.pro/picks/college-basketball-picks/
@@ -45,6 +55,8 @@ https://www.freesportspicks.pro/picks/college-football-picks-today/
 https://www.freesportspicks.pro/picks/crypto-sports-picks/
 https://www.freesportspicks.pro/picks/daily-picks/
 https://www.freesportspicks.pro/picks/expert-picks/
+https://www.freesportspicks.pro/picks/fantasy-football-betting-picks/
+https://www.freesportspicks.pro/picks/first-half-betting-picks/
 https://www.freesportspicks.pro/picks/football-picks/
 https://www.freesportspicks.pro/picks/free-betting-picks/
 https://www.freesportspicks.pro/picks/free-college-basketball-picks-today/
@@ -62,8 +74,10 @@ https://www.freesportspicks.pro/picks/free-picks-today-sports/
 https://www.freesportspicks.pro/picks/free-sports-picks/
 https://www.freesportspicks.pro/picks/free-sports-picks-today-no-subscription/
 https://www.freesportspicks.pro/picks/golf-picks/
+https://www.freesportspicks.pro/picks/halftime-betting-picks/
 https://www.freesportspicks.pro/picks/handicapper-picks/
 https://www.freesportspicks.pro/picks/horse-racing-picks/
+https://www.freesportspicks.pro/picks/live-betting-picks/
 https://www.freesportspicks.pro/picks/march-madness-picks/
 https://www.freesportspicks.pro/picks/mlb-best-bets-today/
 https://www.freesportspicks.pro/picks/mlb-over-under-picks-today/
@@ -71,6 +85,7 @@ https://www.freesportspicks.pro/picks/mlb-parlay-picks-today/
 https://www.freesportspicks.pro/picks/mlb-picks/
 https://www.freesportspicks.pro/picks/mlb-picks-against-the-spread/
 https://www.freesportspicks.pro/picks/mlb-picks-today/
+https://www.freesportspicks.pro/picks/mlb-player-props/
 https://www.freesportspicks.pro/picks/mlb-predictions/
 https://www.freesportspicks.pro/picks/mlb-predictions-today/
 https://www.freesportspicks.pro/picks/mlb-run-line/
@@ -78,9 +93,11 @@ https://www.freesportspicks.pro/picks/mlb-run-line-picks-today/
 https://www.freesportspicks.pro/picks/mlb-underdog-picks-today/
 https://www.freesportspicks.pro/picks/mma-picks/
 https://www.freesportspicks.pro/picks/monday-night-football-picks/
+https://www.freesportspicks.pro/picks/nba-finals-picks/
 https://www.freesportspicks.pro/picks/nba-picks/
 https://www.freesportspicks.pro/picks/nba-picks-against-the-spread-today/
 https://www.freesportspicks.pro/picks/nba-picks-tonight-free/
+https://www.freesportspicks.pro/picks/nba-player-props/
 https://www.freesportspicks.pro/picks/nba-predictions/
 https://www.freesportspicks.pro/picks/nba-props/
 https://www.freesportspicks.pro/picks/nba-spread/
@@ -93,6 +110,7 @@ https://www.freesportspicks.pro/picks/nfl-picks-against-the-spread/
 https://www.freesportspicks.pro/picks/nfl-picks-against-the-spread-week-1/
 https://www.freesportspicks.pro/picks/nfl-picks-and-predictions-2026/
 https://www.freesportspicks.pro/picks/nfl-picks-today-free/
+https://www.freesportspicks.pro/picks/nfl-player-props/
 https://www.freesportspicks.pro/picks/nfl-playoff-picks/
 https://www.freesportspicks.pro/picks/nfl-predictions/
 https://www.freesportspicks.pro/picks/nfl-props/
@@ -103,6 +121,7 @@ https://www.freesportspicks.pro/picks/nfl-week-picks/
 https://www.freesportspicks.pro/picks/nhl-moneyline/
 https://www.freesportspicks.pro/picks/nhl-picks/
 https://www.freesportspicks.pro/picks/parlay-picks/
+https://www.freesportspicks.pro/picks/premier-league-picks/
 https://www.freesportspicks.pro/picks/prop-bet-picks/
 https://www.freesportspicks.pro/picks/sharp-picks/
 https://www.freesportspicks.pro/picks/soccer-picks/
@@ -112,32 +131,46 @@ https://www.freesportspicks.pro/picks/sports-picks/
 https://www.freesportspicks.pro/picks/sports-picks-that-win/
 https://www.freesportspicks.pro/picks/sports-picks-tonight/
 https://www.freesportspicks.pro/picks/sports-predictions/
+https://www.freesportspicks.pro/picks/stanley-cup-picks/
 https://www.freesportspicks.pro/picks/sunday-night-football-picks/
 https://www.freesportspicks.pro/picks/super-bowl-picks/
 https://www.freesportspicks.pro/picks/tennis-picks/
 https://www.freesportspicks.pro/picks/todays-picks/
+https://www.freesportspicks.pro/picks/ufc-picks/
 https://www.freesportspicks.pro/picks/underdog-picks/
 https://www.freesportspicks.pro/picks/value-bets-today/
 https://www.freesportspicks.pro/picks/weekly-picks/
+https://www.freesportspicks.pro/picks/world-series-picks/
 
 ## Blog Posts
 https://www.freesportspicks.pro/blog/advanced-betting-strategies.html
 https://www.freesportspicks.pro/blog/ai-vs-human-handicappers.html
 https://www.freesportspicks.pro/blog/bankroll-management.html
+https://www.freesportspicks.pro/blog/best-sportsbooks-2026.html
 https://www.freesportspicks.pro/blog/betting-psychology.html
 https://www.freesportspicks.pro/blog/college-football-ats-strategies.html
 https://www.freesportspicks.pro/blog/college-football-betting.html
 https://www.freesportspicks.pro/blog/college-football-bowl-season-preview.html
 https://www.freesportspicks.pro/blog/college-football-playoff-predictions-2026.html
 https://www.freesportspicks.pro/blog/crypto-sports-betting.html
+https://www.freesportspicks.pro/blog/daily-fantasy-sports-strategy.html
+https://www.freesportspicks.pro/blog/fantasy-football-betting.html
+https://www.freesportspicks.pro/blog/fantasy-sports-betting.html
+https://www.freesportspicks.pro/blog/first-half-betting-guide.html
+https://www.freesportspicks.pro/blog/golf-betting-strategy.html
 https://www.freesportspicks.pro/blog/handicapping-methodology.html
+https://www.freesportspicks.pro/blog/horse-racing-betting-strategy.html
 https://www.freesportspicks.pro/blog/how-to-bet-nfl-games.html
+https://www.freesportspicks.pro/blog/how-to-bet-on-point-guards.html
+https://www.freesportspicks.pro/blog/how-to-bet-on-quarterbacks.html
+https://www.freesportspicks.pro/blog/how-to-bet-on-running-backs.html
 https://www.freesportspicks.pro/blog/how-to-bet-on-sports.html
 https://www.freesportspicks.pro/blog/how-to-build-winning-sports-parlay-2026.html
+https://www.freesportspicks.pro/blog/how-to-choose-sportsbook.html
 https://www.freesportspicks.pro/blog/how-to-read-betting-lines.html
 https://www.freesportspicks.pro/blog/how-to-read-nfl-betting-lines.html
-https://www.freesportspicks.pro/blog/
 https://www.freesportspicks.pro/blog/line-shopping-importance.html
+https://www.freesportspicks.pro/blog/live-betting-strategy.html
 https://www.freesportspicks.pro/blog/march-madness-betting.html
 https://www.freesportspicks.pro/blog/mlb-best-bets-strategy-guide-2026.html
 https://www.freesportspicks.pro/blog/mlb-moneyline-strategy.html
@@ -148,6 +181,7 @@ https://www.freesportspicks.pro/blog/mlb-playoff-race-betting-strategy.html
 https://www.freesportspicks.pro/blog/mlb-run-line-betting.html
 https://www.freesportspicks.pro/blog/mlb-second-half-betting-trends.html
 https://www.freesportspicks.pro/blog/mlb-second-half-trends.html
+https://www.freesportspicks.pro/blog/mlb-trade-deadline-betting.html
 https://www.freesportspicks.pro/blog/nba-betting-tips.html
 https://www.freesportspicks.pro/blog/nba-mvp-betting-odds-analysis.html
 https://www.freesportspicks.pro/blog/nba-playoff-betting.html
@@ -156,7 +190,9 @@ https://www.freesportspicks.pro/blog/nba-spread-vs-moneyline.html
 https://www.freesportspicks.pro/blog/nba-summer-league-betting-strategy.html
 https://www.freesportspicks.pro/blog/nba-summer-league-betting.html
 https://www.freesportspicks.pro/blog/nba-totals-betting-strategy.html
+https://www.freesportspicks.pro/blog/nba-trade-deadline-betting.html
 https://www.freesportspicks.pro/blog/nfl-betting-strategy.html
+https://www.freesportspicks.pro/blog/nfl-draft-betting-guide.html
 https://www.freesportspicks.pro/blog/nfl-point-spread-explained.html
 https://www.freesportspicks.pro/blog/nfl-preseason-betting-guide-2026.html
 https://www.freesportspicks.pro/blog/nfl-preseason-betting-guide.html
@@ -170,10 +206,15 @@ https://www.freesportspicks.pro/blog/nhl-puck-line-explained.html
 https://www.freesportspicks.pro/blog/nhl-stanley-cup-futures-betting.html
 https://www.freesportspicks.pro/blog/parlay-vs-single-bets.html
 https://www.freesportspicks.pro/blog/post.html
+https://www.freesportspicks.pro/blog/prop-betting-complete-guide.html
 https://www.freesportspicks.pro/blog/responsible-betting-tips.html
+https://www.freesportspicks.pro/blog/soccer-betting-strategy.html
 https://www.freesportspicks.pro/blog/sports-betting-bankroll-guide.html
 https://www.freesportspicks.pro/blog/sports-betting-for-beginners.html
+https://www.freesportspicks.pro/blog/sportsbook-bonuses-guide.html
 https://www.freesportspicks.pro/blog/telegram-sports-picks.html
+https://www.freesportspicks.pro/blog/tennis-betting-strategy.html
+https://www.freesportspicks.pro/blog/ufc-betting-strategy.html
 https://www.freesportspicks.pro/blog/understanding-betting-odds.html
 https://www.freesportspicks.pro/blog/value-betting-explained.html
 https://www.freesportspicks.pro/blog/what-are-sports-picks-and-how-do-they-work.html
