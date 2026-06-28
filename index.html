@@ -338,7 +338,7 @@
 </section>
 
 <script>
-// Load Game of the Day from daily_picks table
+// REPLACED - see below
 async function loadGameOfDay() {
   try {
     const today = new Date().toISOString().split('T')[0];
@@ -884,6 +884,54 @@ if ('serviceWorker' in navigator) {
     });
   });
 }
+</script>
+
+<script>
+// Load Game of the Day - Fixed version reads game_of_day table
+async function loadGameOfDay() {
+  try {
+    const today = new Date().toISOString().split('T')[0];
+    const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVoamhzYnJjYnRxY3ZtZ3pqemttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5MDcwMjQsImV4cCI6MjA5MzQ4MzAyNH0.q96sEV0oUxX5kMCYyUJjysxxERMhhlq9cCBKAQ801_g';
+    const SB_URL = 'https://ehjhsbrcbtqcvmgzjzkm.supabase.co';
+    const [godRes, pickRes] = await Promise.all([
+      fetch(SB_URL + '/rest/v1/game_of_day?date=eq.' + today + '&limit=1', { headers: { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY } }),
+      fetch(SB_URL + '/rest/v1/daily_picks?date=eq.' + today + '&limit=1', { headers: { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY } })
+    ]);
+    const godData = await godRes.json();
+    const pickData = await pickRes.json();
+    const t1 = document.getElementById('gotd-team1');
+    const t2 = document.getElementById('gotd-team2');
+    const tm = document.getElementById('gotd-time');
+    const sp = document.getElementById('gotd-sport');
+    const blurEl = document.getElementById('gotd-pick-blur');
+    if (godData && godData.length > 0) {
+      const g = godData[0];
+      if (t1) t1.textContent = g.home_team || 'Today Pick';
+      if (t2) t2.textContent = g.away_team || 'Sign In';
+      if (tm) tm.textContent = g.game_time || 'Tonight';
+      if (sp) sp.textContent = g.sport || 'MLB';
+    } else if (pickData && pickData.length > 0) {
+      const fp = pickData[0].free_pick || '';
+      const sport = (pickData[0].game_data && pickData[0].game_data.sport) || 'MLB';
+      if (sp) sp.textContent = sport;
+      const vsMatch = fp.match(/([A-Za-z ]+) vs ([A-Za-z ]+)/);
+      if (vsMatch) {
+        if (t1) t1.textContent = vsMatch[1].replace('FREE PICK:','').trim();
+        if (t2) t2.textContent = vsMatch[2].split('\n')[0].trim();
+      } else {
+        if (t1) t1.textContent = sport + ' Pick';
+        if (t2) t2.textContent = 'Today';
+      }
+      if (tm) tm.textContent = 'Tonight';
+    }
+    if (pickData && pickData.length > 0 && blurEl) {
+      const fp = pickData[0].free_pick || '';
+      const firstLine = fp.split('\n')[0].replace('FREE PICK:','').trim();
+      if (firstLine) blurEl.textContent = firstLine.substring(0,35) + ' ⭐⭐⭐⭐';
+    }
+  } catch(e) { console.log('GOTD error:', e); }
+}
+loadGameOfDay();
 </script>
 </body>
 </html>
