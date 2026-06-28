@@ -210,6 +210,121 @@ const SB_URL = 'https://ehjhsbrcbtqcvmgzjzkm.supabase.co';
 
 async function loadTodaysPicks() {
   try {
+    // Try multiple dates in case of timezone issues
+    const dates = [];
+    for (let i = 0; i <= 1; i++) {
+      const d = new Date();
+      d.setDate(d.getDate() - i);
+      const et = new Date(d.toLocaleString('en-US', { timeZone: 'America/New_York' }));
+      dates.push(et.getFullYear() + '-' + String(et.getMonth()+1).padStart(2,'0') + '-' + String(et.getDate()).padStart(2,'0'));
+    }
+
+    let picks = null;
+    let god = null;
+    const SB_KEY2 = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVoamhzYnJjYnRxY3ZtZ3pqemttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5MDcwMjQsImV4cCI6MjA5MzQ4MzAyNH0.q96sEV0oUxX5kMCYyUJjysxxERMhhlq9cCBKAQ801_g';
+    const SB_URL2 = 'https://ehjhsbrcbtqcvmgzjzkm.supabase.co';
+
+    // Try today and yesterday until we find data
+    for (const date of dates) {
+      const r = await fetch(SB_URL2 + '/rest/v1/daily_picks?date=eq.' + date + '&limit=1', {
+        headers: { 'apikey': SB_KEY2, 'Authorization': 'Bearer ' + SB_KEY2 }
+      });
+      const data = await r.json();
+      if (data && data[0] && data[0].free_pick) {
+        picks = data;
+        document.getElementById('last-updated').textContent = 'Pick date: ' + date;
+        break;
+      }
+    }
+
+    // Also try latest pick regardless of date
+    if (!picks) {
+      const r = await fetch(SB_URL2 + '/rest/v1/daily_picks?select=*&order=date.desc&limit=1', {
+        headers: { 'apikey': SB_KEY2, 'Authorization': 'Bearer ' + SB_KEY2 }
+      });
+      picks = await r.json();
+      if (picks && picks[0]) {
+        document.getElementById('last-updated').textContent = 'Latest pick: ' + picks[0].date;
+      }
+    }
+
+    const godR = await fetch(SB_URL2 + '/rest/v1/game_of_day?order=date.desc&limit=1', {
+      headers: { 'apikey': SB_KEY2, 'Authorization': 'Bearer ' + SB_KEY2 }
+    });
+    god = await godR.json();
+
+    // FREE PICK
+    const freeCard = document.getElementById('free-pick-card');
+    if (picks && picks[0] && picks[0].free_pick) {
+      const fp = picks[0].free_pick;
+      const sport = (picks[0].game_data && picks[0].game_data.sport) || 'Sports';
+      const lines = fp.split('\n');
+      const pickLine = lines[0].replace('FREE PICK:', '').trim();
+      const reasonLine = lines.find(l => l.toUpperCase().includes('REASON')) || '';
+      freeCard.innerHTML = '<div class="pick-label">' + sport + ' &middot; Free Pick</div>' +
+        '<div class="pick-text" style="font-size:20px;margin-bottom:12px;">' + pickLine + '</div>' +
+        (reasonLine ? '<div class="pick-meta">' + reasonLine.replace('REASON:','').trim() + '</div>' : '') +
+        '<div style="margin-top:20px;"><a href="/guestbook.html" style="display:inline-block;background:linear-gradient(135deg,#A07830,#C9A84C);color:#0A0A0A;padding:10px 24px;border-radius:2px;font-size:13px;font-weight:700;text-decoration:none;">Sign In for Full Analysis &rarr;</a></div>';
+    } else {
+      freeCard.innerHTML = '<div class="pick-text" style="text-align:center;padding:20px;">Pick loads at 9 AM ET. <a href="https://t.me/freesportspickspro" target="_blank" style="color:#C9A84C;">Join Telegram for instant picks.</a></div>';
+    }
+
+    // GAME OF THE DAY
+    const godCard = document.getElementById('game-of-day-card');
+    if (god && god[0] && god[0].home_team && god[0].home_team !== 'Daily Pick') {
+      const g = god[0];
+      godCard.innerHTML = '<div class="pick-card">' +
+        '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">' +
+        '<div style="text-align:center;flex:1;"><div style="font-family:\'DM Serif Display\',serif;font-size:22px;color:#F5F5F0;">' + g.home_team + '</div><div style="font-size:11px;color:#606060;margin-top:4px;text-transform:uppercase;">Home</div></div>' +
+        '<div style="text-align:center;padding:0 16px;"><div style="font-family:\'DM Serif Display\',serif;font-size:28px;color:#C9A84C;font-weight:700;">VS</div><div style="font-size:12px;color:#606060;">' + (g.game_time || 'Tonight') + '</div></div>' +
+        '<div style="text-align:center;flex:1;"><div style="font-family:\'DM Serif Display\',serif;font-size:22px;color:#F5F5F0;">' + g.away_team + '</div><div style="font-size:11px;color:#606060;margin-top:4px;text-transform:uppercase;">Away</div></div>' +
+        '</div>' +
+        '<div style="text-align:center;padding-top:16px;border-top:1px solid #1A1A1A;"><span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#C9A84C;">' + (g.sport || 'Baseball') + '</span></div>' +
+        '</div>';
+    } else if (picks && picks[0] && picks[0].free_pick) {
+      const fp = picks[0].free_pick;
+      const vsMatch = fp.match(/([A-Za-z ]+) vs ([A-Za-z ]+)/i);
+      if (vsMatch) {
+        godCard.innerHTML = '<div class="pick-card"><div style="display:flex;align-items:center;justify-content:space-between;">' +
+          '<div style="text-align:center;flex:1;"><div style="font-family:\'DM Serif Display\',serif;font-size:20px;color:#F5F5F0;">' + vsMatch[1].trim() + '</div><div style="font-size:11px;color:#606060;margin-top:4px;">HOME</div></div>' +
+          '<div style="text-align:center;padding:0 16px;"><div style="font-family:\'DM Serif Display\',serif;font-size:28px;color:#C9A84C;">VS</div><div style="font-size:12px;color:#606060;">Tonight</div></div>' +
+          '<div style="text-align:center;flex:1;"><div style="font-family:\'DM Serif Display\',serif;font-size:20px;color:#F5F5F0;">' + vsMatch[2].split('\n')[0].trim() + '</div><div style="font-size:11px;color:#606060;margin-top:4px;">AWAY</div></div>' +
+          '</div></div>';
+      } else {
+        godCard.innerHTML = '<div class="pick-card"><div class="pick-text" style="text-align:center;">Game data updates at 1 AM ET.</div></div>';
+      }
+    } else {
+      godCard.innerHTML = '<div class="pick-card"><div class="pick-text" style="text-align:center;">Game data updates at 1 AM ET.</div></div>';
+    }
+
+    // PICKS BY SPORT
+    const sportDiv = document.getElementById('picks-by-sport');
+    if (picks && picks[0]) {
+      const sport = (picks[0].game_data && picks[0].game_data.sport) || 'Baseball';
+      const fp = picks[0].free_pick || '';
+      const pickLine = fp.replace('FREE PICK:','').split('\n')[0].trim();
+      sportDiv.innerHTML = '<div class="sport-section">' +
+        '<div class="sport-badge">' + sport + '</div>' +
+        '<div class="pick-card"><div class="pick-label">Free Pick</div>' +
+        '<div class="pick-text">' + pickLine + '</div>' +
+        '</div>' +
+        '<div class="pick-card" style="margin-top:12px;text-align:center;">' +
+        '<div class="pick-label">Premium Picks</div>' +
+        '<div class="pick-blurred" style="margin-bottom:12px;">Team A -3.5 &#x2b50;&#x2b50;&#x2b50;&#x2b50;&#x2b50;</div>' +
+        '<a href="https://t.me/FreeSportsPicksProBot" target="_blank" style="font-size:13px;color:#C9A84C;font-weight:700;">Unlock All 3 Picks on Telegram &rarr;</a>' +
+        '</div></div>';
+    } else {
+      sportDiv.innerHTML = '<div class="pick-card"><p style="color:#606060;text-align:center;">Picks load at 9 AM ET every day.</p></div>';
+    }
+
+  } catch(e) {
+    console.error('loadTodaysPicks error:', e);
+    document.getElementById('free-pick-card').innerHTML = '<div class="pick-text" style="text-align:center;">Unable to load picks. <a href="https://t.me/freesportspickspro" style="color:#C9A84C;">Join Telegram for instant picks.</a></div>';
+  }
+}
+// ORIGINAL FUNCTION BELOW - REPLACED
+async function loadTodaysPicksOLD() {
+  try {
     const now = new Date();
     const etDate = new Date(now.toLocaleString('en-US', { timeZone: 'America/New_York' }));
     const today = etDate.getFullYear() + '-' + String(etDate.getMonth()+1).padStart(2,'0') + '-' + String(etDate.getDate()).padStart(2,'0');
