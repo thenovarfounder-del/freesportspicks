@@ -210,7 +210,9 @@ const SB_URL = 'https://ehjhsbrcbtqcvmgzjzkm.supabase.co';
 
 async function loadTodaysPicks() {
   try {
-    const today = new Date().toISOString().split('T')[0];
+    const now = new Date();
+    const etDate = new Date(now.toLocaleString('en-US', { timeZone: 'America/New_York' }));
+    const today = etDate.getFullYear() + '-' + String(etDate.getMonth()+1).padStart(2,'0') + '-' + String(etDate.getDate()).padStart(2,'0');
     document.getElementById('last-updated').textContent = 'Updated: ' + new Date().toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric', year:'numeric' });
 
     const [pickRes, godRes] = await Promise.all([
