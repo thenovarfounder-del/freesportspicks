@@ -80,7 +80,7 @@ export default async function handler(req, res) {
       const eh = (h-4+24)%24;
       const et = (eh>12?eh-12:(eh===0?12:eh))+':'+String(m).padStart(2,'0')+(eh>=12?' PM':' AM')+' ET';
       console.log('Saving game_of_day:', homeTeam, 'vs', awayTeam, 'at', et);
-      await apiPost(SUPABASE_URL+'/rest/v1/game_of_day', { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer '+SUPABASE_KEY, 'Prefer': 'resolution=merge-duplicates' }, { date: today, home_team: homeTeam, away_team: awayTeam, sport: g.strSport || sport, league: g.strLeague || sport, game_time: et });
+      await apiPost(SUPABASE_URL+'/rest/v1/game_of_day', { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer '+SUPABASE_KEY, 'Prefer': 'resolution=merge-duplicates' }, { date: today, team1: homeTeam, team2: awayTeam, sport: g.strSport || sport, league: g.strLeague || sport, game_time: et });
     } else {
       // No valid games — save placeholder
       await apiPost(SUPABASE_URL+'/rest/v1/game_of_day', { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer '+SUPABASE_KEY, 'Prefer': 'resolution=merge-duplicates' }, { date: today, home_team: 'Daily Pick', away_team: 'Sign In to Reveal', sport: 'Sports', league: 'Free Pick', game_time: '9:00 AM ET' });

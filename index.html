@@ -906,8 +906,8 @@ async function loadGameOfDay() {
     const blurEl = document.getElementById('gotd-pick-blur');
     if (godData && godData.length > 0) {
       const g = godData[0];
-      if (t1) t1.textContent = g.home_team || 'Today Pick';
-      if (t2) t2.textContent = g.away_team || 'Sign In';
+      if (t1) t1.textContent = g.team1 || 'Today Pick';
+      if (t2) t2.textContent = g.team2 || 'Sign In';
       if (tm) tm.textContent = g.game_time || 'Tonight';
       if (sp) sp.textContent = g.sport || 'MLB';
     } else if (pickData && pickData.length > 0) {
