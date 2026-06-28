@@ -10,7 +10,8 @@ export default async function handler(req, res) {
     const picks = await resp.json();
 
     // Calculate record
-    let wins = 0, losses = 0, pushes = 0;
+    // Historical seed record (before June 2026 tracking)
+    let wins = 140, losses = 49, pushes = 0;
     picks.forEach(p => {
       if (p.result === 'win') wins++;
       else if (p.result === 'loss') losses++;
