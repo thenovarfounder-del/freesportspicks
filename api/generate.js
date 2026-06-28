@@ -8,20 +8,20 @@ export default async function handler(req, res) {
     async function apiPost(url, headers, body) {
       const resp = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json', ...headers }, body: JSON.stringify(body) });
       const text = await resp.text();
-      try { return text ? JSON.parse(text) : {}; } catch(e) { console.log('apiPost parse error:', text.slice(0,200)); return {}; }
+      try { return text ? JSON.parse(text) : {}; } catch(e) { return {}; }
     }
 
     async function apiGet(url, headers = {}) {
       const resp = await fetch(url, { headers });
       const text = await resp.text();
-      try { return text ? JSON.parse(text) : {}; } catch(e) { console.log('apiGet parse error:', text.slice(0,200)); return {}; }
+      try { return text ? JSON.parse(text) : {}; } catch(e) { return {}; }
     }
 
     async function groqCall(prompt) {
       try {
         const r = await apiPost('https://api.groq.com/openai/v1/chat/completions', { 'Authorization': 'Bearer ' + GROQ_KEY }, { model: 'llama-3.3-70b-versatile', messages: [{ role: 'user', content: prompt }], max_tokens: 1000 });
         return r.choices && r.choices[0] ? r.choices[0].message.content : '';
-      } catch(e) { console.log('Groq error:', e.message); return ''; }
+      } catch(e) { return ''; }
     }
 
     async function getTodaysGames() {
@@ -29,7 +29,14 @@ export default async function handler(req, res) {
       for (const sport of sports) {
         try {
           const data = await apiGet('https://www.thesportsdb.com/api/v1/json/3/eventsday.php?d=' + today + '&s=' + sport);
-          if (data.events && data.events.length > 0) return { games: data.events, sport };
+          if (data.events && data.events.length > 0) {
+            // Only return games with valid team names
+            const valid = data.events.filter(g => g.strHomeTeam && g.strAwayTeam && g.strHomeTeam.length > 1 && g.strAwayTeam.length > 1);
+            if (valid.length > 0) {
+              console.log('Found ' + valid.length + ' valid ' + sport + ' games');
+              return { games: valid, sport };
+            }
+          }
         } catch(e) { console.log('Sport error:', sport, e.message); }
       }
       return { games: [], sport: 'Baseball' };
@@ -63,13 +70,22 @@ export default async function handler(req, res) {
     }
 
     const { games, sport } = await getTodaysGames();
+
+    // Save game_of_day with VALID team names
     if (games.length > 0) {
       const g = games[0];
+      const homeTeam = g.strHomeTeam;
+      const awayTeam = g.strAwayTeam;
       const [h,m] = (g.strTime||'00:00').split(':').map(Number);
       const eh = (h-4+24)%24;
       const et = (eh>12?eh-12:(eh===0?12:eh))+':'+String(m).padStart(2,'0')+(eh>=12?' PM':' AM')+' ET';
-      await apiPost(SUPABASE_URL+'/rest/v1/game_of_day', { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer '+SUPABASE_KEY, 'Prefer': 'resolution=merge-duplicates' }, { date: today, home_team: g.strHomeTeam, away_team: g.strAwayTeam, sport: g.strSport, league: g.strLeague, game_time: et });
+      console.log('Saving game_of_day:', homeTeam, 'vs', awayTeam, 'at', et);
+      await apiPost(SUPABASE_URL+'/rest/v1/game_of_day', { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer '+SUPABASE_KEY, 'Prefer': 'resolution=merge-duplicates' }, { date: today, home_team: homeTeam, away_team: awayTeam, sport: g.strSport || sport, league: g.strLeague || sport, game_time: et });
+    } else {
+      // No valid games — save placeholder
+      await apiPost(SUPABASE_URL+'/rest/v1/game_of_day', { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer '+SUPABASE_KEY, 'Prefer': 'resolution=merge-duplicates' }, { date: today, home_team: 'Daily Pick', away_team: 'Sign In to Reveal', sport: 'Sports', league: 'Free Pick', game_time: '9:00 AM ET' });
     }
+
     const { free_pick, premium_picks } = await generatePicks(games, sport);
     await apiPost(SUPABASE_URL+'/rest/v1/daily_picks', { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer '+SUPABASE_KEY, 'Prefer': 'resolution=merge-duplicates' }, { date: today, free_pick, premium_picks, game_data: { games: games.slice(0,10), sport } });
     const { freeSignal } = await generateCryptoSignals();
