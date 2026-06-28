@@ -26,10 +26,6 @@
       "schedule": "0 18 * * 4"
     },
     {
-      "path": "/api/publish-blog",
-      "schedule": "0 15 * * *"
-    },
-    {
       "path": "/api/update-record",
       "schedule": "0 16 * * *"
     }
@@ -39,6 +35,14 @@
       "memory": 1024,
       "maxDuration": 10
     },
+    "api/cron.js": {
+      "memory": 1024,
+      "maxDuration": 60
+    },
+    "api/evening.js": {
+      "memory": 1024,
+      "maxDuration": 60
+    },
     "api/generate.js": {
       "memory": 1024,
       "maxDuration": 30
@@ -47,7 +51,7 @@
       "memory": 1024,
       "maxDuration": 60
     },
-    "api/evening.js": {
+    "api/reengage.js": {
       "memory": 1024,
       "maxDuration": 60
     },
@@ -55,21 +59,13 @@
       "memory": 1024,
       "maxDuration": 60
     },
+    "api/update-record.js": {
+      "memory": 1024,
+      "maxDuration": 60
+    },
     "api/weekly.js": {
       "memory": 1024,
       "maxDuration": 60
-    },
-    "api/reengage.js": {
-      "memory": 1024,
-      "maxDuration": 60
-    },
-    "api/publish-blog.js": {
-      "memory": 1024,
-      "maxDuration": 30
-    },
-    "api/update-record.js": {
-      "memory": 1024,
-      "maxDuration": 30
     }
   }
 }
