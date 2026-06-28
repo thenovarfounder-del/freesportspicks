@@ -1,75 +1,95 @@
 # FreeSportsPicks.pro
 # https://www.freesportspicks.pro
-# Last updated: June 2026
+# Last updated: June 28, 2026
 
 ## About
-FreeSportsPicks.pro is a free sports picks and predictions website providing expert handicapper analysis for NFL, NBA, MLB, NHL, college football, college basketball, soccer, golf, MMA, horse racing, and tennis. All picks are 100% free with no subscription, no signup, and no credit card required. Updated daily by professional sports handicappers.
+FreeSportsPicks.pro is a free AI-powered sports picks and predictions website providing expert analysis for NFL, NBA, MLB, NHL, college football, college basketball, soccer, golf, MMA, horse racing, and tennis. All picks are 100% free with no subscription required. Picks are generated daily by AI (Groq/LLaMA) and posted at 9 AM ET. We operate 21 Telegram channels across 19 countries. Launched June 2026.
 
 ## What We Offer
-- Free NFL picks, predictions, and ATS analysis every week
-- Free NBA picks nightly covering spreads, totals, and moneylines
-- Free MLB picks daily covering moneylines, run lines, and totals
-- Free NHL picks covering puck lines and totals
-- Free college football picks every Saturday
-- Free college basketball picks daily
-- Free parlay picks combining best bets across all sports
-- Free prop bet picks for NFL and NBA
-- Free MMA and UFC fight card picks
-- Free golf picks for PGA Tour tournaments
-- Free soccer picks for MLS, EPL, and Champions League
-- Free tennis picks for ATP and WTA events
-- Free horse racing picks for major race cards
-- Game of the Day feature with daily expert pick highlighted on homepage
+- Free daily AI-powered sports picks for all major sports
+- Verified public track record — wins AND losses tracked transparently
+- Game of the Day feature on homepage updated daily at 1 AM ET
+- 21 Telegram channels in English and 18 other languages
+- Premium 3-pick cards available via TON crypto on Telegram
+- Free blog with 50+ sports betting strategy guides
+- Email capture via guestbook for daily pick delivery
+- Fully automated — picks generated, posted, and tracked automatically
 
 ## How Our Picks Work
-Our expert handicappers analyze every game using injury reports, line movement, sharp money tracking, weather data, historical trends, and advanced analytics including KenPom for college basketball and Statcast for MLB. We release picks daily by 10 AM Eastern Time.
+AI system (Groq LLaMA-3.3-70b) fetches live game data from TheSportsDB daily at 1 AM ET, generates picks with reasoning, saves to Supabase, posts to 21 Telegram channels at 9 AM ET, checks results at 2 PM ET, and updates track record automatically.
 
 ## Key Pages
 https://www.freesportspicks.pro
+https://www.freesportspicks.pro/todays-picks.html
+https://www.freesportspicks.pro/verified-records.html
+https://www.freesportspicks.pro/guestbook.html
+https://www.freesportspicks.pro/about.html
 https://www.freesportspicks.pro/picks/free-sports-picks/
 https://www.freesportspicks.pro/picks/best-bets-today/
 https://www.freesportspicks.pro/picks/nfl-picks/
 https://www.freesportspicks.pro/picks/nba-picks/
 https://www.freesportspicks.pro/picks/mlb-picks/
+https://www.freesportspicks.pro/picks/nhl-picks/
 https://www.freesportspicks.pro/picks/college-basketball-picks/
 https://www.freesportspicks.pro/picks/college-football-picks/
 https://www.freesportspicks.pro/picks/parlay-picks/
 https://www.freesportspicks.pro/picks/prop-bet-picks/
+https://www.freesportspicks.pro/picks/free-nfl-picks/
+https://www.freesportspicks.pro/picks/free-nba-picks/
+https://www.freesportspicks.pro/picks/free-mlb-picks/
+https://www.freesportspicks.pro/picks/free-nhl-picks/
+https://www.freesportspicks.pro/picks/nfl-props/
+https://www.freesportspicks.pro/picks/nba-props/
+https://www.freesportspicks.pro/picks/nfl-moneyline/
+https://www.freesportspicks.pro/picks/nba-spread/
+https://www.freesportspicks.pro/picks/mlb-run-line/
+https://www.freesportspicks.pro/picks/nhl-moneyline/
+https://www.freesportspicks.pro/picks/soccer-picks/
+https://www.freesportspicks.pro/picks/mma-picks/
 https://www.freesportspicks.pro/picks/super-bowl-picks/
 https://www.freesportspicks.pro/picks/march-madness-picks/
 https://www.freesportspicks.pro/picks/nfl-predictions/
 https://www.freesportspicks.pro/picks/nba-predictions/
-https://www.freesportspicks.pro/picks/sports-picks-tonight/
-https://www.freesportspicks.pro/picks/free-picks-today/
-https://www.freesportspicks.pro/picks/todays-picks/
-https://www.freesportspicks.pro/picks/mlb-picks-today/
-https://www.freesportspicks.pro/picks/mlb-best-bets-today/
-https://www.freesportspicks.pro/picks/nba-picks-tonight-free/
-https://www.freesportspicks.pro/picks/best-nba-picks-tonight/
-https://www.freesportspicks.pro/picks/nfl-picks-today-free/
-https://www.freesportspicks.pro/picks/best-nfl-picks-this-week/
-https://www.freesportspicks.pro/picks/college-basketball-picks-today/
-https://www.freesportspicks.pro/picks/ncaab-picks-today/
-https://www.freesportspicks.pro/picks/free-sports-picks-today-no-subscription/
-https://www.freesportspicks.pro/picks/sports-picks-that-win/
 https://www.freesportspicks.pro/picks/value-bets-today/
 https://www.freesportspicks.pro/picks/sharp-picks/
 https://www.freesportspicks.pro/picks/expert-picks/
-https://www.freesportspicks.pro/guestbook.html
-https://www.freesportspicks.pro/about.html
-https://www.freesportspicks.pro/privacy.html
-https://www.freesportspicks.pro/terms.html
-https://www.freesportspicks.pro/sitemap.xml
-
 
 ## Blog Posts & Strategy Guides
 https://www.freesportspicks.pro/blog/
-https://www.freesportspicks.pro/blog/mlb-picks-today-expert-analysis.html
-https://www.freesportspicks.pro/blog/mlb-best-bets-strategy-guide-2026.html
-https://www.freesportspicks.pro/blog/nfl-week-1-picks-2026-preview.html
-https://www.freesportspicks.pro/blog/how-to-read-nfl-betting-lines.html
-https://www.freesportspicks.pro/blog/what-are-sports-picks-and-how-do-they-work.html
-https://www.freesportspicks.pro/blog/how-to-build-winning-sports-parlay-2026.html
+https://www.freesportspicks.pro/blog/how-ai-sports-picks-work.html
+https://www.freesportspicks.pro/blog/nfl-betting-strategy.html
+https://www.freesportspicks.pro/blog/bankroll-management.html
+https://www.freesportspicks.pro/blog/understanding-betting-odds.html
+https://www.freesportspicks.pro/blog/sports-betting-for-beginners.html
+https://www.freesportspicks.pro/blog/how-to-bet-on-sports.html
+https://www.freesportspicks.pro/blog/nba-betting-tips.html
+https://www.freesportspicks.pro/blog/mlb-moneyline-strategy.html
+https://www.freesportspicks.pro/blog/nhl-puck-line-explained.html
+https://www.freesportspicks.pro/blog/college-football-betting.html
+https://www.freesportspicks.pro/blog/parlay-vs-single-bets.html
+https://www.freesportspicks.pro/blog/value-betting-explained.html
+https://www.freesportspicks.pro/blog/advanced-betting-strategies.html
+https://www.freesportspicks.pro/blog/handicapping-methodology.html
+https://www.freesportspicks.pro/blog/line-shopping-importance.html
+https://www.freesportspicks.pro/blog/betting-psychology.html
+https://www.freesportspicks.pro/blog/responsible-betting-tips.html
+https://www.freesportspicks.pro/blog/nfl-preseason-betting-guide-2026.html
+https://www.freesportspicks.pro/blog/nba-summer-league-betting-strategy.html
+https://www.freesportspicks.pro/blog/mlb-second-half-trends.html
+https://www.freesportspicks.pro/blog/how-to-bet-nfl-games.html
+https://www.freesportspicks.pro/blog/nba-totals-betting-strategy.html
+https://www.freesportspicks.pro/blog/mlb-pitching-matchup-analysis.html
+https://www.freesportspicks.pro/blog/nhl-goalie-matchup-betting.html
+https://www.freesportspicks.pro/blog/college-football-ats-strategies.html
+https://www.freesportspicks.pro/blog/sports-betting-bankroll-guide.html
+https://www.freesportspicks.pro/blog/how-to-read-betting-lines.html
+https://www.freesportspicks.pro/blog/ai-vs-human-handicappers.html
+https://www.freesportspicks.pro/blog/crypto-sports-betting.html
+https://www.freesportspicks.pro/blog/telegram-sports-picks.html
+
+## Telegram Channels
+https://t.me/freesportspickspro (English - Free Sports Picks)
+https://t.me/FreeSportsPicksProBot (Premium Bot - TON crypto payment)
 
 ## Disclaimer
 FreeSportsPicks.pro is for entertainment purposes only. Must be 21+ to participate in sports betting where legal. Please gamble responsibly. If you have a gambling problem call 1-800-522-4700.
