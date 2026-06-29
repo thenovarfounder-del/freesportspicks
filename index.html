@@ -129,13 +129,44 @@
 <link rel="preload" href="/js/main.js" as="script">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.freesportspicks.pro/"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Are your sports picks really free?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free. No subscription, no credit card required. Our AI generates daily picks posted at 9 AM ET every day."}},{"@type":"Question","name":"How accurate are your picks?","acceptedAnswer":{"@type":"Answer","text":"We track every pick publicly with verified win/loss results. Our current record is 140-49 (74.1% win rate). See our verified records page for full history."}},{"@type":"Question","name":"How do I get your free picks?","acceptedAnswer":{"@type":"Answer","text":"Visit our website daily, sign up on our guestbook page, or join our free Telegram channel at t.me/freesportspickspro for instant delivery."}},{"@type":"Question","name":"What sports do you cover?","acceptedAnswer":{"@type":"Answer","text":"We cover NFL, NBA, MLB, NHL, college football, college basketball, UFC, soccer, golf, tennis, and horse racing."}}]}</script>
+
 <style>
-  /* CLS Fix — reserve space for dynamic content */
-  #got-team1, #got-team2 { min-height: 24px; display: block; }
-  #got-time, #gotd-sport { min-height: 20px; display: block; }
-  .hero { min-height: 500px; }
-  img { width: auto; height: auto; }
-  .fsp-logo { width: 120px; height: 40px; }
+  /* CLS Prevention — skeleton placeholders */
+  #got-team1, #got-team2 { 
+    min-height: 28px; 
+    min-width: 120px;
+    display: inline-block;
+  }
+  #got-time { 
+    min-height: 22px; 
+    min-width: 80px;
+    display: inline-block;
+  }
+  #gotd-sport { 
+    min-height: 22px;
+    min-width: 60px; 
+    display: inline-block;
+  }
+  .free-pick-text {
+    min-height: 60px;
+    display: block;
+  }
+  .crypto-signal-text {
+    min-height: 60px;
+    display: block;
+  }
+  /* Reserve hero height to prevent shift */
+  .hero {
+    min-height: 520px;
+  }
+  /* Reserve nav height */
+  nav, header {
+    min-height: 70px;
+  }
+  /* Prevent font swap shift */
+  * {
+    font-display: swap;
+  }
 </style>
 </head>
 <body>
