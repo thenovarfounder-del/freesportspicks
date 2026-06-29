@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lasync function loadGameOfDay() {
+<html function loadGameOfDay() {
   try {
     const today = new Date().toISOString().split('T')[0];
     const res = await fetch('https://ehjhsbrcbtqcvmgzjzkm.supabase.co/rest/v1/daily_picks?select=free_pick,game_data&order=date.desc&limit=1', {
@@ -31,6 +31,10 @@
   } catch(e) { console.log('Game load error:', e); }
 }ng="en">
 <head>
+  <link rel="preconnect" href="https://ehjhsbrcbtqcvmgzjzkm.supabase.co">
+  <link rel="dns-prefetch" href="https://ehjhsbrcbtqcvmgzjzkm.supabase.co">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="shortcut icon" href="/favicon.svg">
 <!-- Google tag (gtag.js) -->
@@ -74,7 +78,8 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/css/main.css">
+<link rel="preload" href="/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/css/main.css"></noscript>
 <style>
 .hero { padding: 120px 0 80px; text-align: center; background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(201,168,76,0.06) 0%, transparent 70%); }
 .hero-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; display: block; }
