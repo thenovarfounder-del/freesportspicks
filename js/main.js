@@ -28,22 +28,22 @@ async function saveToSupabase(entry) {
 }
 var SUPABASE_URL="https://ehjhsbrcbtqcvmgzjzkm.supabase.co";
 var SUPABASE_KEY="sb_secret_B9AG8VXwdsj5D5SK7Ebn6g_KRLgiHOZ";
-// FreeSportsPicks.pro — Main JS
+// FreeSportsPicks.pro  Main JS
 // v2: Email confirmation via EmailJS, duplicate-email blocking, locked-out UI
 
-// ─────────────────────────────────────────────
-// EMAIL CONFIG — fill these in after signing up
+// 
+// EMAIL CONFIG  fill these in after signing up
 // at https://www.emailjs.com (free: 200 emails/mo)
-// ─────────────────────────────────────────────
+// 
 const EMAIL_CFG = {
   serviceId:  'YOUR_EMAILJS_SERVICE_ID',   // e.g. 'service_abc123'
   templateId: 'YOUR_EMAILJS_TEMPLATE_ID',  // e.g. 'template_xyz789'
   publicKey:  'YOUR_EMAILJS_PUBLIC_KEY',   // e.g. 'abcDEFghiJKL'
 };
 
-// ─────────────────────────────────────────────
-// TODAY'S PICK — update this daily
-// ─────────────────────────────────────────────
+// 
+// TODAY'S PICK  update this daily
+// 
 const TODAYS_PICK = {
   sport:      'NFL',
   matchup:    'Kansas City Chiefs vs Baltimore Ravens',
@@ -54,9 +54,9 @@ const TODAYS_PICK = {
   tipoff:     'Sunday 4:25 PM ET',
 };
 
-// ─────────────────────────────────────────────
+// 
 // BLOCKED-EMAIL DATABASE  (localStorage)
-// ─────────────────────────────────────────────
+// 
 const BLOCKED_KEY = 'fsp_claimed_emails_v1';
 const GB_KEY      = 'fsp_guestbook_v1';
 
@@ -82,9 +82,9 @@ function blockEmail(email) {
   } catch {}
 }
 
-// ─────────────────────────────────────────────
+// 
 // GUESTBOOK DATABASE
-// ─────────────────────────────────────────────
+// 
 function gbLoad() {
   try { return JSON.parse(localStorage.getItem(GB_KEY) || '[]'); }
   catch { return []; }
@@ -101,13 +101,13 @@ function gbAdd(entry) {
   return entry;
 }
 
-// ─────────────────────────────────────────────
+// 
 // EMAILJS SENDER
-// ─────────────────────────────────────────────
+// 
 async function sendThankYouEmail(entry) {
   // If EmailJS not configured yet, log and skip gracefully
   if (EMAIL_CFG.publicKey === 'YOUR_EMAILJS_PUBLIC_KEY') {
-    console.warn('EmailJS not configured — skipping email send. See EMAIL_CFG in main.js.');
+    console.warn('EmailJS not configured  skipping email send. See EMAIL_CFG in main.js.');
     return { ok: true, skipped: true };
   }
 
@@ -139,15 +139,15 @@ async function sendThankYouEmail(entry) {
   }
 }
 
-// ─────────────────────────────────────────────
+// 
 // RENDER LOCKED-OUT STATE (already claimed)
-// ─────────────────────────────────────────────
+// 
 function renderLockedState(formWrapId, email) {
   const wrap = document.getElementById(formWrapId);
   if (!wrap) return;
   wrap.innerHTML = `
     <div style="text-align:center;padding:40px 24px;">
-      <div style="font-size:3rem;margin-bottom:16px;">🔒</div>
+      <div style="font-size:3rem;margin-bottom:16px;"></div>
       <h3 style="font-family:var(--font-display);font-size:1.6rem;font-weight:900;text-transform:uppercase;margin-bottom:12px;">
         Pick Already Claimed
       </h3>
@@ -158,22 +158,22 @@ function renderLockedState(formWrapId, email) {
       <div style="background:rgba(255,179,0,0.08);border:1px solid rgba(255,179,0,0.3);border-radius:6px;padding:16px 20px;max-width:420px;margin:0 auto 24px;text-align:left;">
         <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--amber);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:8px;">Already Sent To You</div>
         <div style="font-family:var(--font-display);font-size:1.1rem;font-weight:800;text-transform:uppercase;">${escHtml(TODAYS_PICK.pick)}</div>
-        <div style="font-size:0.82rem;color:var(--muted);margin-top:4px;">${escHtml(TODAYS_PICK.matchup)} · ${escHtml(TODAYS_PICK.line)}</div>
+        <div style="font-size:0.82rem;color:var(--muted);margin-top:4px;">${escHtml(TODAYS_PICK.matchup)}  ${escHtml(TODAYS_PICK.line)}</div>
       </div>
       <p style="color:var(--muted);font-size:0.82rem;">Check your inbox for the full analysis. Come back tomorrow for a new free pick!</p>
-      <a href="/" class="btn-secondary" style="margin-top:20px;display:inline-block;">View All Picks →</a>
+      <a href="/" class="btn-secondary" style="margin-top:20px;display:inline-block;">View All Picks </a>
     </div>`;
 }
 
-// ─────────────────────────────────────────────
+// 
 // RENDER SUCCESS STATE (just signed up)
-// ─────────────────────────────────────────────
+// 
 function renderSuccessState(formWrapId, entry) {
   const wrap = document.getElementById(formWrapId);
   if (!wrap) return;
   wrap.innerHTML = `
     <div style="text-align:center;padding:40px 24px;">
-      <div style="font-size:3rem;margin-bottom:16px;">🎉</div>
+      <div style="font-size:3rem;margin-bottom:16px;"></div>
       <h3 style="font-family:var(--font-display);font-size:1.6rem;font-weight:900;text-transform:uppercase;color:var(--green);margin-bottom:12px;">
         You're In, ${escHtml(entry.name.split(' ')[0])}!
       </h3>
@@ -187,13 +187,13 @@ function renderSuccessState(formWrapId, entry) {
       <div style="background:var(--navy-light);border:2px solid var(--green);border-radius:8px;padding:24px;max-width:460px;margin:0 auto 24px;text-align:left;position:relative;overflow:hidden;">
         <div style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--green);"></div>
         <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--green);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:6px;">
-          🏆 Today's Free Pick — Exclusive to Members
+           Today's Free Pick  Exclusive to Members
         </div>
         <div style="font-family:var(--font-display);font-size:1.5rem;font-weight:900;text-transform:uppercase;margin-bottom:4px;">
           ${escHtml(TODAYS_PICK.pick)}
         </div>
         <div style="font-family:var(--font-mono);font-size:0.82rem;color:var(--amber);margin-bottom:10px;">
-          ${escHtml(TODAYS_PICK.matchup)} · ${escHtml(TODAYS_PICK.line)} · ${escHtml(TODAYS_PICK.tipoff)}
+          ${escHtml(TODAYS_PICK.matchup)}  ${escHtml(TODAYS_PICK.line)}  ${escHtml(TODAYS_PICK.tipoff)}
         </div>
         <p style="font-size:0.85rem;color:rgba(240,244,255,0.8);line-height:1.6;margin-bottom:10px;">
           ${escHtml(TODAYS_PICK.analysis)}
@@ -206,15 +206,15 @@ function renderSuccessState(formWrapId, entry) {
       </div>
 
       <p style="color:var(--muted);font-size:0.8rem;margin-bottom:20px;">
-        🔒 This pick is locked to your email. One free pick per email per day.
+         This pick is locked to your email. One free pick per email per day.
       </p>
-      <a href="/" class="btn-primary">See All Today's Picks →</a>
+      <a href="/" class="btn-primary">See All Today's Picks </a>
     </div>`;
 }
 
-// ─────────────────────────────────────────────
-// GUESTBOOK FORM INIT — main logic
-// ─────────────────────────────────────────────
+// 
+// GUESTBOOK FORM INIT  main logic
+// 
 function initGuestbookForm(formId, formWrapId, listId) {
   const form = document.getElementById(formId);
   if (!form) return;
@@ -239,7 +239,7 @@ function initGuestbookForm(formId, formWrapId, listId) {
 
     if (!name || !email || !message) return;
 
-    // ── BLOCK CHECK ──
+    //  BLOCK CHECK 
     if (isEmailBlocked(email)) {
       renderLockedState(formWrapId, email);
       return;
@@ -255,7 +255,7 @@ function initGuestbookForm(formId, formWrapId, listId) {
       return;
     }
 
-    // ── LOADING STATE ──
+    //  LOADING STATE 
     const btn = form.querySelector('[type="submit"]');
     const origText = btn.textContent;
     btn.textContent = 'Sending your pick...';
@@ -271,21 +271,21 @@ function initGuestbookForm(formId, formWrapId, listId) {
       message,
     };
 
-    // ── SAVE TO DB ──
+    //  SAVE TO DB 
     gbAdd(entry);
     saveToSupabase(entry);
 
-    // ── BLOCK EMAIL NOW ──
+    //  BLOCK EMAIL NOW 
     blockEmail(email);
 
-    // ── SEND EMAIL ──
+    //  SEND EMAIL 
     const emailResult = await sendThankYouEmail(entry);
     if (!emailResult.ok && !emailResult.skipped) {
-      // Email failed but we still saved — show success anyway, note check spam
+      // Email failed but we still saved  show success anyway, note check spam
       console.warn('Email failed to send but entry was saved.');
     }
 
-    // ── RENDER SUCCESS ──
+    //  RENDER SUCCESS 
     fetch('https://formsubmit.co/ajax/thenovar.founder@gmail.com', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
@@ -303,9 +303,9 @@ function initGuestbookForm(formId, formWrapId, listId) {
   });
 }
 
-// ─────────────────────────────────────────────
+// 
 // CHECK + RENDER LOCKED ON PAGE LOAD
-// ─────────────────────────────────────────────
+// 
 function checkLockedOnLoad(formWrapId) {
   // We can't check without the email, so we show the form initially.
   // The blur handler on the email field handles the check.
@@ -318,9 +318,9 @@ function checkLockedOnLoad(formWrapId) {
   } catch {}
 }
 
-// ─────────────────────────────────────────────
+// 
 // RENDER GUESTBOOK ENTRIES
-// ─────────────────────────────────────────────
+// 
 function renderGuestbook(containerId) {
   const container = document.getElementById(containerId);
   if (!container) return;
@@ -336,14 +336,14 @@ function renderGuestbook(containerId) {
   }
 
   const sportEmoji = {
-    nfl:'🏈', nba:'🏀', mlb:'⚾', nhl:'🏒',
-    cfb:'🏈', cbb:'🏀', soccer:'⚽', mma:'🥊',
-    golf:'⛳', tennis:'🎾', racing:'🏇', all:'🎯'
+    nfl:'', nba:'', mlb:'', nhl:'',
+    cfb:'', cbb:'', soccer:'', mma:'',
+    golf:'', tennis:'', racing:'', all:''
   };
 
   container.innerHTML = `<div class="entry-list">${entries.map(e => {
     const initials = (e.name || 'A').split(' ').map(w => w[0]).join('').toUpperCase().slice(0,2);
-    const sport    = sportEmoji[e.favSport] || '🎯';
+    const sport    = sportEmoji[e.favSport] || '';
     const dt       = new Date(e.date);
     const dateStr  = dt.toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
     return `
@@ -352,7 +352,7 @@ function renderGuestbook(containerId) {
         <div class="entry-avatar">${initials}</div>
         <div>
           <div class="entry-name" itemprop="author">${escHtml(e.name)}</div>
-          ${e.location ? `<div class="entry-location">📍 ${escHtml(e.location)}</div>` : ''}
+          ${e.location ? `<div class="entry-location"> ${escHtml(e.location)}</div>` : ''}
         </div>
         ${e.favTeam ? `<span class="entry-fav-team">${sport} ${escHtml(e.favTeam)}</span>` : ''}
         <span class="entry-date">${dateStr}</span>
@@ -362,20 +362,20 @@ function renderGuestbook(containerId) {
   }).join('')}</div>`;
 }
 
-// ─────────────────────────────────────────────
+// 
 // HTML ESCAPE
-// ─────────────────────────────────────────────
+// 
 function escHtml(str) {
   return String(str).replace(/[&<>"']/g, c =>
     ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])
   );
 }
 
-// ─────────────────────────────────────────────
+// 
 // SAMPLE PICKS
-// ─────────────────────────────────────────────
+// 
 const SAMPLE_PICKS = [
-  { sport:'NFL',  matchup:'Chiefs vs Ravens',    line:'KC -3.5',   pick:'Kansas City Chiefs -3.5', analysis:'KC covers at home — Ravens secondary banged up. Mahomes spreads the field.', confidence:5 },
+  { sport:'NFL',  matchup:'Chiefs vs Ravens',    line:'KC -3.5',   pick:'Kansas City Chiefs -3.5', analysis:'KC covers at home  Ravens secondary banged up. Mahomes spreads the field.', confidence:5 },
   { sport:'NBA',  matchup:'Celtics vs Heat',     line:'BOS -6',    pick:'Boston Celtics -6',       analysis:'Heat struggle on road vs elite defenses. Boston\'s 3-point volume too much.', confidence:4 },
   { sport:'MLB',  matchup:'Dodgers vs Padres',   line:'LAD -145',  pick:'LA Dodgers ML',           analysis:'Yamamoto on the mound, Padres rotation thin. Value at -145.',               confidence:4 },
   { sport:'NFL',  matchup:'Bills vs Dolphins',   line:'BUF -4',    pick:'Buffalo Bills -4',        analysis:'Tua questionable. Bills D elite vs the run. Cover in cold weather.',         confidence:5 },
@@ -394,7 +394,7 @@ function renderPicks(containerId) {
       <div class="pick-sport sport-${sportClass[p.sport]||'general'}">&nbsp;${p.sport}</div>
       <div class="pick-matchup" itemprop="headline">${escHtml(p.matchup)}</div>
       <div class="pick-line">${escHtml(p.line)}</div>
-      <div class="pick-recommendation">✅ <strong>${escHtml(p.pick)}</strong></div>
+      <div class="pick-recommendation"> <strong>${escHtml(p.pick)}</strong></div>
       <p style="font-size:0.82rem;color:var(--muted);margin-bottom:12px;" itemprop="description">${escHtml(p.analysis)}</p>
       <div class="pick-confidence">
         <div class="confidence-dots">${dots}</div>
@@ -404,9 +404,9 @@ function renderPicks(containerId) {
   }).join('');
 }
 
-// ─────────────────────────────────────────────
+// 
 // FAQ ACCORDION
-// ─────────────────────────────────────────────
+// 
 function initFAQ() {
   document.querySelectorAll('.faq-question').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -418,26 +418,26 @@ function initFAQ() {
   });
 }
 
-// ─────────────────────────────────────────────
+// 
 // HAMBURGER NAV
-// ─────────────────────────────────────────────
+// 
 function initNav() {
   const ham = document.querySelector('.hamburger');
   const nav = document.querySelector('nav');
   if (ham && nav) ham.addEventListener('click', () => nav.classList.toggle('open'));
 }
 
-// ─────────────────────────────────────────────
+// 
 // TICKER
-// ─────────────────────────────────────────────
+// 
 function initTicker() {
   const ticker = document.querySelector('.ticker-inner');
   if (ticker) ticker.innerHTML += ticker.innerHTML;
 }
 
-// ─────────────────────────────────────────────
+// 
 // COUNTER ANIMATION
-// ─────────────────────────────────────────────
+// 
 function animateCounters() {
   document.querySelectorAll('[data-count]').forEach(el => {
     const target    = parseFloat(el.dataset.count);
@@ -452,9 +452,9 @@ function animateCounters() {
   });
 }
 
-// ─────────────────────────────────────────────
+// 
 // INIT
-// ─────────────────────────────────────────────
+// 
 document.addEventListener('DOMContentLoaded', () => {
   initNav();
   initTicker();
@@ -481,7 +481,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// ─── PERFORMANCE: Prefetch on hover + lazy load ───────────────────────────
+//  PERFORMANCE: Prefetch on hover + lazy load 
 window.addEventListener('load', function() {
   // Lazy load images with data-src
   var lazyImgs = document.querySelectorAll('img[data-src]');
@@ -515,7 +515,7 @@ window.addEventListener('load', function() {
   });
 });
 
-// ─── OPTIMIZED SUPABASE EMAIL SUBMIT ─────────────────────────────────────
+//  OPTIMIZED SUPABASE EMAIL SUBMIT 
 async function submitEmail(email, source) {
   source = source || 'website';
   try {
