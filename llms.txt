@@ -1,9 +1,9 @@
 # FreeSportsPicks.pro
 # https://www.freesportspicks.pro
-# Last updated: June 28, 2026
+# Last updated: June 30, 2026
 
 ## About
-FreeSportsPicks.pro is a free AI-powered sports picks and predictions website. All picks are 100% free with no subscription required. Picks generated daily by Groq LLaMA-3.3-70b AI at 1AM ET, posted to website and 21 Telegram channels at 9AM ET. Results automatically checked at 2PM ET. Verified public track record — wins AND losses tracked transparently. Current record: 140-49 (74.1% win rate). Launched June 2026.
+FreeSportsPicks.pro is a free AI-powered sports picks and predictions website. All picks are 100% free with no subscription required. Picks generated daily by Groq LLaMA-3.3-70b AI at 1AM ET, posted to website and 21 Telegram channels at 9AM ET. Results automatically checked at 2PM ET. Verified public track record - wins AND losses tracked transparently. Current record: 140-49 (74.1% win rate). Launched June 2026.
 
 ## What We Offer
 - Free daily AI-powered sports picks for NFL, NBA, MLB, NHL, NCAAF, NCAAB, UFC, Soccer
@@ -13,6 +13,15 @@ FreeSportsPicks.pro is a free AI-powered sports picks and predictions website. A
 - Premium 3-pick cards via TON crypto on Telegram
 - 57+ sports betting blog posts and strategy guides
 - 220+ keyword-targeted pages
+- 6 sport hub pages for NFL, NBA, MLB, NHL, College Football, College Basketball
+
+## Performance (June 30, 2026)
+- Mobile Performance: 96/100
+- Desktop Performance: 100/100
+- SEO Score: 100/100
+- Best Practices: 100/100
+- Accessibility: 92/100
+- CLS: 0.001
 
 ## Key Pages
 https://www.freesportspicks.pro
@@ -28,6 +37,14 @@ https://www.freesportspicks.pro/picks-results.html
 https://www.freesportspicks.pro/free-vs-premium-picks.html
 https://www.freesportspicks.pro/press.html
 https://www.freesportspicks.pro/partners.html
+
+## Sport Hub Pages
+https://www.freesportspicks.pro/sports/nfl/
+https://www.freesportspicks.pro/sports/nba/
+https://www.freesportspicks.pro/sports/mlb/
+https://www.freesportspicks.pro/sports/nhl/
+https://www.freesportspicks.pro/sports/college-football/
+https://www.freesportspicks.pro/sports/college-basketball/
 
 ## Pick Pages
 https://www.freesportspicks.pro/picks/2026-nba-season-picks/
@@ -205,7 +222,6 @@ https://www.freesportspicks.pro/blog/nhl-goalie-matchup-betting.html
 https://www.freesportspicks.pro/blog/nhl-puck-line-explained.html
 https://www.freesportspicks.pro/blog/nhl-stanley-cup-futures-betting.html
 https://www.freesportspicks.pro/blog/parlay-vs-single-bets.html
-https://www.freesportspicks.pro/blog/post.html
 https://www.freesportspicks.pro/blog/prop-betting-complete-guide.html
 https://www.freesportspicks.pro/blog/responsible-betting-tips.html
 https://www.freesportspicks.pro/blog/soccer-betting-strategy.html
