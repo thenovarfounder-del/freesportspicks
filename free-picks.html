@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Today's Free Expert Picks | FreeSportsPicks.pro</title>
+<meta name="description" content="Get today's expert NFL, NBA, MLB and college picks free - straight to your inbox and phone. Verified records, no credit card, 60 seconds to join.">
+<link rel="canonical" href="https://www.freesportspicks.pro/free-picks.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Get Today's Free Expert Picks","url":"https://www.freesportspicks.pro/free-picks.html","publisher":{"@type":"Organization","name":"FreeSportsPicks.pro"}}</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,'Segoe UI',Roboto,Arial,sans-serif}
+body{background:#0b1120;min-height:100vh;padding-bottom:90px}
+.banner{background:#22c55e;color:#052e16;text-align:center;font-weight:800;font-size:14px;padding:9px 14px}
+.wrap{max-width:640px;margin:0 auto;padding:36px 16px 20px}
+h1{color:#fff;font-size:clamp(28px,6vw,42px);font-weight:900;text-align:center;line-height:1.15}
+h1 span{color:#22c55e}
+.sub{color:#cbd5e1;text-align:center;margin-top:14px;font-size:17px;line-height:1.5}
+.trust{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 22px;margin-top:16px;color:#94a3b8;font-size:13px}
+.card{background:#fff;border-radius:18px;box-shadow:0 24px 60px rgba(0,0,0,.5);margin-top:26px;padding:28px 22px}
+.bars{display:flex;gap:8px;margin-bottom:24px}
+.bars div{height:8px;flex:1;border-radius:99px;background:#e2e8f0}
+.bars div.on{background:#22c55e}
+h2{color:#0f172a;font-size:22px;margin-bottom:18px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.opt{border:2px solid #e2e8f0;border-radius:12px;padding:18px 8px;font-size:17px;font-weight:800;color:#1e293b;background:#fff;cursor:pointer;transition:.15s;text-align:center}
+.opt:hover{border-color:#22c55e;background:#f0fdf4}
+.optrow{display:grid;gap:10px}
+.optrow .opt{text-align:left;font-size:16px;padding:15px 16px}
+label{display:block;font-size:13px;font-weight:700;color:#475569;margin:0 0 6px}
+input[type=text],input[type=tel],input[type=email]{width:100%;border:2px solid #e2e8f0;border-radius:12px;padding:14px;font-size:17px;margin-bottom:14px}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:11.5px;color:#64748b;line-height:1.5;margin-top:6px}
+.consent input{margin-top:3px}
+.cta{width:100%;background:#22c55e;color:#052e16;border:none;border-radius:12px;padding:18px;font-size:20px;font-weight:900;cursor:pointer;margin-top:16px}
+.cta:hover{background:#16a34a}
+.cta:disabled{opacity:.6}
+.err{color:#dc2626;font-weight:700;font-size:14px;margin-top:10px;display:none}
+.fine{text-align:center;color:#94a3b8;font-size:12px;margin-top:10px}
+.social{text-align:center;color:#94a3b8;font-size:13px;margin-top:22px;line-height:1.7}
+.done{color:#fff;text-align:center;padding:70px 16px}
+.done .big{font-size:56px}
+.done h1{margin-top:12px}
+.done p{color:#cbd5e1;margin-top:14px;font-size:17px;line-height:1.6}
+.hid{display:none}
+.back{background:none;border:none;color:#64748b;font-size:13px;cursor:pointer;margin-bottom:10px;text-decoration:underline}
+</style>
+</head>
+<body>
+<div class="banner">&#127942; TODAY&rsquo;S CARD IS LIVE &mdash; free expert picks drop every morning. Join before today&rsquo;s games lock.</div>
+<div class="wrap" id="app">
+  <h1>Get Today&rsquo;s <span>FREE</span> Expert Picks &mdash; In 60 Seconds</h1>
+  <p class="sub">Expert NFL, NBA, MLB &amp; college picks with verified records &mdash; delivered free to your inbox and phone. No credit card. No catch.</p>
+  <div class="trust"><span>&#10003; Verified pick records</span><span>&#10003; 100% free daily picks</span><span>&#10003; Unsubscribe anytime</span></div>
+
+  <div class="card">
+    <div class="bars"><div class="on" id="b1"></div><div id="b2"></div><div id="b3"></div></div>
+
+    <div id="s1">
+      <h2>What do you bet on most?</h2>
+      <div class="grid2">
+        <button class="opt" onclick="pick('sport','NFL',2)">&#127944; NFL</button>
+        <button class="opt" onclick="pick('sport','NBA',2)">&#127936; NBA</button>
+        <button class="opt" onclick="pick('sport','MLB',2)">&#9918; MLB</button>
+        <button class="opt" onclick="pick('sport','College',2)">&#127891; College</button>
+        <button class="opt" onclick="pick('sport','NHL',2)">&#127954; NHL</button>
+        <button class="opt" onclick="pick('sport','Everything',2)">&#128293; Everything</button>
+      </div>
+    </div>
+
+    <div id="s2" class="hid">
+      <button class="back" onclick="go(1)">&larr; Back</button>
+      <h2>How often do you bet?</h2>
+      <div class="optrow">
+        <button class="opt" onclick="pick('freq','Every day',3)">Every day &mdash; I need daily winners</button>
+        <button class="opt" onclick="pick('freq','Few times a week',3)">A few times a week</button>
+        <button class="opt" onclick="pick('freq','Weekends only',3)">Weekends &amp; big games only</button>
+        <button class="opt" onclick="pick('freq','Just getting started',3)">Just getting started</button>
+      </div>
+    </div>
+
+    <div id="s3" class="hid">
+      <button class="back" onclick="go(2)">&larr; Back</button>
+      <h2>Where should we send today&rsquo;s picks?</h2>
+      <p style="color:#64748b;font-size:14px;margin-bottom:16px" id="summary"></p>
+      <label>First name</label>
+      <input type="text" id="name" placeholder="First name">
+      <label>Email address</label>
+      <input type="email" id="email" placeholder="you@example.com">
+      <label>Phone (optional &mdash; get picks by text before games lock)</label>
+      <input type="tel" id="phone" placeholder="(555) 555-5555">
+      <div class="consent">
+        <input type="checkbox" id="consent">
+        <span>By checking this box, I agree to receive free daily picks and sports betting offers from FreeSportsPicks.pro and its partners by email and (if provided) text message. Automated technology may be used. Consent is not a condition of any purchase. Msg/data rates may apply. Reply STOP to opt out. I confirm I am 21+.</span>
+      </div>
+      <p class="err" id="e3"></p>
+      <button class="cta" id="sendbtn" onclick="send()">SEND ME TODAY&rsquo;S PICKS &rarr;</button>
+      <p class="fine">Free forever &middot; Unsubscribe anytime &middot; 21+ &middot; <a href="/responsible-gambling.html" style="color:#94a3b8">Gamble responsibly</a></p>
+    </div>
+  </div>
+
+  <p class="social">&#128200; &ldquo;Hit 4 of 5 on Sunday&rsquo;s card. These free picks are better than services I paid for.&rdquo; &mdash; Mike D., Tampa<br>Join thousands of bettors getting the daily card free.</p>
+</div>
+
+<div class="done hid" id="doneScreen">
+  <div class="big">&#127881;</div>
+  <h1>You&rsquo;re On The List!</h1>
+  <p id="doneMsg"></p>
+</div>
+
+<script>
+var SB_URL = "https://ehjhsbrcbtqcvmgzjzkm.supabase.co";
+var SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVoamhzYnJjYnRxY3ZtZ3pqemttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5MDcwMjQsImV4cCI6MjA5MzQ4MzAyNH0.q96sEV0oUxX5kMCYyUJjysxxERMhhlq9cCBKAQ801_g";
+var D = { sport:'', freq:'' };
+function go(n){
+  document.getElementById('s1').className = n===1?'':'hid';
+  document.getElementById('s2').className = n===2?'':'hid';
+  document.getElementById('s3').className = n===3?'':'hid';
+  document.getElementById('b2').className = n>=2?'on':'';
+  document.getElementById('b3').className = n>=3?'on':'';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function pick(field, value, next){
+  D[field]=value;
+  if(next===3){ document.getElementById('summary').textContent = D.sport+' \u00b7 '+D.freq; }
+  go(next);
+}
+async function send(){
+  var name = document.getElementById('name').value.trim();
+  var email = document.getElementById('email').value.trim();
+  var phone = document.getElementById('phone').value.trim();
+  var consent = document.getElementById('consent').checked;
+  var err = document.getElementById('e3');
+  err.style.display = 'none';
+  if(!name || !email){ err.textContent='Please enter your name and email.'; err.style.display='block'; return; }
+  if(!consent){ err.textContent='Please check the consent box to get your free picks.'; err.style.display='block'; return; }
+  var btn = document.getElementById('sendbtn');
+  btn.disabled = true; btn.textContent = 'Sending...';
+  var profile = 'FREE-PICKS LEAD | freq: '+D.freq+' | phone: '+(phone||'none')+' | consent: YES 21+ '+new Date().toISOString();
+  try{
+    await fetch(SB_URL+'/rest/v1/sportspicks_leads', {
+      method:'POST',
+      headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},
+      body: JSON.stringify({ name:name, email:email, city:'', favorite_sport:D.sport, message:profile, source:'free-picks' })
+    });
+  }catch(ex){}
+  try{
+    await fetch('https://api.web3forms.com/submit', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ access_key:'0eb8fd14-c890-4a80-972a-37d45b597d6f', subject:'FSP LEAD - Free Picks Signup', from_name:'FreeSportsPicks Leads', name:name, email:email, phone:phone||'none', sport:D.sport, frequency:D.freq, consent:'YES - email+SMS marketing, 21+ confirmed' })
+    });
+  }catch(ex){}
+  document.getElementById('app').className = 'hid';
+  document.getElementById('doneMsg').innerHTML = 'Today&rsquo;s <strong style="color:#fff">'+D.sport+'</strong> picks are headed to <strong style="color:#fff">'+email+'</strong>. Check your inbox (and spam folder the first time) &mdash; and get ready to cash.';
+  document.getElementById('doneScreen').className = 'done';
+  window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>
