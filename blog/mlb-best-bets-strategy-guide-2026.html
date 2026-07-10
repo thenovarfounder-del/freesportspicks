@@ -588,5 +588,32 @@ document.addEventListener('DOMContentLoaded', function() {
 </style>
 <div id="fsp-cta-wrap"><a id="fsp-cta" href="/free-picks.html"><span class="ball">&#127944;</span> GET TODAY&rsquo;S FREE PICKS <span>&rarr;</span><button id="fsp-x" onclick="event.preventDefault();event.stopPropagation();document.getElementById('fsp-cta-wrap').style.display='none';sessionStorage.setItem('fspCtaOff','1');return false;">&#10005;</button></a></div>
 <script>if(sessionStorage.getItem('fspCtaOff')){var w=document.getElementById('fsp-cta-wrap');if(w)w.style.display='none';}</script>
+
+<!-- FSP-EXIT -->
+<div id="fsp-exit" style="display:none;position:fixed;inset:0;background:rgba(5,8,18,.82);z-index:100000;align-items:center;justify-content:center;padding:20px">
+  <div style="background:#0b1120;border:1px solid rgba(251,191,36,.4);border-radius:20px;max-width:440px;width:100%;padding:34px 28px;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.6);position:relative">
+    <button onclick="fspExitClose()" style="position:absolute;top:12px;right:14px;background:none;border:none;color:#64748b;font-size:20px;cursor:pointer">&#10005;</button>
+    <div style="font-size:44px;margin-bottom:6px">&#127944;</div>
+    <h2 style="color:#fff;font-family:Arial,sans-serif;font-size:24px;font-weight:900;margin:0 0 10px;line-height:1.2">Wait &mdash; Today&rsquo;s FREE Card Is Live</h2>
+    <p style="color:#cbd5e1;font-family:Arial,sans-serif;font-size:15px;line-height:1.6;margin:0 0 20px">Expert picks with a verified public record &mdash; free to your inbox before today&rsquo;s games lock. No credit card. No catch.</p>
+    <a href="/free-picks.html" style="display:block;background:linear-gradient(135deg,#fbbf24,#f59e0b,#d97706);color:#1a1203;font-family:Arial,sans-serif;font-weight:900;font-size:17px;padding:15px;border-radius:12px;text-decoration:none;margin-bottom:10px">GET TODAY&rsquo;S FREE PICKS &rarr;</a>
+    <button onclick="fspExitClose()" style="background:none;border:none;color:#64748b;font-family:Arial,sans-serif;font-size:12.5px;cursor:pointer;text-decoration:underline">No thanks, I don&rsquo;t like winning</button>
+  </div>
+</div>
+<script>
+(function(){
+  if (sessionStorage.getItem('fspExitShown')) return;
+  var armed = false;
+  setTimeout(function(){ armed = true; }, 6000);
+  document.addEventListener('mouseout', function(e){
+    if (!armed || sessionStorage.getItem('fspExitShown')) return;
+    if (e.clientY <= 0 && !e.relatedTarget) {
+      var m = document.getElementById('fsp-exit');
+      if (m) { m.style.display = 'flex'; sessionStorage.setItem('fspExitShown','1'); }
+    }
+  });
+})();
+function fspExitClose(){ document.getElementById('fsp-exit').style.display = 'none'; }
+</script>
 </body>
 </html>
