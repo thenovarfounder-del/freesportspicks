@@ -339,7 +339,7 @@ async function submitSignup(){
       headers:{"apikey":SB_KEY,"Authorization":"Bearer "+SB_KEY,"Content-Type":"application/json","Prefer":"return=minimal"},
       body:JSON.stringify({name:name,email:email,city:city,favorite_sport:sport,message:phone,source:"homepage"})
     });
-  }catch(ex){}
+  }catch(ex){} try{ fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({access_key:"0eb8fd14-c890-4a80-972a-37d45b597d6f",subject:"FSP LEAD - Homepage Signup",from_name:"FreeSportsPicks Leads",name:name,email:email,phone:phone||"none",city:city||"none",sport:sport||"none"})}); }catch(ex){}
   document.getElementById("signup-form-wrap").style.display="none";
   document.getElementById("signup-success").style.display="block";
   var revealEl=document.getElementById("reveal-pick");

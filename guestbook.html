@@ -170,7 +170,7 @@ async function submitGuestbook() {
   } catch(e) {}
   try {
     await fetch(SUPABASE_URL + '/rest/v1/sportspicks_leads', { method: 'POST', headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' }, body: JSON.stringify({ name: name, email: email, phone: phone, city: city, favorite_sport: sport, message: message, source: 'guestbook' }) });
-  } catch(e) {}
+  } catch(e) {} try { fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({access_key:"0eb8fd14-c890-4a80-972a-37d45b597d6f",subject:"FSP LEAD - Guestbook Signup",from_name:"FreeSportsPicks Leads",name:name,email:email,city:city||"none",sport:sport||"none",message:message||"none"})}); } catch(e) {}
   showPick(today);
 }
 async function showPick(today) {
