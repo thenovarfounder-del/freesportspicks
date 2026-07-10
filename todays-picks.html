@@ -171,6 +171,7 @@ document.getElementById('tp-submit-btn').addEventListener('click', async functio
       body: JSON.stringify({ email: email, source: 'todays-picks' })
     });
   } catch(e) {}
+      try { fetch('https://api.web3forms.com/submit', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ access_key:'0eb8fd14-c890-4a80-972a-37d45b597d6f', subject:'FSP LEAD - Todays Picks Signup', from_name:'FreeSportsPicks Leads', email: email, source:'todays-picks' }) }); } catch(e) {}
   document.getElementById('tp-success').style.display = 'block';
   document.getElementById('tp-email-input').value = '';
   btn.textContent = 'Signed Up!';
