@@ -32,3 +32,4 @@ User-agent: CCBot
 Allow: /
 
 Sitemap: https://www.freesportspicks.pro/sitemap.xml
+Disallow: /dashboard.html
