@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YZPX14DK4Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-YZPX14DK4Y');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hedging a Bet Explained: The Math of Locking In Profit</title>
+<meta name="description" content="How to hedge a bet: the exact formula for guaranteeing profit on futures and parlays, when hedging is smart versus when it burns value, with worked examples.">
+<link rel="canonical" href="https://www.freesportspicks.pro/blog/hedging-a-bet-explained.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.freesportspicks.pro/blog/hedging-a-bet-explained.html">
+<meta property="og:title" content="Hedging a Bet Explained: The Math of Locking In Profit">
+<meta property="og:description" content="How to hedge a bet: the exact formula for guaranteeing profit on futures and parlays, when hedging is smart versus when it burns value, with worked examples.">
+<meta property="og:image" content="https://www.freesportspicks.pro/images/og-home.jpg">
+<meta property="og:site_name" content="FreeSportsPicks.pro">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Hedging a Bet Explained: The Math of Locking In Profit","description":"How to hedge a bet: the exact formula for guaranteeing profit on futures and parlays, when hedging is smart versus when it burns value, with worked examples.","author":{"@type":"Organization","name":"FreeSportsPicks.pro","url":"https://www.freesportspicks.pro"},"publisher":{"@type":"Organization","name":"FreeSportsPicks.pro","logo":{"@type":"ImageObject","url":"https://www.freesportspicks.pro/logo.png"}},"datePublished":"2026-07-19","dateModified":"2026-07-19","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.freesportspicks.pro/blog/hedging-a-bet-explained.html"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.freesportspicks.pro/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://www.freesportspicks.pro/blog/"},{"@type":"ListItem","position":3,"name":"Hedging a Bet Explained: The Math of Locking In Profit","item":"https://www.freesportspicks.pro/blog/hedging-a-bet-explained.html"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does hedging a bet mean?","acceptedAnswer":{"@type":"Answer","text":"Betting the opposite side of an existing position to reduce risk or guarantee profit. The classic case: your +1000 futures team reaches the final, and betting their opponent locks a win regardless of the result."}},{"@type":"Question","name":"What is the formula for an equal-profit hedge?","acceptedAnswer":{"@type":"Answer","text":"Hedge stake = (original potential payout) divided by (decimal odds of the hedge side). If your ticket pays $1,100 total and the opponent is 2.00, betting $550 on them guarantees $550 back either way, locking equal profit both outcomes."}},{"@type":"Question","name":"Is hedging always the smart play?","acceptedAnswer":{"@type":"Answer","text":"No: every hedge sells some of your position back to the book at their price, vig included. Hedge when the locked amount genuinely matters to you or your original edge is gone; let it ride when your ticket still holds positive expected value and the swing is affordable."}},{"@type":"Question","name":"Should you hedge the last leg of a parlay?","acceptedAnswer":{"@type":"Answer","text":"Same math, smaller scale: with a big payout pending on one leg, betting the other side converts a maybe into a definitely. Whether to do it depends on the payout size relative to your bankroll, which is a nerves question wearing a math costume."}}]}</script>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="/css/main.css">
+<style>
+.blog-page{padding:120px 0 80px;}
+.blog-content{max-width:860px;margin:0 auto;padding:0 24px;}
+.blog-content h1{font-family:'DM Serif Display',serif;font-size:clamp(28px,4vw,48px);color:#F5F5F0;margin-bottom:12px;}
+.blog-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#C9A84C;margin-bottom:16px;}
+.blog-meta{display:flex;align-items:center;gap:12px;margin-bottom:40px;padding-bottom:24px;border-bottom:1px solid #1A1A1A;}
+.blog-avatar{width:36px;height:36px;background:linear-gradient(135deg,#A07830,#C9A84C);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#0A0A0A;}
+.blog-author{font-size:13px;color:#F5F5F0;font-weight:600;}
+.blog-date{font-size:12px;color:#606060;}
+.blog-content h2{font-family:'DM Serif Display',serif;font-size:24px;color:#F5F5F0;margin:40px 0 16px;padding-bottom:8px;border-bottom:1px solid #1A1A1A;}
+.blog-content h3{font-family:'DM Serif Display',serif;font-size:18px;color:#C9A84C;margin:28px 0 12px;}
+.blog-content p{font-size:15px;color:#808080;line-height:1.85;margin-bottom:16px;}
+.blog-content ul{padding-left:20px;margin-bottom:20px;}
+.blog-content li{font-size:15px;color:#808080;line-height:1.8;margin-bottom:8px;}
+.blog-content strong{color:#F5F5F0;}
+.blog-content a{color:#C9A84C;}
+.blog-cta{background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(201,168,76,0.04));border:1px solid rgba(201,168,76,0.3);border-radius:6px;padding:32px;text-align:center;margin:48px 0;}
+.blog-cta h3{font-size:20px;color:#F5F5F0;margin-bottom:8px;}
+.blog-cta p{font-size:14px;color:#808080;margin-bottom:20px;}
+.blog-cta a.btn{display:inline-block;background:linear-gradient(135deg,#C9A84C,#A07830);color:#0A0A0A;font-weight:800;font-size:14px;letter-spacing:.04em;padding:13px 24px;border-radius:8px;text-decoration:none;}
+.blog-disclaimer{background:#111;border:1px solid #1A1A1A;border-radius:4px;padding:16px;font-size:12px;color:#606060;line-height:1.6;margin-top:32px;}
+</style>
+</head>
+<body>
+<nav class="breadcrumb-nav" style="background:#050505;border-bottom:1px solid #1a1a1a;padding:12px 0;">
+  <div class="container" style="max-width:1200px;margin:0 auto;padding:0 24px;">
+    <ol style="list-style:none;padding:0;margin:0;display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+      <li><a href="/" style="font-size:12px;color:#606060;text-decoration:none;">Home</a></li>
+      <li style="font-size:12px;color:#333;">/</li>
+      <li><a href="/blog/" style="font-size:12px;color:#606060;text-decoration:none;">Blog</a></li>
+      <li style="font-size:12px;color:#333;">/</li>
+      <li style="font-size:12px;color:#C9A84C;">Hedging a Bet Explained: The Math of Locking In Profit</li>
+    </ol>
+  </div>
+</nav>
+<header class="site-header">
+  <nav class="nav-container">
+    <a href="/" class="nav-logo" style="text-decoration:none;display:flex;align-items:center;">
+      <img src="/fsp-logo.svg" alt="FreeSportsPicks.pro" style="height:90px;width:auto;display:block;" onerror="this.style.display='none';this.nextSibling.style.display='flex'">
+      <span style="display:none;align-items:center;gap:8px;font-family:'DM Serif Display',serif;font-size:20px;color:#F5F5F0;">FreeSportsPicks<span style="color:#C9A84C;">.pro</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/picks/nfl-picks/">NFL Picks</a></li>
+      <li><a href="/picks/nba-picks/">NBA Picks</a></li>
+      <li><a href="/picks/mlb-picks/">MLB Picks</a></li>
+      <li><a href="/picks/college-basketball-picks/">CBB Picks</a></li>
+      <li><a href="/picks/college-football-picks/">CFB Picks</a></li>
+      <li><a href="/picks/free-sports-picks/">Free Picks</a></li>
+      <li><a href="/picks/best-bets-today/">Best Bets</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/blog/">Blog</a></li>
+    </ul>
+    <a href="/guestbook.html" class="nav-cta">Get Free Picks</a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+<div class="mobile-nav" id="mobileNav">
+  <a href="/picks/nfl-picks/">NFL Picks</a>
+  <a href="/picks/nba-picks/">NBA Picks</a>
+  <a href="/picks/mlb-picks/">MLB Picks</a>
+  <a href="/picks/college-basketball-picks/">CBB Picks</a>
+  <a href="/picks/college-football-picks/">CFB Picks</a>
+  <a href="/picks/free-sports-picks/">Free Picks</a>
+  <a href="/picks/best-bets-today/">Best Bets</a>
+  <a href="/tools/">Betting Tools</a>
+  <a href="/blog/">Blog</a>
+  <a href="/about.html">About</a>
+  <a href="/guestbook.html" class="mobile-cta">Get Free Picks &rarr;</a>
+</div>
+<section class="blog-page">
+<div class="blog-content">
+<span class="blog-badge">Betting School</span>
+<h1>Hedging a Bet Explained: The Math of Locking In Profit</h1>
+<div class="blog-meta">
+  <div class="blog-avatar">FSP</div>
+  <div><div class="blog-author">FreeSportsPicks.pro Team</div><div class="blog-date">July 19, 2026</div></div>
+</div>
+<p>Hedging is the one move in betting that can manufacture certainty: bet against yourself at the right moment, in the right amount, and you win no matter what the scoreboard says. It is also routinely done badly &mdash; panic-hedged at terrible prices, or reflex-hedged when letting it ride was free money. The difference is one formula and one honest question, both below.</p>
+<h2>The classic setup</h2>
+<p>September you: $100 on a team at +1000 to win it all. February you: they are in the final, and your ticket is worth $1,100 if they win, $0 if they lose. Their opponent is priced around even. Betting nothing risks everything on one game; betting the opponent converts the coin flip into a guarantee. The only question is how much &mdash; and that is arithmetic, not instinct.</p>
+<h2>The equal-profit formula</h2>
+<p><strong>Hedge stake = your potential payout &divide; the hedge side&rsquo;s decimal odds.</strong> Here: $1,100 &divide; 2.00 = $550 on the opponent. If your team wins: collect $1,100, lose the $550 hedge, profit $450 net of all stakes. If they lose: the hedge returns $1,100, same $450 profit. One number, sleep guaranteed. Slide anywhere between $0 and $550 to trade guaranteed floor for upside &mdash; a half-hedge of $275 locks a smaller floor while keeping real skin on your original ticket. The <a href="/tools/odds-converter/">odds converter</a> handles the decimal conversions.</p>
+<h2>The honest question first</h2>
+<p>Every hedge sells part of your position back to the book, vig included &mdash; hedging is insurance, and insurance has a premium. So ask what is actually true: <strong>does your original bet still hold value?</strong> If your team remains live and fairly priced, hedging burns expected value for comfort; professionals mostly let positive-EV positions ride and size their original stakes (see the <a href="/tools/bet-size-calculator/">bet size calculator</a>) so no single result threatens them. Hedge when the pending amount is genuinely life-relevant, when your edge has evaporated since the original bet, or when a futures market&rsquo;s endgame hands you the equal-profit lock. The worst hedge is the tilted one, placed at any price because the sweat got loud &mdash; that is not risk management, that is paying the book to hold your hand.</p>
+<h2>Where this fits the system</h2>
+<p>Hedging is an exit tool inside a bigger machine: honest sizing going in (<a href="/blog/bankroll-management.html">bankroll management</a>), value discipline on entries (<a href="/blog/value-betting-explained.html">value betting</a>), and a public <a href="/verified-records.html">record</a> keeping the whole thing accountable. The <a href="/picks/best-bets-today/">free daily picks</a> supply the entries; now you know the math for the exits.</p>
+<h2>Frequently asked questions</h2>
+<h3>What does hedging a bet mean?</h3><p>Betting the opposite side of an existing position to reduce risk or guarantee profit. The classic case: your +1000 futures team reaches the final, and betting their opponent locks a win regardless of the result.</p>
+<h3>What is the formula for an equal-profit hedge?</h3><p>Hedge stake = (original potential payout) divided by (decimal odds of the hedge side). If your ticket pays $1,100 total and the opponent is 2.00, betting $550 on them guarantees $550 back either way, locking equal profit both outcomes.</p>
+<h3>Is hedging always the smart play?</h3><p>No: every hedge sells some of your position back to the book at their price, vig included. Hedge when the locked amount genuinely matters to you or your original edge is gone; let it ride when your ticket still holds positive expected value and the swing is affordable.</p>
+<h3>Should you hedge the last leg of a parlay?</h3><p>Same math, smaller scale: with a big payout pending on one leg, betting the other side converts a maybe into a definitely. Whether to do it depends on the payout size relative to your bankroll, which is a nerves question wearing a math costume.</p>
+<div class="blog-cta">
+  <h3>Put the knowledge to work &mdash; free</h3>
+  <p>Expert picks with a verified public record, delivered free every morning. No credit card, no catch.</p>
+  <a class="btn" href="/free-picks.html">GET TODAY&rsquo;S FREE PICKS &rarr;</a>
+</div>
+<div class="blog-disclaimer">FreeSportsPicks.pro content is for entertainment and informational purposes only. Sports betting involves risk; never bet money you cannot afford to lose. Must be 21+. If gambling stops being fun, visit our <a href="/responsible-gambling.html" style="color:#808080;">responsible gambling</a> page.</div>
+</div>
+</section>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo" style="display:flex;align-items:center;">
+          <img src="/fsp-logo-footer.svg" alt="FreeSportsPicks.pro" style="height:64px;width:auto;display:block;" onerror="this.style.display='none'">
+        </div>
+        <p class="footer-desc">Free daily sports picks for NFL, NBA, MLB, NHL and more. AI-powered picks with verified records.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Picks</div>
+        <ul class="footer-links">
+          <li><a href="/picks/free-nfl-picks/">Free NFL Picks</a></li>
+          <li><a href="/picks/free-nba-picks/">Free NBA Picks</a></li>
+          <li><a href="/picks/free-mlb-picks/">Free MLB Picks</a></li>
+          <li><a href="/picks/best-bets-today/">Best Bets Today</a></li>
+          <li><a href="/picks/nfl-predictions/">NFL Predictions</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">More Picks</div>
+        <ul class="footer-links">
+          <li><a href="/picks/nba-picks/">NBA Picks</a></li>
+          <li><a href="/picks/nfl-picks/">NFL Picks</a></li>
+          <li><a href="/picks/parlay-picks/">Parlay Picks</a></li>
+          <li><a href="/picks/nhl-picks/">NHL Picks</a></li>
+          <li><a href="/picks/sports-picks/">Sports Picks</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Resources</div>
+        <ul class="footer-links">
+          <li><a href="/about.html">About Us</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/tools/">Betting Tools</a></li>
+          <li><a href="/betting-glossary.html">Betting Glossary</a></li>
+          <li><a href="/verified-records.html">Verified Records</a></li>
+          <li><a href="/responsible-gambling.html">Responsible Gambling</a></li>
+          <li><a href="https://t.me/freesportspickspro" target="_blank">Telegram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 FreeSportsPicks.pro &mdash; All Rights Reserved. For entertainment purposes only. Must be 21+.</p>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){var h=document.getElementById("hamburger"),m=document.getElementById("mobileNav");if(h&&m){h.addEventListener("click",function(){m.classList.toggle("open");h.classList.toggle("open");});}})();
+</script>
+</body>
+</html>
