@@ -3,6 +3,7 @@ Allow: /
 Disallow: /admin.html
 Disallow: /api/
 Disallow: /blog-admin.html
+Disallow: /dashboard.html
 
 User-agent: Googlebot
 Allow: /
@@ -32,4 +33,3 @@ User-agent: CCBot
 Allow: /
 
 Sitemap: https://www.freesportspicks.pro/sitemap.xml
-Disallow: /dashboard.html
