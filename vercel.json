@@ -67,5 +67,22 @@
       "memory": 1024,
       "maxDuration": 60
     }
-  }
+  },
+  "redirects": [
+    {
+      "source": "/blog/nfl-preseason-betting-guide.html",
+      "destination": "/blog/nfl-preseason-betting-guide-2026.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/nba-summer-league-betting.html",
+      "destination": "/blog/nba-summer-league-betting-strategy.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-to-read-betting-lines.html",
+      "destination": "/blog/how-to-read-nfl-betting-lines.html",
+      "permanent": true
+    }
+  ]
 }
