@@ -251,6 +251,27 @@
           "score": "3-4"
         }
       ]
+    },
+    {
+      "day": 13,
+      "date": "2026-08-10",
+      "picks": [
+        {
+          "pick": "Phillies ML @ STL",
+          "result": "W",
+          "score": "6-5"
+        },
+        {
+          "pick": "Brewers ML @ SD",
+          "result": "L",
+          "score": "2-3"
+        },
+        {
+          "pick": "Red Sox ML @ TOR",
+          "result": "L",
+          "score": "1-2"
+        }
+      ]
     }
   ]
 }
