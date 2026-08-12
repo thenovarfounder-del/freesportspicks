@@ -272,6 +272,27 @@
           "score": "1-2"
         }
       ]
+    },
+    {
+      "day": 14,
+      "date": "2026-08-11",
+      "picks": [
+        {
+          "pick": "Braves ML vs NYM",
+          "result": "W",
+          "score": "4-0"
+        },
+        {
+          "pick": "Rangers ML @ LAA",
+          "result": "L",
+          "score": "2-3"
+        },
+        {
+          "pick": "Brewers ML @ SD",
+          "result": "L",
+          "score": "2-11"
+        }
+      ]
     }
   ]
 }
