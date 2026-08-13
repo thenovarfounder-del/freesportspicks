@@ -293,6 +293,27 @@
           "score": "2-11"
         }
       ]
+    },
+    {
+      "day": 15,
+      "date": "2026-08-12",
+      "picks": [
+        {
+          "pick": "Braves ML vs NYM",
+          "result": "W",
+          "score": "6-3"
+        },
+        {
+          "pick": "Yankees ML vs SEA",
+          "result": "W",
+          "score": "10-5"
+        },
+        {
+          "pick": "Dodgers ML vs KC",
+          "result": "W",
+          "score": "4-2"
+        }
+      ]
     }
   ]
 }
