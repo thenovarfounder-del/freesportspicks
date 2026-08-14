@@ -314,6 +314,27 @@
           "score": "4-2"
         }
       ]
+    },
+    {
+      "day": 16,
+      "date": "2026-08-13",
+      "picks": [
+        {
+          "pick": "Angels ML vs TEX",
+          "result": "W",
+          "score": "7-0"
+        },
+        {
+          "pick": "Phillies ML @ MIN",
+          "result": "W",
+          "score": "7-1"
+        },
+        {
+          "pick": "Dodgers ML vs MIL",
+          "result": "L",
+          "score": "4-5"
+        }
+      ]
     }
   ]
 }
