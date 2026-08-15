@@ -67,7 +67,7 @@ footer a{color:var(--gold);text-decoration:none;margin-right:14px}
 <div class="stat"><b>${st}</b><span>Current streak</span></div>
 <div class="stat"><b>${t.units>0?"+":""}${t.units}u</b><span>Units at -110</span></div>
 </div>
-<div class="cov"><strong>The covenant.</strong> Nobody sustains 60% against the number. Sharp bettors live at 53-57%, and the break-even bar at standard -110 juice is 52.38%. We do not sell locks and we do not quietly delete losers. Every pick below was published publicly before first pitch and graded against the official final score.</div>
+<div class="cov"><strong>The covenant.</strong> Nobody sustains 60% against the number. Sharp bettors live at 53-57%, and the break-even bar at standard -110 juice is 52.38%. We do not sell locks and we do not quietly delete losers. Every pick below was published publicly before first pitch and graded against the official final score. Want to check anyone else&rsquo;s numbers? <a href="/how-to-spot-a-fake-pick-record.html" style="color:#C9A84C">How to spot a fake pick record</a>.</div>
 <h2>Every pick, most recent first</h2>
 <table><thead><tr><th>Day</th><th>Date</th><th>Pick</th><th>Final</th><th>Result</th></tr></thead><tbody>
 ${rows||"<tr><td colspan=5 style=\"color:#808080;padding:24px 8px\">No picks recorded yet.</td></tr>"}
