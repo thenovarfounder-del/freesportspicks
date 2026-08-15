@@ -335,6 +335,27 @@
           "score": "4-5"
         }
       ]
+    },
+    {
+      "day": 17,
+      "date": "2026-08-14",
+      "picks": [
+        {
+          "pick": "Astros ML vs SEA",
+          "result": "W",
+          "score": "10-7"
+        },
+        {
+          "pick": "Braves ML vs AZ",
+          "result": "L",
+          "score": "0-2"
+        },
+        {
+          "pick": "Red Sox ML @ PIT",
+          "result": "L",
+          "score": "4-8"
+        }
+      ]
     }
   ]
 }
