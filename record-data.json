@@ -356,6 +356,27 @@
           "score": "4-8"
         }
       ]
+    },
+    {
+      "day": 18,
+      "date": "2026-08-15",
+      "picks": [
+        {
+          "pick": "Phillies ML @ MIN",
+          "result": "W",
+          "score": "9-1"
+        },
+        {
+          "pick": "Dodgers ML vs MIL",
+          "result": "L",
+          "score": "1-4"
+        },
+        {
+          "pick": "Astros ML vs SEA",
+          "result": "L",
+          "score": "5-10"
+        }
+      ]
     }
   ]
 }
