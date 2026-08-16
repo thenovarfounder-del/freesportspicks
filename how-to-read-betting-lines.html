@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YZPX14DK4Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-YZPX14DK4Y');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Read Betting Lines: A Plain-English Walkthrough (2026)</title>
+<meta name="description" content="What the numbers on a sportsbook screen actually mean. Spreads, totals, moneylines and -110 explained in order, with real examples and the honest maths on why the house wins.">
+<link rel="canonical" href="https://www.freesportspicks.pro/how-to-read-betting-lines.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.freesportspicks.pro/how-to-read-betting-lines.html">
+<meta property="og:title" content="How to Read Betting Lines: A Plain-English Walkthrough">
+<meta property="og:description" content="Spreads, totals, moneylines and -110 explained in order, with real examples and the honest maths on the house edge.">
+<meta property="og:image" content="https://www.freesportspicks.pro/images/og-home.jpg">
+<meta property="og:site_name" content="FreeSportsPicks.pro">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="/css/main.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"How to Read Betting Lines","description":"A plain-English walkthrough of what the numbers on a sportsbook screen mean: spreads, totals, moneylines, and the -110 that sits on almost everything.","url":"https://www.freesportspicks.pro/how-to-read-betting-lines.html","publisher":{"@type":"Organization","name":"FreeSportsPicks.pro","url":"https://www.freesportspicks.pro","logo":{"@type":"ImageObject","url":"https://www.freesportspicks.pro/fsp-logo.svg"}}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.freesportspicks.pro/"},{"@type":"ListItem","position":2,"name":"How to Read Betting Lines","item":"https://www.freesportspicks.pro/how-to-read-betting-lines.html"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does -110 mean in betting?","acceptedAnswer":{"@type":"Answer","text":"It means you must risk $110 to win $100. The extra $10 is the sportsbook's commission, known as the vig or juice. Because it sits on both sides of most bets, you need to win about 52.38% of your wagers just to break even rather than the 50% the coin-flip appearance suggests."}},{"@type":"Question","name":"What does a minus sign mean on a betting line?","acceptedAnswer":{"@type":"Answer","text":"On a spread, minus indicates the favourite and the number of points they must win by. On a moneyline, minus indicates how much you must risk to win $100. In both cases the minus sign marks the side the market considers stronger, and the more negative the number, the stronger."}},{"@type":"Question","name":"What does a plus sign mean on a betting line?","acceptedAnswer":{"@type":"Answer","text":"On a spread, plus indicates the underdog and how many points they are being given. On a moneyline, plus indicates how much you win from a $100 stake. A larger positive number means a bigger underdog and a bigger payout if they win."}},{"@type":"Question","name":"What is the over/under in betting?","acceptedAnswer":{"@type":"Answer","text":"The total combined score both teams are expected to produce. You bet whether the actual combined score finishes above or below that number. It is usually priced at around -110 on each side, and the half-point in figures like 47.5 exists to prevent a tie."}},{"@type":"Question","name":"Why do betting lines have half points?",  "acceptedAnswer":{"@type":"Answer","text":"To eliminate ties. A spread of -3 means a three-point win results in a push and your stake is returned. A spread of -3.5 cannot push, because a team cannot win by three and a half points. The half-point is often called the hook and it decides an enormous number of bets."}}]}</script>
+<style>
+.page-hero{padding:120px 0 60px;text-align:center;background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(201,168,76,0.06),transparent 70%);border-bottom:1px solid rgba(201,168,76,0.15);}
+.page-hero h1{font-size:clamp(28px,4vw,48px);margin-bottom:16px;}
+.page-hero p{font-size:16px;color:#808080;max-width:640px;margin:0 auto;}
+.page-content-section{padding:60px 0;}
+.page-content-section h2{font-family:'DM Serif Display',serif;font-size:24px;color:#F5F5F0;margin:44px 0 16px;padding-bottom:8px;border-bottom:1px solid #1A1A1A;}
+.page-content-section h3{font-size:18px;color:#C9A84C;margin:28px 0 10px;}
+.page-content-section p{font-size:15px;color:#808080;line-height:1.85;margin-bottom:16px;}
+.page-content-section ul,.page-content-section ol{padding-left:20px;margin-bottom:20px;}
+.page-content-section li{font-size:15px;color:#808080;line-height:1.8;margin-bottom:8px;}
+.page-content-section strong{color:#F5F5F0;}
+.page-content-section a{color:#C9A84C;}
+.board{background:#0E1218;border:1px solid #1F252E;border-radius:6px;padding:0;margin:22px 0;overflow:hidden;font-family:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;}
+.board-head{background:#151B23;padding:10px 16px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#6C7A89;border-bottom:1px solid #1F252E;}
+.board-row{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;padding:13px 16px;border-bottom:1px solid #171D25;align-items:center;}
+.board-row:last-child{border-bottom:none;}
+.board-row.labels{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#5C6875;padding:8px 16px;}
+.board-team{color:#F5F5F0;font-size:14.5px;}
+.board-num{color:#C9A84C;font-size:14.5px;text-align:center;}
+.board-num small{display:block;color:#5C6875;font-size:11px;margin-top:2px;}
+.keypoint{background:#12161C;border-left:3px solid #C9A84C;border-radius:4px;padding:16px 20px;margin:22px 0;}
+.keypoint p{margin-bottom:0;color:#F5F5F0;font-size:15px;}
+.mathbox{background:#12161C;border:1px solid #1F252E;border-radius:4px;padding:18px 20px;margin:20px 0;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:14px;color:#A8B4C0;line-height:2;}
+.mathbox b{color:#C9A84C;font-weight:600;}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav-container">
+    <a href="/" class="nav-logo" style="text-decoration:none;display:flex;align-items:center;">
+      <img src="/fsp-logo.svg" alt="FreeSportsPicks.pro" style="height:90px;width:auto;display:block;" onerror="this.style.display='none';this.nextSibling.style.display='flex'">
+      <span style="display:none;align-items:center;gap:8px;font-family:'DM Serif Display',serif;font-size:20px;color:#F5F5F0;">FreeSportsPicks<span style="color:#C9A84C;">.pro</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/picks/nfl-picks/">NFL Picks</a></li>
+      <li><a href="/picks/nba-picks/">NBA Picks</a></li>
+      <li><a href="/picks/mlb-picks/">MLB Picks</a></li>
+      <li><a href="/picks/college-basketball-picks/">CBB Picks</a></li>
+      <li><a href="/picks/college-football-picks/">CFB Picks</a></li>
+      <li><a href="/picks/free-sports-picks/">Free Picks</a></li>
+      <li><a href="/picks/best-bets-today/">Best Bets</a></li>
+      <li><a href="/picks/parlay-picks/">Parlays</a></li>
+      <li><a href="/about.html">About</a></li>
+    </ul>
+    <a href="/guestbook.html" class="nav-cta">Get Free Picks</a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+<main>
+<section class="page-hero"><div class="container">
+  <h1>How to Read Betting Lines</h1>
+  <p>You are looking at a screen of numbers with plus and minus signs and none of it is explained. Here is what every one of them means, in the order you will meet them.</p>
+</div></section>
+
+<section class="page-content-section"><div class="container" style="max-width:760px">
+
+<p>Sportsbooks display the same information in roughly the same layout everywhere. Once you can read one board you can read all of them. This walks through a typical line from left to right, explains what each number is telling you, and then covers the one figure that matters more than any of the others.</p>
+
+<h2>A line, as you will actually see it</h2>
+
+<div class="board">
+  <div class="board-head">NFL &middot; Sunday 1:00 PM ET</div>
+  <div class="board-row labels"><div>Team</div><div>Spread</div><div>Total</div><div>Moneyline</div></div>
+  <div class="board-row">
+    <div class="board-team">Dallas Cowboys</div>
+    <div class="board-num">-3.5<small>-110</small></div>
+    <div class="board-num">O 47.5<small>-110</small></div>
+    <div class="board-num">-175</div>
+  </div>
+  <div class="board-row">
+    <div class="board-team">Philadelphia Eagles</div>
+    <div class="board-num">+3.5<small>-110</small></div>
+    <div class="board-num">U 47.5<small>-110</small></div>
+    <div class="board-num">+150</div>
+  </div>
+</div>
+
+<p>Four things are being offered here and they are independent of each other. You can bet the spread, the total, or the moneyline, and the numbers beneath each tell you what it pays.</p>
+
+<h2>The spread: who is expected to win, and by how much</h2>
+
+<p>The spread is a handicap. It exists because a straight bet on who wins would be uninteresting when one team is much better, so the sportsbook makes the favourite give points away.</p>
+
+<p><strong>Dallas -3.5</strong> means Dallas are the favourite and must win by four or more for a bet on them to pay. Subtract 3.5 from their final score; if they still have more than Philadelphia, you win.</p>
+
+<p><strong>Philadelphia +3.5</strong> means Philadelphia are the underdog and start with a 3.5-point head start. They can lose by three and a bet on them still pays.</p>
+
+<h3>Worked through</h3>
+<div class="mathbox">
+Final: Dallas 27, Philadelphia 24<br>
+Dallas <b>-3.5</b> &rarr; 27 &minus; 3.5 = 23.5 vs 24 &rarr; <b>loses</b><br>
+Philadelphia <b>+3.5</b> &rarr; 24 + 3.5 = 27.5 vs 27 &rarr; <b>wins</b>
+</div>
+
+<p>Dallas won the game and lost the bet. That is the entire point of the spread and it is the thing that surprises people first.</p>
+
+<h3>Why the half point exists</h3>
+<p>A spread of <strong>-3</strong> can end in a tie &mdash; if Dallas win by exactly three, the bet pushes and your stake comes back. A spread of <strong>-3.5</strong> cannot, because no team wins by three and a half points.</p>
+<p>That half point is called <strong>the hook</strong>, and it decides an enormous number of bets. Three is the most common margin of victory in football, so -3 and -3.5 are very different propositions despite looking almost identical.</p>
+
+<h2>The total: how many points, combined</h2>
+
+<p>The total &mdash; also called the over/under &mdash; is the combined score the sportsbook expects from both teams. You are not betting on who wins at all.</p>
+
+<p><strong>O 47.5</strong> pays if the two teams combine for 48 or more. <strong>U 47.5</strong> pays if they combine for 47 or fewer.</p>
+
+<div class="mathbox">
+Final: Dallas 27, Philadelphia 24 &rarr; combined <b>51</b><br>
+Over 47.5 &rarr; <b>wins</b><br>
+Under 47.5 &rarr; <b>loses</b>
+</div>
+
+<p>Totals are quoted with a half point for the same reason spreads are &mdash; to prevent a push. A total of 47 flat can tie; 47.5 cannot.</p>
+
+<h2>The moneyline: who wins, no handicap</h2>
+
+<p>The moneyline strips out the points entirely. You are betting on who wins the game, and the odds adjust to reflect how likely that is.</p>
+
+<p><strong>Dallas -175</strong> means you must risk $175 to win $100. They are favoured, so you are paid less for backing them.</p>
+<p><strong>Philadelphia +150</strong> means a $100 stake wins $150. They are the underdog, so you are paid more.</p>
+
+<h3>The rule for reading them</h3>
+<p><strong>Minus tells you what to risk to win $100. Plus tells you what $100 wins.</strong> That single sentence covers every American odds figure you will ever see.</p>
+
+<div class="mathbox">
+<b>-175</b> &rarr; risk $175, win $100 &rarr; return $275<br>
+<b>+150</b> &rarr; risk $100, win $150 &rarr; return $250<br>
+<b>-110</b> &rarr; risk $110, win $100 &rarr; return $210
+</div>
+
+<p>The numbers scale. At -175 a $35 bet wins $20, because $35 is a fifth of $175. You do not need to bet in hundreds.</p>
+
+<h2>The -110 that sits on almost everything</h2>
+
+<p>Look back at the board. Both sides of the spread are priced at <strong>-110</strong>. Both sides of the total are too. This is the most important number on the page and almost nobody explains it properly.</p>
+
+<p>A spread is designed to be a coin flip. The sportsbook sets it so roughly half the money lands on each side. If it paid even money you would risk $100 to win $100, and over time you would break even.</p>
+
+<p>It does not pay even money. You risk $110 to win $100, and that extra $10 is the sportsbook's commission &mdash; <strong>the vig</strong>, also called juice.</p>
+
+<div class="keypoint">
+  <p>Because the vig sits on both sides, you need to win <strong>52.38%</strong> of your bets at -110 simply to break even. Not 50%. That 2.38 percentage points is the house edge, and it is why most bettors lose over time even when their picks are roughly right.</p>
+</div>
+
+<h3>Where 52.38% comes from</h3>
+<div class="mathbox">
+Bet 100 times at $110 a bet &rarr; total risk <b>$11,000</b><br>
+Win 52 &rarr; +$5,200 &nbsp;&nbsp; Lose 48 &rarr; &minus;$5,280 &rarr; <b>net &minus;$80</b><br>
+Win 53 &rarr; +$5,300 &nbsp;&nbsp; Lose 47 &rarr; &minus;$5,170 &rarr; <b>net +$130</b><br>
+Break-even sits between: <b>52.38%</b>
+</div>
+
+<p>This is the single most useful thing to understand about sports betting, and it reframes everything else. A handicapper hitting 55% is doing genuinely well. Anyone advertising 70% over a meaningful sample is describing something that does not happen &mdash; see <a href="/how-to-spot-a-fake-pick-record.html">how to spot a fake pick record</a>.</p>
+
+<h2>Reading the rest of the board</h2>
+
+<h3>Odds that are not -110</h3>
+<p>You will see spreads priced at -105, -115, -120 and so on. The book moves the price rather than the line when it wants to shade one side without changing the handicap. Lower juice is better for you: -105 requires about 51.2% to break even instead of 52.38%.</p>
+
+<h3>Alternate lines</h3>
+<p>Most books let you buy points &mdash; take -2.5 instead of -3.5 at worse odds, or +7.5 instead of +3.5 for a smaller payout. You are trading probability against price, and the book prices it in their favour.</p>
+
+<h3>Props</h3>
+<p>Bets on individual outcomes rather than the game: passing yards, first scorer, total rebounds. They read the same way &mdash; a line and a price, usually with more juice than the main markets.</p>
+
+<h3>Live lines</h3>
+<p>Odds that move during the game. Same reading rules, faster movement, and typically higher vig than pre-game markets.</p>
+
+<h2>Why lines move</h2>
+<p>A line you saw on Tuesday may look different on Sunday. Three things move it:</p>
+<ul>
+  <li><strong>Money.</strong> Heavy betting on one side pushes the line to attract money to the other, because the book wants balanced action rather than a position.</li>
+  <li><strong>Information.</strong> Injuries, weather, lineup news. A starting quarterback ruled out moves a line several points within minutes.</li>
+  <li><strong>Sharp action.</strong> Books move faster on bets from proven winners than on volume from the public.</li>
+</ul>
+<p>The line at kickoff &mdash; the <strong>closing line</strong> &mdash; is the market's most accurate estimate, because it reflects everything known. Consistently beating it is the strongest evidence a bettor is genuinely good, and it is the metric almost no tout publishes.</p>
+
+<h2>Before you place anything</h2>
+<ul>
+  <li><strong>Check the price, not just the line.</strong> -3.5 at -105 and -3.5 at -120 are meaningfully different bets.</li>
+  <li><strong>Know what a push does.</strong> On a whole-number line, an exact-margin result returns your stake.</li>
+  <li><strong>Understand the juice before the pick.</strong> The edge you need is set by the price, and the price is set before you choose a side.</li>
+  <li><strong>Bet an amount that does not matter.</strong> The maths above assumes you can survive a losing run, and every bettor has them.</li>
+</ul>
+
+<h2>Related</h2>
+<ul>
+  <li><a href="/betting-glossary.html">Sports betting glossary &mdash; 58 terms explained</a></li>
+  <li><a href="/tools/odds-converter/">Odds converter &mdash; American, decimal and fractional</a></li>
+  <li><a href="/tools/parlay-calculator/">Parlay calculator &mdash; with the honest house edge</a></li>
+  <li><a href="/how-to-spot-a-fake-pick-record.html">How to spot a fake pick record</a></li>
+  <li><a href="/verified-records.html">Our complete pick record</a></li>
+</ul>
+
+<p style="font-size:13px;color:#5a5a5a;margin-top:36px;border-top:1px solid #1A1A1A;padding-top:16px">For entertainment purposes only. Must be 21+. Please gamble responsibly. If gambling stops being fun, call 1-800-GAMBLER.</p>
+
+</div></section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">FreeSportsPicks.pro</div>
+        <p class="footer-desc">Free daily sports picks for NFL, NBA, MLB, NHL and more. AI-powered picks with verified records.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Picks</div>
+        <ul class="footer-links">
+          <li><a href="/picks/free-nfl-picks/">Free NFL Picks</a></li>
+          <li><a href="/picks/free-nba-picks/">Free NBA Picks</a></li>
+          <li><a href="/picks/free-mlb-picks/">Free MLB Picks</a></li>
+          <li><a href="/picks/best-bets-today/">Best Bets Today</a></li>
+          <li><a href="/picks/nfl-predictions/">NFL Predictions</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">More Picks</div>
+        <ul class="footer-links">
+          <li><a href="/picks/nba-picks/">NBA Picks</a></li>
+          <li><a href="/picks/nfl-picks/">NFL Picks</a></li>
+          <li><a href="/picks/parlay-picks/">Parlay Picks</a></li>
+          <li><a href="/picks/nhl-picks/">NHL Picks</a></li>
+          <li><a href="/picks/sports-picks/">Sports Picks</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Resources</div>
+        <ul class="footer-links">
+          <li><a href="/about.html">About Us</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/tools/">Betting Tools</a></li>
+          <li><a href="/betting-glossary.html">Betting Glossary</a></li>
+          <li><a href="/verified-records.html">Verified Records</a></li>
+          <li><a href="/responsible-gambling.html">Responsible Gambling</a></li>
+          <li><a href="https://t.me/freesportspickspro" target="_blank">Telegram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 FreeSportsPicks.pro &mdash; All Rights Reserved. For entertainment purposes only. Must be 21+.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
