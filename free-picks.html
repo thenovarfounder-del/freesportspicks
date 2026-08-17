@@ -94,11 +94,12 @@ input[type=text],input[type=tel],input[type=email]{width:100%;border:2px solid #
       <input type="text" id="name" placeholder="First name">
       <label>Email address</label>
       <input type="email" id="email" placeholder="you@example.com">
-      <label>Phone (optional &mdash; get picks by text before games lock)</label>
+      <label>Phone number <span style="color:#C9A84C">*</span></label>
+        <p style="font-size:12.5px;color:#64748b;margin:-2px 0 8px;line-height:1.5">We text the card before games lock, and we call new members once to set up your sports and frequency. One call, not a campaign.</p>
       <input type="tel" id="phone" placeholder="(555) 555-5555">
       <div class="consent">
         <input type="checkbox" id="consent">
-        <span>By checking this box, I agree to receive free daily picks and sports betting offers from FreeSportsPicks.pro and its partners by email and (if provided) text message. Automated technology may be used. Consent is not a condition of any purchase. Msg/data rates may apply. Reply STOP to opt out. I confirm I am 21+.</span>
+        <span>By checking this box, I agree to receive free daily picks and sports betting offers from FreeSportsPicks.pro and its partners by email, text message and phone call at the number provided. Automated technology may be used. Consent is not a condition of any purchase. Msg/data rates may apply. Reply STOP to opt out of texts, or tell us on any call to stop calls. I confirm I am 21+.</span>
       </div>
       <p class="err" id="e3"></p>
       <button class="cta" id="sendbtn" onclick="send()">SEND ME TODAY&rsquo;S PICKS &rarr;</button>
@@ -140,6 +141,8 @@ async function send(){
   var err = document.getElementById('e3');
   err.style.display = 'none';
   if(!name || !email){ err.textContent='Please enter your name and email.'; err.style.display='block'; return; }
+    var digits = phone.replace(/[^0-9]/g,'');
+    if(digits.length < 10){ err.textContent='Please enter a valid phone number so we can send the card before games lock.'; err.style.display='block'; return; }
   if(!consent){ err.textContent='Please check the consent box to get your free picks.'; err.style.display='block'; return; }
   var btn = document.getElementById('sendbtn');
   btn.disabled = true; btn.textContent = 'Sending...';
@@ -154,7 +157,7 @@ async function send(){
   try{
     await fetch('https://api.web3forms.com/submit', {
       method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ access_key:'0eb8fd14-c890-4a80-972a-37d45b597d6f', subject:'FSP LEAD - Free Picks Signup', from_name:'FreeSportsPicks Leads', name:name, email:email, phone:phone||'none', sport:D.sport, frequency:D.freq, consent:'YES - email+SMS marketing, 21+ confirmed' })
+      body: JSON.stringify({ access_key:'0eb8fd14-c890-4a80-972a-37d45b597d6f', subject:'FSP LEAD - Free Picks Signup', from_name:'FreeSportsPicks Leads', name:name, email:email, phone:phone||'none', sport:D.sport, frequency:D.freq, consent:'YES - email, SMS and phone contact, 21+ confirmed' })
     });
   }catch(ex){}
   document.getElementById('app').className = 'hid';
