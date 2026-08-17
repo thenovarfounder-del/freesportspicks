@@ -1,14 +1,18 @@
-<!DOCTYPE html>
+const fs = require("fs");
+
+const src = fs.readFileSync("free-vs-premium-picks.html", "utf8");
+const hs = src.indexOf('<header class="site-header"');
+const he = src.indexOf("</header>", hs) + 9;
+const HEADER = src.slice(hs, he);
+const fsx = src.indexOf("<footer");
+const fe = src.lastIndexOf("</footer>") + 9;
+const FOOTER = src.slice(fsx, fe);
+const GA = src.slice(src.indexOf("<!-- Google tag"), src.indexOf("</script>", src.indexOf("gtag('config'")) + 9);
+
+const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-YZPX14DK4Y"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-YZPX14DK4Y');
-</script>
+${GA}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>How MLB Betting Analysis Works: Statcast, Lineups &amp; Line Shopping (2026)</title>
@@ -48,27 +52,7 @@
 </style>
 </head>
 <body>
-<header class="site-header">
-  <nav class="nav-container">
-    <a href="/" class="nav-logo" style="text-decoration:none;display:flex;align-items:center;">
-      <img src="/fsp-logo.svg" alt="FreeSportsPicks.pro" style="height:90px;width:auto;display:block;" onerror="this.style.display='none';this.nextSibling.style.display='flex'">
-      <span style="display:none;align-items:center;gap:8px;font-family:'DM Serif Display',serif;font-size:20px;color:#F5F5F0;">FreeSportsPicks<span style="color:#C9A84C;">.pro</span></span>
-    </a>
-    <ul class="nav-links">
-      <li><a href="/picks/nfl-picks/">NFL Picks</a></li>
-      <li><a href="/picks/nba-picks/">NBA Picks</a></li>
-      <li><a href="/picks/mlb-picks/">MLB Picks</a></li>
-      <li><a href="/picks/college-basketball-picks/">CBB Picks</a></li>
-      <li><a href="/picks/college-football-picks/">CFB Picks</a></li>
-      <li><a href="/picks/free-sports-picks/">Free Picks</a></li>
-      <li><a href="/picks/best-bets-today/">Best Bets</a></li>
-      <li><a href="/picks/parlay-picks/">Parlays</a></li>
-      <li><a href="/about.html">About</a></li>
-    </ul>
-    <a href="/guestbook.html" class="nav-cta">Get Free Picks</a>
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
-  </nav>
-</header>
+${HEADER}
 <main>
 <section class="page-hero"><div class="container">
   <h1>How MLB Betting Analysis Works</h1>
@@ -165,50 +149,14 @@ Same 60 winners &rarr; difference of roughly <b>$1,300</b> on identical picks
 
 </div></section>
 </main>
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <div class="footer-logo">FreeSportsPicks.pro</div>
-        <p class="footer-desc">Free daily sports picks for NFL, NBA, MLB, NHL and more. AI-powered picks with verified records.</p>
-      </div>
-      <div>
-        <div class="footer-col-title">Picks</div>
-        <ul class="footer-links">
-          <li><a href="/picks/free-nfl-picks/">Free NFL Picks</a></li>
-          <li><a href="/picks/free-nba-picks/">Free NBA Picks</a></li>
-          <li><a href="/picks/free-mlb-picks/">Free MLB Picks</a></li>
-          <li><a href="/picks/best-bets-today/">Best Bets Today</a></li>
-          <li><a href="/picks/nfl-predictions/">NFL Predictions</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="footer-col-title">More Picks</div>
-        <ul class="footer-links">
-          <li><a href="/picks/nba-picks/">NBA Picks</a></li>
-          <li><a href="/picks/nfl-picks/">NFL Picks</a></li>
-          <li><a href="/picks/parlay-picks/">Parlay Picks</a></li>
-          <li><a href="/picks/nhl-picks/">NHL Picks</a></li>
-          <li><a href="/picks/sports-picks/">Sports Picks</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="footer-col-title">Resources</div>
-        <ul class="footer-links">
-          <li><a href="/about.html">About Us</a></li>
-          <li><a href="/blog/">Blog</a></li>
-          <li><a href="/tools/">Betting Tools</a></li>
-          <li><a href="/betting-glossary.html">Betting Glossary</a></li>
-          <li><a href="/verified-records.html">Verified Records</a></li>
-          <li><a href="/responsible-gambling.html">Responsible Gambling</a></li>
-          <li><a href="https://t.me/freesportspickspro" target="_blank">Telegram</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 FreeSportsPicks.pro &mdash; All Rights Reserved. For entertainment purposes only. Must be 21+.</p>
-    </div>
-  </div>
-</footer>
+${FOOTER}
 </body>
-</html>
+</html>`;
+
+fs.mkdirSync("picks/best-mlb-picks-today", { recursive: true });
+fs.writeFileSync("picks/best-mlb-picks-today/index.html", html);
+console.log("REWRITTEN");
+console.log("header: " + html.includes("site-header"));
+console.log("footer: " + html.includes("<footer"));
+console.log("no fake panel: " + !html.includes("Handicapping Panel"));
+console.log("size: " + Math.round(html.length / 1024) + " KB");
