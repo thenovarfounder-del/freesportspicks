@@ -83,6 +83,11 @@
       "source": "/blog/how-to-read-betting-lines.html",
       "destination": "/blog/how-to-read-nfl-betting-lines.html",
       "permanent": true
+    },
+    {
+      "source": "/blog/horse-racing-betting-strategy.html",
+      "destination": "/picks/horse-racing-picks/",
+      "permanent": true
     }
   ]
 }
