@@ -398,6 +398,27 @@
           "score": "3-8"
         }
       ]
+    },
+    {
+      "day": 20,
+      "date": "2026-08-17",
+      "picks": [
+        {
+          "pick": "Phillies ML vs MIA",
+          "result": "W",
+          "score": "6-5"
+        },
+        {
+          "pick": "Mets ML vs SD",
+          "result": "W",
+          "score": "2-1"
+        },
+        {
+          "pick": "Dodgers ML @ COL",
+          "result": "W",
+          "score": "11-5"
+        }
+      ]
     }
   ]
 }
