@@ -440,6 +440,27 @@
           "score": "7-6"
         }
       ]
+    },
+    {
+      "day": 22,
+      "date": "2026-08-19",
+      "picks": [
+        {
+          "pick": "Phillies ML vs MIA",
+          "result": "W",
+          "score": "4-1"
+        },
+        {
+          "pick": "Dodgers ML @ COL",
+          "result": "W",
+          "score": "6-4"
+        },
+        {
+          "pick": "Guardians ML vs SF",
+          "result": "L",
+          "score": "0-1"
+        }
+      ]
     }
   ]
 }
