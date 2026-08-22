@@ -4,8 +4,25 @@ const load=()=>fs.existsSync(DATA)?JSON.parse(fs.readFileSync(DATA,"utf8")):{day
 const save=d=>{d.days.sort((a,b)=>a.day-b.day);fs.writeFileSync(DATA,JSON.stringify(d,null,2));};
 function tally(days){let w=0,l=0,p=0;days.forEach(d=>d.picks.forEach(k=>{k.result==="W"?w++:k.result==="L"?l++:p++;}));
 const dec=w+l;return{w,l,p,total:w+l+p,pct:dec?((w/dec)*100).toFixed(1):"0.0",units:(w*0.91-l).toFixed(2)};}
-function streak(days){const f=[];days.slice().sort((a,b)=>b.day-a.day).forEach(d=>d.picks.slice().reverse().forEach(k=>f.push(k.result)));
-const first=f.find(r=>r==="W"||r==="L");if(!first)return "-";let n=0;for(const r of f){if(r===first)n++;else if(r!=="P")break;}return first+n;}
+function __ordered(day){
+  // chronological within a day: use time when present, else keep entry order
+  return day.picks.map((k,i)=>({k,i})).sort((a,b)=>{
+    const ta=a.k.time||"", tb=b.k.time||"";
+    if(ta&&tb&&ta!==tb) return ta<tb?-1:1;
+    if(ta&&!tb) return 0;
+    if(!ta&&tb) return 0;
+    return a.i-b.i;
+  }).map(x=>x.k);
+}
+function streak(days){
+  const f=[];
+  days.slice().sort((a,b)=>b.day-a.day).forEach(d=>__ordered(d).slice().reverse().forEach(k=>f.push(k.result)));
+  const first=f.find(r=>r==="W"||r==="L");
+  if(!first)return "-";
+  let n=0;
+  for(const r of f){ if(r===first)n++; else if(r!=="P")break; }
+  return first+n;
+}
 const dayLine=d=>d.picks.filter(k=>k.result==="W").length+"-"+d.picks.filter(k=>k.result==="L").length;
 const esc=s=>String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
 const M=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
@@ -13,9 +30,9 @@ const fmt=iso=>{const[y,m,d]=iso.split("-").map(Number);return M[m-1]+" "+d+", "
 function render(data){
 const days=data.days.slice().sort((a,b)=>b.day-a.day),t=tally(data.days),st=streak(data.days);
 const updated=days[0]?fmt(days[0].date):"-";
-const rows=days.map(d=>d.picks.map(k=>{const c=k.result==="W"?"win":k.result==="L"?"loss":"push";
+const rows=days.map(d=>__ordered(d).slice().reverse().map(k=>{const c=k.result==="W"?"win":k.result==="L"?"loss":"push";
 const mk=k.result==="W"?"&#10003;":k.result==="L"?"&#10007;":"~";
-return "<tr><td class=d>Day "+d.day+"</td><td class=dt>"+esc(fmt(d.date))+"</td><td class=pk>"+esc(k.pick)+"</td><td class=sc>"+esc(k.score||"")+"</td><td><span class=\"badge "+c+"\">"+mk+" "+k.result+"</span></td></tr>";}).join("\n")).join("\n");
+return "<tr><td class=d>Day "+d.day+"</td><td class=dt>"+esc(fmt(d.date))+(k.time?" <span style=\"color:#5a5a5a;font-size:12px\">"+esc(k.time)+"</span>":"")+"</td><td class=pk>"+esc(k.pick)+"</td><td class=sc>"+esc(k.score||"")+"</td><td><span class=\"badge "+c+"\">"+mk+" "+k.result+"</span></td></tr>";}).join("\n")).join("\n");
 const dayRows=days.map(d=>"<tr><td class=d>Day "+d.day+"</td><td class=dt>"+esc(fmt(d.date))+"</td><td class=sc>"+dayLine(d)+"</td></tr>").join("\n");
 return `<!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8">
