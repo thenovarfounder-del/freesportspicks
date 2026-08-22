@@ -461,6 +461,48 @@
           "score": "0-1"
         }
       ]
+    },
+    {
+      "day": 23,
+      "date": "2026-08-20",
+      "picks": [
+        {
+          "pick": "Royals ML vs ATH",
+          "result": "W",
+          "score": "6-2"
+        },
+        {
+          "pick": "Yankees ML @ BAL",
+          "result": "W",
+          "score": "6-1"
+        },
+        {
+          "pick": "Astros ML vs LAA",
+          "result": "L",
+          "score": "3-18"
+        }
+      ]
+    },
+    {
+      "day": 24,
+      "date": "2026-08-21",
+      "picks": [
+        {
+          "pick": "Phillies ML vs STL",
+          "result": "W",
+          "score": "7-6"
+        },
+        {
+          "pick": "Yankees ML vs TOR",
+          "result": "W",
+          "score": "3-1"
+        },
+        {
+          "pick": "Dodgers ML vs PIT",
+          "result": "W",
+          "score": "5-4"
+        }
+      ]
     }
   ]
 }
