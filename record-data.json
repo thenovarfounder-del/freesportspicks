@@ -515,6 +515,27 @@
           "time": "22:10"
         }
       ]
+    },
+    {
+      "day": 25,
+      "date": "2026-08-22",
+      "picks": [
+        {
+          "pick": "Yankees ML vs TOR",
+          "result": "L",
+          "score": "3-4"
+        },
+        {
+          "pick": "Phillies ML vs STL",
+          "result": "W",
+          "score": "12-3"
+        },
+        {
+          "pick": "Dodgers ML vs PIT",
+          "result": "W",
+          "score": "4-3"
+        }
+      ]
     }
   ]
 }
