@@ -536,6 +536,27 @@
           "score": "4-3"
         }
       ]
+    },
+    {
+      "day": 27,
+      "date": "2026-08-24",
+      "picks": [
+        {
+          "pick": "Red Sox ML @ MIA",
+          "result": "W",
+          "score": "4-2"
+        },
+        {
+          "pick": "Rangers ML @ CWS",
+          "result": "W",
+          "score": "11-2"
+        },
+        {
+          "pick": "Padres ML vs PIT",
+          "result": "L",
+          "score": "2-3"
+        }
+      ]
     }
   ]
 }
