@@ -1,0 +1,14 @@
+﻿name: Supabase keep-alive
+on:
+  schedule:
+    - cron: "14 6 * * *"
+  workflow_dispatch:
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Query Supabase
+        run: |
+          CODE=$(curl -s -o /tmp/out.txt -w "%{http_code}" "https://xoobllpnufrzfrpzrbbx.supabase.co/rest/v1/reports?select=id&limit=1" -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}")
+          echo "HTTP $CODE"
+          if [ "$CODE" = "200" ]; then echo "reachable - clock reset"; else echo "::error::got $CODE"; exit 1; fi
