@@ -578,6 +578,27 @@
           "score": "2-3"
         }
       ]
+    },
+    {
+      "day": 29,
+      "date": "2026-08-26",
+      "picks": [
+        {
+          "pick": "Giants ML vs CIN",
+          "result": "L",
+          "score": "9-10"
+        },
+        {
+          "pick": "Red Sox ML @ MIA",
+          "result": "L",
+          "score": "0-4"
+        },
+        {
+          "pick": "Orioles ML @ STL",
+          "result": "W",
+          "score": "8-7"
+        }
+      ]
     }
   ]
 }
