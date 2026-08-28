@@ -586,17 +586,20 @@
         {
           "pick": "Red Sox ML @ MIA",
           "result": "W",
-          "score": "7-3"
+          "score": "7-3",
+          "time": "18:40"
         },
         {
           "pick": "Rangers ML @ CWS",
           "result": "L",
-          "score": "7-11"
+          "score": "7-11",
+          "time": "19:40"
         },
         {
           "pick": "Cubs ML @ AZ",
           "result": "L",
-          "score": "4-5"
+          "score": "4-5",
+          "time": "21:40"
         }
       ]
     },
@@ -607,17 +610,44 @@
         {
           "pick": "Giants ML vs CIN",
           "result": "L",
-          "score": "9-10"
+          "score": "9-10",
+          "time": "15:45"
         },
         {
           "pick": "Red Sox ML @ MIA",
           "result": "L",
-          "score": "0-4"
+          "score": "0-4",
+          "time": "18:40"
         },
         {
           "pick": "Orioles ML @ STL",
           "result": "W",
-          "score": "8-7"
+          "score": "8-7",
+          "time": "19:45"
+        }
+      ]
+    },
+    {
+      "day": 30,
+      "date": "2026-08-27",
+      "picks": [
+        {
+          "pick": "Orioles ML @ STL",
+          "result": "L",
+          "score": "5-7",
+          "time": "14:15"
+        },
+        {
+          "pick": "Yankees ML vs HOU",
+          "result": "L",
+          "score": "1-5",
+          "time": "19:05"
+        },
+        {
+          "pick": "Brewers ML @ NYM",
+          "result": "W",
+          "score": "8-2",
+          "time": "19:10"
         }
       ]
     }
