@@ -650,6 +650,27 @@
           "time": "19:10"
         }
       ]
+    },
+    {
+      "day": 31,
+      "date": "2026-08-28",
+      "picks": [
+        {
+          "pick": "Braves ML vs COL",
+          "result": "W",
+          "score": "6-4"
+        },
+        {
+          "pick": "Brewers ML vs TEX",
+          "result": "W",
+          "score": "6-1"
+        },
+        {
+          "pick": "Phillies ML @ LAA",
+          "result": "W",
+          "score": "5-3"
+        }
+      ]
     }
   ]
 }
