@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verified Record - Every Pick Graded | FreeSportsPicks.pro</title>
+<meta name="description" content="Our complete public pick record - every pick graded, wins and losses. Current record 62-39 (61.4%).">
+<link rel="canonical" href="https://www.freesportspicks.pro/verified-records.html">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Verified Record - 62-39 | FreeSportsPicks.pro">
+<meta property="og:description" content="Every pick graded publicly - wins AND losses.">
+<meta property="og:url" content="https://www.freesportspicks.pro/verified-records.html">
+<meta name="twitter:card" content="summary_large_image">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YZPX14DK4Y"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-YZPX14DK4Y");</script>
+<style>
+:root{--navy:#0A0A0A;--panel:#111;--gold:#C9A84C;--cream:#F5F5F0;--muted:#808080;--win:#3FB27F;--loss:#D65D5D;--push:#8A93A6;--line:rgba(201,168,76,.2)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--navy);color:var(--cream);font-family:Arial,Helvetica,sans-serif;line-height:1.6;padding:24px 16px}
+.wrap{max-width:960px;margin:0 auto}
+h1{font-size:30px;margin-bottom:6px}
+.sub{color:var(--muted);font-size:14px;margin-bottom:26px}
+.stats{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin-bottom:14px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:18px}
+.stat b{display:block;font-size:28px;color:var(--gold)}
+.stat span{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.09em}
+.cov{background:var(--panel);border-left:3px solid var(--gold);border-radius:4px;padding:16px 18px;margin:22px 0;color:var(--muted);font-size:14px}
+.cov strong{color:var(--cream)}
+h2{font-size:19px;margin:30px 0 12px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line);color:var(--gold);font-size:11px;text-transform:uppercase;letter-spacing:.08em}
+td{padding:10px 8px;border-bottom:1px solid rgba(255,255,255,.05)}
+.d{color:var(--gold);white-space:nowrap;font-weight:bold}
+.dt{color:var(--muted);white-space:nowrap}
+.sc{color:var(--muted);white-space:nowrap}
+.badge{display:inline-block;padding:2px 9px;border-radius:3px;font-size:12px;font-weight:bold}
+.badge.win{background:rgba(63,178,127,.15);color:var(--win)}
+.badge.loss{background:rgba(214,93,93,.15);color:var(--loss)}
+.badge.push{background:rgba(138,147,166,.15);color:var(--push)}
+footer{margin-top:36px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px}
+footer a{color:var(--gold);text-decoration:none;margin-right:14px}
+@media(max-width:620px){th:nth-child(2),td:nth-child(2){display:none}}
+</style></head><body><div class="wrap">
+<h1>Verified Record</h1>
+<p class="sub">Every pick posted before the game. Every pick graded the next morning - wins and losses. Last updated Aug 30, 2026.</p>
+<div class="stats">
+<div class="stat"><b>62-39</b><span>Record</span></div>
+<div class="stat"><b>61.4%</b><span>Win rate</span></div>
+<div class="stat"><b>101</b><span>Picks graded</span></div>
+<div class="stat"><b>L2</b><span>Current streak</span></div>
+<div class="stat"><b>+17.42u</b><span>Units at -110</span></div>
+</div>
+<div class="cov"><strong>The covenant.</strong> Nobody sustains 60% against the number. Sharp bettors live at 53-57%, and the break-even bar at standard -110 juice is 52.38%. We do not sell locks and we do not quietly delete losers. Every pick below was published publicly before first pitch and graded against the official final score. Want to check anyone else&rsquo;s numbers? <a href="/how-to-spot-a-fake-pick-record.html" style="color:#C9A84C">How to spot a fake pick record</a>.</div>
+<h2>Every pick, most recent first</h2>
+<table><thead><tr><th>Day</th><th>Date</th><th>Pick</th><th>Final</th><th>Result</th></tr></thead><tbody>
+<tr><td class=d>Day 33</td><td class=dt>Aug 30, 2026</td><td class=pk>Cubs ML vs CIN</td><td class=sc>5-7</td><td><span class="badge loss">&#10007; L</span></td></tr>
+<tr><td class=d>Day 33</td><td class=dt>Aug 30, 2026</td><td class=pk>Brewers ML vs TEX</td><td class=sc>4-7</td><td><span class="badge loss">&#10007; L</span></td></tr>
+<tr><td class=d>Day 33</td><td class=dt>Aug 30, 2026</td><td class=pk>Braves ML vs COL</td><td class=sc>3-2</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 32</td><td class=dt>Aug 29, 2026</td><td class=pk>Alabama St -19.5 vs SOU</td><td class=sc>30-17</td><td><span class="badge loss">&#10007; L</span></td></tr>
+<tr><td class=d>Day 32</td><td class=dt>Aug 29, 2026</td><td class=pk>TCU -6.5 vs UNC</td><td class=sc>10-15</td><td><span class="badge loss">&#10007; L</span></td></tr>
+<tr><td class=d>Day 32</td><td class=dt>Aug 29, 2026</td><td class=pk>Phillies ML @ LAA</td><td class=sc>4-2</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 32</td><td class=dt>Aug 29, 2026</td><td class=pk>Brewers ML vs TEX</td><td class=sc>5-3</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 32</td><td class=dt>Aug 29, 2026</td><td class=pk>Braves ML vs COL</td><td class=sc>2-1</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 31</td><td class=dt>Aug 28, 2026</td><td class=pk>Phillies ML @ LAA</td><td class=sc>5-3</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 31</td><td class=dt>Aug 28, 2026</td><td class=pk>Brewers ML vs TEX</td><td class=sc>6-1</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 31</td><td class=dt>Aug 28, 2026</td><td class=pk>Braves ML vs COL</td><td class=sc>6-4</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 30</td><td class=dt>Aug 27, 2026 <span style="color:#5a5a5a;font-size:12px">19:10</span></td><td class=pk>Brewers ML @ NYM</td><td class=sc>8-2</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 30</td><td class=dt>Aug 27, 2026 <span style="color:#5a5a5a;font-size:12px">19:05</span></td><td class=pk>Yankees ML vs HOU</td><td class=sc>1-5</td><td><span class="badge loss">&#10007; L</span></td></tr>
+<tr><td class=d>Day 30</td><td class=dt>Aug 27, 2026 <span style="color:#5a5a5a;font-size:12px">14:15</span></td><td class=pk>Orioles ML @ STL</td><td class=sc>5-7</td><td><span class="badge loss">&#10007; L</span></td></tr>
+<tr><td class=d>Day 29</td><td class=dt>Aug 26, 2026 <span style="color:#5a5a5a;font-size:12px">19:45</span></td><td class=pk>Orioles ML @ STL</td><td class=sc>8-7</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 29</td><td class=dt>Aug 26, 2026 <span style="color:#5a5a5a;font-size:12px">18:40</span></td><td class=pk>Red Sox ML @ MIA</td><td class=sc>0-4</td><td><span class="badge loss">&#10007; L</span></td></tr>
+<tr><td class=d>Day 29</td><td class=dt>Aug 26, 2026 <span style="color:#5a5a5a;font-size:12px">15:45</span></td><td class=pk>Giants ML vs CIN</td><td class=sc>9-10</td><td><span class="badge loss">&#10007; L</span></td></tr>
+<tr><td class=d>Day 28</td><td class=dt>Aug 25, 2026 <span style="color:#5a5a5a;font-size:12px">21:40</span></td><td class=pk>Cubs ML @ AZ</td><td class=sc>4-5</td><td><span class="badge loss">&#10007; L</span></td></tr>
+<tr><td class=d>Day 28</td><td class=dt>Aug 25, 2026 <span style="color:#5a5a5a;font-size:12px">19:40</span></td><td class=pk>Rangers ML @ CWS</td><td class=sc>7-11</td><td><span class="badge loss">&#10007; L</span></td></tr>
+<tr><td class=d>Day 28</td><td class=dt>Aug 25, 2026 <span style="color:#5a5a5a;font-size:12px">18:40</span></td><td class=pk>Red Sox ML @ MIA</td><td class=sc>7-3</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 27</td><td class=dt>Aug 24, 2026</td><td class=pk>Padres ML vs PIT</td><td class=sc>2-3</td><td><span class="badge loss">&#10007; L</span></td></tr>
+<tr><td class=d>Day 27</td><td class=dt>Aug 24, 2026</td><td class=pk>Rangers ML @ CWS</td><td class=sc>11-2</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 27</td><td class=dt>Aug 24, 2026</td><td class=pk>Red Sox ML @ MIA</td><td class=sc>4-2</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 26</td><td class=dt>Aug 23, 2026</td><td class=pk>Brewers ML vs ATL</td><td class=sc>2-4</td><td><span class="badge loss">&#10007; L</span></td></tr>
+<tr><td class=d>Day 26</td><td class=dt>Aug 23, 2026</td><td class=pk>Dodgers ML vs PIT</td><td class=sc>4-0</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 26</td><td class=dt>Aug 23, 2026</td><td class=pk>Phillies ML vs STL</td><td class=sc>6-4</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 25</td><td class=dt>Aug 22, 2026</td><td class=pk>Dodgers ML vs PIT</td><td class=sc>4-3</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 25</td><td class=dt>Aug 22, 2026</td><td class=pk>Phillies ML vs STL</td><td class=sc>12-3</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 25</td><td class=dt>Aug 22, 2026</td><td class=pk>Yankees ML vs TOR</td><td class=sc>3-4</td><td><span class="badge loss">&#10007; L</span></td></tr>
+<tr><td class=d>Day 24</td><td class=dt>Aug 21, 2026 <span style="color:#5a5a5a;font-size:12px">22:10</span></td><td class=pk>Dodgers ML vs PIT</td><td class=sc>5-4</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 24</td><td class=dt>Aug 21, 2026 <span style="color:#5a5a5a;font-size:12px">19:05</span></td><td class=pk>Yankees ML vs TOR</td><td class=sc>3-1</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 24</td><td class=dt>Aug 21, 2026 <span style="color:#5a5a5a;font-size:12px">18:40</span></td><td class=pk>Phillies ML vs STL</td><td class=sc>7-6</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 23</td><td class=dt>Aug 20, 2026 <span style="color:#5a5a5a;font-size:12px">20:10</span></td><td class=pk>Astros ML vs LAA</td><td class=sc>3-18</td><td><span class="badge loss">&#10007; L</span></td></tr>
+<tr><td class=d>Day 23</td><td class=dt>Aug 20, 2026 <span style="color:#5a5a5a;font-size:12px">18:35</span></td><td class=pk>Yankees ML @ BAL</td><td class=sc>6-1</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 23</td><td class=dt>Aug 20, 2026 <span style="color:#5a5a5a;font-size:12px">14:10</span></td><td class=pk>Royals ML vs ATH</td><td class=sc>6-2</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 22</td><td class=dt>Aug 19, 2026 <span style="color:#5a5a5a;font-size:12px">20:40</span></td><td class=pk>Dodgers ML @ COL</td><td class=sc>6-4</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 22</td><td class=dt>Aug 19, 2026 <span style="color:#5a5a5a;font-size:12px">18:40</span></td><td class=pk>Guardians ML vs SF</td><td class=sc>0-1</td><td><span class="badge loss">&#10007; L</span></td></tr>
+<tr><td class=d>Day 22</td><td class=dt>Aug 19, 2026 <span style="color:#5a5a5a;font-size:12px">18:05</span></td><td class=pk>Phillies ML vs MIA</td><td class=sc>4-1</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 21</td><td class=dt>Aug 18, 2026 <span style="color:#5a5a5a;font-size:12px">20:40</span></td><td class=pk>Dodgers ML @ COL</td><td class=sc>7-6</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 21</td><td class=dt>Aug 18, 2026 <span style="color:#5a5a5a;font-size:12px">19:10</span></td><td class=pk>Red Sox ML vs AZ</td><td class=sc>9-4</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 21</td><td class=dt>Aug 18, 2026 <span style="color:#5a5a5a;font-size:12px">18:40</span></td><td class=pk>Phillies ML vs MIA</td><td class=sc>6-4</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 20</td><td class=dt>Aug 17, 2026</td><td class=pk>Dodgers ML @ COL</td><td class=sc>11-5</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 20</td><td class=dt>Aug 17, 2026</td><td class=pk>Mets ML vs SD</td><td class=sc>2-1</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 20</td><td class=dt>Aug 17, 2026</td><td class=pk>Phillies ML vs MIA</td><td class=sc>6-5</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 19</td><td class=dt>Aug 16, 2026</td><td class=pk>Red Sox ML @ PIT</td><td class=sc>3-8</td><td><span class="badge loss">&#10007; L</span></td></tr>
+<tr><td class=d>Day 19</td><td class=dt>Aug 16, 2026</td><td class=pk>Blue Jays ML vs NYY</td><td class=sc>3-4</td><td><span class="badge loss">&#10007; L</span></td></tr>
+<tr><td class=d>Day 19</td><td class=dt>Aug 16, 2026</td><td class=pk>Phillies ML @ MIN</td><td class=sc>7-5</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 18</td><td class=dt>Aug 15, 2026</td><td class=pk>Astros ML vs SEA</td><td class=sc>5-10</td><td><span class="badge loss">&#10007; L</span></td></tr>
+<tr><td class=d>Day 18</td><td class=dt>Aug 15, 2026</td><td class=pk>Dodgers ML vs MIL</td><td class=sc>1-4</td><td><span class="badge loss">&#10007; L</span></td></tr>
+<tr><td class=d>Day 18</td><td class=dt>Aug 15, 2026</td><td class=pk>Phillies ML @ MIN</td><td class=sc>9-1</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 17</td><td class=dt>Aug 14, 2026</td><td class=pk>Red Sox ML @ PIT</td><td class=sc>4-8</td><td><span class="badge loss">&#10007; L</span></td></tr>
+<tr><td class=d>Day 17</td><td class=dt>Aug 14, 2026</td><td class=pk>Braves ML vs AZ</td><td class=sc>0-2</td><td><span class="badge loss">&#10007; L</span></td></tr>
+<tr><td class=d>Day 17</td><td class=dt>Aug 14, 2026</td><td class=pk>Astros ML vs SEA</td><td class=sc>10-7</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 16</td><td class=dt>Aug 13, 2026</td><td class=pk>Dodgers ML vs MIL</td><td class=sc>4-5</td><td><span class="badge loss">&#10007; L</span></td></tr>
+<tr><td class=d>Day 16</td><td class=dt>Aug 13, 2026</td><td class=pk>Phillies ML @ MIN</td><td class=sc>7-1</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 16</td><td class=dt>Aug 13, 2026</td><td class=pk>Angels ML vs TEX</td><td class=sc>7-0</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 15</td><td class=dt>Aug 12, 2026</td><td class=pk>Dodgers ML vs KC</td><td class=sc>4-2</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 15</td><td class=dt>Aug 12, 2026</td><td class=pk>Yankees ML vs SEA</td><td class=sc>10-5</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 15</td><td class=dt>Aug 12, 2026</td><td class=pk>Braves ML vs NYM</td><td class=sc>6-3</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 14</td><td class=dt>Aug 11, 2026</td><td class=pk>Brewers ML @ SD</td><td class=sc>2-11</td><td><span class="badge loss">&#10007; L</span></td></tr>
+<tr><td class=d>Day 14</td><td class=dt>Aug 11, 2026</td><td class=pk>Rangers ML @ LAA</td><td class=sc>2-3</td><td><span class="badge loss">&#10007; L</span></td></tr>
+<tr><td class=d>Day 14</td><td class=dt>Aug 11, 2026</td><td class=pk>Braves ML vs NYM</td><td class=sc>4-0</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 13</td><td class=dt>Aug 10, 2026</td><td class=pk>Red Sox ML @ TOR</td><td class=sc>1-2</td><td><span class="badge loss">&#10007; L</span></td></tr>
+<tr><td class=d>Day 13</td><td class=dt>Aug 10, 2026</td><td class=pk>Brewers ML @ SD</td><td class=sc>2-3</td><td><span class="badge loss">&#10007; L</span></td></tr>
+<tr><td class=d>Day 13</td><td class=dt>Aug 10, 2026</td><td class=pk>Phillies ML @ STL</td><td class=sc>6-5</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 12</td><td class=dt>Aug 9, 2026</td><td class=pk>Red Sox ML vs Athletics</td><td class=sc>3-4</td><td><span class="badge loss">&#10007; L</span></td></tr>
+<tr><td class=d>Day 12</td><td class=dt>Aug 9, 2026</td><td class=pk>Phillies ML vs Blue Jays</td><td class=sc>7-6</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 12</td><td class=dt>Aug 9, 2026</td><td class=pk>Brewers ML vs Twins</td><td class=sc>4-3</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 11</td><td class=dt>Aug 8, 2026</td><td class=pk>Phillies ML</td><td class=sc>5-7</td><td><span class="badge loss">&#10007; L</span></td></tr>
+<tr><td class=d>Day 11</td><td class=dt>Aug 8, 2026</td><td class=pk>Red Sox ML</td><td class=sc>3-7</td><td><span class="badge loss">&#10007; L</span></td></tr>
+<tr><td class=d>Day 11</td><td class=dt>Aug 8, 2026</td><td class=pk>Brewers ML</td><td class=sc>4-3</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 10</td><td class=dt>Aug 7, 2026</td><td class=pk>Phillies ML</td><td class=sc>4-5</td><td><span class="badge loss">&#10007; L</span></td></tr>
+<tr><td class=d>Day 10</td><td class=dt>Aug 7, 2026</td><td class=pk>Brewers ML</td><td class=sc>6-8</td><td><span class="badge loss">&#10007; L</span></td></tr>
+<tr><td class=d>Day 10</td><td class=dt>Aug 7, 2026</td><td class=pk>Red Sox ML</td><td class=sc>13-1</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 9</td><td class=dt>Aug 6, 2026</td><td class=pk>Red Sox ML</td><td class=sc></td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 9</td><td class=dt>Aug 6, 2026</td><td class=pk>Braves ML</td><td class=sc></td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 9</td><td class=dt>Aug 6, 2026</td><td class=pk>Brewers ML</td><td class=sc></td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 8</td><td class=dt>Aug 5, 2026</td><td class=pk>Astros ML</td><td class=sc></td><td><span class="badge loss">&#10007; L</span></td></tr>
+<tr><td class=d>Day 8</td><td class=dt>Aug 5, 2026</td><td class=pk>Phillies ML</td><td class=sc></td><td><span class="badge loss">&#10007; L</span></td></tr>
+<tr><td class=d>Day 8</td><td class=dt>Aug 5, 2026</td><td class=pk>Brewers ML</td><td class=sc></td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 7</td><td class=dt>Aug 4, 2026</td><td class=pk>Red Sox ML</td><td class=sc></td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 7</td><td class=dt>Aug 4, 2026</td><td class=pk>Braves ML</td><td class=sc></td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 7</td><td class=dt>Aug 4, 2026</td><td class=pk>Phillies ML</td><td class=sc></td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 6</td><td class=dt>Aug 3, 2026</td><td class=pk>Astros ML</td><td class=sc></td><td><span class="badge loss">&#10007; L</span></td></tr>
+<tr><td class=d>Day 6</td><td class=dt>Aug 3, 2026</td><td class=pk>Brewers ML</td><td class=sc></td><td><span class="badge loss">&#10007; L</span></td></tr>
+<tr><td class=d>Day 6</td><td class=dt>Aug 3, 2026</td><td class=pk>Phillies ML vs Nationals</td><td class=sc></td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 5</td><td class=dt>Aug 2, 2026</td><td class=pk>Mariners ML</td><td class=sc></td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 5</td><td class=dt>Aug 2, 2026</td><td class=pk>Astros ML</td><td class=sc></td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 5</td><td class=dt>Aug 2, 2026</td><td class=pk>Braves ML</td><td class=sc>4-2</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 4</td><td class=dt>Aug 1, 2026</td><td class=pk>Tigers ML</td><td class=sc></td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 4</td><td class=dt>Aug 1, 2026</td><td class=pk>Astros ML</td><td class=sc></td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 4</td><td class=dt>Aug 1, 2026</td><td class=pk>Braves ML</td><td class=sc></td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 3</td><td class=dt>Jul 31, 2026</td><td class=pk>Mets ML</td><td class=sc></td><td><span class="badge loss">&#10007; L</span></td></tr>
+<tr><td class=d>Day 3</td><td class=dt>Jul 31, 2026</td><td class=pk>Astros ML</td><td class=sc></td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 3</td><td class=dt>Jul 31, 2026</td><td class=pk>Braves ML</td><td class=sc></td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 2</td><td class=dt>Jul 30, 2026</td><td class=pk>Padres ML vs Giants</td><td class=sc>1-4</td><td><span class="badge loss">&#10007; L</span></td></tr>
+<tr><td class=d>Day 2</td><td class=dt>Jul 30, 2026</td><td class=pk>Dodgers ML vs Mariners</td><td class=sc>6-2</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 2</td><td class=dt>Jul 30, 2026</td><td class=pk>Braves ML vs Nationals</td><td class=sc>5-4</td><td><span class="badge win">&#10003; W</span></td></tr>
+<tr><td class=d>Day 1</td><td class=dt>Jul 29, 2026</td><td class=pk>Rangers ML @ Rays</td><td class=sc>0-3</td><td><span class="badge loss">&#10007; L</span></td></tr>
+<tr><td class=d>Day 1</td><td class=dt>Jul 29, 2026</td><td class=pk>Cubs ML @ Cardinals</td><td class=sc>2-3</td><td><span class="badge loss">&#10007; L</span></td></tr>
+<tr><td class=d>Day 1</td><td class=dt>Jul 29, 2026</td><td class=pk>Astros ML @ Angels</td><td class=sc>7-4</td><td><span class="badge win">&#10003; W</span></td></tr>
+</tbody></table>
+<h2>Day by day</h2>
+<table><thead><tr><th>Day</th><th>Date</th><th>Record</th></tr></thead><tbody>
+<tr><td class=d>Day 33</td><td class=dt>Aug 30, 2026</td><td class=sc>1-2</td></tr>
+<tr><td class=d>Day 32</td><td class=dt>Aug 29, 2026</td><td class=sc>3-2</td></tr>
+<tr><td class=d>Day 31</td><td class=dt>Aug 28, 2026</td><td class=sc>3-0</td></tr>
+<tr><td class=d>Day 30</td><td class=dt>Aug 27, 2026</td><td class=sc>1-2</td></tr>
+<tr><td class=d>Day 29</td><td class=dt>Aug 26, 2026</td><td class=sc>1-2</td></tr>
+<tr><td class=d>Day 28</td><td class=dt>Aug 25, 2026</td><td class=sc>1-2</td></tr>
+<tr><td class=d>Day 27</td><td class=dt>Aug 24, 2026</td><td class=sc>2-1</td></tr>
+<tr><td class=d>Day 26</td><td class=dt>Aug 23, 2026</td><td class=sc>2-1</td></tr>
+<tr><td class=d>Day 25</td><td class=dt>Aug 22, 2026</td><td class=sc>2-1</td></tr>
+<tr><td class=d>Day 24</td><td class=dt>Aug 21, 2026</td><td class=sc>3-0</td></tr>
+<tr><td class=d>Day 23</td><td class=dt>Aug 20, 2026</td><td class=sc>2-1</td></tr>
+<tr><td class=d>Day 22</td><td class=dt>Aug 19, 2026</td><td class=sc>2-1</td></tr>
+<tr><td class=d>Day 21</td><td class=dt>Aug 18, 2026</td><td class=sc>3-0</td></tr>
+<tr><td class=d>Day 20</td><td class=dt>Aug 17, 2026</td><td class=sc>3-0</td></tr>
+<tr><td class=d>Day 19</td><td class=dt>Aug 16, 2026</td><td class=sc>1-2</td></tr>
+<tr><td class=d>Day 18</td><td class=dt>Aug 15, 2026</td><td class=sc>1-2</td></tr>
+<tr><td class=d>Day 17</td><td class=dt>Aug 14, 2026</td><td class=sc>1-2</td></tr>
+<tr><td class=d>Day 16</td><td class=dt>Aug 13, 2026</td><td class=sc>2-1</td></tr>
+<tr><td class=d>Day 15</td><td class=dt>Aug 12, 2026</td><td class=sc>3-0</td></tr>
+<tr><td class=d>Day 14</td><td class=dt>Aug 11, 2026</td><td class=sc>1-2</td></tr>
+<tr><td class=d>Day 13</td><td class=dt>Aug 10, 2026</td><td class=sc>1-2</td></tr>
+<tr><td class=d>Day 12</td><td class=dt>Aug 9, 2026</td><td class=sc>2-1</td></tr>
+<tr><td class=d>Day 11</td><td class=dt>Aug 8, 2026</td><td class=sc>1-2</td></tr>
+<tr><td class=d>Day 10</td><td class=dt>Aug 7, 2026</td><td class=sc>1-2</td></tr>
+<tr><td class=d>Day 9</td><td class=dt>Aug 6, 2026</td><td class=sc>3-0</td></tr>
+<tr><td class=d>Day 8</td><td class=dt>Aug 5, 2026</td><td class=sc>1-2</td></tr>
+<tr><td class=d>Day 7</td><td class=dt>Aug 4, 2026</td><td class=sc>3-0</td></tr>
+<tr><td class=d>Day 6</td><td class=dt>Aug 3, 2026</td><td class=sc>1-2</td></tr>
+<tr><td class=d>Day 5</td><td class=dt>Aug 2, 2026</td><td class=sc>3-0</td></tr>
+<tr><td class=d>Day 4</td><td class=dt>Aug 1, 2026</td><td class=sc>3-0</td></tr>
+<tr><td class=d>Day 3</td><td class=dt>Jul 31, 2026</td><td class=sc>2-1</td></tr>
+<tr><td class=d>Day 2</td><td class=dt>Jul 30, 2026</td><td class=sc>2-1</td></tr>
+<tr><td class=d>Day 1</td><td class=dt>Jul 29, 2026</td><td class=sc>1-2</td></tr>
+</tbody></table>
+<footer><p style="margin-bottom:10px"><a href="/">Home</a><a href="/free-picks.html">Free Picks</a><a href="/methodology.html">Methodology</a><a href="/picks-results.html">Results</a><a href="/responsible-gambling.html">Responsible Gambling</a></p>
+<p>For entertainment purposes only. Must be 21+. Please gamble responsibly. If gambling stops being fun, call 1-800-GAMBLER.</p></footer>
+</div></body></html>
