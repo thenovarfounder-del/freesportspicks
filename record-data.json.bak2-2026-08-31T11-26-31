@@ -808,20 +808,17 @@
         {
           "pick": "Braves ML vs COL",
           "result": "W",
-          "score": "3-2",
-          "sport": "MLB"
+          "score": "3-2"
         },
         {
           "pick": "Brewers ML vs TEX",
           "result": "L",
-          "score": "4-7",
-          "sport": "MLB"
+          "score": "4-7"
         },
         {
           "pick": "Cubs ML vs CIN",
           "result": "L",
-          "score": "5-7",
-          "sport": "MLB"
+          "score": "5-7"
         }
       ]
     }
