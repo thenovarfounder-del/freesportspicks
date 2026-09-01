@@ -154,13 +154,6 @@ a{color:var(--gold)}
   <h1>Verified Pick Record</h1>
   <p class="sub">Every pick published publicly before the game and graded against the official final score. Updated ${fmt(days[0].date)}.</p>
 
-  <div class="stats">
-    <div class="stat"><b>${T.w}-${T.l}${T.p ? "-" + T.p : ""}</b><span>Record (all sports)</span></div>
-    <div class="stat"><b>${T.pct}%</b><span>Win rate</span></div>
-    <div class="stat"><b>${T.total}</b><span>Picks graded</span></div>
-    <div class="stat"><b>${streak(null)}</b><span>Current streak</span></div>
-    <div class="stat"><b>${T.units > 0 ? "+" : ""}${T.units}u</b><span>Units at -110</span></div>
-  </div>
 ${perSport}
   <div class="cov"><strong>The covenant.</strong> Nobody sustains 60% against the number. Sharp bettors live at 53&ndash;57%, and the break-even bar at standard -110 juice is 52.38%. We do not sell locks and we do not quietly delete losers. Every pick below was published publicly before the game and graded against the official final score. Want to check anyone else&rsquo;s numbers? <a href="/how-to-spot-a-fake-pick-record.html">How to spot a fake pick record</a>.</div>
 

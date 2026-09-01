@@ -36,6 +36,13 @@ a{color:var(--gold)}
   <h1>Verified Pick Record</h1>
   <p class="sub">Every pick published publicly before the game and graded against the official final score. Updated Aug 31, 2026.</p>
 
+  <div class="stats">
+    <div class="stat"><b>64-40</b><span>Record (all sports)</span></div>
+    <div class="stat"><b>61.5%</b><span>Win rate</span></div>
+    <div class="stat"><b>104</b><span>Picks graded</span></div>
+    <div class="stat"><b>W1</b><span>Current streak</span></div>
+    <div class="stat"><b>+18.24u</b><span>Units at -110</span></div>
+  </div>
 
   <h2>MLB</h2>
   <div class="stats">
