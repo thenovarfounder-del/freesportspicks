@@ -856,20 +856,17 @@
         {
           "pick": "Cubs ML vs MIL",
           "result": "L",
-          "score": "4-9",
-          "sport": "MLB"
+          "score": "4-9"
         },
         {
           "pick": "Astros ML vs CWS",
           "result": "L",
-          "score": "1-5",
-          "sport": "MLB"
+          "score": "1-5"
         },
         {
           "pick": "Dodgers ML vs STL",
           "result": "L",
-          "score": "8-13",
-          "sport": "MLB"
+          "score": "8-13"
         }
       ]
     }
