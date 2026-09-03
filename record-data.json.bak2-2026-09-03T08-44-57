@@ -880,20 +880,17 @@
         {
           "pick": "Phillies ML @ AZ",
           "result": "L",
-          "score": "0-1",
-          "sport": "MLB"
+          "score": "0-1"
         },
         {
           "pick": "Guardians ML vs TOR",
           "result": "L",
-          "score": "0-11",
-          "sport": "MLB"
+          "score": "0-11"
         },
         {
           "pick": "Twins ML vs DET",
           "result": "L",
-          "score": "6-11",
-          "sport": "MLB"
+          "score": "6-11"
         }
       ]
     }
