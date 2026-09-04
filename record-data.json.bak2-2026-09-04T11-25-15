@@ -904,20 +904,17 @@
         {
           "pick": "Astros ML vs CWS",
           "result": "W",
-          "score": "6-2",
-          "sport": "MLB"
+          "score": "6-2"
         },
         {
           "pick": "Brewers ML @ CHC",
           "result": "L",
-          "score": "1-2",
-          "sport": "MLB"
+          "score": "1-2"
         },
         {
           "pick": "Mariners ML vs ATH",
           "result": "L",
-          "score": "4-7",
-          "sport": "MLB"
+          "score": "4-7"
         }
       ]
     }
