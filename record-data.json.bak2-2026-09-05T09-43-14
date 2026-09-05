@@ -928,20 +928,17 @@
         {
           "pick": "Rangers ML vs TB",
           "result": "L",
-          "score": "6-7",
-          "sport": "MLB"
+          "score": "6-7"
         },
         {
           "pick": "Astros ML vs AZ",
           "result": "W",
-          "score": "3-1",
-          "sport": "MLB"
+          "score": "3-1"
         },
         {
           "pick": "Dodgers ML vs WSH",
           "result": "W",
-          "score": "5-3",
-          "sport": "MLB"
+          "score": "5-3"
         }
       ]
     }
