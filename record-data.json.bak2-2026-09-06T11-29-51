@@ -952,32 +952,27 @@
         {
           "pick": "Cubs ML @ MIA",
           "result": "W",
-          "score": "6-5",
-          "sport": "MLB"
+          "score": "6-5"
         },
         {
           "pick": "Astros ML vs AZ",
           "result": "L",
-          "score": "3-4",
-          "sport": "MLB"
+          "score": "3-4"
         },
         {
           "pick": "Dodgers ML vs WSH",
           "result": "W",
-          "score": "6-5",
-          "sport": "MLB"
+          "score": "6-5"
         },
         {
-          "pick": "James Madison -6 vs LIB",
+          "pick": "CFB:James Madison -6 vs LIB",
           "result": "W",
-          "score": "20-13",
-          "sport": "CFB"
+          "score": "20-13"
         },
         {
-          "pick": "Houston -21 vs ORST",
+          "pick": "CFB:Houston -21 vs ORST",
           "result": "L",
-          "score": "33-20",
-          "sport": "CFB"
+          "score": "33-20"
         }
       ]
     }
