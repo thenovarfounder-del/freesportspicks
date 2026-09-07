@@ -988,20 +988,17 @@
         {
           "pick": "Cubs ML @ MIA",
           "result": "L",
-          "score": "3-10",
-          "sport": "MLB"
+          "score": "3-10"
         },
         {
           "pick": "Blue Jays ML @ KC",
           "result": "L",
-          "score": "1-6",
-          "sport": "MLB"
+          "score": "1-6"
         },
         {
           "pick": "Dodgers ML vs WSH",
           "result": "W",
-          "score": "7-5",
-          "sport": "MLB"
+          "score": "7-5"
         }
       ]
     }
