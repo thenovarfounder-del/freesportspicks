@@ -1036,20 +1036,17 @@
         {
           "pick": "Red Sox ML vs LAA",
           "result": "L",
-          "score": "1-6",
-          "sport": "MLB"
+          "score": "1-6"
         },
         {
           "pick": "Yankees ML vs COL",
           "result": "W",
-          "score": "5-3",
-          "sport": "MLB"
+          "score": "5-3"
         },
         {
           "pick": "Dodgers ML vs CIN",
           "result": "W",
-          "score": "3-2",
-          "sport": "MLB"
+          "score": "3-2"
         }
       ]
     }
