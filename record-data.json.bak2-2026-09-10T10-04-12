@@ -1060,26 +1060,22 @@
         {
           "pick": "Padres ML vs WSH",
           "result": "W",
-          "score": "9-2",
-          "sport": "MLB"
+          "score": "9-2"
         },
         {
           "pick": "Red Sox ML vs LAA",
           "result": "L",
-          "score": "4-6",
-          "sport": "MLB"
+          "score": "4-6"
         },
         {
           "pick": "Yankees ML vs COL",
           "result": "W",
-          "score": "6-1",
-          "sport": "MLB"
+          "score": "6-1"
         },
         {
-          "pick": "Seattle ML -160 vs NE",
+          "pick": "NFL:Seattle ML -160 vs NE",
           "result": "W",
-          "score": "13-10",
-          "sport": "NFL"
+          "score": "13-10"
         }
       ]
     }
