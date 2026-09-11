@@ -1090,26 +1090,22 @@
         {
           "pick": "Phillies ML vs HOU",
           "result": "L",
-          "score": "1-2",
-          "sport": "MLB"
+          "score": "1-2"
         },
         {
           "pick": "Mariners ML vs TEX",
           "result": "W",
-          "score": "4-3",
-          "sport": "MLB"
+          "score": "4-3"
         },
         {
           "pick": "Yankees ML vs COL",
           "result": "W",
-          "score": "10-3",
-          "sport": "MLB"
+          "score": "10-3"
         },
         {
-          "pick": "Rams ML -185 vs SF",
+          "pick": "NFL:Rams ML -185 vs SF",
           "result": "L",
-          "score": "7-27",
-          "sport": "NFL"
+          "score": "7-27"
         }
       ]
     }
