@@ -1120,20 +1120,17 @@
         {
           "pick": "Yankees ML vs NYM",
           "result": "W",
-          "score": "6-4",
-          "sport": "MLB"
+          "score": "6-4"
         },
         {
           "pick": "Dodgers ML @ MIA",
           "result": "W",
-          "score": "6-2",
-          "sport": "MLB"
+          "score": "6-2"
         },
         {
           "pick": "Braves ML vs PHI",
           "result": "W",
-          "score": "6-5",
-          "sport": "MLB"
+          "score": "6-5"
         }
       ]
     },
