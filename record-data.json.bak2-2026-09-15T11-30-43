@@ -1198,26 +1198,22 @@
         {
           "pick": "Mets ML vs BAL",
           "result": "L",
-          "score": "1-2",
-          "sport": "MLB"
+          "score": "1-2"
         },
         {
           "pick": "Cubs ML vs ATL",
           "result": "W",
-          "score": "7-3",
-          "sport": "MLB"
+          "score": "7-3"
         },
         {
           "pick": "Diamondbacks ML vs MIA",
           "result": "W",
-          "score": "8-7",
-          "sport": "MLB"
+          "score": "8-7"
         },
         {
-          "pick": "Broncos ML +110 @ KC",
+          "pick": "NFL:Broncos ML +110 @ KC",
           "result": "L",
-          "score": "10-31",
-          "sport": "NFL"
+          "score": "10-31"
         }
       ]
     }
