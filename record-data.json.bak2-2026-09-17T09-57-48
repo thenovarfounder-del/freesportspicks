@@ -1252,20 +1252,17 @@
         {
           "pick": "Mets ML vs BAL",
           "result": "L",
-          "score": "1-7",
-          "sport": "MLB"
+          "score": "1-7"
         },
         {
           "pick": "Cubs ML vs ATL",
           "result": "W",
-          "score": "8-4",
-          "sport": "MLB"
+          "score": "8-4"
         },
         {
           "pick": "Diamondbacks ML vs MIA",
           "result": "L",
-          "score": "3-4",
-          "sport": "MLB"
+          "score": "3-4"
         }
       ]
     }
