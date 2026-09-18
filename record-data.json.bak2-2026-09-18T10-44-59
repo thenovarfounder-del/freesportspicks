@@ -1276,14 +1276,12 @@
         {
           "pick": "Red Sox ML -140 @ TEX",
           "result": "W",
-          "score": "4-3",
-          "sport": "MLB"
+          "score": "4-3"
         },
         {
-          "pick": "Buffalo -4.5 vs DET",
+          "pick": "NFL:Buffalo -4.5 vs DET",
           "result": "W",
-          "score": "41-31",
-          "sport": "NFL"
+          "score": "41-31"
         }
       ]
     }
