@@ -1294,14 +1294,12 @@
         {
           "pick": "Cleveland ML -180 vs ATH",
           "result": "W",
-          "score": "5-3",
-          "sport": "MLB"
+          "score": "5-3"
         },
         {
-          "pick": "Houston +7.5 @ TTU",
+          "pick": "CFB:Houston +7.5 @ TTU",
           "result": "W",
-          "score": "26-28",
-          "sport": "CFB"
+          "score": "26-28"
         }
       ]
     }
