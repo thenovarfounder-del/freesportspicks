@@ -1312,14 +1312,12 @@
         {
           "pick": "Red Sox ML +120 @ TB",
           "result": "L",
-          "score": "1-2",
-          "sport": "MLB"
+          "score": "1-2"
         },
         {
-          "pick": "Boston College -37 vs ME",
+          "pick": "CFB:Boston College -37 vs ME",
           "result": "L",
-          "score": "22-16",
-          "sport": "CFB"
+          "score": "22-16"
         }
       ]
     }
