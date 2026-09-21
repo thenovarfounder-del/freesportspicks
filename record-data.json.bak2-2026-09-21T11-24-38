@@ -1328,22 +1328,19 @@
       "date": "2026-09-20",
       "picks": [
         {
-          "pick": "Chiefs -5.5 vs IND",
+          "pick": "NFL:Chiefs -5.5 vs IND",
           "result": "L",
-          "score": "33-30",
-          "sport": "NFL"
+          "score": "33-30"
         },
         {
-          "pick": "49ers -13.5 vs MIA",
+          "pick": "NFL:49ers -13.5 vs MIA",
           "result": "W",
-          "score": "35-13",
-          "sport": "NFL"
+          "score": "35-13"
         },
         {
           "pick": "Guardians -1.5 RL vs ATH",
           "result": "L",
-          "score": "1-0",
-          "sport": "MLB"
+          "score": "1-0"
         }
       ]
     }
