@@ -88,6 +88,16 @@
       "source": "/blog/horse-racing-betting-strategy.html",
       "destination": "/picks/horse-racing-picks/",
       "permanent": true
+    },
+    {
+      "source": "/blog/six-straight-what-a-streak-changes",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/six-straight-what-a-streak-changes/",
+      "destination": "/blog/",
+      "permanent": true
     }
   ]
 }

@@ -1352,16 +1352,14 @@
       "date": "2026-09-21",
       "picks": [
         {
-          "pick": "Rams -6.5 vs NYG",
+          "pick": "NFL:Rams -6.5 vs NYG",
           "result": "W",
-          "score": "28-6",
-          "sport": "NFL"
+          "score": "28-6"
         },
         {
           "pick": "Blue Jays ML -110 @ BAL",
           "result": "L",
-          "score": "3-4",
-          "sport": "MLB"
+          "score": "3-4"
         }
       ]
     }
