@@ -1396,14 +1396,12 @@
         {
           "pick": "White Sox ML -125 @ KC",
           "result": "W",
-          "score": "9-1",
-          "sport": "MLB"
+          "score": "9-1"
         },
         {
-          "pick": "Packers ML -240 vs ATL",
+          "pick": "NFL:Packers ML -240 vs ATL",
           "result": "L",
-          "score": "14-35",
-          "sport": "NFL"
+          "score": "14-35"
         }
       ]
     }
