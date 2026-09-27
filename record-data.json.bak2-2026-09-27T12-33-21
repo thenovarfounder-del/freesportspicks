@@ -1414,26 +1414,22 @@
         {
           "pick": "Rangers ML -125 @ MIN",
           "result": "W",
-          "score": "6-2",
-          "sport": "MLB"
+          "score": "6-2"
         },
         {
-          "pick": "Virginia Tech @ BC",
+          "pick": "CFB:Virginia Tech @ BC",
           "result": "W",
-          "score": "21-14",
-          "sport": "CFB"
+          "score": "21-14"
         },
         {
-          "pick": "UTSA vs CSU",
+          "pick": "CFB:UTSA vs CSU",
           "result": "W",
-          "score": "59-45",
-          "sport": "CFB"
+          "score": "59-45"
         },
         {
-          "pick": "Louisville vs WAKE",
+          "pick": "CFB:Louisville vs WAKE",
           "result": "L",
-          "score": "27-30",
-          "sport": "CFB"
+          "score": "27-30"
         }
       ]
     }
