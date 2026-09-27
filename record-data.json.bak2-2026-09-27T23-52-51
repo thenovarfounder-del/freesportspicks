@@ -1460,22 +1460,19 @@
       "date": "2026-09-27",
       "picks": [
         {
-          "pick": "Seattle -7.5 @ WAS",
+          "pick": "NFL:Seattle -7.5 @ WAS",
           "result": "L",
-          "score": "31-33",
-          "sport": "NFL"
+          "score": "31-33"
         },
         {
-          "pick": "Chiefs -10 @ MIA",
+          "pick": "NFL:Chiefs -10 @ MIA",
           "result": "W",
-          "score": "24-10",
-          "sport": "NFL"
+          "score": "24-10"
         },
         {
-          "pick": "49ers -7.5 vs ARI",
+          "pick": "NFL:49ers -7.5 vs ARI",
           "result": "L",
-          "score": "36-30",
-          "sport": "NFL"
+          "score": "36-30"
         }
       ]
     }
