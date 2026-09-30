@@ -1498,20 +1498,17 @@
         {
           "pick": "Braves ML vs PHI",
           "result": "W",
-          "score": "5-3",
-          "sport": "MLB"
+          "score": "5-3"
         },
         {
           "pick": "Yankees ML vs BOS",
           "result": "W",
-          "score": "9-0",
-          "sport": "MLB"
+          "score": "9-0"
         },
         {
           "pick": "Padres ML vs CHC",
           "result": "W",
-          "score": "8-0",
-          "sport": "MLB"
+          "score": "8-0"
         }
       ]
     }
