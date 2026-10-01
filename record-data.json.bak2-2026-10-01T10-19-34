@@ -1522,20 +1522,17 @@
         {
           "pick": "Astros ML vs CWS",
           "result": "L",
-          "score": "3-7",
-          "sport": "MLB"
+          "score": "3-7"
         },
         {
           "pick": "Yankees ML vs BOS",
           "result": "W",
-          "score": "9-2",
-          "sport": "MLB"
+          "score": "9-2"
         },
         {
           "pick": "Padres ML vs CHC",
           "result": "W",
-          "score": "4-1",
-          "sport": "MLB"
+          "score": "4-1"
         }
       ]
     }
