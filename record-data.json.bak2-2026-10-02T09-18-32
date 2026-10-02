@@ -1544,16 +1544,14 @@
       "date": "2026-10-01",
       "picks": [
         {
-          "pick": "Cleveland ML +125 vs PIT",
+          "pick": "NFL:Cleveland ML +125 vs PIT",
           "result": "W",
-          "score": "27-24",
-          "sport": "NFL"
+          "score": "27-24"
         },
         {
           "pick": "Phillies ML @ ATL",
           "result": "L",
-          "score": "2-6",
-          "sport": "MLB"
+          "score": "2-6"
         }
       ]
     }
