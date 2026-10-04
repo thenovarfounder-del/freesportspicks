@@ -1564,20 +1564,17 @@
         {
           "pick": "Brewers ML vs SD",
           "result": "W",
-          "score": "3-2",
-          "sport": "MLB"
+          "score": "3-2"
         },
         {
           "pick": "Rays ML vs NYY",
           "result": "W",
-          "score": "1-0",
-          "sport": "MLB"
+          "score": "1-0"
         },
         {
           "pick": "Guardians ML vs CWS",
           "result": "L",
-          "score": "0-3",
-          "sport": "MLB"
+          "score": "0-3"
         }
       ]
     }
