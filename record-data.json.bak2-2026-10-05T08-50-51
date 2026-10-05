@@ -1586,16 +1586,14 @@
       "date": "2026-10-04",
       "picks": [
         {
-          "pick": "Indianapolis ML @ WAS",
+          "pick": "NFL:Indianapolis ML @ WAS",
           "result": "W",
-          "score": "30-13",
-          "sport": "NFL"
+          "score": "30-13"
         },
         {
           "pick": "Dodgers ML vs ATL",
           "result": "L",
-          "score": "2-3",
-          "sport": "MLB"
+          "score": "2-3"
         }
       ]
     }
